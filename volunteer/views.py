@@ -4,6 +4,5 @@ from .models import Beneficiary
 
 # Create your views here.
 class BeneficiaryList(generic.ListView):
-    queryset = Beneficiary.objects.filter(public_ok=True)
+    queryset = Beneficiary.objects.all()
     template_name = "beneficiary_list"
-
