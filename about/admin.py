@@ -1,10 +1,10 @@
 from django.contrib import admin
-from .models import AboutProject
+from .models import About
 from django_summernote.admin import SummernoteModelAdmin
 
 # Register your models here.
-@admin.register(AboutProject)
-class AboutProjectAdmin(SummernoteModelAdmin):
+@admin.register(About)
+class AboutAdmin(SummernoteModelAdmin):
     
     list_filter = ('status',)
     summernote_fields = ('content',)

@@ -1,16 +1,16 @@
 from django.shortcuts import render
-from .models import AboutProject
+from .models import About
 
 
 # # Create your views here.
 
 def about_project(request):
+    
     """
     Renders the About page
     """
 
-
-    about = AboutProject.objects.all().order_by('-updated_on').first()
+    about = About.objects.filter(status=1).first()
 
     return render(
         request,
