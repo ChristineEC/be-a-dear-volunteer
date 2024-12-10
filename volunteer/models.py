@@ -11,7 +11,6 @@ class Beneficiary(models.Model):
     location = models.CharField(max_length=255)
     contact_details = models.CharField(max_length=200)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="my_beneficiaries")
-    # public = models.BooleanField(default=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)

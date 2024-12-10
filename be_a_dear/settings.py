@@ -45,10 +45,10 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',
     'django_summernote', 
     'volunteer',
     'about',
+    'users',
 ]
 
 SITE_ID = 1
