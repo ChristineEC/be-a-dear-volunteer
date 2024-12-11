@@ -12,7 +12,7 @@ CLASS_YEARS = (
 
 # Create your models here.
 class Homeroom(models.Model):
-    room_num = models.CharField(max_length=5, unique=True)
+    homeroom_number = models.CharField(max_length=5, unique=True)
     class_year = models.CharField(max_length=4, choices=CLASS_YEARS, default="FR")
 
     def _str__(self):
@@ -20,14 +20,14 @@ class Homeroom(models.Model):
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     alias = models.CharField(max_length=15)
-    homeroom = models.ForeignKey(Homeroom, on_delete=models.PROTECT)
+    homeroom_number = models.ForeignKey(Homeroom, blank=True, null=True, on_delete=models.PROTECT)
     photo_permission = models.BooleanField(default=False)
     profile_type = models.IntegerField(choices=PROFILE_TYPE, default=0)
 
     def __str__(self):
-        return str(self.user + self.profile_type)
+        return self.user.username
 
 
 
