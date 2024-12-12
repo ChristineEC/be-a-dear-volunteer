@@ -1,30 +1,27 @@
-# from django.db import models
-# from django.contrib.auth.models import User, Homeroom
+from django.db import models
+from django.contrib.auth.models import User
+# from volunteer import Homeroom
 
-# PROFILE_TYPE = ((0, "Student"), (1, "Teacher"),(2, "School Admin") )
-# CLASS_YEARS = (
-#     ("FR", "Freshman"),
-#     ("SO", "Sophmore"),
-#     ("JR", "Junior"),
-#     ("SR", "Senior"),
-#     ("UA", "Unassigned")
-#     )
+# # # Create your models here.
 
-
-# # Create your models here.
-# class Homeroom(models.Model):
-#     homeroom_number = models.CharField(max_length=10, unique=True)
-#     class_year = models.CharField(max_length=4, choices=CLASS_YEARS, default="FR")
-
-#     def _str__(self):
-#         return f"{self.homeroom_number} | Class Year: {self.class_year}"
 
 
 # class Profile(models.Model):
+
+#     """
+#     A profile distinguishing teachers from students and
+#     assigning homerooms and aliases is created for each user
+#     related to the :model: auth.User
+#     and the :model: volunteer.Homeroom
+#     """
+
 #     user = models.OneToOneField(User, on_delete=models.CASCADE)
 #     alias = models.CharField(max_length=15)
-#     homeroom_number = models.ForeignKey(Homeroom, on_delete=models.PROTECT)
+#     homeroom_number = models.ForeignKey(volunteer.Homeroom, blank=True, on_delete=models.PROTECT)
 #     profile_type = models.IntegerField(choices=PROFILE_TYPE, default=0)
 
+#     class Meta:
+#         ordering = ["homeroom_number"]
+
 #     def __str__(self):
-#         return f"{self.user.username}"
+#         return f"{self.user.username} | {self.user.alias} | {self.user.homeroom_number}"
