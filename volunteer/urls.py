@@ -1,6 +1,6 @@
-from . import views
-from django.urls import path
+# from . import views
+# from django.urls import path
 
-# urlpatterns = [
-#     path('', views.BeneficiaryList.as_view(), name="home"),
-# ]
+# # urlpatterns = [
+# #     path('', views.BeneficiaryList.as_view(), name="home"),
+# # ]

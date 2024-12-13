@@ -6,13 +6,13 @@ STATUS = (
     (1, "Published")
     )
 
-CLASS_YEARS = (
-    ("FR", "Freshman"),
-    ("SO", "Sophmore"),
-    ("JR", "Junior"),
-    ("SR", "Senior"),
-    ("UA", "Unassigned"),
-    )
+# CLASS_YEARS = (
+#     ("FR", "Freshman"),
+#     ("SO", "Sophmore"),
+#     ("JR", "Junior"),
+#     ("SR", "Senior"),
+#     ("UA", "Unassigned"),
+#     )
 
 
 # Create your models here.
