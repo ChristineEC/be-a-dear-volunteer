@@ -5,11 +5,7 @@ STATUS = (
     (0, "Draft"),
     (1, "Published")
     )
-PROFILE_TYPE = (
-    (0, "Student"),
-    (1, "Teacher"),
-    (2, "School Admin"),
-    )
+
 CLASS_YEARS = (
     ("FR", "Freshman"),
     ("SO", "Sophmore"),
@@ -53,12 +49,12 @@ class Slot(models.Model):
 class Homeroom(models.Model):
 
     homeroom_number = models.CharField(max_length=10, unique=True)
-    class_year = models.CharField(max_length=4, choices=CLASS_YEARS, default="FR")
+    class_year = models.CharField(max_length=10, choices=CLASS_YEARS)
 
     class Meta:
         app_label = "volunteer"
+        ordering = ["class_year", "homeroom_number"]
 
     def _str__(self):
         return f"{self.homeroom_number} | Class Year: {self.class_year}"
 
-    
