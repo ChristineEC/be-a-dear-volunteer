@@ -48,7 +48,7 @@ class Slot(models.Model):
 
 class Homeroom(models.Model):
 
-    homeroom_number = models.CharField(max_length=10, unique=True)
+    homeroom_number = models.CharField(max_length=10, primary_key=True)
     class_year = models.CharField(max_length=10, choices=CLASS_YEARS)
 
     class Meta:

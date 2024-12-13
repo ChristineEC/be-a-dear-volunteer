@@ -22,7 +22,7 @@ class Profile(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     alias = models.CharField(max_length=15)
-    homeroom = models.ForeignKey(Homeroom, blank=True, null=True, on_delete=models.CASCADE)
+    homeroom = models.ForeignKey(Homeroom, default="999", on_delete=models.CASCADE)
     profile_type = models.IntegerField(choices=PROFILE_TYPE, default=0)
 
 
