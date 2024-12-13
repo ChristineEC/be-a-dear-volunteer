@@ -1,4 +1,6 @@
 from django.apps import AppConfig
+from django.contrib.auth.models import User
+from .models import Profile
 
 
 class UsersConfig(AppConfig):

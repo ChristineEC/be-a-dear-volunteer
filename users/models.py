@@ -1,6 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import User
 from volunteer.models import Homeroom
+from django.contrib.auth.models import User
+
 
 PROFILE_TYPE = (
     (0, "Student"),
@@ -29,4 +30,4 @@ class Profile(models.Model):
         ordering = ["homeroom", "user"]
 
     def __str__(self):
-        return f"{self.user.username} | {self.user.alias} | {self.user.homeroom_number}"
+        return f"{self.user.username}"
