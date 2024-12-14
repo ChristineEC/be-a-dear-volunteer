@@ -47,6 +47,7 @@ class SlotAdmin(admin.ModelAdmin):
         )
     search_fields = []
     list_filter = ('reserved_by',)
+    prepopulated_fields = {'slug': ('task',)}
 
     class Meta:
         ordering = ['status', 'reserved_by']
