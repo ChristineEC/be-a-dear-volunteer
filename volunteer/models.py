@@ -6,13 +6,13 @@ STATUS = (
     (1, "Published")
     )
 
-# CLASS_YEARS = (
-#     ("FR", "Freshman"),
-#     ("SO", "Sophmore"),
-#     ("JR", "Junior"),
-#     ("SR", "Senior"),
-#     ("UA", "Unassigned"),
-#     )
+CLASS_YEARS = (
+    ("FR", "Freshman"),
+    ("SO", "Sophmore"),
+    ("JR", "Junior"),
+    ("SR", "Senior"),
+    ("UA", "Unassigned"),
+    )
 
 
 # Create your models here.
@@ -50,15 +50,15 @@ class Slot(models.Model):
     #     ordering = ["created_on"]
 
 
-# class Homeroom(models.Model):
+class Homeroom(models.Model):
 
-#     homeroom_number = models.CharField(max_length=10, primary_key=True)
-#     class_year = models.CharField(max_length=10, choices=CLASS_YEARS)
+    homeroom_number = models.CharField(max_length=10, primary_key=True)
+    class_year = models.CharField(max_length=10, choices=CLASS_YEARS)
 
-#     class Meta:
-#         app_label = "volunteer"
-#         ordering = ["class_year", "homeroom_number"]
+    class Meta:
+        app_label = "volunteer"
+        ordering = ["homeroom_number", "class_year"]
 
-#     def _str__(self):
-#         return f"{self.homeroom_number} | Class Year: {self.class_year}"
+    def _str__(self):
+        return f"{self.homeroom_number} | Class Year: {self.class_year}"
 

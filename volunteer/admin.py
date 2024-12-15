@@ -1,7 +1,5 @@
 from django.contrib import admin
-from .models import Beneficiary
-from .models import Slot
-# from .models import Homeroom
+from .models import Beneficiary, Slot, Homeroom
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -55,11 +53,7 @@ class SlotAdmin(admin.ModelAdmin):
     def __str__(self):
         return f"Task: {self.task} | Reserved by: {self.reserved_by}"
 
-# @admin.register(Homeroom)
-# class HomeroomAdmin(admin.ModelAdmin):
-#     list_display = ("homeroom_number", "class_year")
 
+# Register your models here.
 
-# # Register your models here.
-
-
+admin.site.register(Homeroom)
