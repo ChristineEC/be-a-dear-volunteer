@@ -7,6 +7,13 @@ body {
     padding-left: 20px;
 }
 
+.header-pic {
+    width: 100%;
+    max-height: 300px;
+}
+
+
+
 /* Fonts */
 
 .graduate-regular {

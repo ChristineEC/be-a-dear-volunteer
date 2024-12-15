@@ -15,7 +15,7 @@ class BeneficiaryAdmin(SummernoteModelAdmin):
     in the admin panel.
     """
 
-    list_display = ('beneficiary_name', 'location', 'contact_details', 'status')
+    list_display = ('id', 'beneficiary_name', 'location', 'contact_details', 'status')
     search_fields = ['beneficiary_name']
     list_filter = ('status',)
     prepopulated_fields = {'slug': ('beneficiary_name',)}

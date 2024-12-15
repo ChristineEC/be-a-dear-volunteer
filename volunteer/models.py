@@ -28,6 +28,9 @@ class Beneficiary(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
 
+    # class Meta:
+    #     ordering = ["status", "beneficiary_name"]
+
 
 class Slot(models.Model):
 
@@ -45,6 +48,9 @@ class Slot(models.Model):
     credit_minutes_requested = models.IntegerField(default=0)
     teacher_approved = models.BooleanField(default=False)
     publish_ok = models.BooleanField(default=False)
+
+    # class Meta:
+    #     ordering = ["created_on"]
 
 
 # class Homeroom(models.Model):

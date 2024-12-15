@@ -1,21 +1,36 @@
 {% extends "base.html" %}
-
+{% load static %}
 
 
 <!-- Home Page content goes here -->
 
 {% block content %}
 
-<div class="card mb-3">
-    <!-- <img src="..." class="card-img-top" alt="..."> -->
-    <div class="card-body">
-      <h5 class="card-title">Be a Dear is a student-led project.</h5>
-      <p class="card-text">It aims to help us find volunteer opportunities and inspire one another.</p>
-      <p class="card-text"><small class="text-muted">LORUM IPSUM lorem ipsum LORUM IPSUM lorem ipsum LORUM IPSUM lorem ipsum LORUM IPSUM
-        lorem ipsum LORUM IPSUM lorem ipsum LORUM IPSUM lorem ipsum LORUM IPSUM lorem ipsum LORUM IPSUM
- </small></p>
-    </div>
+<div class="card text-bg-light">
+  <img src="{% static 'images/hearts2.jpg' %}" class="card-img" alt="Candy valentine hearts">
+  <div class="card-img-overlay">
+    <h5 class="card-title page-heading">Be a Dear is a student-led project and a school-wide contest</h5>
+    <p class="card-text">Here we can find, create and share volunteer opportunities.</p>
+    <p class="card-text"><small>Although we are normally required to complete our mandatory
+      volunteer hours at a public-facing organization, has agreed to let us run this experiment where we are able to volunteer to help any individual in need. That
+      includes the little old lady nextdoor. We do list organizations here, but by choosing "Other" you can create
+      your very own opportunities. You can spend as little as 5 minutes a day and get credit!</small></p>
   </div>
+</div>
+
+<!-- <div class="card mb-3 align=text-center">
+  <img src="{% static 'images/hearts2.jpg' %}" class="card-img-top header-pic" alt="Candy valentine hearts">
+  <div class="card-body">
+    <h5 class="card-title">Be a Dear is a student-led project.</h5>
+    <p class="card-text">Here we can find, create and share volunteer opportunities.</p>
+    <p class="card-text">Although we are normally required to complete our mandatory
+        volunteer hours at a public-facing organization, 
+        has agreed to let us run this experiment where we are able to volunteer to help any individual in need. That
+        includes the little old lady nextdoor. We do list organizations here, but by choosing "Other" you can create
+        your very own opportunities. You can spend as little as 5 minutes a day and get credit!
+    </p>
+  </div>
+</div> -->
 
 <h1>Places to volunteer</h1>
 
