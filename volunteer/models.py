@@ -28,9 +28,6 @@ class Beneficiary(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
 
-    # class Meta:
-    #     ordering = ["status", "beneficiary_name"]
-
 
 class Slot(models.Model):
 

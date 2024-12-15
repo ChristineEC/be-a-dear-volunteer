@@ -22,6 +22,7 @@
 
 #     user = models.OneToOneField(User, on_delete=models.CASCADE)
 #     alias = models.CharField(max_length=15)
+#     profile_pic = 
 #     homeroom = models.ForeignKey(Homeroom, default="999", on_delete=models.SET_DEFAULT)
 #     profile_type = models.IntegerField(choices=PROFILE_TYPE, default=0)
 

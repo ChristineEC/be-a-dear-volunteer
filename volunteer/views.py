@@ -45,12 +45,11 @@ def beneficiary_detail(request, slug):
             slot.save()
             messages.add_message(
                 request, messages.SUCCESS,
-                "Your slot has been reserved. It will not be shown on this"
-                "page until it is approved for publication. However, you"
-                "may still view the slot on your private student page to view,"
-                "edit, or delete the slot, and to request credit upon completion."
-                "Note that your teacher and school administrative staff"
-                "can see the slot, too!"
+                "Your slot has been created and reserved for you." 
+                "It will not be shown publicly on this"
+                "page until it is approved for publication. Be"
+                "be aware that teachers and administrators"
+                "can see the slot as soon as it is created."
             )
 
     slot_form = SlotForm()
@@ -63,6 +62,7 @@ def beneficiary_detail(request, slug):
             "slots": slots,
             "slots_created_count": slots_created_count,
             "slots_completed_count": slots_completed_count,
+            "slot_form": slot_form,
         },
     )
 

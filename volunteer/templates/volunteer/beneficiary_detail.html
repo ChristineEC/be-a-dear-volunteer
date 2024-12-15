@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
-{% load crispy_forms_tags %}
+<!-- {% load crispy_forms_field %} -->
+
 
 
 <!-- Home Page content goes here -->
@@ -9,9 +10,11 @@
 
 <h1>Beneficiary Detail and Reserving Slots</h1>
 
-    
+<div>
     <h2>{{ beneficiary.beneficiary_name }}</h2>
     <p>{{ beneficiary.description | safe }}</p>
+
+    <h2>Slots</h2>
 
     {% for slot in slots %}
 
@@ -22,5 +25,14 @@
 
     {% endfor %}
 
+
+    <p>
+        <span>Slots reserved:  {{ slots_created_count }}</span>
+        <span>Slots completed:  {{ slots_completed_count }}</span>
+    </p>
+</div> 
+
+    <div>{{ slot_form }}</div>
+    
 
 {% endblock content %}

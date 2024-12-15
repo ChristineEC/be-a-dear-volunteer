@@ -1,8 +1,5 @@
 from django import forms
-from .models import Slot, User
-
-
-
+from .models import Slot
 
 
 class SlotForm(forms.ModelForm):
