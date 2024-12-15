@@ -3,16 +3,29 @@
 
 
 <!-- Home Page content goes here -->
- 
+
 {% block content %}
 
-<h1>Beneficiaries list</h1>
+<div class="card bg-dark text-white">
+    <!-- <img src="..." class="card-img" alt="..."> -->
+    <div class="card-img-overlay">
+        <h5 class="card-title">Be a Dear is a student-led project.</h5>
+        <p class="card-text">It aims to help us find volunteer opportunities and inspire one another.<p>
+                <P class="card-text">LORUM IPSUM lorem ipsum LORUM IPSUM lorem ipsum LORUM IPSUM lorem ipsum LORUM IPSUM
+                    lorem ipsum LORUM IPSUM lorem ipsum LORUM IPSUM lorem ipsum LORUM IPSUM lorem ipsum LORUM IPSUM
+                    lorem ipsum LORUM IPSUM lorem ipsum LORUM IPSUM lorem ipsum LORUM IPSUM lorem ipsum LORUM IPSUM
+                    lorem ipsum LORUM IPSUM lorem ipsum LORUM IPSUM lorem ipsum LORUM IPSUM lorem ipsum LORUM IPSUM
+                </p>
+    </div>
+</div>
 
-    {% for beneficiary in beneficiary_list %}
+<h1>Places to volunteer</h1>
 
-    <h2>{{ beneficiary.beneficiary_name }}</h2>
-    <p>{{ beneficiary.description | safe }}</p>
+{% for beneficiary in beneficiary_list %}
 
-    {% endfor %}
+<h2>{{ beneficiary.beneficiary_name }}</h2>
+<p>{{ beneficiary.description | safe }}</p>
+
+{% endfor %}
 
 {% endblock content %}

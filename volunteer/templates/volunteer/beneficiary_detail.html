@@ -15,8 +15,10 @@
 
     {% for slot in slots %}
 
-    <p>{{ slot.task }}</p>
-    <p>{{ slot.date }}</p>
+    <p>Task: {{ slot.task }}</p>
+    <p>Location: {{ slot.location }}</p>
+    <p>Date: {{ slot.date }}</p>
+    <p>Reserved by: {{ slot.reserved_by }}</p>
 
     {% endfor %}
 
