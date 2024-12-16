@@ -1,0 +1,59 @@
+body {
+    background-color:rgb(225, 169, 97);
+    
+}
+
+.header {
+    padding-left: 20px;
+}
+
+.header-pic {
+    width: 100%;
+    max-height: 300px;
+}
+
+
+
+/* Fonts */
+
+.graduate-regular {
+    font-family: "Graduate", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.graduate-bold {
+    font-family: "Graduate", serif;
+    font-weight: 400;
+    font-style: bold;
+}
+
+.cabin-sketch-regular {
+    font-family: "Cabin Sketch", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+  
+.cabin-sketch-bold {
+    font-family: "Cabin Sketch", sans-serif;
+    font-weight: 700;
+    font-style: bold;
+}
+
+.open-sans-heavy {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+.open-sans {
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+  }
