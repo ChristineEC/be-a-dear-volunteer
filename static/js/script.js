@@ -1,0 +1,1 @@
+console.log("Checking to see if static files are collected now that whitemoise is installed");
