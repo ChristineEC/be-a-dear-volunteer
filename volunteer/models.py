@@ -21,6 +21,7 @@ class Beneficiary(models.Model):
 
     beneficiary_name = models.CharField(max_length=150)
     slug = models.SlugField(max_length=150)
+    short_description = models.CharField(max_length=200, default="")
     description = models.TextField()
     location = models.CharField(max_length=255, default="")
     contact_details = models.CharField(max_length=200)

@@ -4,14 +4,15 @@ from django.views import generic
 from django.contrib import messages
 from .models import Beneficiary, Slot
 from .forms import SlotForm
+from django.core.paginator import Paginator
 
 
 # Create your views here.
 
 class BeneficiaryList(generic.ListView):
-    queryset = Beneficiary.objects.filter(status=1)
+    queryset = Beneficiary.objects.filter(status=1).order_by("beneficiary_name")
     template_name = "volunteer/index.html"
-    paginate_by = 2
+    paginate_by = 4
     
     class Meta:
         ordering = ["beneficiary_name"]

@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Beneficiary, Slot, Homeroom
 from django_summernote.admin import SummernoteModelAdmin
+from django.core.paginator import Paginator
 
 
 @admin.register(Beneficiary)
@@ -18,10 +19,9 @@ class BeneficiaryAdmin(SummernoteModelAdmin):
     list_filter = ('status',)
     prepopulated_fields = {'slug': ('beneficiary_name',)}
     summernote_fields = ('description',)
-    paginate_by = 4
 
     class Meta:
-        ordering = ['status', 'beneficiary_name']
+        ordering = ['beneficiary_name']
     
     def __str__(self):
         return f"Beneficiary: {self.beneficiary_name}"
