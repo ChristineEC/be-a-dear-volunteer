@@ -11,8 +11,8 @@ from .forms import SlotForm
 class BeneficiaryList(generic.ListView):
     queryset = Beneficiary.objects.filter(status=1)
     template_name = "volunteer/index.html"
-
-    # paginate_by = 2
+    paginate_by = 2
+    
     class Meta:
         ordering = ["beneficiary_name"]
 

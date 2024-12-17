@@ -13,11 +13,12 @@ class BeneficiaryAdmin(SummernoteModelAdmin):
     in the admin panel.
     """
 
-    list_display = ('id', 'beneficiary_name', 'location', 'contact_details', 'status')
+    list_display = ( 'beneficiary_name','id', 'location', 'contact_details', 'status')
     search_fields = ['beneficiary_name']
     list_filter = ('status',)
     prepopulated_fields = {'slug': ('beneficiary_name',)}
     summernote_fields = ('description',)
+    paginate_by = 4
 
     class Meta:
         ordering = ['status', 'beneficiary_name']

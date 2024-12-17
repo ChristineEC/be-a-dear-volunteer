@@ -6,45 +6,90 @@
 
 {% block content %}
 
-<div class="card text-bg-light">
-  <img src="{% static 'images/hearts2.jpg' %}" class="card-img" alt="Candy valentine hearts">
-  <div class="card-img-overlay">
-    <h5 class="card-title page-heading">Be a Dear is a student-led project and a school-wide contest</h5>
-    <p class="card-text">Here we can find, create and share volunteer opportunities.</p>
-    <p class="card-text"><small>Although we are normally required to complete our mandatory
-      volunteer hours at a public-facing organization, has agreed to let us run this experiment where we are able to volunteer to help any individual in need. That
-      includes the little old lady nextdoor. We do list organizations here, but by choosing "Other" you can create
-      your very own opportunities. You can spend as little as 5 minutes a day and get credit!</small></p>
+<!-- Heading section-->
+<section id="heading">
+  <div class="container fluid"></div>
+  <div class="row">
+    <div class="card text-center">
+      <div class="card-body text-bg-dark">
+        <h1 class="card-title heading graduate-bold py-2">Be a Dear is a student-led project and a school-wide contest
+        </h1>
+        <h2 class="card-text open-sans">Here we can find, create and share volunteer opportunities.</h2>
+        <h3 class="card-text open-sans"><small class="text-muted">Record your volunteer hours and receive credit for
+            volunteering for as little as five minutes at a time!</small></h3>
+      </div>
+      <img class="card-img-bottom" src="{% static 'images/hearts2.jpg' %}" alt="Candy valentine hearts">
+    </div>
   </div>
-</div>
-
-<!-- <div class="card mb-3 align=text-center">
-  <img src="{% static 'images/hearts2.jpg' %}" class="card-img-top header-pic" alt="Candy valentine hearts">
-  <div class="card-body">
-    <h5 class="card-title">Be a Dear is a student-led project.</h5>
-    <p class="card-text">Here we can find, create and share volunteer opportunities.</p>
-    <p class="card-text">Although we are normally required to complete our mandatory
-        volunteer hours at a public-facing organization, 
-        has agreed to let us run this experiment where we are able to volunteer to help any individual in need. That
-        includes the little old lady nextdoor. We do list organizations here, but by choosing "Other" you can create
-        your very own opportunities. You can spend as little as 5 minutes a day and get credit!
-    </p>
   </div>
-</div> -->
+</section>
+<!-- end heading section-->
 
-<h1>Places to volunteer</h1>
+<!-- Beneficiaries list section, Main Content-->
+<section id="beneficiaries-list">
+  <h1 class="text-align-center">Places to volunteer</h1>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Card for each beneficiary in list -->
+      <div class="col-12">
+        <div class="row">
+          {% for beneficiary in beneficiary_list %}
+          <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{% static 'images/hearts.jpg' %}" class="img-fluid" alt="placeholder image">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{ beneficiary.beneficiary_name }}</h5>
+                  <p class="card-text text-truncate">{{ beneficiary.description | safe }}</p>
+                  <p class="card-text"><small class="text-muted">{{ beneficiary.contact_details }}</small></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- <div class="col-md-4">
+            <div class="card mb-4" style="max-width: 400px;">
+              <img class="img-fluid rounded-start card-image-left" src="{% static 'images/hearts.jpg' %}"  alt="placeholder image">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{ beneficiary.name }}</h5>
+                <p class="card-text text-truncate" style="max-width: 500px;">
+                  {{ beneficiary.description | safe }}
+                </p>
+                <p class="card-text">
+                  <small class="text-body-secondary">Contact details:
+                      {{ beneficiary.contact_details }}</small>
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div> -->
+          {% if forloop.counter|divisibleby:4 %}
+        </div>
+        <div class="row">
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+</section>
+<!-- End of beneficiary cards -->
 
-{% for beneficiary in beneficiary_list %}
+<!-- Page Navigation -->
+{% if is_pagingated %}
+<nav aria-lable="page navigation">
+  <ul class="pagination justify-conent-center">
+    {% if page_object.has_next %}
+    <li>
+      <a ref="?page={{ page_obj.next_page_number }}" class="page-link">NEXT &raquo;</a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+{% endif %}
 
-
-
-  <h2>{{ beneficiary.beneficiary_name }}</h2>
-  <p>{{ beneficiary.description | safe }}</p>
-
-  <div></div>
-
-
-
-{% endfor %}
 
 {% endblock content %}
