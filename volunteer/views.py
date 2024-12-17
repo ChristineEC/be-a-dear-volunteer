@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.views import generic
 from django.contrib import messages
+from django.http import HttpResponseRedirect
 from .models import Beneficiary, Slot
 from .forms import SlotForm
 from django.core.paginator import Paginator
@@ -12,10 +13,7 @@ from django.core.paginator import Paginator
 class BeneficiaryList(generic.ListView):
     queryset = Beneficiary.objects.filter(status=1).order_by("beneficiary_name")
     template_name = "volunteer/index.html"
-    paginate_by = 4
-    
-    class Meta:
-        ordering = ["beneficiary_name"]
+    paginate_by = 6
 
 
 def beneficiary_detail(request, slug):

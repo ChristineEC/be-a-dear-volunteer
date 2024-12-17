@@ -7,8 +7,8 @@
 {% block content %}
 
 <!-- Heading section-->
-<section id="heading">
-  <div class="container fluid"></div>
+
+<div class="container fluid">
   <div class="row">
     <div class="card text-center">
       <div class="card-body text-bg-dark">
@@ -21,60 +21,77 @@
       <img class="card-img-bottom" src="{% static 'images/hearts2.jpg' %}" alt="Candy valentine hearts">
     </div>
   </div>
-  </div>
-</section>
+</div>
 <!-- end heading section-->
 
 <!-- Beneficiaries list section, Main Content-->
-<section id="beneficiaries-list">
-  <h1 class="text-align-center">Places to volunteer</h1>
-  <div class="container-fluid">
-    <div class="row">
-      <!-- Card for each beneficiary in list -->
-      <div class="col-12">
-        <div class="row">
-          {% for beneficiary in beneficiary_list %}
-          <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-              <div class="col-md-4">
+<div class="container-fluid">
+  <div class="row">
+    <!-- Cards for each beneficiary in list -->
+    <div class="col-12">
+      <div class="row">
+        {% for beneficiary in beneficiary_list %}
+        <div class="col-md-4">
+          <div class="card-mb-4">
+            <div class="card-body g-0">
+              <h5 class="card-title">{{ beneficiary.beneficiary_name }}</h5>
+              <p class="card-text text-truncate">{{ beneficiary.short_description | safe }}</p>
+              <p class="card-text"><small class="text-muted">{{ beneficiary.contact_details }}</small></p>
+              <a href="{% url 'beneficiary_detail' beneficiary.slug %}" class="btn btn-primary">Set me up!</a>
+              <div class="image-container">
                 <img src="{% static 'images/placeholderimage.jpg' %}" class="img-fluid" alt="placeholder image">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">{{ beneficiary.beneficiary_name }}</h5>
-                  <p class="card-text text-truncate">{{ beneficiary.short_description | safe }}</p>
-                  <p class="card-text"><small class="text-muted">{{ beneficiary.contact_details }}</small></p>
-                  <a href="#" class="btn btn-primary">Set me up!</a>
-                </div>
               </div>
             </div>
           </div>
-          {% if forloop.counter|divisibleby:4 %}
-          <div class="row">
-            {% endif %}
-            {% endfor %}
         </div>
+        {% if forloop.counter|divisibleby:3 %}
+      </div>
+      <div class="row">
+        {% endif %}
+        {% endfor %}
       </div>
     </div>
-</section>
+  </div>
+</div>
 <!-- End of beneficiary cards -->
 
 <!-- Page Navigation -->
-{% if is_pagingated %}
-<div class=col-12>
-  <div class="row">
-    <nav aria-lable="page navigation">
-      <ul class="pagination justify-conent-center">
-        {% if page_object.has_next %}
-        <li>
-          <a ref="?page={{ page_obj.next_page_number }}" class="page-link">NEXT &raquo;</a>
-        </li>
-        {% endif %}
-      </ul>
-    </nav>
-  </div>
+<div class="pagination">
+  <span class="step-links">
+    {% if page_obj.has_previous %}
+    <a href="?page=1">&laquo; first</a>
+    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+    {% endif %}
+
+    <span class="current">
+      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+    </span>
+
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}">next</a>
+    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+    {% endif %}
+  </span>
 </div>
-{% endif %}
+
+
+  <!-- {% if is_pagingated %}
+  <nav aria-lable="page navigation">
+    <ul class="pagination justify-conent-center">
+      {% if page_object.has_previous %}
+      <li>
+        <a ref="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; Previous</a>
+      </li>
+      {% endif %}
+      {% if page_object.has_next %}
+      <li>
+        <a ref="?page={{ page_obj.next_page_number }}" class="page-link">Next &raquo;</a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+  {% endif %}
+</div> -->
 
 
 {% endblock content %}
