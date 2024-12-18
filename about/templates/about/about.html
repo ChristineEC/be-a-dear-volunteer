@@ -1,8 +1,12 @@
 {% extends "base.html" %}
+{% load static %}
 
     {% block content %}
 
     <h1>About the Project</h1>
+    <div class="about-image-container">
+        <img class="about-image" src="{% static 'hearts' %}" alt="featured image for the About page">
+    </div>
     <h2>{{ about.title }}</h2>
     <p>{{ about.content | safe }}</p>
     <p>{{ about.updated_on}}</p>
