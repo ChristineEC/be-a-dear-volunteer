@@ -8,9 +8,9 @@
 
 <!-- Heading section-->
 
-<div class="container fluid">
+<div class="container-fluid">
   <div class="row">
-    <div class="card text-center">
+    <div id="heading-card" class="card text-center">
       <div class="card-body text-bg-dark">
         <h1 class="card-title heading graduate-bold py-2">Be a Dear is a student-led project and a school-wide contest
         </h1>
@@ -25,25 +25,43 @@
 <!-- end heading section-->
 
 <!-- Beneficiaries list section, Main Content-->
-<div class="container-fluid">
+<div class="container-fluid d-flex justify-content-evenly">
   <div class="row">
     <!-- Cards for each beneficiary in list -->
     <div class="col-12">
       <div class="row">
         {% for beneficiary in beneficiary_list %}
-        <div class="col-md-4">
-          <div class="card-mb-4">
-            <div class="card-body g-0">
-              <h5 class="card-title">{{ beneficiary.beneficiary_name }}</h5>
-              <p class="card-text text-truncate">{{ beneficiary.short_description | safe }}</p>
-              <p class="card-text"><small class="text-muted">{{ beneficiary.contact_details }}</small></p>
-              <a href="{% url 'beneficiary_detail' beneficiary.slug %}" class="btn btn-primary">Set me up!</a>
-              <div class="image-container">
-                <img src="{% static 'images/placeholderimage.jpg' %}" class="img-fluid" alt="placeholder image">
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="{% static 'images/placeholderimage.jpg' %}" class="img-fluid card-image" alt="placeholder image">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{ beneficiary.beneficiary_name }}</h5>
+                <p class="card-text">{{ beneficiary.short_description | safe }}</p>
+                <p class="card-text"><small class="text-muted">{{ beneficiary.contact_details }}</small></p>
+                <a href="{% url 'beneficiary_detail' beneficiary.slug %}" class="btn btn-primary btn-sm">Set me up!</a>
               </div>
             </div>
           </div>
         </div>
+        <!-- <div class="col-md-4">
+          <div class="card-mb-4">
+            <div class="card-body g-0">
+              <div class="image-container">
+                <img src="{% static 'images/placeholderimage.jpg' %}" class="b-card-image img-fluid" alt="placeholder image">
+              </div>
+              <h3 class="card-title">{{ beneficiary.beneficiary_name }}</h3>
+              <p class="card-text">{{ beneficiary.short_description | safe }}</p>
+              <p class="card-text"><small class="text-muted">{{ beneficiary.contact_details }}</small></p>
+              <a href="{% url 'beneficiary_detail' beneficiary.slug %}" class="btn btn-primary">Set me up!</a>
+              <div class="image-container">
+                <img src="{% static 'images/placeholderimage.jpg' %}" class="b-card-image img-fluid" alt="placeholder image">
+              </div>
+            </div>
+          </div>
+        </div> -->
         {% if forloop.counter|divisibleby:3 %}
       </div>
       <div class="row">

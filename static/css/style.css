@@ -1,12 +1,54 @@
 body {
     background-color:rgb(225, 169, 97);
-    
+    margin: 0px;
+    padding: 0px;
 }
 
-.heading-img {
-    width: 100%;
-    max-height: 100px;
+
+/* 
+heading-card::before {
+    border-box: content-box;
 }
+
+heading-card::after {
+    border-box: content-box;
+} */
+
+/* .heading-img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+}
+ */
+
+
+
+/* Remove default gutters on rows */
+.row {
+    --bs-gutter-x: 0;
+    --bs-gutter-y: 0;
+}
+
+.container {
+    --bs-gutter-x: 0;
+    --bs-gutter-y: 0;
+    margin-top: 0;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+
+/*---------------Beneficiary Card------*/
+
+
+
+.card-img {
+
+    height: auto;
+    object-fit: cover;
+}
+
+
 
 /* Fonts */
 
@@ -18,7 +60,7 @@ body {
 
 .graduate-bold {
     font-family: "Graduate", serif;
-    font-weight: 400;
+    font-weight: 800;
     font-style: bold;
 }
 
