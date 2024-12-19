@@ -93,6 +93,10 @@ TEMPLATES = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
 WSGI_APPLICATION = 'be_a_dear.wsgi.application'
 
 
