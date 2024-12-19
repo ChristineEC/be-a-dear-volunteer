@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-<!-- pytho{% load crispy_forms_field %} -->
+{% load crispy %}
 
 
 
@@ -32,7 +32,7 @@
     </p>
 </div> 
 
-    <div>{{ slot_form }}</div>
+    <div>{{ crispy slot_form }}</div>
     
 
 {% endblock content %}

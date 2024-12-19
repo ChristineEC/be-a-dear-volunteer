@@ -10,7 +10,7 @@ def about_project(request):
     Renders the About page
     """
 
-    about = About.objects.filter(status=1).first()
+    about = About.objects.filter(status=1).last()
 
     return render(
         request,

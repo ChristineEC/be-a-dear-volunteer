@@ -5,6 +5,13 @@ body {
 }
 
 
+.about-image-container{
+
+}
+.about-image {
+    width: 300px;
+}
+
 /* 
 heading-card::before {
     border-box: content-box;
