@@ -10,13 +10,13 @@ PROFILE_TYPE = (
     (2, "School Admin"),
     )
 
-# # # Create your models here.
+# Create your models here.
 
 class Profile(models.Model):
 
     """
-    A profile distinguishing teachers from students and
-    assigning homerooms and aliases is created for each user
+    A profile to distinguish teachers from students and to
+    assign users homerooms and aliases is created for each user
     related to the :model: auth.User
     and the :model: volunteer.Homeroom
     """
@@ -28,8 +28,8 @@ class Profile(models.Model):
     profile_type = models.IntegerField(choices=PROFILE_TYPE, default=0)
 
 
-    class Meta:
-        ordering = ["homeroom", "user"]
+    # class Meta:
+    #     ordering = ["homeroom", "user"]
 
     def __str__(self):
-        return f"{self.alias}"
+        return f"{self.user.last_name}, {self.user.first_name}, alias {self.alias} | Room {self.homeroom.homeroom_number} | {self.homeroom.class_year}"
