@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
-{% load crispy %}
+{% load crispy_forms_tags %}
 
+{% block head_title %}
+Beneficiary Details
+{% endblock head_title %}
 
-
-<!-- Home Page content goes here -->
+<!-- Beneficiary detail goes here -->
  
 {% block content %}
 
@@ -13,26 +15,34 @@
 <div>
     <h2>{{ beneficiary.beneficiary_name }}</h2>
     <p>{{ beneficiary.description | safe }}</p>
-
-    <h2>Slots</h2>
-
-    {% for slot in slots %}
-
-    <p>Task: {{ slot.task }}</p>
-    <p>Location: {{ slot.location }}</p>
-    <p>Date: {{ slot.date }}</p>
-    <p>Reserved by: {{ slot.reserved_by }}</p>
-
-    {% endfor %}
-
-
     <p>
         <span>Slots reserved:  {{ slots_created_count }}</span>
         <span>Slots completed:  {{ slots_completed_count }}</span>
-    </p>
-</div> 
+    </p>   
+    <hr>
+    <h2>Slots</h2>
+    {% for slot in slots %}
+        {% if slot.publish_ok %}
+        <p>Task: {{ slot.task }} | Location: {{ slot.location }} | Date: {{ slot.date }} | Reserved by: {{ slot.reserved_by }}</p>
+        {% endif %}
+    {% endfor %}
 
-    <div>{{ crispy slot_form }}</div>
+</div>
+
+<!--------------------------Reserving slots------------>
+<div>
+    {% if user.is_authenticated %}
+    <h4>Save a slot based on this beneficiary:</h4>
+    <p>Reserved_by: username {{ user.username }}</p>
+    <form id="slotForm" method="POST">
+        {{ slot_form | crispy }}
+        {% csrf_token %}
+        <button id="submitButton" type="submit"
+            class="btn btn-secondary btn-lg">Save</button>
+    </form>
+    {% else %}
+    <p>Log in to save a slot</p>
+    {% endif %}
+</div>
     
-
 {% endblock content %}

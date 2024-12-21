@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
-{% load i18n %}
-{% load account socialaccount %}
 
-{% block head_title %}{% trans "Sign In" %}{% endblock head_title %}
+{% block head_title %}
+Sign In
+{% endblock head_title %}
 
 {% block content %}
 
@@ -11,7 +11,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 mx-auto">
-      <h1>{% trans "Sign In" %}</h1>
+      <h1>Sign In</h1>
       <p>Hello! Students, teachers and administrators at West Calsbad High School can sign in to take part in the
         project. If you have not yet created an account, please do so now.
         <a class="link" href="{{ 'signup_url' }}">sign up</a>
@@ -22,15 +22,17 @@
     <div class="col-md-6 mx-auto">
       <form class="login" method="POST" action="{% url 'account_login' %}">
         {% csrf_token %}
-        THE FORM WILL LOAD HERE
-        <!-- {% form.as_p %} -->
-        <button></button>
+        {% form.as_p %}
+        <!-- {% if redirect_field_value %}
+        <input type="hidden" name="{{ url 'profile' }}" value="{{ 'profile/'}}">
+        {% endif %} -->
+        <button class="btn btn-signup" type="submit">Sign In</button>
       </form>
     </div>
-
   </div>
 </div>
 
+{% endblock content%}
 
 
 <p>{% blocktrans %}If you have not created an account yet, then please

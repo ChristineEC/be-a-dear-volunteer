@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Be a Dear</title>
+    <title>{% block head_title %}Be a Dear{% endblock head_title %}</title>
 
     <!-- Google Fonts CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -72,6 +72,18 @@
             </div>
         </div>
     </nav>
+    <!-------------------------Display Django Messages------------>
+    <div>
+        {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissable fade show"
+            id="msg" role="alert">
+            {{ message | safe }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                aria-label="Close">
+            </button>
+        </div>
+        {% endfor %}
+    </div>
 
     <!-- Main -->
     {% block content %}

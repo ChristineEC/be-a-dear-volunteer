@@ -31,10 +31,9 @@ class BeneficiaryAdmin(SummernoteModelAdmin):
 class SlotAdmin(admin.ModelAdmin):
 
     """
-    TaskAdmin inherits from SummernoteModelAdmin
-    in order to include the summernote field
-    enabling formatting the beneficiary description
-    in the admin panel.
+   Enables specific fields in the display
+   of instances of the Slot model
+   in the admin panel.
     """
 
     list_display = (
