@@ -1,8 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
 from django.views import generic
 from django.contrib import messages
-from django.http import HttpResponseRedirect
 from .models import Beneficiary, Slot
 from .forms import SlotForm
 from django.core.paginator import Paginator
@@ -33,12 +31,13 @@ def beneficiary_detail(request, slug):
 
     queryset = Beneficiary.objects.filter(status=1)
     beneficiary = get_object_or_404(queryset, slug=slug)
-    slots = beneficiary.slots.filter(publish_ok).order_by("-created_on")
+    slots = beneficiary.slots.all().order_by("-created_on")
     slots_created_count = beneficiary.slots.all().count()
     slots_completed_count = beneficiary.slots.filter(completed=True).count()
     if request.method == "POST":
-        slot_form = SlotForm(request.POST)
+        slot_form = SlotForm(data=request.POST)
         if slot_form.is_valid():
+            slot = slot_form.save(commit=False)
             slot.reserved_by = request.user
             slot.beneficiary = beneficiary
             slot.save()
@@ -47,10 +46,8 @@ def beneficiary_detail(request, slug):
                 "Your slot has been saved and appears"
                 "on your personal page." 
                 "It will not be shown publicly on this"
-                "page until it is approved for publication. Be"
-                "be aware that teachers and administrators"
-                "can see the slot as soon as it is created!"
-            )
+                "page until it is approved for publication."
+                )
 
     slot_form = SlotForm()
 
