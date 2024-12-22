@@ -10,38 +10,47 @@ Beneficiary Details
 
 {% block content %}
 
-<div>
-    <h2>{{ beneficiary.beneficiary_name }}</h2>
-    <p>{{ beneficiary.description | safe }}</p>
-    <p>
-        <span>Slots reserved: {{ slots_created_count }}</span>
-        <span>Slots completed: {{ slots_completed_count }}</span>
-    </p>
+<div class="container">
+    <div class="row">
+        <div class="col-6 p-2">
+            <h2>{{ beneficiary.beneficiary_name }}</h2>
+            <p>{{ beneficiary.description | safe }}</p>
+            <p>
+                <span>Slots reserved: {{ slots_created_count }}</span>
+                <span>Slots completed: {{ slots_completed_count }}</span>
+            </p>
+        </div>
+        <!----------------------- List of reserved slots goes here-->
+        <div class="col-6 p-2">
+            <h2>Here's who else has signed up:</h2>
+            {% for slot in slots %}
+            <p class="slot_display {% if not slot.publish_ok and slot.reserved_by == user %}
+                faded{% elif not slot.publish_ok %}d-none{% endif %}">
+                <span class="graduate-bold"></span>{{ slot.reserved_by }}
+                </span> Task: {{ slot.task }} | Location: {{ slot.task_location }}
+                | Date: {{ slot.date }}
+            </p>
+            {% endfor %}
+        </div>
+    </div>
 </div>
-<div>
-    <h2>Slots</h2>
-    {% for slot in slots %}
-    <p
-        class="slot_display {% if not slot.publish_ok and slot.reserved_by == user %}faded{% elif not slot.publish_ok %}d-none{% endif %}">
-        Task: {{ slot.task }} | Location: {{ slot.location }} | Date: {{ slot.date }} | Reserved by:
-        {{ slot.reserved_by }}</p>
-    {% endfor %}
-</div>
-
-
 <!--------------------------Reserving slots------------>
-<div>
-    <h4>Save a slot for yourself based on this beneficiary</h4>
-    {% if user.is_authenticated %}
-    <p>Reservation for: username {{ user.username }}</p>
-    <form id="slotForm" method="POST">
-        {{ slot_form | crispy }}
-        {% csrf_token %}
-        <button id="submitButton" type="submit" class="btn btn-secondary btn-lg">Save</button>
-    </form>
-    {% else %}
-    <p>Log in to save a slot</p>
-    {% endif %}
+<div class="container">
+    <div class="row">
+        <div class="col-6 mx-auto p-2">
+            <h4>Save a slot for yourself based on this beneficiary</h4>
+            {% if user.is_authenticated %}
+            <p class="graduate-bold">Reservation for: username {{ user.username }}</p>
+            <form id="slotForm" method="POST" action="">
+                {{ form | crispy }}
+                {% csrf_token %}
+                <button id="submitButton" type="submit" class="btn btn-secondary btn-lg">Save</button>
+            </form>
+            {% else %}
+            <p>Log in to save a slot</p>
+            {% endif %}
+        </div>
+    </div>
 </div>
 
 {% endblock content %}

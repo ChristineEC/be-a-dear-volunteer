@@ -1,5 +1,5 @@
 body {
-    background-color:rgb(225, 169, 97);
+    background-color:rgb(234, 208, 174);
     margin: 0px;
     padding: 0px;
 }
@@ -9,7 +9,8 @@ body {
 
 }
 .about-image {
-    width: 300px;
+    width=300px;
+    height=auto;
 }
 
 /* 

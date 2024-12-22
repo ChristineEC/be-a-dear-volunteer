@@ -1,12 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.contrib import messages
+from django.core.paginator import Paginator
 from .models import Beneficiary, Slot
 from .forms import SlotForm
-from django.core.paginator import Paginator
 
-
-# Create your views here.
 
 class BeneficiaryList(generic.ListView):
     queryset = Beneficiary.objects.filter(status=1).order_by("beneficiary_name")
@@ -23,10 +21,10 @@ def beneficiary_detail(request, slug):
     ``slots``
         Shows all slots with public_ok=True related
         to the beneficiary.
-    ``slot_form``
+    ``form``
         An instance of :form: `volunteer.SlotForm`.
     **Template**
-        :template:`volunteer/volunteer_detail.html`
+        :template:`volunteer/beneficiary_detail.html`
     """
 
     queryset = Beneficiary.objects.filter(status=1)
@@ -35,12 +33,12 @@ def beneficiary_detail(request, slug):
     slots_created_count = beneficiary.slots.all().count()
     slots_completed_count = beneficiary.slots.filter(completed=True).count()
     if request.method == "POST":
-        slot_form = SlotForm(data=request.POST)
-        if slot_form.is_valid():
-            slot = slot_form.save(commit=False)
+        form = SlotForm(request.POST)
+        if form.is_valid():
+            slot = form.save(commit=False)
             slot.reserved_by = request.user
             slot.beneficiary = beneficiary
-            slot.save()
+            form.save(slot)
             messages.add_message(
                 request, messages.SUCCESS,
                 "Your slot has been saved and appears"
@@ -48,8 +46,14 @@ def beneficiary_detail(request, slug):
                 "It will not be shown publicly on this"
                 "page until it is approved for publication."
                 )
+        else:
+            messages.add_message(
+                request, messages.ERROR,
+                "There has been an error. Please ensure you fill out"
+                "the date and time field with dates and times only"
+            )
 
-    slot_form = SlotForm()
+    form = SlotForm()
 
     return render(
         request,
@@ -59,7 +63,7 @@ def beneficiary_detail(request, slug):
             "slots": slots,
             "slots_created_count": slots_created_count,
             "slots_completed_count": slots_completed_count,
-            "slot_form": slot_form,
+            "form": form,
         },
     )
 

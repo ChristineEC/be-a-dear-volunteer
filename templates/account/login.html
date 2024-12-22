@@ -21,8 +21,8 @@ Sign In
   <div class="row">
     <div class="col-md-6 mx-auto">
       <form class="login" method="POST" action="{% url 'account_login' %}">
-        {% csrf_token %}
-        {% form.as_p %}
+        <!-- {% csrf_token %}
+        {% form.as_p %} -->
         <!-- {% if redirect_field_value %}
         <input type="hidden" name="{{ url 'profile' }}" value="{{ 'profile/'}}">
         {% endif %} -->
