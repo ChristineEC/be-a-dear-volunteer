@@ -4,23 +4,20 @@ body {
     padding: 0px;
 }
 
+.heading-image {
+    max-height: 100px;
+}
+
 
 .about-image-container{
 
 }
 .about-image {
-    width=300px;
-    height=auto;
+    width: 300px;
+    height: auto;
 }
 
-/* 
-heading-card::before {
-    border-box: content-box;
-}
 
-heading-card::after {
-    border-box: content-box;
-} */
 
 /* .heading-img {
     width: 100%;
@@ -32,7 +29,7 @@ heading-card::after {
 
 
 /* Remove default gutters on rows */
-.row {
+/* .row {
     --bs-gutter-x: 0;
     --bs-gutter-y: 0;
 }
@@ -43,17 +40,16 @@ heading-card::after {
     margin-top: 0;
     margin-right: 0;
     margin-left: 0;
-}
+} */
 
 
 /*---------------Beneficiary Card------*/
-
-
 
 .card-img {
 
     height: auto;
     object-fit: cover;
+    margin: 0;
 }
 
 

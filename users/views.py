@@ -9,7 +9,6 @@ from .forms import ProfileForm
 # # Create your views here.
 def create_profile(request, user):
     print("The function is being called")
-    return HttpResponse(user.username)
 
     """
     Creates a profile for a user :model: `users.Profile`
@@ -30,7 +29,7 @@ def create_profile(request, user):
     user = get_object_or_404(queryset, user_id=user_id)
     if request.method == "POST":
         profile_form = ProfileForm(data=request.POST)
-        if form.is_valid():
+        if profile_form.is_valid():
             profile = profile_form.save(commit=False)
             profile.user = request.user  # do I still need this, since it is included in the signal???
             profile_form.save()
