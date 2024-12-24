@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
 from .models import Profile
@@ -30,16 +30,25 @@ def create_profile(request, user):
     user = get_object_or_404(queryset, user_id=user_id)
     if request.method == "POST":
         profile_form = ProfileForm(data=request.POST)
-        if profile_form.is_valid():
+        if form.is_valid():
+            profile = profile_form.save(commit=False)
             profile.user = request.user  # do I still need this, since it is included in the signal???
-            profile.homeroom = Homeroom
-            # profile.profile_pic = 
-        profile_form.save()
-        messages.add_message(
-            request, message.SUCCESS,
-            "Your profile has been created"
-            )
+            profile_form.save()
+            messages.add_message(
+                request, message.SUCCESS,
+                "Your profile has been created"
+                )
 
-    return redirect(
-        "volunteer/index.html"
+    return render(
+        request,
+        "profile/profile.html",
+        {
+            "user": user,
+            "alias": alias,
+            "profile_pic": profile_pic,
+            "homeroom": homeroom_numer,
+            "profile_type": profile_type
+        },
     )
+
+   

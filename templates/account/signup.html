@@ -1,4 +1,4 @@
-{% extends "account/base.html" %}
+{% extends "base.html" %}
 
 {% block head_title %}
 Signup
@@ -14,9 +14,9 @@ Signup
   {% csrf_token %}
   {{ form.as_p }}
   {% if redirect_field_value %}
-  <input type="hidden" name="{{ url 'profile' }}" value="{{ 'profile/' }}" />
+  <input type="hidden" name="{{ profile_url }}" value="{{ 'profile/' }}" />
   {% endif %}
-  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
+  <button type="submit">Sign Up</button>
 </form>
 
 {% endblock content %}

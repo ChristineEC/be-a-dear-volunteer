@@ -9,7 +9,14 @@
 
 {% block content %}
 
+<h1>This is the user profile template profile.html</h1>
+<form id="ProfileForm" method="POST" action="">
+    {{ form | crispy }}
+    {% csrf_token %}
+    <button id="submitButton" type="submit" class="btn btn-secondary btn-lg">Submit</button>
+</form>
 
+<form
 
 
 {% endblock content %}

@@ -17,4 +17,6 @@ def create_profile(sender, created, instance, **kwargs):
     else:
         instance.profile.save()
 
+    post_save.connect(create_profile)
+
     

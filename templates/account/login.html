@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 
 {% block head_title %}
@@ -14,18 +15,20 @@ Sign In
       <h1>Sign In</h1>
       <p>Hello! Students, teachers and administrators at West Calsbad High School can sign in to take part in the
         project. If you have not yet created an account, please do so now.
-        <a class="link" href="{{ 'signup_url' }}">sign up</a>
+        <a class="link" href="{{ signup_url }}">sign up</a>
       </p>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6 mx-auto">
       <form class="login" method="POST" action="{% url 'account_login' %}">
-        <!-- {% csrf_token %}
-        {% form.as_p %} -->
-        <!-- {% if redirect_field_value %}
-        <input type="hidden" name="{{ url 'profile' }}" value="{{ 'profile/'}}">
-        {% endif %} -->
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if redirect_field_value %}
+
+        <input type="hidden" name="{{ profile_url }}" value="{{ 'profile/'}}">
+        {% endif %}
+        <a class="button secondaryAction" href="{% url 'account_reset_password' %}">Forgot Password?</a>
         <button class="btn btn-signup" type="submit">Sign In</button>
       </form>
     </div>
@@ -33,21 +36,3 @@ Sign In
 </div>
 
 {% endblock content%}
-
-
-<p>{% blocktrans %}If you have not created an account yet, then please
-  <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
-{% endif %}
-
-<form class="login" method="POST" action="{% url 'account_login' %}">
-  {% csrf_token %}
-  <!-- {{ form.as_p }} -->
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-  <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
-</form>
-{% endblock trans %}
-
-{% endblock content %}
