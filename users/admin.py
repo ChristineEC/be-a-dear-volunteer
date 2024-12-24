@@ -55,5 +55,6 @@ class UserAdmin(BaseUserAdmin):
 # Re-register UserAdmin
 # admin.site.unregister(Profile)
 # admin.site.register(Profile)
-
+# admin.site.register(Profile)
+# admin.site.register(User, UserAdmin)
 # admin.site.register(User, UserAdmin)
