@@ -25,8 +25,7 @@ Sign In
         {% csrf_token %}
         {{ form.as_p }}
         {% if redirect_field_value %}
-
-        <input type="hidden" name="{{ profile_url }}" value="{{ 'profile/'}}">
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
         {% endif %}
         <a class="button secondaryAction" href="{% url 'account_reset_password' %}">Forgot Password?</a>
         <button class="btn btn-signup" type="submit">Sign In</button>
