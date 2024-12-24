@@ -24,12 +24,23 @@ Beneficiary Details
         <div class="col-6 p-2">
             <h2>Here's who else has signed up:</h2>
             {% for slot in slots %}
-            <p class="slot_display {% if not slot.publish_ok and slot.reserved_by == user %}
-                faded{% elif not slot.publish_ok %}d-none{% endif %}">
-                <span class="graduate-bold"></span>{{ slot.reserved_by }}
-                </span> Task: {{ slot.task }} | Location: {{ slot.task_location }}
-                | Date: {{ slot.date }}
-            </p>
+                {% if slot.publish_ok %}
+                <h3 class="small">Published slots:</h3>
+                <p class="slot-display"> Task: {{ slot.task }}
+                    | Location: {{ slot.task_location }} | Date: {{ slot.date }}
+                </p>
+                {% elif not slot.publish_ok and slot.reserved_by == user %}
+                <p class="slot-display">
+                    <span class="fw-bold">{{ slot.reserved_by }}</span>
+                    <span class="text-secondary"> Task: {{ slot.task }} | Location:
+                        {{ slot.task_location }}  Date: {{ slot.date }}</span>
+                    <a href="#" class="button btn-primary btn-md" aria-lable="edit this slot">Edit</a>
+                    <a href="#" class="button btn-primary btn-md" aria-lable="delete this slot">Delete</a>
+                </p>
+                <p class="directions">Already published slots can be managed on your student page
+                    <a href="#" class="button btn-primary btn-md" aria-label="my student page"></a>
+                </p>
+                {% endif %}
             {% endfor %}
         </div>
     </div>
@@ -40,7 +51,7 @@ Beneficiary Details
         <div class="col-6 mx-auto p-2">
             <h4>Save a slot for yourself based on this beneficiary</h4>
             {% if user.is_authenticated %}
-            <p class="graduate-bold">Reservation for: username {{ user.username }}</p>
+            <p class="graduate-bold">Reservation for: username {{ username }}</p>
             <form id="slotForm" method="POST" action="">
                 {{ form | crispy }}
                 {% csrf_token %}
