@@ -46,6 +46,7 @@ class Slot(models.Model):
     reserved_by = models.ForeignKey(User, blank=True, on_delete=models.CASCADE, related_name="reservations")
     completed = models.BooleanField(default=False)
     credit_minutes_requested = models.SmallIntegerField(default=0)
+    credit_minutes_approved = models.SmallIntegerField(default=0)
     teacher_approved = models.BooleanField(default=False)
     publish_ok = models.BooleanField(default=False)
 
