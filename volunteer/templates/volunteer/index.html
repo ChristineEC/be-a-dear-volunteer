@@ -26,80 +26,46 @@
 <!-- end heading section-->
 
 <!-- Beneficiaries list section, Main Content-->
-<div class="container-fluid d-flex justify-content-evenly">
-  <div class="row">
-    <!-- Cards for each beneficiary in list -->
-    <div class="col-12">
-      <div class="row">
-        {% for beneficiary in beneficiary_list %}
-        <div class="card mb-3" style="max-width: 540px;">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="{% static 'images/placeholderimage.jpg' %}" class="img-fluid card-image" alt="placeholder image">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">{{ beneficiary.beneficiary_name }}</h5>
-                <p class="card-text">{{ beneficiary.short_description | safe }}</p>
-                <p class="card-text"><small class="text-muted">{{ beneficiary.contact_details }}</small></p>
-                <a href="{% url 'beneficiary_detail' beneficiary.slug %}" class="btn btn-primary btn-sm">check it out</a>
+<section class="beneficiaries-list"></section>
+  <div class="container-fluid d-flex justify-content-evenly">
+    <div class="row">
+      <!-- Cards for each beneficiary in list -->
+      <div class="col-12">
+        <div class="row">
+          {% for beneficiary in beneficiary_list %}
+          <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{% static 'images/placeholderimage.jpg' %}" class="img-fluid card-image" alt="placeholder image">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{ beneficiary.beneficiary_name }}</h5>
+                  <p class="card-text">{{ beneficiary.short_description | safe }}</p>
+                  <p class="card-text"><small class="text-muted">{{ beneficiary.contact_details }}</small></p>
+                  <a href="{% url 'beneficiary_detail' beneficiary.slug %}" class="btn btn-primary btn-sm">View details</a>
+                </div>
               </div>
             </div>
           </div>
+          {% if forloop.counter|divisibleby:3 %}
         </div>
-        <!-- <div class="col-md-4">
-          <div class="card-mb-4">
-            <div class="card-body g-0">
-              <div class="image-container">
-                <img src="{% static 'images/placeholderimage.jpg' %}" class="b-card-image img-fluid" alt="placeholder image">
-              </div>
-              <h3 class="card-title">{{ beneficiary.beneficiary_name }}</h3>
-              <p class="card-text">{{ beneficiary.short_description | safe }}</p>
-              <p class="card-text"><small class="text-muted">{{ beneficiary.contact_details }}</small></p>
-              <a href="{% url 'beneficiary_detail' beneficiary.slug %}" class="btn btn-primary">Set me up!</a>
-              <div class="image-container">
-                <img src="{% static 'images/placeholderimage.jpg' %}" class="b-card-image img-fluid" alt="placeholder image">
-              </div>
-            </div>
-          </div>
-        </div> -->
-        {% if forloop.counter|divisibleby:3 %}
-      </div>
-      <div class="row">
-        {% endif %}
-        {% endfor %}
+        <div class="row">
+          {% endif %}
+          {% endfor %}
+        </div>
       </div>
     </div>
   </div>
-</div>
-<!-- End of beneficiary cards -->
+</section>  
 
 <!-- Page Navigation -->
-<div class="pagination">
-  <span class="step-links">
-    {% if page_obj.has_previous %}
-    <a href="?page=1">&laquo; first</a>
-    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-    {% endif %}
-
-    <span class="current">
-      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-    </span>
-
-    {% if page_obj.has_next %}
-    <a href="?page={{ page_obj.next_page_number }}">next</a>
-    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-    {% endif %}
-  </span>
-</div>
-
-
-  <!-- {% if is_pagingated %}
-  <nav aria-lable="page navigation">
-    <ul class="pagination justify-conent-center">
-      {% if page_object.has_previous %}
+<!-- <div>
+  <nav aria-label="page navigation">
+    <ul class="pagination justify-content-center">
+      {% if page_obj.has_previous %}
       <li>
-        <a ref="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; Previous</a>
+        <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; Previous</a>
       </li>
       {% endif %}
       {% if page_object.has_next %}
@@ -109,8 +75,21 @@
       {% endif %}
     </ul>
   </nav>
-  {% endif %}
 </div> -->
 
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+    {% if page_obj.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo; Previous</a>
+    </li>
+    {% endif %}
+    {% if page_object.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next &raquo;</a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
 
 {% endblock content %}

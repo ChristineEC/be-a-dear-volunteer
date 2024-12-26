@@ -14,4 +14,8 @@ class SlotForm(forms.ModelForm):
                 'credit_minutes_requested',
         ]
 
+# class SlotForm2(forms.ModelForm):
+    
+#     class Meta:
+
 
