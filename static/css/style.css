@@ -17,7 +17,9 @@ body {
     height: auto;
 }
 
-
+.directions {
+    text: red;
+}
 
 /* .heading-img {
     width: 100%;
@@ -97,3 +99,11 @@ body {
     font-variation-settings:
       "wdth" 100;
   }
+
+/* --------------------Buttons-------- */
+
+.btn-edit {
+    background-color:chocolate;
+    border-width: 1px;
+    font-weight:bold
+}

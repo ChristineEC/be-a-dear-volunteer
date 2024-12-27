@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 from django.contrib import messages
-from django.core.paginator import Paginator
+from django.http import HttpResponseRedirect
+# from django.core.paginator import Paginator
 from .models import Beneficiary, Slot
 from .forms import SlotForm
 
@@ -41,17 +42,18 @@ def beneficiary_detail(request, slug):
             form.save(slot)
             messages.add_message(
                 request, messages.SUCCESS,
-                "Your slot has been saved and appears"
+                "Your slot has been saved and will now appear"
                 "on your personal page." 
-                "It will not be shown publicly on this"
-                "page until it is approved for publication."
+                "It will not be shown publicly on this page"
+                "unless and until it is approved for publication."
                 )
         else:
             messages.add_message(
                 request, messages.ERROR,
                 "There has been an error. Please ensure you fill out"
-                "the date and time field with dates and times only"
-            )
+                "the date and time field with dates in format YYYY-MM-DD"
+                "and times as 00:00:00 only."
+            ) 
 
     form = SlotForm()
 
@@ -66,6 +68,31 @@ def beneficiary_detail(request, slug):
             "form": form,
         },
     )
+
+
+def slot_edit(request, slug, slot_id):
+    """
+    View to edit a slot
+    """
+
+    if request.method == "POST":
+
+        # queryset = Beneficiary.objects.filter(status=1)
+        # beneficiary = get_object_or_404(queryset, slug=slug)
+        slot = get_object_or_404(Slot, pk=slot_id)
+        form = SlotForm(data=request.POST, instance=slot)
+        if form.is_valid() and slot.reserved_by == request.user:
+            slot = form.save(commit=False)
+            slot.beneficiary = beneficiary
+            slot.publish_ok = False
+            form.save(slot)
+            messages.add_message(request, messages.SUCCESS,
+                'Your task has been updated!')
+        else:
+            messages.add_message(request, messages.ERROR,
+            'An error occurred updating the task')
+
+    return HttpResponseRedirect(reverse('beneficiary_detail', args=[slug]))
 
 
 

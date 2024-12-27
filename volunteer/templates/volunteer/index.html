@@ -59,25 +59,8 @@
   </div>
 </section>  
 
-<!-- Page Navigation -->
-<!-- <div>
-  <nav aria-label="page navigation">
-    <ul class="pagination justify-content-center">
-      {% if page_obj.has_previous %}
-      <li>
-        <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; Previous</a>
-      </li>
-      {% endif %}
-      {% if page_object.has_next %}
-      <li>
-        <a ref="?page={{ page_obj.next_page_number }}" class="page-link">Next &raquo;</a>
-      </li>
-      {% endif %}
-    </ul>
-  </nav>
-</div> -->
-
-<nav aria-label="Page navigation">
+{% if is_paginated %}
+<nav aria-label="page navigation">
   <ul class="pagination">
     {% if page_obj.has_previous %}
     <li class="page-item">
@@ -91,5 +74,6 @@
     {% endif %}
   </ul>
 </nav>
+{% endif %}
 
 {% endblock content %}

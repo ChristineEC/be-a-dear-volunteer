@@ -45,19 +45,20 @@ class SlotAdmin(admin.ModelAdmin):
         'credit_minutes_approved',
         'teacher_approved'
         )
+
     search_fields = []
-    list_filter = ('reserved_by',)
-    prepopulated_fields = {'slug': ('task',)}
+    list_filter = ('reserved_by', 'date',)
 
     class Meta:
         ordering = ['status', 'reserved_by']
     
     def __str__(self):
-        return f"Task: {self.task} | Reserved by: {self.reserved_by}"
+        return f"Task: {self.task} | {self.task_location} | Reserved by {self.reserved_by} for {self.date}"
 
 
 # Register your models here.
-
+admin.site.unregister(Slot)
+admin.site.register(Slot)
 admin.site.register(Homeroom)
 
 #Unregister SocialAccount

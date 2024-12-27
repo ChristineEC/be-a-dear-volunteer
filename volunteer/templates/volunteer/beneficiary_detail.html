@@ -20,27 +20,31 @@ Beneficiary Details
                 <span>Slots completed: {{ slots_completed_count }}</span>
             </p>
         </div>
-        <!----------------------- List of reserved slots goes here-->
+        <!--List of published slots (and all reserved by current user) goes here-->
         <div class="col-6 p-2">
-            <h2>Here's who else has signed up:</h2>
+            <h2>Sample tasks for this beneficiary:</h2>
             {% for slot in slots %}
+            <div>
                 {% if slot.publish_ok %}
-                <h3 class="small">Published slots:</h3>
                 <p class="slot-display"> Task: {{ slot.task }}
-                    | Location: {{ slot.task_location }} | Date: {{ slot.date }}
-                </p>
+                    | Location: {{ slot.task_location }}</p>
                 {% elif not slot.publish_ok and slot.reserved_by == user %}
                 <p class="slot-display">
-                    <span class="fw-bold">{{ slot.reserved_by }}</span>
+                    <span class="fw-bold faded">{{ slot.reserved_by }}</span>
                     <span class="text-secondary"> Task: {{ slot.task }} | Location:
-                        {{ slot.task_location }}  Date: {{ slot.date }}</span>
-                    <a href="#" class="button btn-primary btn-md" aria-lable="edit this slot">Edit</a>
-                    <a href="#" class="button btn-primary btn-md" aria-lable="delete this slot">Delete</a>
+                        {{ slot.task_location }} Date: {{ slot.date }}</span>
                 </p>
-                <p class="directions">Already published slots can be managed on your student page
-                    <a href="#" class="button btn-primary btn-md" value="" aria-label="my student page"></a>
+                <p>This task has not been published but still
+                    appears on your dashboard. You can edit or delete the task here
+                    or manage it on your dashboard.
                 </p>
                 {% endif %}
+                {% if user.is_authenticated and slot.reserved_by == user %}
+                <button type="button" class="btn btn-secondary btn-edit" slot_id="{{ slot.id }}">
+                    Edit
+                </button>
+                {% endif %}
+            </div>
             {% endfor %}
         </div>
     </div>
@@ -48,20 +52,32 @@ Beneficiary Details
 <!--------------------------Reserving slots------------>
 <div class="container">
     <div class="row">
-        <div class="col-6 mx-auto p-2">
-            <h4>Save a slot for yourself based on this beneficiary</h4>
+        <div class="col-12 mx-auto p-2">
+            <h2>Add a task related to this beneficiary to your dashboard</h4>
+                <h3>Tasks can be managed on your dashboard.</h3>
+                <h4>If you plan to volunteer on multiple dates for the same beneficiary,
+                    go ahead and add multiple times here.
+            </h2>
             {% if user.is_authenticated %}
-            <p class="graduate-bold">Reservation for: username {{ username }}</p>
-            <form id="slotForm" method="POST" action="">
+            <p class="graduate-bold">Reservation for: username {{ user.username }}</p>
+            <form id="slotForm" method="POST">
                 {{ form | crispy }}
                 {% csrf_token %}
-                <button id="submitButton" type="submit" class="btn btn-secondary btn-lg">Save</button>
+                <button id="submitButton" type="submit" class="btn btn-secondary btn-lg">Save to Dashboard</button>
             </form>
             {% else %}
-            <p>Log in to save a slot</p>
+            <p>Log in to save a slot
+                <a href="{{ login_url }}" value="login">Log In</a>
+            </p>
             {% endif %}
         </div>
     </div>
 </div>
 
 {% endblock content %}
+
+{% block extras %}
+<script src="{% static 'js/slots.js' %}"></script>
+{% endblock %}
+
+</body>

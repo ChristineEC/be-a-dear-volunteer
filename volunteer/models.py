@@ -36,7 +36,6 @@ class Slot(models.Model):
 
     beneficiary = models.ForeignKey(Beneficiary, on_delete=models.CASCADE, related_name="slots")
     task = models.CharField(max_length=200, default="")
-    slug = models.SlugField(blank=True, null=True)
     task_location = models.CharField(max_length=200, default="")
     date = models.DateField(blank=True, null=True)
     start_time = models.TimeField(blank=True, null=True)
