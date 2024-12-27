@@ -1,4 +1,5 @@
 from django.contrib import admin
+from allauth.socialaccount.models import SocialToken, SocialAccount, SocialApp
 from .models import Beneficiary, Slot, Homeroom
 from django_summernote.admin import SummernoteModelAdmin
 from django.core.paginator import Paginator
@@ -41,6 +42,7 @@ class SlotAdmin(admin.ModelAdmin):
         'task_location',
         'reserved_by',
         'credit_minutes_requested',
+        'credit_minutes_approved',
         'teacher_approved'
         )
     search_fields = []
@@ -57,3 +59,8 @@ class SlotAdmin(admin.ModelAdmin):
 # Register your models here.
 
 admin.site.register(Homeroom)
+
+#Unregister SocialAccount
+admin.site.unregister(SocialToken)
+admin.site.unregister(SocialAccount)
+admin.site.unregister(SocialApp)
