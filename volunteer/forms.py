@@ -1,5 +1,5 @@
 from django import forms
-from .models import Slot
+from .models import Slot, Beneficiary
 
 
 class SlotForm(forms.ModelForm):
@@ -7,10 +7,9 @@ class SlotForm(forms.ModelForm):
         model = Slot
         fields = ['task',
                 'task_location',
+                'date',
+                'start_time',
+                'end_time',
+                'completed',
+                'credit_minutes_requested'
         ]
-
-# class SlotForm2(forms.ModelForm):
-    
-#     class Meta:
-
-

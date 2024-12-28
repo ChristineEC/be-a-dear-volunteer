@@ -40,7 +40,7 @@ Beneficiary Details
                 </p>
                 {% endif %}
                 {% if user.is_authenticated and slot.reserved_by == user %}
-                <button type="button" class="btn btn-secondary btn-edit" slot_id="{{ slot.id }}">
+                <button class="btn btn-secondary btn-edit" slot_id="{{ slot.id }}">
                     Edit
                 </button>
                 {% endif %}

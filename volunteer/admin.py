@@ -48,9 +48,5 @@ class SlotAdmin(admin.ModelAdmin):
 
 
 
-# Register your models here.
-# admin.site.register(Slot)
-
-# admin.site.register(Beneficiary)
-# admin.site.register(Slot)
+# Registration of model
 admin.site.register(Homeroom)

@@ -31,6 +31,9 @@ class Beneficiary(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     featured_image = CloudinaryField('image', default='hearts.jpg')
 
+    class Meta:
+        ordering = ["beneficiary_name"]
+
 
 class Slot(models.Model):
 
@@ -49,8 +52,8 @@ class Slot(models.Model):
     teacher_approved = models.BooleanField(default=False)
     publish_ok = models.BooleanField(default=False)
 
-    # class Meta:
-    #     ordering = ["created_on"]
+    class Meta:
+        ordering = ["created_on"]
 
 
 class Homeroom(models.Model):

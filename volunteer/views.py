@@ -2,7 +2,6 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from django.core.paginator import Paginator
 from .models import Beneficiary, Slot
 from .forms import SlotForm
 
@@ -10,7 +9,7 @@ from .forms import SlotForm
 class BeneficiaryList(generic.ListView):
     queryset = Beneficiary.objects.filter(status=1).order_by("beneficiary_name")
     template_name = "volunteer/index.html"
-    paginate_by = 6
+    paginate_by: 6
 
 
 def beneficiary_detail(request, slug):
@@ -70,18 +69,18 @@ def beneficiary_detail(request, slug):
     )
 
 
+# class SlotUpdate
+
+
 def slot_edit(request, slug, slot_id):
     """
     View to edit a slot
     """
-
     if request.method == "POST":
-
         queryset = Beneficiary.objects.filter(status=1)
         beneficiary = get_object_or_404(queryset, slug=slug)
         slot = get_object_or_404(Slot, pk=slot_id)
         form = SlotForm(request.POST, instance=slot)
-
         if form.is_valid() and slot.reserved_by == request.user:
             slot = form.save(commit=False)
             slot.beneficiary = beneficiary
