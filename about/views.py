@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib import messages
 from .models import About
 from .forms import CollaborateForm
 
@@ -10,7 +11,16 @@ def about_project(request):
     """
     Renders the About page
     """
-
+    if request.method == "POST":
+        collaborate_form = CollaborateForm(request.POST)
+        if collaborate_form.is_valid():
+            collaborate_form.save()
+            massage.add_message(
+                request, messages.SUCCESS,
+                'Thanks for your message. We will'
+                'try to get back to you within the'
+                'next few days or as soon as possible'
+            )
     about = About.objects.filter(status=1).last()
     collaborate_form = CollaborateForm()
 

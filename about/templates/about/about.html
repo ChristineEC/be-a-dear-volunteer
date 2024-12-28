@@ -2,14 +2,14 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-    {% block content %}
+{% block content %}
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-6">
-            <h1>About the Project</h1>
+    <div class="row p-5">
+        <div class="col ms-12 ml-6 justify-content-center">
+            <h1 class="about-header d-none"><small>About the Be a Dear Project</small></h1>
             <div class="about-image-container">
-                {% if "hearts" in about.featured_image.url %}
-                <img class="scale" src="{% static 'images/hearts.jpg' %}" alt="placeholder image for the About page">
+                {% if "placeholder" in about.featured_image.url %}
+                <img class="scale" src="{% static 'images/about_image.jpg' %}" alt="placeholder image for the About page">
                 {% else %}
                 <img class="scale" src="{{ about.featured_image.url }}" alt="{{ about.title }}">
                 {% endif %}
@@ -18,11 +18,11 @@
             <p>{{ about.content | safe }}</p>
             <p>{{ about.updated_on}}</p>
         </div>
-        <div class="col-6">
+        <div class="col ms-12 ml-6">
             {{ collaborate_form | crispy }}
             {% csrf_token %}
             <button class="btn btn-primary" type="submit">Submit</button>
         </div>
     </div>
 </div>
-    {% endblock content %}
+{% endblock content %}
