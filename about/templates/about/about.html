@@ -19,9 +19,11 @@
             <p>{{ about.updated_on}}</p>
         </div>
         <div class="col ms-12 ml-6">
-            {{ collaborate_form | crispy }}
-            {% csrf_token %}
-            <button class="btn btn-primary" type="submit">Submit</button>
+            <form method="POST">
+                {{ collaborate_form | crispy }}
+                {% csrf_token %}
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
         </div>
     </div>
 </div>

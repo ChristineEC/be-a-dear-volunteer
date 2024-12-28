@@ -4,6 +4,7 @@ from .models import About
 from .forms import CollaborateForm
 
 
+
 # # Create your views here.
 
 def about_project(request):
@@ -15,13 +16,13 @@ def about_project(request):
         collaborate_form = CollaborateForm(request.POST)
         if collaborate_form.is_valid():
             collaborate_form.save()
-            massage.add_message(
+            messages.add_message(
                 request, messages.SUCCESS,
                 'Thanks for your message. We will'
                 'try to get back to you within the'
                 'next few days or as soon as possible'
             )
-    about = About.objects.filter(status=1).last()
+    about = About.objects.filter(status=1).order_by('updated_on').first()
     collaborate_form = CollaborateForm()
 
     return render(
