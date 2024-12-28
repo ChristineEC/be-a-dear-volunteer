@@ -24,25 +24,16 @@ Beneficiary Details
         <div class="col-6 p-2">
             <h2>Sample tasks for this beneficiary:</h2>
             {% for slot in slots %}
-            <div>
-                {% if slot.publish_ok %}
-                <p class="slot-display"> Task: {{ slot.task }}
-                    | Location: {{ slot.task_location }}</p>
-                {% elif not slot.publish_ok and slot.reserved_by == user %}
-                <p class="slot-display">
-                    <span class="fw-bold faded">{{ slot.reserved_by }}</span>
-                    <span class="text-secondary"> Task: {{ slot.task }} | Location:
-                        {{ slot.task_location }} Date: {{ slot.date }}</span>
-                </p>
-                <p>This task has not been published but still
-                    appears on your dashboard. You can edit or delete the task here
-                    or manage it on your dashboard.
-                </p>
+            <div class="slot-display {% if not slot.publish_ok and slot.reserved_by == user %} faded {% elif not slot.publish_ok %} d-none {% endif %}">
+                <p id="slot{{ slot.id }}" class="slot-task-display">{{ slot.task }}</p>
+                <p class="slotlocation{{ slot.id }} slot-location-display">{{ slot.task_location }}</p>
+                {% if not slot.publish_ok and slot.reserved_by == user %}
+                <p class="logged-in-user-msg">This task has not been published but still
+                    appears on your dashboard. You can edit or delete
+                    the task here or manage it on your dashboard.</p>
                 {% endif %}
                 {% if user.is_authenticated and slot.reserved_by == user %}
-                <button class="btn btn-secondary btn-edit" slot_id="{{ slot.id }}">
-                    Edit
-                </button>
+                <button class="btn btn-secondary btn-edit" slot_id="{{ slot.id }}">Edit</button>
                 {% endif %}
             </div>
             {% endfor %}
@@ -60,7 +51,7 @@ Beneficiary Details
             </h2>
             {% if user.is_authenticated %}
             <p class="graduate-bold">Reservation for: username {{ user.username }}</p>
-            <form id="slotForm" method="POST">
+            <form id="slotForm" method="post">
                 {{ form | crispy }}
                 {% csrf_token %}
                 <button id="submitButton" type="submit" class="btn btn-secondary btn-lg">Save to Dashboard</button>

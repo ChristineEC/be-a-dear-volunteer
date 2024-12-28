@@ -69,9 +69,6 @@ def beneficiary_detail(request, slug):
     )
 
 
-# class SlotUpdate
-
-
 def slot_edit(request, slug, slot_id):
     """
     View to edit a slot
@@ -85,7 +82,7 @@ def slot_edit(request, slug, slot_id):
             slot = form.save(commit=False)
             slot.beneficiary = beneficiary
             slot.publish_ok = False
-            form.save(slot)
+            slot.save()
             messages.add_message(request, messages.SUCCESS,
                 'Your task has been updated!')
         else:
