@@ -6,37 +6,44 @@
 Beneficiary Details
 {% endblock head_title %}
 
-<!-- Beneficiary detail goes here -->
-
 {% block content %}
 
-<div class="container">
+<!-- -----------------------Beneficiary detail-->
+<div class="container beneficiary-detail">
     <div class="row">
-        <div class="col-6 p-2">
+        <div class="col-12 p-2">
             <h2>{{ beneficiary.beneficiary_name }}</h2>
             <p>{{ beneficiary.description | safe }}</p>
+            <p>{{ beneficiary.location }} |
+                <span class="bold"> {{ beneficiary.contact_details }}</span>
+            </p>
             <p>
-                <span>Slots reserved: {{ slots_created_count }}</span>
-                <span>Slots completed: {{ slots_completed_count }}</span>
+                <span class="px-2">Tasks planned: {{ slots_created_count }}</span>
+                <span class="px-2">Tasks completed: {{ slots_completed_count }}</span>
             </p>
         </div>
-        <!--List of published slots (and all reserved by current user) goes here-->
-        <div class="col-6 p-2">
+    </div>
+</div>
+<!--List of published slots (and all reserved by current user) -->
+<div class="container-fluid slots-list">
+    <div class="row">
+        <div class="col-12 p-2">
             <h2>Sample tasks for this beneficiary:</h2>
+            <p>Note that tasks are listed publicly at the discretion of the site managers.</p>
+            <div class="row">
             {% for slot in slots %}
-            <div class="slot-display {% if not slot.publish_ok and slot.reserved_by == user %} faded {% elif not slot.publish_ok %} d-none {% endif %}">
-                <p id="slot{{ slot.id }}" class="slot-task-display">{{ slot.task }}</p>
-                <p class="slotlocation{{ slot.id }} slot-location-display">{{ slot.task_location }}</p>
-                {% if not slot.publish_ok and slot.reserved_by == user %}
-                <p class="logged-in-user-msg">This task has not been published but still
-                    appears on your dashboard. You can edit or delete
-                    the task here or manage it on your dashboard.</p>
-                {% endif %}
-                {% if user.is_authenticated and slot.reserved_by == user %}
-                <button class="btn btn-secondary btn-edit" slot_id="{{ slot.id }}">Edit</button>
-                {% endif %}
-            </div>
+                <div class="col-3 slot-display {% if not slot.publish_ok and slot.reserved_by == user %} faded {% elif not slot.publish_ok %} d-none {% endif %}">
+                    <p id="slot{{ slot.id }}" class="slot-task-display">{{ slot.task }}</p>
+                    {% if not slot.publish_ok and slot.reserved_by == user %}
+                    <p class="logged-in-user-msg"><span class="small">This task has not been published but still
+                        appears on your dashboard.</span></p>
+                    {% endif %}
+                    {% if user.is_authenticated and slot.reserved_by == user %}
+                    <button class="btn btn-edit btn-sm" slot_id="{{ slot.id }}">Edit</button>
+                    {% endif %}
+                </div>
             {% endfor %}
+            </div>
         </div>
     </div>
 </div>
@@ -44,7 +51,7 @@ Beneficiary Details
 <div class="container">
     <div class="row">
         <div class="col-12 mx-auto p-2">
-            <h2>Add a task related to this beneficiary to your dashboard</h4>
+            <h2>Add a task related to {{ beneficiary.beneficiary_name }} to your dashboard</h4>
                 <h3>Tasks can be managed on your dashboard.</h3>
                 <h4>If you plan to volunteer on multiple dates for the same beneficiary,
                     go ahead and add multiple times here.

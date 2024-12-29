@@ -111,6 +111,6 @@ body {
 
 
 .logged-in-user-msg {
-    font: rgb(226, 5, 5);
+    color: rgb(226, 5, 5);
     font-style: italic;
 }

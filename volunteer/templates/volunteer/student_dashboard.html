@@ -1,8 +1,10 @@
-{% inherit from "base.html" %}
+{% extends "base.html" %}
 {% load static %}
 {% load cloudinary %}
 
-{% if user.is_authorized %}
+{% block content %}
+
+{% if user.is_authenticated %}
 <div class="container-fluid">
     <div class="row">
         <div class="col-3">
@@ -49,3 +51,6 @@
         </div>
     </div>
 </div>
+{% endif %}
+
+{% endblock content %}
