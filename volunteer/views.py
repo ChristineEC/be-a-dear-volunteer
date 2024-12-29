@@ -98,14 +98,12 @@ def student_dashboard(request):
     """
     Renders the student dashboard page.
     """
-    queryset = Slot.objects.all()
+
     if request.method == "POST":
         user = request.user
-        # user.slots = Slot.objects.filter(reserved_by=user)
 
 
     return render(
         request,
         "volunteer/student_dashboard.html",
-        # {"slots": slots,},
     )
