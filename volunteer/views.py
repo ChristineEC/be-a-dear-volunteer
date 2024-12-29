@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponseRedirect
@@ -97,11 +98,14 @@ def student_dashboard(request):
     """
     Renders the student dashboard page.
     """
-
+    queryset = Slot.objects.all()
     if request.method == "POST":
         user = request.user
+        # user.slots = Slot.objects.filter(reserved_by=user)
+
 
     return render(
         request,
         "volunteer/student_dashboard.html",
+        # {"slots": slots,},
     )
