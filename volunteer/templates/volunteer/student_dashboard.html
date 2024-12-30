@@ -2,6 +2,10 @@
 {% load static %}
 {% load cloudinary %}
 
+{% block head_title %}
+Student Dashboard
+{% endblock head_title %}
+
 {% block content %}
 
 {% if user.is_authenticated %}
@@ -23,16 +27,38 @@
                 <ul class="list-group">
                     <li class="list-group-item d-flex justify-content-between align-items-start">
                         <div class="ms-2 me-auto">
-                            <div class="fw-bold">Planned
+                            <div class="fw-bold">
+                                <p>Planned:</p>
+                                {% for slot in slots %}
+                                    {% if slot.completed == False %}
+                                    <p>
+                                        <span id="task_beneficiary{{slot.id}}">Beneficiary: {{ slot.task.beneficiary.beneficiary_name }} | </span>
+                                        <span id="task{{slot.id}}">Task: {{ slot.task }} | </span>
+                                        <span id="task_location{{slot.id}}">Task location: {{ slot.task_location }}</br></span>
+                                        <span id="task_date{{slot.id}}">Date: {{ slot.date }}</br></span>
+                                        <span id="task_start_time{{slot.id}}">Start_time: {{ slot.start_time }} | </span>
+                                        <span id="task_end_time{{slot.id}}">End time: {{ slot.task_end_time }}</br></span>
+                                        <span id="task_completed{{slot.id}}">Completed: {{ slot.completed }} | </span>
+                                        <span id="task_credit_minutes_requested{{slot.id}}">Credit minutes requested: {{ slot.credit_minutes_requested }} | </span>
+                                        <span id="task_credit_minutes_approved{{slot.id}}">Credit minutes approved: {{ slot.credit_minutes_requested }} | </span>
+                                        <span id="task_teacher_approved{{slot.id}}">Teacher approved: {{ slot.credit_minutes_requested }}</span>
+                                    </p>
+                                    {% endif %}
+                                {% endfor %}
                             </div>
                         </div>
                         <span class="badge bg-primary rounded-pill">0 mins</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-start">
                         <div class="ms-2 me-auto">
-                            <div class="fw-bold">Completed</div>
-                            Here, we'll loop through all of the slots reserved by the user that have completed and
-                            need to request teacher approval for a specific number of minutes greater than zero.
+                            <div class="fw-bold">Completed
+                                <p>Planned:</p>
+
+                                    <p>
+ 
+                                    </p>
+                            </div>
+                            
                         </div>
                         <span class="badge bg-primary rounded-pill">14</span>
                     </li>

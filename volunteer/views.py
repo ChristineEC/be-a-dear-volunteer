@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
+from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Beneficiary, Slot
@@ -73,7 +73,7 @@ def beneficiary_detail(request, slug):
 
 def slot_edit(request, slug, slot_id):
     """
-    View to edit a slot
+    View to edit a slot on the beneficiary_details page
     """
     if request.method == "POST":
         queryset = Beneficiary.objects.filter(status=1)
@@ -93,17 +93,19 @@ def slot_edit(request, slug, slot_id):
 
     return HttpResponseRedirect(reverse('beneficiary_detail', args=[slug]))
 
-
+@login_required(redirect_field_name="account_login")
 def student_dashboard(request):
     """
     Renders the student dashboard page.
     """
-
-    if request.method == "POST":
-        user = request.user
+    queryset = Beneficiary.objects.filter(status=1)
+    user = request.user
+    slots = Slot.objects.filter(reserved_by=user)
 
 
     return render(
         request,
         "volunteer/student_dashboard.html",
+        {"slots": slots,
+        }
     )
