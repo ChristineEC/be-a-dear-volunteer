@@ -7,129 +7,186 @@ Student Dashboard
 {% endblock head_title %}
 
 {% block content %}
-
+<!------------------------Student Dashboard Heading Section-->
 {% if user.is_authenticated %}
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-3">
-            <img src="">
-        </div>
-        <div class="col-9">
-            <h1 class="py-2 mx-auto">{{ user.username }}'s Student Dashboard</h1>
-            <p>Manage your volunteer time and see your progress toward reaching the graduation requirement.</p>
+<section id="dashboard-heading">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+                <img src="">
+            </div>
+            <div class="col-9 justify-content-center">
+                <h1 class="py-2 mx-auto">{{ user.username }}'s Student Dashboard</h1>
+                <h2>Manage your volunteer time and see your progress toward reaching the graduation requirement.<h3>
+            </div>
         </div>
     </div>
-</div>
-<div>
+</section>
+<!---------------------------Looping over the student's slots-->
+<section id="manage-tasks">
+    <div class="container">
+    {% for slot in slots %}
+        {% if slot.completed == False %}
+        <div class="row">
+            <div class=col-8 col-lg-4 col-xl-3>
+                <div class="card text-white bg-primary mb-3 px-1" style="max-width: 18rem;">
+                    <div class="card-header">{{ slot.beneficiary.beneficiary_name }}</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Task: {{ slot.task }}</h5>
+                        <p class="card-text">{{ slot.task_location }}</p>
+                        <ul class="list-group">
+                            <li id="task_date{{slot.id}}">Date: {{ slot.date }}></li>
+
+                            <li id="task_date{{slot.id}}">Date: {{ slot.date }}</li>
+                            <li id="task_start_time{{slot.id}}">Start_time:
+                                {{ slot.start_time }}</li>
+                            <li id="task_end_time{{slot.id}}">End time:
+                                {{ slot.task_end_time }}</li>
+                            <li id="task_completed{{slot.id}}" class="faded">Completed:
+                                {{ slot.completed }}</li>
+                            <li id="task_credit_minutes_requested{{slot.id}}" class="faded">Credit
+                                minutes requested: {{ slot.credit_minutes_requested }}</li>
+                            <li id="task_credit_minutes_approved{{slot.id}}" class="faded">Credit
+                                minutes approved: {{ slot.credit_minutes_approved }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% elif slot.completed and not slot.credit_hours_requested %}
+        <div class="row">
+            <div class=col-8 col-lg-4 col-xl-3>
+                <div class="card text-white bg-secondary mb-3 px-1" style="max-width: 18rem;">
+                    <div class="card-header">{{ slot.beneficiary.beneficiary_name }}</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Task: {{ slot.task }}</h5>
+                            <p class="card-text">{{ slot.task_location }}</p>
+                            <ul class="list-group">
+                                <li id="task_date{{slot.id}}">Date: {{ slot.date }}></li>
+
+                                <li id="task_date{{slot.id}}">Date: {{ slot.date }}</li>
+                                <li id="task_start_time{{slot.id}}">Start_time:
+                                    {{ slot.start_time }}</li>
+                                <li id="task_end_time{{slot.id}}">End time:
+                                    {{ slot.task_end_time }}</li>
+                                <li id="task_completed{{slot.id}}" class="faded">Completed:
+                                    {{ slot.completed }}</li>
+                                <li id="task_credit_minutes_requested{{slot.id}}" class="faded">Credit
+                                    minutes requested: {{ slot.credit_minutes_requested }}</li>
+                                <li id="task_credit_minutes_approved{{slot.id}}" class="faded">Credit
+                                    minutes approved: {{ slot.credit_minutes_approved }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% elif slot.credit_hours_requested and not slot.credit_hours_approved %}
+        <div class="row">
+            <div class=col-8 col-lg-4 col-xl-3>
+                <div class="card text-white bg-secondary mb-3 px-1" style="max-width: 18rem;">
+                    <div class="card-header">{{ slot.beneficiary.beneficiary_name }}</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Task: {{ slot.task }}</h5>
+                            <p class="card-text">{{ slot.task_location }}</p>
+                            <ul class="list-group">
+                                <li id="task_date{{slot.id}}">Date: {{ slot.date }}></li>
+
+                                <li id="task_date{{slot.id}}">Date: {{ slot.date }}</li>
+                                <li id="task_start_time{{slot.id}}">Start_time:
+                                    {{ slot.start_time }}</li>
+                                <li id="task_end_time{{slot.id}}">End time:
+                                    {{ slot.task_end_time }}</li>
+                                <li id="task_completed{{slot.id}}" class="faded">Completed:
+                                    {{ slot.completed }}</li>
+                                <li id="task_credit_minutes_requested{{slot.id}}" class="faded">Credit
+                                    minutes requested: {{ slot.credit_minutes_requested }}</li>
+                                <li id="task_credit_minutes_approved{{slot.id}}" class="faded">Credit
+                                    minutes approved: {{ slot.credit_minutes_approved }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% elif slot.credit_hours_approved == 0 %}
+        <div class="row">
+            <div class=col-8 col-lg-4 col-xl-3>
+                <div class="card text-white bg-secondary mb-3 px-1" style="max-width: 18rem;">
+                    <div class="card-header">{{ slot.beneficiary.beneficiary_name }}</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Task: {{ slot.task }}</h5>
+                            <p class="card-text">{{ slot.task_location }}</p>
+                            <ul class="list-group">
+                                <li id="task_date{{slot.id}}">Date: {{ slot.date }}></li>
+
+                                <li id="task_date{{slot.id}}">Date: {{ slot.date }}</li>
+                                <li id="task_start_time{{slot.id}}">Start_time:
+                                    {{ slot.start_time }}</li>
+                                <li id="task_end_time{{slot.id}}">End time:
+                                    {{ slot.task_end_time }}</li>
+                                <li id="task_completed{{slot.id}}" class="faded">Completed:
+                                    {{ slot.completed }}</li>
+                                <li id="task_credit_minutes_requested{{slot.id}}" class="faded">Credit
+                                    minutes requested: {{ slot.credit_minutes_requested }}</li>
+                                <li id="task_credit_minutes_approved{{slot.id}}" class="faded">Credit
+                                    minutes approved: {{ slot.credit_minutes_approved }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="row">
+            <div class=col-8 col-lg-4 col-xl-3>
+                <div class="card text-white bg-secondary mb-3 px-1" style="max-width: 18rem;">
+                    <div class="card-header">{{ slot.beneficiary.beneficiary_name }}</div>
+                        <div class="card-body">
+                            <h5 class="card-title">Task: {{ slot.task }}</h5>
+                            <p class="card-text">{{ slot.task_location }}</p>
+                            <ul class="list-group">
+                                <li id="task_date{{slot.id}}">Date: {{ slot.date }}></li>
+
+                                <li id="task_date{{slot.id}}">Date: {{ slot.date }}</li>
+                                <li id="task_start_time{{slot.id}}">Start_time:
+                                    {{ slot.start_time }}</li>
+                                <li id="task_end_time{{slot.id}}">End time:
+                                    {{ slot.task_end_time }}</li>
+                                <li id="task_completed{{slot.id}}" class="faded">Completed:
+                                    {{ slot.completed }}</li>
+                                <li id="task_credit_minutes_requested{{slot.id}}" class="faded">Credit
+                                    minutes requested: {{ slot.credit_minutes_requested }}</li>
+                                <li id="task_credit_minutes_approved{{slot.id}}" class="faded">Credit
+                                    minutes approved: {{ slot.credit_minutes_approved }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+    </div>
+</section>
+<!-------------------------Bottom portion of student dashboard with stats----->
+<section id="cumulative hours">
     <div class="container">
         <div class="row">
-            <div class=col-12>
-                <ul class="list-group">
-                    {% for slot in slots %}
-                        {% if slot.completed == False %}                    
-                        <li class="list-group-item d-flex justify-content-between align-items-start">
-                            <div class="ms-2 me-auto">
-                                <div class="fw-bold">
-                                    <p>Planned:</p>
-                                    <p class="dashboard_list">
-                                        <span id="task_beneficiary{{slot.id}}">Beneficiary: {{ slot.beneficiary.beneficiary_name }}</br></span>
-                                        <span id="task{{slot.id}}">Task: {{ slot.task }}</br></span>
-                                        <span id="task_location{{slot.id}}">Task location: {{ slot.task_location }}</br></span>
-                                        <span id="task_date{{slot.id}}">Date: {{ slot.date }}</br></span>
-                                        <span id="task_start_time{{slot.id}}">Start_time: {{ slot.start_time }} | </span>
-                                        <span id="task_end_time{{slot.id}}">End time: {{ slot.task_end_time }}</br></span>
-                                        <span id="task_completed{{slot.id}}" class="faded">Completed: {{ slot.completed }} | </span>
-                                        <span id="task_credit_minutes_requested{{slot.id}}" class="faded">Credit minutes requested: {{ slot.credit_minutes_requested }} | </span>
-                                        <span id="task_credit_minutes_approved{{slot.id}}" class="faded">Credit minutes approved: {{ slot.credit_minutes_requested }} | </span>
-                                        <span id="task_teacher_approved{{slot.id}}" class="faded">Teacher approved: {{ slot.credit_minutes_requested }}</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <span class="badge bg-primary rounded-pill">0 mins</span>
-                        </li>
-                        {% endif %}
-                        {% if slot.completed and slot.credit_hours_requested == 0 %}
-                        <li class="list-group-item d-flex justify-content-between align-items-start">
-                            <div class="ms-2 me-auto">
-                                <div class="fw-bold">
-                                    <p>Completed tasks that need to be updated with the minutes you want to request credit for:</p>
-                                        <p class="dashboard_list">
-                                            <span>Beneficiary: {{ slot.beneficiary.beneficiary_name }}</br></span>
-                                            <span>Task: {{ slot.task }}</br></span>
-                                            <span>Task location: {{ slot.task_location }}</br></span>
-                                            <span>Date: {{ slot.date }}</br></span>
-                                            <span>Start_time: {{ slot.start_time }}</br></span>
-                                            <span>End time: {{ slot.end_time }}</br></span>
-                                            <span>Completed: {{ slot.completed }}</br></span>
-                                            <span>Credit minutes requested: {{ slot.credit_minutes_requested }}</br></span>
-                                            <span class="faded">Credit minutes approved: {{ slot.credit_minutes_approved }}</br></span>
-                                            <span class="faded">Teacher approved: {{ slot.teacher_approved }}</span>
-                                        </p>
-                                </div>
-                            </div>
-                            <span class="badge bg-primary rounded-pill">14</span>
-                        </li>
-                        {% endif %}
-                        {% if slot.completed and slot.credit_hours_requested > 0 and slot.credit_hours_approved == 0 %}
-                        <li class="list-group-item d-flex justify-content-between align-items-start">
-                            <div class="ms-2 me-auto">
-                                <div class="fw-bold">
-                                    <p>Awaiting credit-minute approval.</p>
-                                    <p class="dashboard_list">
-                                        <span>Beneficiary: {{ slot.beneficiary.beneficiary_name }}</br></span>
-                                        <span>Task: {{ slot.task }}</br></span>
-                                        <span>Task location: {{ slot.task_location }}</br></span>
-                                        <span>Date: {{ slot.date }}</br></span>
-                                        <span>Start_time: {{ slot.start_time }}</br></span>
-                                        <span>End time: {{ slot.end_time }}</br></span>
-                                        <span>Completed: {{ slot.completed }}</br></span>
-                                        <span>Credit minutes requested: {{ slot.credit_minutes_requested }}</br></span>
-                                        <span class="faded">Credit minutes approved: {{ slot.credit_minutes_approved }}</br></span>
-                                        <span class="faded">Teacher approved: {{ slot.teacher_approved }}</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <span class="badge bg-primary rounded-pill">Awaiting approval: 14</span>
-                        </li>
-                        {% endif %}
-                        {% if not slot.credit_hours_approved == 0 %}
-                        <li class="list-group-item d-flex justify-content-between align-items-start">
-                            <div class="ms-2 me-auto">
-                                <div class="fw-bold">
-                                    <p>Credit approved!</p>
-                                    <p class="dashboard_list">
-                                        <span>Beneficiary: {{ slot.beneficiary.beneficiary_name }}</br></span>
-                                        <span>Task: {{ slot.task }}</br></span>
-                                        <span>Task location: {{ slot.task_location }}</br></span>
-                                        <span>Date: {{ slot.date }}</br></span>
-                                        <span>Start_time: {{ slot.start_time }}</br></span>
-                                        <span>End time: {{ slot.end_time }}</br></span>
-                                        <span>Completed: {{ slot.completed }}</br></span>
-                                        <span>Credit minutes requested: {{ slot.credit_minutes_requested }}</br></span>
-                                        <span>Credit minutes approved: {{ slot.credit_minutes_approved }}</br></span>
-                                        <span>Teacher approved: {{ slot.teacher_approved }}</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <span id="approved_minutes" class="badge bg-primary rounded-pill">Approved: {{ slot.credit_minutes_approved }}</span>
-                        </li>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
+            <div class="col-4 p-2 border-box">
+                <p>Time approved to date: <span id="calculated-minutes-for-a-student" class="d-none">##</span><span
+                        id="calculated-hours">##</span><span> hours</span></p>
             </div>
-        <div class="row">
-            <div class="col-4">
-                <p>Minutes approved to date:<span>Write some javascript to get the total!</span></p>
+            <div class="col-4 p-2 border-box">
+                <p>Credit needed toward graduation: <span id="required-hours">30 hours</span></p>
             </div>
-            <div class="col-4">
-                <p>Hours needed until graduation:<span id="required-hours">30</span></p>
-            </div>
-            <div class="col-4">
-                <p>Remaining time required: <span id="remaining-time-required">Write some code to get the total!</span></p>
+            <div class="col-4 p-2 border-box">
+                <p>Remaining time required: <span id="remaining-time">##</span></p>
             </div>
         </div>
     </div>
-</div>
+</section>
+
 {% endif %}
 
 {% endblock content %}
