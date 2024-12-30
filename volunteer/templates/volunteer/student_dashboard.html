@@ -25,57 +25,108 @@ Student Dashboard
         <div class="row">
             <div class=col-12>
                 <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between align-items-start">
-                        <div class="ms-2 me-auto">
-                            <div class="fw-bold">
-                                <p>Planned:</p>
-                                {% for slot in slots %}
-                                    {% if slot.completed == False %}
-                                    <p>
-                                        <span id="task_beneficiary{{slot.id}}">Beneficiary: {{ slot.task.beneficiary.beneficiary_name }} | </span>
-                                        <span id="task{{slot.id}}">Task: {{ slot.task }} | </span>
+                    {% for slot in slots %}
+                        {% if slot.completed == False %}                    
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">
+                                    <p>Planned:</p>
+                                    <p class="dashboard_list">
+                                        <span id="task_beneficiary{{slot.id}}">Beneficiary: {{ slot.beneficiary.beneficiary_name }}</br></span>
+                                        <span id="task{{slot.id}}">Task: {{ slot.task }}</br></span>
                                         <span id="task_location{{slot.id}}">Task location: {{ slot.task_location }}</br></span>
                                         <span id="task_date{{slot.id}}">Date: {{ slot.date }}</br></span>
                                         <span id="task_start_time{{slot.id}}">Start_time: {{ slot.start_time }} | </span>
                                         <span id="task_end_time{{slot.id}}">End time: {{ slot.task_end_time }}</br></span>
-                                        <span id="task_completed{{slot.id}}">Completed: {{ slot.completed }} | </span>
-                                        <span id="task_credit_minutes_requested{{slot.id}}">Credit minutes requested: {{ slot.credit_minutes_requested }} | </span>
-                                        <span id="task_credit_minutes_approved{{slot.id}}">Credit minutes approved: {{ slot.credit_minutes_requested }} | </span>
-                                        <span id="task_teacher_approved{{slot.id}}">Teacher approved: {{ slot.credit_minutes_requested }}</span>
+                                        <span id="task_completed{{slot.id}}" class="faded">Completed: {{ slot.completed }} | </span>
+                                        <span id="task_credit_minutes_requested{{slot.id}}" class="faded">Credit minutes requested: {{ slot.credit_minutes_requested }} | </span>
+                                        <span id="task_credit_minutes_approved{{slot.id}}" class="faded">Credit minutes approved: {{ slot.credit_minutes_requested }} | </span>
+                                        <span id="task_teacher_approved{{slot.id}}" class="faded">Teacher approved: {{ slot.credit_minutes_requested }}</span>
                                     </p>
-                                    {% endif %}
-                                {% endfor %}
+                                </div>
                             </div>
-                        </div>
-                        <span class="badge bg-primary rounded-pill">0 mins</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-start">
-                        <div class="ms-2 me-auto">
-                            <div class="fw-bold">Completed
-                                <p>Planned:</p>
-
-                                    <p>
- 
+                            <span class="badge bg-primary rounded-pill">0 mins</span>
+                        </li>
+                        {% endif %}
+                        {% if slot.completed and slot.credit_hours_requested == 0 %}
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">
+                                    <p>Completed tasks that need to be updated with the minutes you want to request credit for:</p>
+                                        <p class="dashboard_list">
+                                            <span>Beneficiary: {{ slot.beneficiary.beneficiary_name }}</br></span>
+                                            <span>Task: {{ slot.task }}</br></span>
+                                            <span>Task location: {{ slot.task_location }}</br></span>
+                                            <span>Date: {{ slot.date }}</br></span>
+                                            <span>Start_time: {{ slot.start_time }}</br></span>
+                                            <span>End time: {{ slot.end_time }}</br></span>
+                                            <span>Completed: {{ slot.completed }}</br></span>
+                                            <span>Credit minutes requested: {{ slot.credit_minutes_requested }}</br></span>
+                                            <span class="faded">Credit minutes approved: {{ slot.credit_minutes_approved }}</br></span>
+                                            <span class="faded">Teacher approved: {{ slot.teacher_approved }}</span>
+                                        </p>
+                                </div>
+                            </div>
+                            <span class="badge bg-primary rounded-pill">14</span>
+                        </li>
+                        {% endif %}
+                        {% if slot.completed and slot.credit_hours_requested > 0 and slot.credit_hours_approved == 0 %}
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">
+                                    <p>Awaiting credit-minute approval.</p>
+                                    <p class="dashboard_list">
+                                        <span>Beneficiary: {{ slot.beneficiary.beneficiary_name }}</br></span>
+                                        <span>Task: {{ slot.task }}</br></span>
+                                        <span>Task location: {{ slot.task_location }}</br></span>
+                                        <span>Date: {{ slot.date }}</br></span>
+                                        <span>Start_time: {{ slot.start_time }}</br></span>
+                                        <span>End time: {{ slot.end_time }}</br></span>
+                                        <span>Completed: {{ slot.completed }}</br></span>
+                                        <span>Credit minutes requested: {{ slot.credit_minutes_requested }}</br></span>
+                                        <span class="faded">Credit minutes approved: {{ slot.credit_minutes_approved }}</br></span>
+                                        <span class="faded">Teacher approved: {{ slot.teacher_approved }}</span>
                                     </p>
+                                </div>
                             </div>
-                            
-                        </div>
-                        <span class="badge bg-primary rounded-pill">14</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-start">
-                        <div class="ms-2 me-auto">
-                            <div class="fw-bold">Approved</div>
-                            Here, we'll loop through all of the slots approved by the teacher, displaying the minutes approved.
-                        </div>
-                        <span class="badge bg-primary rounded-pill">14</span>
-                    </li>
+                            <span class="badge bg-primary rounded-pill">Awaiting approval: 14</span>
+                        </li>
+                        {% endif %}
+                        {% if not slot.credit_hours_approved == 0 %}
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">
+                                    <p>Credit approved!</p>
+                                    <p class="dashboard_list">
+                                        <span>Beneficiary: {{ slot.beneficiary.beneficiary_name }}</br></span>
+                                        <span>Task: {{ slot.task }}</br></span>
+                                        <span>Task location: {{ slot.task_location }}</br></span>
+                                        <span>Date: {{ slot.date }}</br></span>
+                                        <span>Start_time: {{ slot.start_time }}</br></span>
+                                        <span>End time: {{ slot.end_time }}</br></span>
+                                        <span>Completed: {{ slot.completed }}</br></span>
+                                        <span>Credit minutes requested: {{ slot.credit_minutes_requested }}</br></span>
+                                        <span>Credit minutes approved: {{ slot.credit_minutes_approved }}</br></span>
+                                        <span>Teacher approved: {{ slot.teacher_approved }}</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <span id="approved_minutes" class="badge bg-primary rounded-pill">Approved: {{ slot.credit_minutes_approved }}</span>
+                        </li>
+                        {% endif %}
+                    {% endfor %}
                 </ul>
             </div>
         <div class="row">
-            <div class="col-6">
-                    <p>Minutes approved to date:</p>
+            <div class="col-4">
+                <p>Minutes approved to date:<span>Write some javascript to get the total!</span></p>
             </div>
-            <div class="col-6">Write some code to get the total!</div>
+            <div class="col-4">
+                <p>Hours needed until graduation:<span id="required-hours">30</span></p>
+            </div>
+            <div class="col-4">
+                <p>Remaining time required: <span id="remaining-time-required">Write some code to get the total!</span></p>
+            </div>
         </div>
     </div>
 </div>

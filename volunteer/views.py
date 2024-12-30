@@ -102,10 +102,8 @@ def student_dashboard(request):
     user = request.user
     slots = Slot.objects.filter(reserved_by=user)
 
-
     return render(
         request,
         "volunteer/student_dashboard.html",
-        {"slots": slots,
-        }
+        {"slots": slots,}
     )
