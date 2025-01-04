@@ -27,21 +27,6 @@ Student Dashboard
 <section id="manage-tasks">
     <div class="container">
         <div class="row">
-            <div class="col-6 mx-auto mb-5">
-                {% if user.is_authenticated %}
-                    <form id="slotUpdateForm" class="mb-5" method="post">
-                        {{ update_form | crispy }}
-                        {% csrf_token %}
-                        <button id="submitButton" type="submit" class="btn btn-secondary btn-lg">
-                            Update
-                        </button>
-                    </form>
-                {% else %}
-                    <p>Log in to manage tasks.</p>
-                {% endif %}
-            </div>
-        </div>
-        <div class="row">
                 <table class="table">
                     <thead>
                         <tr>
@@ -58,13 +43,14 @@ Student Dashboard
                             <th scope="col">Delete</th>
                         </tr>
                     </thead>
+                    <!--List of slots reserved by the current user-->   
                     <tbody>
                         {% for slot in slots %}
-                        <tr id="{{ slot.id }}" class="{% if slot.completed == False %}table-light
-                                {% elif slot.completed and not slot.credit_minutes_requested %}table-dark
-                                {% elif slot.credit_minutes_requested and not slot.credit_minutes_approved %}table-success
-                                {% elif slot.credit_minutes_approved == 0 %}table-primary
-                                {% else %}table-warning{% endif %}">
+                        <tr id="{{ slot.id }}" class="{% if slot.completed == False %}table-primary
+                                {% elif slot.completed and not slot.credit_minutes_requested %}table-info
+                                {% elif slot.credit_minutes_requested and not slot.credit_minutes_approved %}table-warning
+                                {% elif slot.credit_minutes_approved == 0 %}table-success
+                                {% else %}table-danger{% endif %}">
                             <td>{{ slot.beneficiary.beneficiary_name}}</td>
                             <td id="task{{ slot.id }}">{{ slot.task }}</td>
                             <td id="task_location{{ slot.id }}">{{ slot.task_location }}</td>
@@ -74,8 +60,8 @@ Student Dashboard
                             <td id="completed{{ slot.id }}">{{ slot.completed }}</td>
                             <td id="credit_minutes_requested{{ slot.id }}">{{ slot.credit_minutes_requested }}</td>
                             <td id="credit_minutes_approved{{ slot.id }}">{{ slot.credit_minutes_approved }}</td>
-                            <td><button class="btn btn-edit btn-sm" slot_id="{{ slot.id }}">Update</button></td>
-                            <td><button class="btn btn-delete btn-sm" slot_id="{{ slot.id }}">Delete</button></td>
+                            <td><button class="btn btn-edit btn-sm" data-slot_id="{{ slot.id }}">Update</button></td>
+                            <td><button class="btn btn-delete btn-sm" data-slot_id="{{ slot.id }}">Delete</button></td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -84,7 +70,22 @@ Student Dashboard
         </div>
     </div>
 </section>
-<!-------------------------Bottom portion of student dashboard with stats----->
+<!------------------------Form to Update or Delete a slot ----->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 mx-auto mb-5">
+                <form id="slotForm" class="mb-5" method="post">
+                    {{ form | crispy }}
+                    {% csrf_token %}
+                    <button id="submitButton" type="submit" class="btn btn-secondary btn-lg">
+                        Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-------------------------Student's stats----->
 <section id="cumulative hours">
     <div class="container mb-5">
         <div class="row mb-2">
@@ -102,10 +103,12 @@ Student Dashboard
     </div>
 </section>
 
+
+
 {% endif %}
+
+{% endblock content %}
 
 {% block extras %}
 <script src="{% static 'js/slots.js' %}"></script>
 {% endblock %}
-
-{% endblock content %}

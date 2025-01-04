@@ -6,7 +6,7 @@ const slotTaskStartTime = document.getElementById("id_start_time")
 const slotTaskEndTime = document.getElementById("id_end_time")
 const slotTaskCompleted = document.getElementById("id_completed")
 const slotTaskCreditMinutesRequested = document.getElementById("id_credit_minutes_requested")
-const slotUpdateForm = document.getElementById("slotUpdateForm");
+const slotForm = document.getElementById("slotForm");
 const submitButton = document.getElementById("submitButton");
 
 for (let button of editButtons) {
@@ -27,7 +27,7 @@ for (let button of editButtons) {
         let slotTaskCreditMinutesRequestedContent = document.getElementById("credit_minutes_requested${slotId}");
         slotTaskCreditMinutesRequested =slotTaskCreditMinutesRequestedContent;
         submitButton.innerText = "Update";
-        slotUpdateForm.setAttribute("action", `edit_slot/${slotId}`);
+        slotForm.setAttribute("action", `edit_slot/${slotId}`);
 
         console.log("This is from inside the event listener function");
     });

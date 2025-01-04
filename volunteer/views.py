@@ -7,7 +7,6 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from .models import Beneficiary, Slot
 from .forms import SlotForm
-from .forms import SlotUpdateForm
 
 
 class BeneficiaryList(generic.ListView):
@@ -75,38 +74,29 @@ def beneficiary_detail(request, slug):
 
 def slot_edit(request, slot_id):
     """
-    View to edit a slot from the student dashboard
+    View to edit a slot
     """
-    # if request.method == "GET":
-    #     user = request.user
-    #     slot = get_object_or_404(Slot, pk=slot_id)
-    #     update_form = SlotUpdateForm(request.POST, instance=slot)
-
     if request.method == "POST":
-        user=request.user
-        slot = get_object_or_404(Slot, pk=slot_id)
-        update_form = SlotUpdateForm(request.POST, instance=slot)
-        if update_form.is_valid() and slot.reserved_by == request.user:
-            slot = update_form.save(commit=False)
-            slot.beneficiary = beneficiary
+        slot = get_object_or_404(pk=slot_id)
+        form = SlotForm(request.POST, instance=slot)
+        if form.is_valid():
+            slot = form.save(commit=False)
             slot.publish_ok = False
             slot.save()
             messages.add_message(request, messages.SUCCESS,
                 'Your task has been updated!')
+            return redirect('student_dashboard')
         else:
             messages.add_message(request, messages.ERROR,
             'An error occurred updating the task')
-
-    update_form = SlotUpdateForm()
+    else:
+        form = SlotForm()
 
     return render(
-        response, 
+        response,
         'volunteer/student/student_dashboard.html',
-        {
-            'slot_id':slot_id,
-            'slot': slot,
-            'update_form': update_form,},
-        )
+        {"form":form,},
+    )
 
 
 @login_required(redirect_field_name="account_login")
@@ -123,4 +113,3 @@ def student_dashboard(request):
         "volunteer/student_dashboard.html",
         {"slots": slots,}
     )
-
