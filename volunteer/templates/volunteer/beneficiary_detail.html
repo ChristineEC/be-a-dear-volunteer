@@ -9,69 +9,75 @@ Beneficiary Details
 {% block content %}
 
 <!-- -----------------------Beneficiary detail-->
-<div class="container beneficiary-detail">
-    <div class="row">
-        <div class="col-12 p-2">
-            <h2>{{ beneficiary.beneficiary_name }}</h2>
-            <p>{{ beneficiary.description | safe }}</p>
-            <p>{{ beneficiary.location }} |
-                <span class="bold"> {{ beneficiary.contact_details }}</span>
-            </p>
-            <p>
-                <span class="px-2">Tasks planned: {{ slots_created_count }}</span>
-                <span class="px-2">Tasks completed: {{ slots_completed_count }}</span>
-            </p>
-        </div>
-    </div>
-</div>
-<!--List of published slots (and all reserved by current user) -->
-<div class="container-fluid slots-list">
-    <div class="row">
-        <div class="col-12 p-2">
-            <h2>Sample tasks for this beneficiary:</h2>
-            <p>Note that tasks are listed publicly at the discretion of the site managers.</p>
-            <div class="row">
-            {% for slot in slots %}
-                <div class="col-3 slot-display {% if not slot.publish_ok and slot.reserved_by == user %} faded {% elif not slot.publish_ok %} d-none {% endif %}">
-                    <p id="slot{{ slot.id }}" class="slot-task-display">{{ slot.task }}</p>
-                    {% if not slot.publish_ok and slot.reserved_by == user %}
-                    <p class="logged-in-user-msg"><span class="small">This task has not been published but still
-                        appears on your dashboard.</span></p>
-                    {% endif %}
-                    {% if user.is_authenticated and slot.reserved_by == user %}
-                    <button class="btn btn-edit btn-sm" slot_id="{{ slot.id }}">Edit</button>
-                    {% endif %}
-                </div>
-            {% endfor %}
+ <section id="Information about the beneficiary">
+    <div class="container beneficiary-detail">
+        <div class="row">
+            <div class="col-12 p-2">
+                <h2 id="Beneficiary detail">{{ beneficiary.beneficiary_name }}</h2>
+                <p>{{ beneficiary.description | safe }}</p>
+                <p>{{ beneficiary.location }} |
+                    <span class="bold"> {{ beneficiary.contact_details }}</span>
+                </p>
+                <p>
+                    <span class="px-2">Tasks planned by WCHS students: {{ slots_created_count }}</span>
+                    <span class="px-2">Tasks completed by WCHS students: {{ slots_completed_count }}</span>
+                </p>
             </div>
         </div>
     </div>
-</div>
-<!--------------------------Reserving slots------------>
-<div class="container">
-    <div class="row">
-        <div class="col-12 mx-auto p-2">
-            <h2>Add a task related to {{ beneficiary.beneficiary_name }} to your dashboard</h4>
-                <h3>Tasks can be managed on your dashboard.</h3>
-                <h4>If you plan to volunteer on multiple dates for the same beneficiary,
-                    go ahead and add multiple times here.
-            </h2>
-            {% if user.is_authenticated %}
-            <p class="graduate-bold">Reservation for: username {{ user.username }}</p>
-            <form id="slotForm" method="post">
-                {{ form | crispy }}
-                {% csrf_token %}
-                <button id="submitButton" type="submit" class="btn btn-secondary btn-lg">Save to Dashboard</button>
-            </form>
-            {% else %}
-            <p>Log in to save a slot
-                <a href="{{ login_url }}" value="login">Log In</a>
-            </p>
-            {% endif %}
+ </section>
+<!--List of published slots (and all reserved by current user) -->
+<section id="Planned tasks">
+    <div class="container-fluid slots-list">
+        <div class="row">
+            <div class="col-12 p-2">
+                <h2>Sample tasks for this beneficiary:</h2>
+                <h3>Note that tasks are listed publicly at the discretion of the site managers.</h3>
+                <div class="row">
+                {% for slot in slots %}
+                    <div class="col-4 slot-display {% if not slot.publish_ok and slot.reserved_by == user %} faded {% elif not slot.publish_ok %} d-none {% endif %}">
+                        <p class="slot-task-display">{{ slot.task }}
+                            <br>
+                            <span>{{ slot.task_location }}</span>
+                            {% if not slot.publish_ok and slot.reserved_by == user %}
+                            <br>
+                            <span class="logged-in-user-msg">This task has not been published but still
+                            appears on your dashboard.</span>
+                            {% endif %}
+                        </p>
+                        {% if user.is_authenticated and slot.reserved_by == user %}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
-</div>
-
+</section>
+<!--------------------------Reserving slots------------>
+<section id="Save task related to this beneficiary to student dashboard">
+    <div class="container">
+        <div class="row short-form-div">
+            <div class="col-12 mx-auto p-2">
+                <h3>Add a task related to {{ beneficiary.beneficiary_name }} to your dashboard.</h3>
+                <h4>You can manage the details and update your tasks on your <a href="{% url 'student_dashboard' %}">dashboard</a>.</h4>
+                <h5>If you plan to volunteer on multiple dates for the same beneficiary,
+                {% if user.is_authenticated %}
+                <p class="graduate-bold">Reservation for username: {{ user.username }}</p>
+                <form id="slotForm" class="mb-5" method="post">
+                    {{ form | crispy }}
+                    {% csrf_token %}
+                    <button id="submitButton" type="submit" class="btn btn-secondary btn-lg">Save to Dashboard</button>
+                </form>
+                {% else %}
+                <p>You must be logged in to save a task to your dashboard.
+                    <a href="{{ login_url }}" value="login">Log In</a>
+                </p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock content %}
 
 {% block extras %}

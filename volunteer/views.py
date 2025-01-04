@@ -4,8 +4,10 @@ from django.views import generic
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+from django.urls import reverse_lazy
 from .models import Beneficiary, Slot
 from .forms import SlotForm
+from .forms import SlotUpdateForm
 
 
 class BeneficiaryList(generic.ListView):
@@ -71,17 +73,21 @@ def beneficiary_detail(request, slug):
     )
 
 
-def slot_edit(request, slug, slot_id):
+def slot_edit(request, slot_id):
     """
-    View to edit a slot on the beneficiary_details page
+    View to edit a slot from the student dashboard
     """
+    # if request.method == "GET":
+    #     user = request.user
+    #     slot = get_object_or_404(Slot, pk=slot_id)
+    #     update_form = SlotUpdateForm(request.POST, instance=slot)
+
     if request.method == "POST":
-        queryset = Beneficiary.objects.filter(status=1)
-        beneficiary = get_object_or_404(queryset, slug=slug)
+        user=request.user
         slot = get_object_or_404(Slot, pk=slot_id)
-        form = SlotForm(request.POST, instance=slot)
-        if form.is_valid() and slot.reserved_by == request.user:
-            slot = form.save(commit=False)
+        update_form = SlotUpdateForm(request.POST, instance=slot)
+        if update_form.is_valid() and slot.reserved_by == request.user:
+            slot = update_form.save(commit=False)
             slot.beneficiary = beneficiary
             slot.publish_ok = False
             slot.save()
@@ -91,7 +97,17 @@ def slot_edit(request, slug, slot_id):
             messages.add_message(request, messages.ERROR,
             'An error occurred updating the task')
 
-    return HttpResponseRedirect(reverse('beneficiary_detail', args=[slug]))
+    update_form = SlotUpdateForm()
+
+    return render(
+        response, 
+        'volunteer/student/student_dashboard.html',
+        {
+            'slot_id':slot_id,
+            'slot': slot,
+            'update_form': update_form,},
+        )
+
 
 @login_required(redirect_field_name="account_login")
 def student_dashboard(request):
@@ -107,3 +123,4 @@ def student_dashboard(request):
         "volunteer/student_dashboard.html",
         {"slots": slots,}
     )
+

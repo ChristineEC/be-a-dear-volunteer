@@ -1,17 +1,18 @@
 body {
-    background-color:rgb(234, 208, 174);
+    background-color:rgb(236, 220, 199);
     margin: 0px;
     padding: 0px;
 }
 
 .heading-image {
-    max-height: 100px;
+    max-height: 200px;
 }
 
 
 .about-image-container{
 
 }
+
 .about-image {
     width: 300px;
     height: auto;
@@ -21,28 +22,11 @@ body {
     text: red;
 }
 
-/* .heading-img {
+.heading-img {
     width: 100%;
     max-height: 200px;
     object-fit: cover;
 }
- */
-
-
-
-/* Remove default gutters on rows */
-/* .row {
-    --bs-gutter-x: 0;
-    --bs-gutter-y: 0;
-}
-
-.container {
-    --bs-gutter-x: 0;
-    --bs-gutter-y: 0;
-    margin-top: 0;
-    margin-right: 0;
-    margin-left: 0;
-} */
 
 
 /*---------------Beneficiary Card------*/
@@ -100,6 +84,11 @@ body {
       "wdth" 100;
   }
 
+.logged-in-user-msg {
+    color: rgb(226, 5, 5);
+    font-style: italic;
+}
+
 /* --------------------Buttons-------- */
 
 .btn-edit {
@@ -109,13 +98,8 @@ body {
     font-weight:bold
 }
 
-
-.logged-in-user-msg {
-    color: rgb(226, 5, 5);
-    font-style: italic;
+#updateButton {
+    
 }
 
 
-.dashboard-list{
-    font-style:normal;
-}
