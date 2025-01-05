@@ -102,4 +102,7 @@ body {
     
 }
 
-
+/* ------------- Inline links ----*/
+.inline-link {
+    text-decoration:none;
+}

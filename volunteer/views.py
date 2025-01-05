@@ -4,7 +4,7 @@ from django.views import generic
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from django.urls import reverse_lazy
+# from django.urls import reverse_lazy
 from .models import Beneficiary, Slot
 from .forms import SlotForm
 
@@ -42,7 +42,7 @@ def beneficiary_detail(request, slug):
             slot = form.save(commit=False)
             slot.reserved_by = request.user
             slot.beneficiary = beneficiary
-            form.save(slot)
+            form.save()
             messages.add_message(
                 request, messages.SUCCESS,
                 "Your slot has been saved and will now appear"
@@ -87,7 +87,7 @@ def slot_edit(request, slot_id):
         :template:`volunteer/beneficiary_detail.html`
     """
     if request.method == "POST":
-        slot = get_object_or_404(pk=slot_id)
+        slot = get_object_or_404(Slot, pk=slot_id)
         form = SlotForm(request.POST, instance=slot)
         if form.is_valid():
             slot = form.save(commit=False)
@@ -105,22 +105,40 @@ def slot_edit(request, slot_id):
     return HttpResponseRedirect(
         reverse('beneficiary_detail', args=[slug]))
 
-# View to update a slot from the student dashboard
-# def update_slot(request, pk):
-#     """
-#     View to update a slot from the student dashboard.
-#     **Context:**
-#     `slot`
-#     An instance of :model: Slot
-#     `form` 
-#     An instance of :form: volunteer.SlotForm
-#     ""Template"
-#     :template: 'volunteer.update_task.html'
-#     """
-#     slot = Slot.objects.get(id=pk)
-#     form = SlotForm(instance=slot)
-#     context = {'form': form }
-#     return render(request, 'volunteer/update_task.html', context)
+
+def update_slot(request, pk):
+    """
+    View to update a slot from the student dashboard.
+    **Context:**
+    `slot`
+    An instance of :model: Slot
+    `form` 
+    An instance of :form: volunteer.SlotForm
+    ""Template"
+    :template: 'volunteer.update_task.html'
+    """
+
+    slot = Slot.objects.get(id=pk)
+    form = SlotForm(instance=slot)
+    user = request.user
+    if request.method == "POST":
+        form = SlotForm(request.POST, instance=slot)
+        if form.is_valid():
+            form.save(commit=False)
+            slot.publish_ok = False
+            form.save()
+            return HttpResponseRedirect(
+                reverse('student_dashboard'))
+                
+
+    return render(request,
+        'volunteer/update_task.html',
+        {
+            'form': form, 
+            'user':user, 
+            'slot':slot,
+        },
+    )
 
 
 

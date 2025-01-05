@@ -51,14 +51,14 @@ Student Dashboard
                                     {% elif slot.credit_minutes_approved == 0 %}table-success
                                     {% else %}table-danger{% endif %}">
                                 <td>{{ slot.beneficiary.beneficiary_name}}</td>
-                                <td id="task{{ slot.id }}">{{ slot.task }}</td>
-                                <td id="task_location{{ slot.id }}">{{ slot.task_location }}</td>
-                                <td id="date{{ slot.id }}">{{ slot.dates }}</td>
-                                <td id="time{{ slot.id }}">{{ slot.times }}</td>
-                                <td id="completed{{ slot.id }}">{{ slot.completed }}</td>
-                                <td id="credit_minutes_requested{{ slot.id }}">{{ slot.credit_minutes_requested }}</td>
-                                <td id="credit_minutes_approved{{ slot.id }}">{{ slot.credit_minutes_approved }}</td>
-                                <td><a href="{% url 'update_slot' %}">Update</a></td>
+                                <td>{{ slot.task }}</td>
+                                <td>{{ slot.task_location }}</td>
+                                <td>{{ slot.dates }}</td>
+                                <td>{{ slot.times }}</td>
+                                <td>{{ slot.completed }}</td>
+                                <td>{{ slot.credit_minutes_requested }}</td>
+                                <td>{{ slot.credit_minutes_approved }}</td>
+                                <td><a href="{% url 'update_slot' slot.id %}">Update</a></td>
                                 <td><a href="#">Delete</a></td>
                             </tr>
                             {% endfor %}
