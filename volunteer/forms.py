@@ -7,9 +7,10 @@ class SlotForm(forms.ModelForm):
         model = Slot
         fields = ['task',
             'task_location',
-            'date',
-            'time',
+            'dates',
+            'times',
             'completed',
             'credit_minutes_requested',
-            'credit_minutes_approved',
         ]
+
+

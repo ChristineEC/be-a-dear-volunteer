@@ -1,0 +1,25 @@
+<!-- {% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}Update Task{% endblock head_title %}
+
+{% block content %}
+
+<section id="edit-task">
+    {% if user.is_authenticated %}
+    <div class="container">
+        <h1>Update a task:</h1>
+        <form id="slotForm" class="mb-5" method="post" action="">
+            {{ form | crispy }}
+            {% csrf_token %}
+            <button id="submitButton" type="submit" class="btn btn-secondary btn-lg">
+                Update</button>
+        </form>
+    </div>
+    <div>
+        <h1>You must be logged in to manage your tasks.</h1>
+    </div>
+    {% endif %}
+</section>
+
+{% endblock %} -->

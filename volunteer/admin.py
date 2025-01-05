@@ -34,13 +34,15 @@ class SlotAdmin(admin.ModelAdmin):
         'beneficiary',
         'task',
         'task_location',
+        'dates',
+        'times',
         'reserved_by',
         'credit_minutes_requested',
         'credit_minutes_approved',
         )
 
     search_fields = []
-    list_filter = ('reserved_by', 'date',)
+    list_filter = ('reserved_by',)
 
     class Meta:
         ordering = ['status', 'reserved_by']

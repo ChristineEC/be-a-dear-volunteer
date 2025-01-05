@@ -34,21 +34,23 @@ Beneficiary Details
                 <h2>Sample tasks for this beneficiary:</h2>
                 <h3>Note that tasks are listed publicly at the discretion of the site managers.</h3>
                 <div class="row">
-                {% for slot in slots %}
-                    <div class="col-4 slot-display {% if not slot.publish_ok and slot.reserved_by == user %} faded {% elif not slot.publish_ok %} d-none {% endif %}">
-                        <p class="slot-task-display">{{ slot.task }}
-                            <br>
-                            <span>{{ slot.task_location }}</span>
-                            {% if not slot.publish_ok and slot.reserved_by == user %}
-                            <br>
-                            <span class="logged-in-user-msg">This task has not been published but still
-                            appears on your dashboard.</span>
+                    {% for slot in slots %}
+                        <div class="col-4 slot-display {% if not slot.publish_ok and slot.reserved_by == user %} faded {% elif not slot.publish_ok %} d-none {% endif %}">
+                            <p class="slot-task-display">{{ slot.task }}
+                                <br>
+                                <span>{{ slot.task_location }}</span>
+                                {% if not slot.publish_ok and slot.reserved_by == user %}
+                                <br>
+                                <span class="logged-in-user-msg">This task has not been published but still
+                                appears on your dashboard.</span>
+                                {% endif %}
+                            </p>
+                            {% if user.is_authenticated and slot.reserved_by == user %}
+                            <button class="btn btn-edit btn-sm" data-slot_id="{{ slot.id }}">Update</button>
+                            <button class="btn btn-delete btn-sm" data-slot_id="{{ slot.id }}">Delete</button>
                             {% endif %}
-                        </p>
-                        {% if user.is_authenticated and slot.reserved_by == user %}
-                        {% endif %}
-                    </div>
-                {% endfor %}
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>

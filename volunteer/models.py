@@ -7,13 +7,13 @@ STATUS = (
     (1, "Published")
     )
 
-CLASS_YEARS = (
-    ("FR", "Freshman"),
-    ("SO", "Sophmore"),
-    ("JR", "Junior"),
-    ("SR", "Senior"),
-    ("UA", "Unassigned"),
-    )
+# CLASS_YEARS = (
+#     ("FR", "Freshman"),
+#     ("SO", "Sophmore"),
+#     ("JR", "Junior"),
+#     ("SR", "Senior"),
+#     ("UA", "Unassigned"),
+#     )
 
 
 # Create your models here.
@@ -40,8 +40,8 @@ class Slot(models.Model):
     beneficiary = models.ForeignKey(Beneficiary, on_delete=models.CASCADE, related_name="slots")
     task = models.CharField(max_length=200, default="")
     task_location = models.CharField(max_length=200, default="TBD (use pseudonym for private beneficiary)")
-    date = models.CharField(max_length=200, default="to be determined")
-    time = models.CharField(max_length=200, default="to be determined")
+    dates = models.CharField(max_length=200, default="to be determined")
+    times = models.CharField(max_length=200, default="to be determined")
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     reserved_by = models.ForeignKey(User, blank=True, on_delete=models.CASCADE, related_name="reservations")
@@ -53,7 +53,7 @@ class Slot(models.Model):
 
     class Meta:
         ordering = ["created_on"]
-
+        
 
 # class Homeroom(models.Model):
 

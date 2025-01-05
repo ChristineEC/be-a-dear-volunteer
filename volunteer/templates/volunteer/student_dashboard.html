@@ -34,8 +34,7 @@ Student Dashboard
                             <th scope="col">Task</th>
                             <th scope="col">Task Location</th>
                             <th scope="col">Date</th>
-                            <th scope="col">Start Time</th>
-                            <th scope="col">End Time</th>
+                            <th scope="col">Time</th>
                             <th scope="col">Completed</th>
                             <th scope="col">Minutes Requested</th>
                             <th scope="col">Minutes Approved</th>
@@ -45,25 +44,24 @@ Student Dashboard
                     </thead>
                     <!--List of slots reserved by the current user-->   
                     <tbody>
-                        {% for slot in slots %}
-                        <tr id="{{ slot.id }}" class="{% if slot.completed == False %}table-primary
-                                {% elif slot.completed and not slot.credit_minutes_requested %}table-info
-                                {% elif slot.credit_minutes_requested and not slot.credit_minutes_approved %}table-warning
-                                {% elif slot.credit_minutes_approved == 0 %}table-success
-                                {% else %}table-danger{% endif %}">
-                            <td>{{ slot.beneficiary.beneficiary_name}}</td>
-                            <td id="task{{ slot.id }}">{{ slot.task }}</td>
-                            <td id="task_location{{ slot.id }}">{{ slot.task_location }}</td>
-                            <td id="date{{ slot.id }}">{{ slot.date }}</td>
-                            <td id="start_time{{ slot.id }}">{{ slot.start_time }}</td>
-                            <td id="end_time{{ slot.id }}">{{ slot.end_time }}</td>
-                            <td id="completed{{ slot.id }}">{{ slot.completed }}</td>
-                            <td id="credit_minutes_requested{{ slot.id }}">{{ slot.credit_minutes_requested }}</td>
-                            <td id="credit_minutes_approved{{ slot.id }}">{{ slot.credit_minutes_approved }}</td>
-                            <td><button class="btn btn-edit btn-sm" data-slot_id="{{ slot.id }}">Update</button></td>
-                            <td><button class="btn btn-delete btn-sm" data-slot_id="{{ slot.id }}">Delete</button></td>
-                        </tr>
-                        {% endfor %}
+                            {% for slot in slots %}
+                            <tr id="{{ slot.id }}" class="{% if slot.completed == False %}table-primary
+                                    {% elif slot.completed and not slot.credit_minutes_requested %}table-info
+                                    {% elif slot.credit_minutes_requested and not slot.credit_minutes_approved %}table-warning
+                                    {% elif slot.credit_minutes_approved == 0 %}table-success
+                                    {% else %}table-danger{% endif %}">
+                                <td>{{ slot.beneficiary.beneficiary_name}}</td>
+                                <td id="task{{ slot.id }}">{{ slot.task }}</td>
+                                <td id="task_location{{ slot.id }}">{{ slot.task_location }}</td>
+                                <td id="date{{ slot.id }}">{{ slot.dates }}</td>
+                                <td id="time{{ slot.id }}">{{ slot.times }}</td>
+                                <td id="completed{{ slot.id }}">{{ slot.completed }}</td>
+                                <td id="credit_minutes_requested{{ slot.id }}">{{ slot.credit_minutes_requested }}</td>
+                                <td id="credit_minutes_approved{{ slot.id }}">{{ slot.credit_minutes_approved }}</td>
+                                <td><a href="{% url 'update_slot' %}">Update</a></td>
+                                <td><a href="#">Delete</a></td>
+                            </tr>
+                            {% endfor %}
                     </tbody>
                 </table>
             </div>

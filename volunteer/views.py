@@ -4,9 +4,8 @@ from django.views import generic
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-# from django.urls import reverse_lazy
-from .models import Beneficiary
-from .models import Slot
+from django.urls import reverse_lazy
+from .models import Beneficiary, Slot
 from .forms import SlotForm
 
 
@@ -74,9 +73,18 @@ def beneficiary_detail(request, slug):
     )
 
 
+@login_required(redirect_field_name="account_login")
 def slot_edit(request, slot_id):
     """
-    View to edit a slot
+    View to edit a slot directly on the
+    beneficiary_detail page.
+    **Context**
+    `slot`
+        An instance of :model: Slot
+    ``form``
+        An instance of :form: `volunteer.SlotForm`.
+    **Template**
+        :template:`volunteer/beneficiary_detail.html`
     """
     if request.method == "POST":
         slot = get_object_or_404(pk=slot_id)
@@ -94,11 +102,26 @@ def slot_edit(request, slot_id):
     else:
         form = SlotForm()
 
-    return render(
-        response,
-        'volunteer/student/student_dashboard.html',
-        {"form":form,},
-    )
+    return HttpResponseRedirect(
+        reverse('beneficiary_detail', args=[slug]))
+
+# View to update a slot from the student dashboard
+# def update_slot(request, pk):
+#     """
+#     View to update a slot from the student dashboard.
+#     **Context:**
+#     `slot`
+#     An instance of :model: Slot
+#     `form` 
+#     An instance of :form: volunteer.SlotForm
+#     ""Template"
+#     :template: 'volunteer.update_task.html'
+#     """
+#     slot = Slot.objects.get(id=pk)
+#     form = SlotForm(instance=slot)
+#     context = {'form': form }
+#     return render(request, 'volunteer/update_task.html', context)
+
 
 
 @login_required(redirect_field_name="account_login")
@@ -115,3 +138,5 @@ def student_dashboard(request):
         "volunteer/student_dashboard.html",
         {"slots": slots,}
     )
+
+

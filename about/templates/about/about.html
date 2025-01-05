@@ -5,13 +5,13 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row p-5">
-        <!-- <div class="col-3 mb-5">
+        <div class="col-3 mb-5">
             {% if "placeholder" in about.featured_image.url %}
             <img class="scale" src="{% static 'images/about_image.jpg' %}" alt="placeholder image for the About page">
             {% else %}
             <img class="scale" src="{{ about.featured_image.url }}" alt="{{ about.title }}">
             {% endif %}
-        </div> -->
+        </div>
         <div class="col-9 mb-5">
                 <h1 class="about-header d-none">About the Be a Dear Project</h1>
                 <h2>{{ about.title }}</h2>
