@@ -50,4 +50,4 @@ class SlotAdmin(admin.ModelAdmin):
 
 
 # # Registration of model
-# # admin.site.register(Homeroom)
+
