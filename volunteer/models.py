@@ -29,7 +29,7 @@ class Beneficiary(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
-    featured_image = CloudinaryField('image', default='hearts.jpg')
+    featured_image = CloudinaryField('image', default='placeholderimage.jpg')
 
     class Meta:
         ordering = ["beneficiary_name"]
@@ -39,10 +39,9 @@ class Slot(models.Model):
 
     beneficiary = models.ForeignKey(Beneficiary, on_delete=models.CASCADE, related_name="slots")
     task = models.CharField(max_length=200, default="")
-    task_location = models.CharField(max_length=200, default="")
-    date = models.DateField(blank=True, null=True)
-    start_time = models.TimeField(blank=True, null=True)
-    end_time = models.TimeField(blank=True, null=True)
+    task_location = models.CharField(max_length=200, default="TBD (use pseudonym for private beneficiary)")
+    date = models.CharField(max_length=200, default="to be determined")
+    time = models.CharField(max_length=200, default="to be determined")
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     reserved_by = models.ForeignKey(User, blank=True, on_delete=models.CASCADE, related_name="reservations")
@@ -56,15 +55,15 @@ class Slot(models.Model):
         ordering = ["created_on"]
 
 
-class Homeroom(models.Model):
+# class Homeroom(models.Model):
 
-    homeroom_number = models.CharField(max_length=10, primary_key=True)
-    class_year = models.CharField(max_length=10, choices=CLASS_YEARS)
+#     homeroom_number = models.CharField(max_length=10, primary_key=True)
+#     class_year = models.CharField(max_length=10, choices=CLASS_YEARS)
 
-    class Meta:
-        app_label = "volunteer"
-        ordering = ["homeroom_number", "class_year"]
+#     class Meta:
+#         app_label = "volunteer"
+#         ordering = ["homeroom_number", "class_year"]
 
-    def _str__(self):
-        return f"Homeroom: {self.homeroom_number} | Class Year: {self.class_year}"
+#     def _str__(self):
+#         return f"Homeroom: {self.homeroom_number} | Class Year: {self.class_year}"
 

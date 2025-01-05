@@ -4,9 +4,11 @@ from django.views import generic
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from django.urls import reverse_lazy
-from .models import Beneficiary, Slot
+# from django.urls import reverse_lazy
+from .models import Beneficiary
+from .models import Slot
 from .forms import SlotForm
+
 
 
 class BeneficiaryList(generic.ListView):

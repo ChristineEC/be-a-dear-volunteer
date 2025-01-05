@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Beneficiary, Slot, Homeroom
+from .models import Beneficiary, Slot
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -14,10 +14,10 @@ class BeneficiaryAdmin(SummernoteModelAdmin):
     """
 
     list_display = ( 'beneficiary_name','id', 'location', 'contact_details', 'status')
-    search_fields = ['beneficiary_name']
+    search_fields = ['beneficiary_name',]
     list_filter = ('status',)
     prepopulated_fields = {'slug': ('beneficiary_name',)}
-    summernote_fields = ('description',)
+    summernote_fields = ('short_description', 'description',)
 
     class Meta:
         ordering = ['beneficiary_name']
@@ -37,7 +37,6 @@ class SlotAdmin(admin.ModelAdmin):
         'reserved_by',
         'credit_minutes_requested',
         'credit_minutes_approved',
-        'teacher_approved'
         )
 
     search_fields = []
@@ -49,4 +48,4 @@ class SlotAdmin(admin.ModelAdmin):
 
 
 # Registration of model
-admin.site.register(Homeroom)
+# admin.site.register(Homeroom)

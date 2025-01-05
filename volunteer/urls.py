@@ -1,6 +1,7 @@
 from . import views
 from django.urls import path, include
 
+
 urlpatterns = [
     path('', views.BeneficiaryList.as_view(), name="home"),
     path('student/', views.student_dashboard, name="student_dashboard"),
