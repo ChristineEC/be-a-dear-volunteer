@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Beneficiary, Slot, Homeroom
+from .models import Beneficiary, Slot
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -49,5 +49,5 @@ class SlotAdmin(admin.ModelAdmin):
 
 
 
-# Registration of model
-admin.site.register(Homeroom)
+# # Registration of model
+# # admin.site.register(Homeroom)
