@@ -87,7 +87,7 @@ def slot_edit(request, slug, slot_id):
     """
     if request.method == "POST":
         user = request.user
-        queryset = Beneficiary.objects.filter(reserved_by=user)
+        queryset = Beneficiary.objects.filter(status=1)
         beneficiary = get_object_or_404(queryset, slug=slug)
         slot = get_object_or_404(Slot, pk=slot_id)
         slot_form = SlotForm(request.POST, instance=slot)

@@ -57,7 +57,7 @@ Beneficiary Details
                                     appears on your dashboard.</span>
                                 {% endif %}
                                 {% if user.is_authenticated and slot.reserved_by == user %}
-                                <button id="submitButton" class="btn btn-edit btn-sm" slot_id="{{ slot.id }}">Edit</button>
+                                <button class="btn btn-edit btn-sm" slot_id="{{ slot.id }}">Edit</button>
                                 <button class="btn btn-delete btn-sm" slot_id="{{ slot.id }}">Delete</button>
                             </p>
                             {% endif %}
@@ -75,7 +75,7 @@ Beneficiary Details
             <div class="col-12 mx-auto p-2">
                 <h3>Add a task related to {{ beneficiary.beneficiary_name }} to your dashboard.</h3>
                 <h4>You can manage the details and update your tasks on your <a href="{% url 'student_dashboard' %}" class="inline-link">dashboard</a>.</h4>
-                <h5>If you plan to volunteer on multiple dates for the same beneficiary,
+                <h5>If you plan to volunteer on multiple dates for the same beneficiary, go ahead and add several here. You can fill in the details later on your student dashboard.</h5>
                 {% if user.is_authenticated %}
                 <p class="graduate-bold">Reservation for username: {{ user.username }}</p>
                 <form id="slotForm" class="mb-5" method="post">

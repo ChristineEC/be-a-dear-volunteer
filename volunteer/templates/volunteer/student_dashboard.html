@@ -68,21 +68,6 @@ Student Dashboard
         </div>
     </div>
 </section>
-<!------------------------Form to Update or Delete a slot ----->
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-6 mx-auto mb-5">
-                <form id="slotForm" class="mb-5" method="post">
-                    {{ form | crispy }}
-                    {% csrf_token %}
-                    <button id="submitButton" type="submit" class="btn btn-secondary btn-lg">
-                        Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
 <!-------------------------Student's stats----->
 <section id="cumulative hours">
     <div class="container mb-5">

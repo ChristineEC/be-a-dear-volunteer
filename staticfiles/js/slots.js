@@ -31,7 +31,7 @@ for (let button of editButtons) {
             (`credit_minutes_requested${slotId}`).innerText;
         slotCreditMinutesRequested = slotCreditMinutesRequestedContent;
         submitButton.innerText = "Update";
-        slotForm.setAttribute("action", `edit_slot/${slotId}`);
+        slotForm.setAttribute("action", `update_task/${slotId}`);
 
         console.log
             ("This is from inside the event listener function");

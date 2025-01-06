@@ -15,6 +15,11 @@ CLASS_YEARS = (
     ("UA", "Unassigned"),
     )
 
+COMPLETION = (
+    ("Yes", "Completed"),
+    ("No", "Incomplete"),
+)
+
 
 # Create your models here.
 
@@ -45,7 +50,7 @@ class Slot(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     reserved_by = models.ForeignKey(User, blank=True, on_delete=models.CASCADE, related_name="reservations")
-    completed = models.BooleanField(default=False)
+    completed = models.CharField(choices=COMPLETION, default="No")
     credit_minutes_requested = models.SmallIntegerField(default=0)
     credit_minutes_approved = models.SmallIntegerField(default=0)
     publish_ok = models.BooleanField(default=False)
