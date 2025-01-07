@@ -45,8 +45,8 @@ Student Dashboard
                     <!--List of slots reserved by the current user-->   
                     <tbody>
                             {% for slot in slots %}
-                            <tr id="{{ slot.id }}" class="{% if slot.completed == False %}table-primary
-                                    {% elif slot.completed and not slot.credit_minutes_requested %}table-info
+                            <tr id="{{ slot.id }}" class="{% if slot.completed == 0 %}table-primary
+                                    {% elif slot.completed and not slot.credit_minutes_requested %} table-info
                                     {% elif slot.credit_minutes_requested and not slot.credit_minutes_approved %}table-warning
                                     {% elif slot.credit_minutes_approved == 0 %}table-success
                                     {% else %}table-danger{% endif %}">

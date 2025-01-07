@@ -98,6 +98,13 @@ body {
     font-weight:bold
 }
 
+.btn-delete {
+    background-color:rgb(248, 22, 10);
+    border-width: 1px;
+    font:rgba(32, 16, 1, 0.779);
+    font-weight:bold
+}
+
 #updateButton {
     
 }
@@ -105,4 +112,5 @@ body {
 /* ------------- Inline links ----*/
 .inline-link {
     text-decoration:none;
+    color: black;
 }

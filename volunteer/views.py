@@ -107,6 +107,35 @@ def slot_edit(request, slug, slot_id):
         reverse('beneficiary_detail', args=[slug]))
 
 
+@login_required(redirect_field_name="account_login")
+def slot_delete(request, slug, slot_id):
+    """
+    View to edit a slot directly on the
+    beneficiary_detail page.
+    **Context**
+    `slot`
+        An instance of :model: Slot
+    ``form``
+        An instance of :form: `volunteer.SlotForm`.
+    **Template**
+        :template:`volunteer/beneficiary_detail.html`
+    """
+    if request.method == "POST":
+        queryset = Beneficiary.objects.filter(status=1)
+        beneficiary = get_object_or_404(queryset, slug=slug)
+        slot = get_object_or_404(Slot, pk=slot_id)
+        if slot.reserved_by == request.user:
+            messages.add_message(request, messages.SUCCESS,
+                'Your task has been deleted!')
+
+        else:
+            messages.add_message(request, messages.ERROR,
+            'You can only delete your own tasks.')
+
+    return HttpResponseRedirect(
+        reverse('beneficiary_detail', args=[slug]))
+
+
 def update_slot(request, pk):
     """
     View to update a slot from the student dashboard.

@@ -24,14 +24,17 @@ for (let button of editButtons) {
         let slotTimesContent = document.getElementById
             (`times${slotId}`).innerText;
         slotTimes.value = slotTimesContent;
+
         let slotCompletedContent = document.getElementById
             (`completed${slotId}`).innerText;
+
         slotCompleted.value = slotCompletedContent;
+        
         let slotCreditMinutesRequestedContent = document.getElementById
             (`credit_minutes_requested${slotId}`).innerText;
-        slotCreditMinutesRequested = slotCreditMinutesRequestedContent;
+        slotCreditMinutesRequested.value = slotCreditMinutesRequestedContent;
         submitButton.innerText = "Update";
-        slotForm.setAttribute("action", `update_task/${slotId}`);
+        slotForm.setAttribute("action", `edit_slot/${slotId}/`);
 
         console.log
             ("This is from inside the event listener function");
