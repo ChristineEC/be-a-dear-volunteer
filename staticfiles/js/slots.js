@@ -1,3 +1,6 @@
+/* --------  Most credit for this code goes to Code Institute --*/
+/* ----It has been adapted for my purposes --*/
+
 const editButtons = document.getElementsByClassName("btn-edit");
 const slotTask = document.getElementById("id_task");
 const slotLocation = document.getElementById("id_task_location");
@@ -9,6 +12,22 @@ const slotCreditMinutesRequested = document.getElementById
 const slotForm = document.getElementById("slotForm");
 const submitButton = document.getElementById("submitButton");
 
+/* --------  Credit for this code goes to Code Institute --*/
+const deleteModal = new
+bootstrap.Modal(document.getElementById("deleteModal"));
+const deleteButtons =  document.getElementsByClassName("btn-delete");
+const deleteConfirm = document.getElementById("deleteConfirm");
+
+for (let button of deleteButtons) {
+    button.addEventListener("click", (e) => {
+        let slotId = e.target.getAttribute("slot_id");
+        deleteConfirm.href = `delete_slot/${slotId}/`;
+        deleteModal.show();
+    });
+}
+
+/* --------  Most credit for this code goes to Code Institute --*/
+/* ----It has been adapted for my purposes --*/
 for (let button of editButtons) {
     button.addEventListener("click", (e) => {
         let slotId = e.target.getAttribute("slot_id");
@@ -24,21 +43,13 @@ for (let button of editButtons) {
         let slotTimesContent = document.getElementById
             (`times${slotId}`).innerText;
         slotTimes.value = slotTimesContent;
-
         let slotCompletedContent = document.getElementById
             (`completed${slotId}`).innerText;
-
         slotCompleted.value = slotCompletedContent;
-        
         let slotCreditMinutesRequestedContent = document.getElementById
             (`credit_minutes_requested${slotId}`).innerText;
         slotCreditMinutesRequested.value = slotCreditMinutesRequestedContent;
         submitButton.innerText = "Update";
         slotForm.setAttribute("action", `edit_slot/${slotId}/`);
-
-        console.log
-            ("This is from inside the event listener function");
     });
 }
-
-console.log("The function has completed!");

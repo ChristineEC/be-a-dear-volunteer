@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, reverse
-from django.contrib.auth.decorators import login_required
 from django.views import generic
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.http import HttpResponseRedirect
@@ -15,6 +15,7 @@ class BeneficiaryList(generic.ListView):
     paginate_by: 6
 
 
+# Adapted from Code Institute lesson, I Think Therefore I Blog
 def beneficiary_detail(request, slug):
     """
     Displays an individual :model: `volunteer.Beneficiary`.
@@ -71,8 +72,7 @@ def beneficiary_detail(request, slug):
         },
     )
 
-
-@login_required(redirect_field_name="account_login")
+# Adapted from Code Institute lesson, I Think Therefore I Blog
 def slot_edit(request, slug, slot_id):
     """
     View to edit a slot directly on the
@@ -86,7 +86,6 @@ def slot_edit(request, slug, slot_id):
         :template:`volunteer/beneficiary_detail.html`
     """
     if request.method == "POST":
-        user = request.user
         queryset = Beneficiary.objects.filter(status=1)
         beneficiary = get_object_or_404(queryset, slug=slug)
         slot = get_object_or_404(Slot, pk=slot_id)
@@ -106,31 +105,27 @@ def slot_edit(request, slug, slot_id):
     return HttpResponseRedirect(
         reverse('beneficiary_detail', args=[slug]))
 
-
-@login_required(redirect_field_name="account_login")
+# Adapted from Code Institute lesson, I Think Therefore I Blog
 def slot_delete(request, slug, slot_id):
     """
-    View to edit a slot directly on the
+    View to delete a slot directly on the
     beneficiary_detail page.
     **Context**
     `slot`
         An instance of :model: Slot
-    ``form``
-        An instance of :form: `volunteer.SlotForm`.
     **Template**
         :template:`volunteer/beneficiary_detail.html`
     """
-    if request.method == "POST":
-        queryset = Beneficiary.objects.filter(status=1)
-        beneficiary = get_object_or_404(queryset, slug=slug)
-        slot = get_object_or_404(Slot, pk=slot_id)
-        if slot.reserved_by == request.user:
-            messages.add_message(request, messages.SUCCESS,
-                'Your task has been deleted!')
-
-        else:
-            messages.add_message(request, messages.ERROR,
-            'You can only delete your own tasks.')
+    queryset = Beneficiary.objects.filter(status=1)
+    beneficiary = get_object_or_404(queryset, slug=slug)
+    slot = get_object_or_404(Slot, pk=slot_id)
+    if slot.reserved_by == request.user:
+        slot.delete()
+        messages.add_message(request, messages.SUCCESS,
+        'Your task has been deleted!')
+    else:
+        messages.add_message(request, messages.ERROR,
+        'You can only delete your own tasks.')
 
     return HttpResponseRedirect(
         reverse('beneficiary_detail', args=[slug]))
