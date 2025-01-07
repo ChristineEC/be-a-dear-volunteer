@@ -49,4 +49,17 @@ class SlotAdmin(admin.ModelAdmin):
 
 
 # # Registration of model
-admin.site.register(Classroom)
+
+@admin.register(Classroom)
+class ClassroomAdmin(admin.ModelAdmin):
+
+    list_display = (
+    'classroom_number',
+    'class_year',
+    )
+    search_fields = []
+    list_filter = ('class_year',)
+
+    class Meta:
+        ordering = ['classroom_number']
+
