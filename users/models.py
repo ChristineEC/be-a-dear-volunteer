@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from volunteer.models import Classroom
 from cloudinary.models import CloudinaryField
 
 PROFILE_TYPE = (
@@ -20,15 +20,11 @@ class Profile(models.Model):
     :model: Homeroom, will enable comparison of homeroom
     stats regarding volunteer hours.
     """
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_pic = CloudinaryField('image', default='default-profile-pic.jpg')
-    homeroom = models.ForeignKey(Homeroom, default="999", on_delete=models.SET_DEFAULT)
+    classroom = models.ForeignKey(Classroom, default="999", on_delete=models.SET_DEFAULT)
     profile_type = models.PositiveSmallIntegerField(choices=PROFILE_TYPE, default=0)
     alias = models.CharField(max_length=25, default="Someone")
 
-    def__str__(self):
-        return f"{self.user.last_name}, {self.user.first_name}, alias {self.alias} | Room {self.user.homeroom} | {self.homeroom.class_year}"
-
-
-
-
+    def __str__(self):
+        return f"{self.user.username} | alias {self.alias} | Room {self.classroom.classroom_number} | {self.classroom.class_year}"

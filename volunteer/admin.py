@@ -48,6 +48,5 @@ class SlotAdmin(admin.ModelAdmin):
         ordering = ['status', 'reserved_by']
 
 
-
 # # Registration of model
 admin.site.register(Classroom)
