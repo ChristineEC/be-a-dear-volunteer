@@ -68,5 +68,4 @@ class Classroom(models.Model):
         app_label = "volunteer"
         ordering = ["classroom_number", "class_year"]
 
-    def _str__(self):
-        return f"Classroom: {self.classroom_number} | Class Year: {self.class_year}"
+

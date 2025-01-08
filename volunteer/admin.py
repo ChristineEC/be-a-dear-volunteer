@@ -54,12 +54,16 @@ class SlotAdmin(admin.ModelAdmin):
 class ClassroomAdmin(admin.ModelAdmin):
 
     list_display = (
-    'classroom_number',
-    'class_year',
+        'id',
+        'classroom_number',
+        'class_year',
     )
     search_fields = []
-    list_filter = ('class_year',)
+    list_filter = ('class_year', 'classroom_number')
 
     class Meta:
         ordering = ['classroom_number']
+
+    def _str__(self):
+        return f"Classroom number: {self.classroom_number} | Classroom object {self.id} | Class Year: {self.class_year}"
 
