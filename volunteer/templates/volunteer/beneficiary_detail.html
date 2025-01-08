@@ -39,27 +39,26 @@ Beneficiary Details
                         {% if not slot.publish_ok and slot.reserved_by == user %}muted
                         {% elif not slot.publish_ok %}d-none
                         {% endif %}">
-                            <p>
-                                <span>Task: </span>
-                                <span id="task{{ slot.id }}" class="slot-task-display">{{ slot.task }}</span><br>
-                                <span>Location: </span>
-                                <span id="task_location{{ slot.id }}">{{ slot.task_location }}</span></br><br>
-                                <span>Dates: </span>
-                                <span id="dates{{ slot.id }}">{{ slot.dates }}</span><br>
-                                <span>Times: </span>
-                                <span id="times{{ slot.id }}">{{ slot.times }}</span><br>
-                                <span>Completed: </span>
-                                <span id="completed{{ slot.id }}">{{ slot.completed }}</span><br>
-                                <span>Credit Minutes Requested: </span>
-                                <span id="credit_minutes_requested{{ slot.id }}">{{ slot.credit_minutes_requested }}</span><br>
-                                {% if not slot.publish_ok and slot.reserved_by == user %}
-                                <span class="logged-in-user-msg">Task is unpublished but
-                                    appears on your dashboard.</span>
-                                {% endif %}
-                                {% if user.is_authenticated and slot.reserved_by == user %}
-                                <button class="btn btn-edit btn-sm" slot_id="{{ slot.id }}">Edit</button>
-                                <button class="btn btn-delete btn-sm" slot_id="{{ slot.id }}">Delete</button>
-                            </p>
+                            <span>Task: </span>
+                            <span id="task{{ slot.id }}">{{ slot.task }}</span><br>
+                            <span>Location: </span>
+                            <span id="task_location{{ slot.id }}">{{ slot.task_location }}</span></br><br>
+                            <span>Dates: </span>
+                            <span id="dates{{ slot.id }}">{{ slot.dates }}</span><br>
+                            <span>Times: </span>
+                            <span id="times{{ slot.id }}">{{ slot.times }}</span><br>
+                            <span>Completed: </span>
+                            <span id="completed{{ slot.id }}">{{ slot.completed }}</span><br>
+                            <span>Credit Minutes Requested: </span>
+                            <span
+                                id="credit_minutes_requested{{ slot.id }}">{{ slot.credit_minutes_requested }}</span><br>
+                            {% if not slot.publish_ok and slot.reserved_by == user %}
+                            <span class="logged-in-user-msg">Task is unpublished but
+                                appears on your dashboard!</span>
+                            {% endif %}
+                            {% if user.is_authenticated and slot.reserved_by == user %}
+                            <button class="btn btn-edit btn-sm" slot_id="{{ slot.id }}">Edit</button>
+                            <button class="btn btn-delete btn-sm" slot_id="{{ slot.id }}">Delete</button>
                             {% endif %}
                         </div>
                     {% endfor %}
@@ -92,10 +91,7 @@ Beneficiary Details
         </div>
     </div>
 </section>
-
-<!-- Delete Modal html from Bootstrap and help with classes and
-     aria-labelledBy to ensure functionality from Code Institute lesson,
-     I Think Therefore I Blog -->
+<!-- The delete modal -->
 <div id="deleteModal" class="modal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="True">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -115,11 +111,6 @@ Beneficiary Details
     </div>
 </div>
 {% endblock content %}
-
-
-
-
-
 
 {% block extras %}
 <script src="{% static 'js/slots.js' %}"></script>
