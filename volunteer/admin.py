@@ -48,7 +48,7 @@ class SlotAdmin(admin.ModelAdmin):
         ordering = ['status', 'reserved_by']
 
 
-# # Registration of model
+# Registration of model
 
 @admin.register(Classroom)
 class ClassroomAdmin(admin.ModelAdmin):

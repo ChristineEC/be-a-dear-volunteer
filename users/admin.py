@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
 from .models import Profile
-from volunteer.models import Classroom
+
 
 
 @admin.register(Profile)
@@ -29,11 +29,11 @@ class ProfileAdmin(admin.ModelAdmin):
     class Meta:
         ordering = ['classroom', 'profile_type', 'alias',]
 
-    def __str__(self):
-        return f"{self.user.username}, alias {self.alias}, is in classroom number {self.classroom.classroom_number}"
+    # def __str__(self):
+    #     return f"Alias {self.alias}, is in classroom number {self.classroom}"
 
-# Taken from 
-# https://docs.djangoproject.com/en/4.2/topics/auth/customizing/
+# # Taken from 
+# # https://docs.djangoproject.com/en/4.2/topics/auth/customizing/
 
 class ProfileInline(admin.StackedInline):
     """
