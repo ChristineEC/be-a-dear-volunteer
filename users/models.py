@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from volunteer.models import Classroom
 from cloudinary.models import CloudinaryField
+from django.db.models.signals import post_save
 
 PROFILE_TYPE = (
     (0, "Student"),
@@ -22,7 +23,7 @@ class Profile(models.Model):
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_pic = CloudinaryField('image', default='default-profile-pic.jpg')
-    classroom = models.ForeignKey(Classroom, default="999", on_delete=models.SET_DEFAULT)
+    classroom = models.ForeignKey(Classroom, default="1", on_delete=models.SET_DEFAULT)
     profile_type = models.PositiveSmallIntegerField(choices=PROFILE_TYPE, default=0)
     alias = models.CharField(max_length=25, default="Someone")
 
