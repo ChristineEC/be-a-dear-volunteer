@@ -54,7 +54,6 @@ class SlotAdmin(admin.ModelAdmin):
 class ClassroomAdmin(admin.ModelAdmin):
 
     list_display = (
-        'id',
         'classroom_number',
         'class_year',
     )
@@ -65,5 +64,5 @@ class ClassroomAdmin(admin.ModelAdmin):
         ordering = ['classroom_number']
 
     def _str__(self):
-        return f"Classroom number: {self.classroom_number} | Classroom object {self.id} | Class Year: {self.class_year}"
+        return f"Classroom number: {self.classroom_number} | Class Year: {self.class_year}"
 
