@@ -27,5 +27,3 @@ class Profile(models.Model):
     profile_type = models.PositiveSmallIntegerField(choices=PROFILE_TYPE, default=0)
     alias = models.CharField(max_length=25, default="Someone")
 
-    def __str__(self):
-        return f"{self.user.username} | alias {self.alias} | Room {self.classroom.classroom_number} | {self.classroom.class_year}"
