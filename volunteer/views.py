@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -182,4 +182,15 @@ def student_dashboard(request):
         {"slots": slots,}
     )
 
+def delete_via_dashboard(request, pk):
+    slot = Slot.objects.get(id=pk)
+    if slot.reserved_by == request.user:
+        slot.delete()
+        messages.add_message(request, messages.SUCCESS,
+        'Your task has been deleted!')
+    else:
+        messages.add_message(request, messages.ERROR,
+        'You can only delete your own tasks.')
 
+    return HttpResponseRedirect(
+                reverse('student_dashboard'))

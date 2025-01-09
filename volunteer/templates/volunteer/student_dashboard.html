@@ -59,7 +59,7 @@ Student Dashboard
                                 <td>{{ slot.credit_minutes_requested }}</td>
                                 <td>{{ slot.credit_minutes_approved }}</td>
                                 <td><a href="{% url 'update_slot' slot.id %}">Update</a></td>
-                                <td><a href="#">Delete</a></td>
+                                <td><a href="{% url 'delete_via_dashboard' slot.id %}">Delete</a></td>
                             </tr>
                             {% endfor %}
                     </tbody>
