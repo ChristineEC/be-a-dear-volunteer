@@ -12,20 +12,24 @@
   <div class="container-fluid">
     <div class="row g0">
       <div id="heading" class="col text-bg-dark mx-auto text-center">
-        <h1 class="graduate-bold px-2 mt-2">Find, create and share volunteer opportunities.</h1>
-        <h2 class="open-sans px-2 mt-1"><small>Record and receive credit for
+        <h1 class="graduate-bold px-2 py-5">Find, create and share volunteer opportunities.</h1>
+        <h2 class="open-sans px-2 py-2"><small>Record and receive credit for
             volunteering as little as five minutes at a time!</small></h2>
+        <p>Explain here about the project lorem ipsum Explain here about the project lorem ipsumExplain here about the
+          project lorem ipsumExplain here about the project lorem ipsumExplain here about the project lorem ipsumExplain
+          here about the project lorem ipsumExplain here about the project lorem ipsumExplain here about the project
+          lorem ipsumExplain here about the project lorem ipsumExplain here about the project lorem ipsumExplain here
+          about the project lorem ipsumExplain here about the project lorem ipsum</p>
       </div>
-      <div class="row g0">
-      </div class="col">
-      <img class="heading-image image-fluid" src="{% static 'images/hearts2.jpg' %}" alt="Candy valentine hearts">
+      <div class="row g-0">
+        </div class="col mx-auto">
+          <img class="scale" src="{% static 'images/hearts2.jpg' %}" alt="Candy valentine hearts image">
+        </div>
+      </div>
     </div>
   </div>
-  </div>
 </section>
-<!-- end heading section-->
-
-<!-- Beneficiaries list section, Main Content-->
+<!--------------Beneficiaries list section------->
 <section class="beneficiaries-list"></section>
   <div class="container-fluid d-flex justify-content-evenly">
     <div class="row">
@@ -36,16 +40,20 @@
           <div class="card mb-3" style="max-width: 540px;">
             <div class="row g-0">
               <div class="col-md-4">
-                <img src="{% static 'images/placeholderimage.jpg' %}" class="img-fluid card-image"
+                {% if "placeholderimage" in post.featured_image.url %}
+                <img class="cover card-image"src="{% static 'images/placeholderimage.jpg' %}" 
                   alt="placeholder image">
+                {% else %}
+                <img class="cover card-image" src="{{ beneficiary.featured_image }}" 
+                  alt="featured image for {{ beneficiary.beneficiary_name }}">
+                {% endif %}
               </div>
               <div class="col-md-8">
                 <div class="card-body">
                   <h5 class="card-title">{{ beneficiary.beneficiary_name }}</h5>
                   <p class="card-text">{{ beneficiary.short_description | safe }}</p>
                   <p class="card-text"><small class="text-muted">{{ beneficiary.contact_details }}</small></p>
-                  <a href="{% url 'beneficiary_detail' beneficiary.slug %}" class="btn btn-primary btn-sm">View
-                    details</a>
+                  <a href="{% url 'beneficiary_detail' beneficiary.slug %}" class="btn btn-primary btn-sm">Interested?</a>
                 </div>
               </div>
             </div>

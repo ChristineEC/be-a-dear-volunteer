@@ -8,6 +8,11 @@
 
 ## Features
 
+
+
+
+
+
 ### User Profiles
 
 User profiles are created upon the creation of a user account using signals, and users can then update their profiles to add their homeroom number and upload a profile picture (which only shows on their own page).
@@ -44,9 +49,10 @@ Showing total minutes of volunteer time completed and approved by the students i
 
 ### Entity Relationship Diagram
 
-![ERD]](drawSQL-image-export-2024-12-24-1.png)
+![alt text](static/images/drawsql.png)
 
 
+Please note that all fields descriptions were not available for use through the DrawSQL site (at least the free version). Image fields in the About, Profile, and Beneficiary models should indicate BLOB for type, rather than BigInt.
 
 ## Bugs
 
@@ -68,3 +74,5 @@ Looking more closely at the html in the browser using dev tools, I can see that 
 
 For the view code for the beneficiary details page, which includes a form for signing up for slots, I have borrowed heavily from the Codestar walkthrough project, although it has been adapted to my purposes.
 The pagination code on index.html is also heavily based on the Codestar project.
+
+Favicon: The favicon was obtained from flaticon.com at <a href="https://www.flaticon.com/free-icons/volunteerism" title="volunteerism icons">Volunteerism icons created by gravisio - Flaticon</a>
