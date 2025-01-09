@@ -41,10 +41,10 @@
             <div class="row g-0">
               <div class="col-md-4">
                 {% if "placeholderimage" in post.featured_image.url %}
-                <img class="cover card-image"src="{% static 'images/placeholderimage.jpg' %}" 
+                <img class="card-image img-fluid"src="{% static 'images/placeholderimage.jpg' %}" 
                   alt="placeholder image">
                 {% else %}
-                <img class="cover card-image" src="{{ beneficiary.featured_image }}" 
+                <img src="{{ beneficiary.featured_image.url }}" class="card-image img-fluid"
                   alt="featured image for {{ beneficiary.beneficiary_name }}">
                 {% endif %}
               </div>
