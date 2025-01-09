@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.db.models import Sum
+from django.db.models.functions import Floor, Mod
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Beneficiary, Slot, Classroom
@@ -18,7 +20,7 @@ class BeneficiaryList(generic.ListView):
 # Adapted from Code Institute lesson, I Think Therefore I Blog
 def beneficiary_detail(request, slug):
     """
-    Displays an individual :model: `volunteer.Beneficiary`.
+    Displays an individual of :model: `volunteer.Beneficiary`.
     **Context**
     ``beneficiary``
         An instance of :model: `volunteer.Beneficiary`
@@ -166,20 +168,44 @@ def update_slot(request, pk):
     )
 
 
-
-@login_required(redirect_field_name="account_login")
+@login_required
 def student_dashboard(request):
     """
     Renders the student dashboard page.
+    **Context**
+    ``user``
+        an instance of :model: User
+    ``slot``
+        an instance of :model: Slot
+
+    **Template**
+    
     """
-    queryset = Beneficiary.objects.filter(status=1)
-    user = request.user
-    slots = Slot.objects.filter(reserved_by=user)
+    if request.method == "GET":
+        user = request.user
+        queryset = Slot.objects.all()
+        if Slot.objects.filter(reserved_by=user):
+            slots = Slot.objects.filter(reserved_by == user)
+            total_minutes_approved = slots.credit_minutes_approved.sum()
+            remaining_minutes_required = 1800 - total_minutes_approved
+            hours_remaining = Floor(remaining_minutes_required/60)
+            plus_minutes = Mod("remaining_minutes_required", 60)
+        else:
+            slots = None
+            total_minutes_approved = 0
+            remaining_minutes_required = 1800
+            hours_remaining = 30
+            plus_minutes = 0
 
     return render(
         request,
         "volunteer/student_dashboard.html",
-        {"slots": slots,}
+        {"slots": slots,
+        "total_minutes_approved":total_minutes_approved,
+        "remaining_minutes_required":remaining_minutes_required,
+        "hours_remaining":hours_remaining,  
+        "plus_minutes":plus_minutes, 
+        }
     )
 
 def delete_via_dashboard(request, pk):

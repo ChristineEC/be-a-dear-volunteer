@@ -16,8 +16,8 @@ CLASS_YEARS = (
     )
 
 COMPLETION = (
-    (0, "Completed"),
-    (1, "Incomplete"),
+    (0, "Incomplete"),
+    (1, "Completed"),
 )
 
 
@@ -50,7 +50,7 @@ class Slot(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     reserved_by = models.ForeignKey(User, blank=True, on_delete=models.CASCADE, related_name="reservations")
-    completed = models.SmallIntegerField(choices=COMPLETION, default=1                      )
+    completed = models.SmallIntegerField(choices=COMPLETION, default=1)
     credit_minutes_requested = models.SmallIntegerField(default=0)
     credit_minutes_approved = models.SmallIntegerField(default=0)
     publish_ok = models.BooleanField(default=False)
