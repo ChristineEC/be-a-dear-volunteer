@@ -12,13 +12,6 @@ const slotCreditMinutesRequested = document.getElementById
 const slotForm = document.getElementById("slotForm");
 const submitButton = document.getElementById("submitButton");
 
-/* For calculation of student dashboard stats */
-const minutesApproved = document.getElementsByClassName("credit_minutes_approved");
-const totalMinutesApproved = document.getElementById("calculated-minutes");
-const totalHoursApproved = document.getElementById("calculated-hours");
-const remainingHours = document.getElementById("remaining-hours");
-const plusRemainingMinutes = document.getElementById("plus-remaining-minutes");
-
 /* --------  Credit for this code goes to Code Institute --*/
 const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
 const deleteButtons =  document.getElementsByClassName("btn-delete");
@@ -59,19 +52,3 @@ for (let button of editButtons) {
         slotForm.setAttribute("action", `edit_slot/${slotId}/`);
     });
 }
-
-let minutes = [];
-for (let i=0; i < minutesApproved.length; i++) {
-        let innernum = (parseInt(minutesApproved[i].textContent));
-        minutes.push(innernum);
-}
-console.log(minutes);
-let totalminutes = minutes.reduce((acc, curr) => (acc + curr), 0);
-console.log(totalminutes);
-totalMinutesApproved.innerHTML = totalminutes;
-let calculatedhours = (totalminutes/60).toFixed(2);
-totalHoursApproved.innerHTML = calculatedhours;
-let calculatedremaininghours = Math.floor(totalminutes/60);
-remainingHours.innerHTML = calculatedremaininghours;
-let calculatedremainingminutes = totalminutes % 60;
-plusRemainingMinutes.innerHTML = calculatedremainingminutes;
