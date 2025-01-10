@@ -177,34 +177,38 @@ def student_dashboard(request):
         an instance of :model: User
     ``slot``
         an instance of :model: Slot
-
     **Template**
+    'student_dashboard.html'
     
     """
     if request.method == "GET":
         user = request.user
         queryset = Slot.objects.all()
-        if Slot.objects.filter(reserved_by=user):
-            slots = Slot.objects.filter(reserved_by == user)
-            total_minutes_approved = slots.credit_minutes_approved.sum()
-            remaining_minutes_required = 1800 - total_minutes_approved
-            hours_remaining = Floor(remaining_minutes_required/60)
-            plus_minutes = Mod("remaining_minutes_required", 60)
-        else:
-            slots = None
-            total_minutes_approved = 0
-            remaining_minutes_required = 1800
-            hours_remaining = 30
-            plus_minutes = 0
+        slots = Slot.objects.filter(reserved_by=user)
+        # if slots:
+        #     for slot in slots:
+        #         if slot.credit_minutes_approved:
+        #             slot.credit_minutes_approved = slot.credit_minutes_approved
+        #             total_minutes_approved = slots.credit_minutes_approved.sum()
+        #             remaining_minutes_required = 1800 - total_minutes_approved
+        #             hours_remaining = Floor(remaining_minutes_required/60)
+        #             plus_minutes = Mod("remaining_minutes_required", 60)
+                
+        # else:
+        #     slot.credit_minutes_approved = 0
+        #     total_minutes_approved = 0
+        #     remaining_minutes_required = 1800
+        #     hours_remaining = 30
+        #     plus_minutes = 0
 
     return render(
         request,
         "volunteer/student_dashboard.html",
         {"slots": slots,
-        "total_minutes_approved":total_minutes_approved,
-        "remaining_minutes_required":remaining_minutes_required,
-        "hours_remaining":hours_remaining,  
-        "plus_minutes":plus_minutes, 
+        # "total_minutes_approved":total_minutes_approved,
+        # "remaining_minutes_required":remaining_minutes_required,
+        # "hours_remaining":hours_remaining,  
+        # "plus_minutes":plus_minutes, 
         }
     )
 

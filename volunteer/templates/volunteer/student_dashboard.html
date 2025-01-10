@@ -28,7 +28,7 @@ Student Dashboard
     <div class="container">
         <div class="row">
             {% if slots %}
-             <table class="table">
+            <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">Beneficiary</th>
@@ -46,52 +46,58 @@ Student Dashboard
                 <!-- List of slots reserved by the current user -->
                 <tbody>
                 {% for slot in slots %}
-                <tr class="{% if not slot.completed %}table-primary
-                        {% if slot.completed and not slot.credit_minutes_requested %}table-info
-                        {% if slot.credit_minutes_requested and not slot.credit_minutes_approved %}table-warning
-                        {% if slot.credit_minutes_approved %}table-success{% else %}table-danger">
-                    <td>{{ slot.beneficiary.beneficiary_name}}</td>
-                    <td>{{ slot.task }}</td>
-                    <td>{{ slot.task_location }}</td>
-                    <td>{{ slot.dates }}</td>
-                    <td>{{ slot.times }}</td>
-                    <td>{{ slot.completed }}</td>
-                    <td>{{ slot.credit_minutes_requested }}</td>
-                    <td>{{ slot.credit_minutes_approved }}</td>
-                    <td><a href="{% url 'update_slot' slot.id %}">Update</a></td>
-                    <td><a href="{% url 'delete_via_dashboard' slot.id %}">Delete</a></td>
-                </tr>
+                    <tr class="{% if not slot.completed %}table-primary
+                            {% elif slot.completed and not slot.credit_minutes_requested %}table-info
+                            {% elif slot.credit_minutes_requested and not slot.credit_minutes_approved %}table-warning
+                            {% elif slot.credit_minutes_approved %}table-success{% else %}table-danger{% endif %}">
+                        <td>{{ slot.beneficiary.beneficiary_name}}</td>
+                        <td>{{ slot.task }}</td>
+                        <td>{{ slot.task_location }}</td>
+                        <td>{{ slot.dates }}</td>
+                        <td>{{ slot.times }}</td>
+                        <td>{{ slot.completed }}</td>
+                        <td>{{ slot.credit_minutes_requested }}</td>
+                        <td class="credit_minutes_approved">{{ slot.credit_minutes_approved }}</td>
+                        <td><a href="{% url 'update_slot' slot.id %}">Update</a></td>
+                        <td><a href="{% url 'delete_via_dashboard' slot.id %}">Delete</a></td>
+                    </tr>
                 {% endfor %}
                 </tbody>
             </table>
             {% else %}
                 <h4>You currently have no tasks planned.</h4>
+                <h3>You can add tasks by clicking on one of the organizations (or "Other" or "Individual") listed on the <a href ="{% url 'home' %}" class="inline-link">homepage</a></h3>
             {% endif %}
             </div>
         </div>
     </div>
 </section>
+{% else %}
+<div class="container mx-auto">
+    <h1>You must be logged in to access this page.</h1>
+</div>
+{% endif %}
 <!-------------------------Student's stats----->
 <section id="cumulative hours">
     <div class="container mb-5">
-        <div class="row mb-2">
+        <div class="row mb-2 stats cabin-sketch-bold stats">
             <div class="col-4 p-2 border-box">
-                <h4>Time approved to date: <span id="calculated-minutes-for-a-student" class="d-none">##</span><span
-                    id="calculated-hours">##</span><span> hours</span></h4>
+                <p>Time approved to date: 
+                    <span id="calculated-minutes">0</span>
+                    <span> minutes, or </span>
+                    <span id="calculated-hours">0</span>
+                    <span>hours</span>
+                </p>
             </div>
             <div class="col-4 p-2 border-box">
-                <h4>Hours needed for graduation: <span id="required-hours">30</span></h4>
+                <p>Hours needed for graduation: <span id="required-hours">30</span></p>
             </div>
             <div class="col-4 p-2 border-box">
-                <h4>Remaining time required: <span id="remaining-time">##</span> hours</h4>
+                <p>Remaining time required: <span id="remaining-hours"></span> hours, <span id="plus-remaining-minutes"></span> minutes</p>
             </div>
         </div>
     </div>
 </section>
-
-
-
-{% endif %}
 
 {% endblock content %}
 
