@@ -92,14 +92,15 @@
         <!-- Display Django Messages -->
         <div>
             {% for message in messages %}
-            <div class="container"></div>
-            <div class="alert {{ message.tags }} alert-dismissable fade show"
-                id="msg" role="alert">
-                {{ message | safe }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert"
-                    aria-label="Close">
-                </button>
-            </div>
+            <div class="container py-2 mx-auto">
+                <div class="alert message {{ message.tags }} open-sans-heavy
+                    alert-dismissable"
+                    id="msg" role="alert">
+                    {{ message | safe }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                        aria-label="Close">
+                    </button>
+                </div>
             {% endfor %}
         </div>
         {% block content %}
