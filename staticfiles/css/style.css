@@ -89,6 +89,10 @@ body {
     font-style: italic;
 }
 
+/* -- Message -- */
+.message {
+    color: rgb(246, 15, 15);
+}
 /* --------------------Buttons-------- */
 
 .btn-edit {

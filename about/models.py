@@ -23,9 +23,9 @@ class About(models.Model):
         return self.title
 
 class CollaborateRequest(models.Model):
-    name = models.CharField(max_length=200)
-    email = models.EmailField()
-    message = models.TextField()
+    name = models.CharField(max_length=200, blank=False)
+    email = models.EmailField(blank=False)
+    message = models.TextField(blank=False)
     read = models.BooleanField(default=False)
 
     def __str__(self):

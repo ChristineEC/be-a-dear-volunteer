@@ -2,13 +2,10 @@ from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.db.models import Sum
-from django.db.models.functions import Floor, Mod
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Beneficiary, Slot, Classroom
 from .forms import SlotForm
-
 
 
 class BeneficiaryList(generic.ListView):
@@ -55,9 +52,9 @@ def beneficiary_detail(request, slug):
         else:
             messages.add_message(
                 request, messages.ERROR,
-                "There has been an error. Please ensure you fill out"
-                "the date and time field with dates in format YYYY-MM-DD"
-                "and times as 00:00:00 only."
+                "There has been an error. Please try again! "
+                "Contact us through the form on the About page "
+                "if the problem persists."
             ) 
 
     form = SlotForm()
