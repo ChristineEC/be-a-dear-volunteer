@@ -19,9 +19,10 @@ def about_project(request):
             messages.add_message(
                 request, messages.SUCCESS,
                 'Thanks for your message! We will '
-                'try to get back to you within the '
+                'get back to you or implement your '
+                'suggestion, if approved, in the '
                 'next few days or just as soon '
-                'as we get the chance.'
+                'as we can. Have a great day!'
             )
     about = About.objects.filter(status=1).order_by('updated_on').first()
     collaborate_form = CollaborateForm()
