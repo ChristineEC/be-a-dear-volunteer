@@ -9,6 +9,9 @@ from .forms import SlotForm
 
 
 class BeneficiaryList(generic.ListView):
+    """
+    
+    """
     queryset = Beneficiary.objects.filter(status=1).order_by("beneficiary_name")
     template_name = "volunteer/index.html"
     paginate_by: 6
@@ -139,7 +142,7 @@ def update_slot(request, pk):
     `form` 
     An instance of :form: volunteer.SlotForm
     ""Template"
-    :template: 'volunteer.update_task.html'
+    :template: 'volunteer/update_task.html'
     """
 
     slot = Slot.objects.get(id=pk)
@@ -151,8 +154,14 @@ def update_slot(request, pk):
             form.save(commit=False)
             slot.publish_ok = False
             slot.save()
-            return HttpResponseRedirect(
-                reverse('student_dashboard'))
+            messages.add_message(request, messages.SUCCESS,
+        'Your task has been updated!')
+        else:
+            messages.add_message(request, messages.ERROR,
+            'You can only delete your own tasks.')
+
+        return HttpResponseRedirect(
+            reverse('student_dashboard'))
                 
 
     return render(request,

@@ -113,6 +113,11 @@ body {
     
 }
 
+.signup-button {
+    font-weight: bold;
+    border-style: solid 1px black;
+}
+
 /* ------------- Inline links ----*/
 .inline-link {
     text-decoration:none;

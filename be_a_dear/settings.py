@@ -80,6 +80,8 @@ AUTHENTICATION_BACKENDS = [
 
 WSGI_APPLICATION = 'be_a_dear.wsgi.application'
 
+# The below is retained here for potential use in automated tests
+# post project submission
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -98,9 +100,6 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.codeinstitute-ide.net/",
     "https://*.herokuapp.com"
 ]
-
-# Password validation
-# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {

@@ -2,7 +2,8 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
 from .models import Profile
-
+from django.contrib.sites.models import Site
+from allauth.socialaccount.models import SocialApp, SocialAccount, SocialToken
 
 
 @admin.register(Profile)
@@ -55,3 +56,7 @@ class UserAdmin(BaseUserAdmin):
 # Register UserAdmin
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
+admin.site.unregister(Site)
+admin.site.unregister(SocialApp)
+admin.site.unregister(SocialAccount)
+admin.site.unregister(SocialToken)
