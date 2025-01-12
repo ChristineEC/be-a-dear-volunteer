@@ -2,21 +2,12 @@ body {
     background-color:#000000;
     margin: 0px;
     padding: 0px;
+    color: whitesmoke;
 }
 
 
 .heading-image {
     max-height: 200px;
-}
-
-
-.about-image-container{
-
-}
-
-.about-image {
-    width: 300px;
-    height: auto;
 }
 
 .directions {
@@ -30,10 +21,25 @@ body {
 }
 
 
+/*-- About page --*/
+.about-containter{
+    background-image: url("/static/images/neon-heart");
+}
+
+.about-title {
+    font-size: 40px;
+
+}
+
+.about-img-div{
+    index:1;
+}
+
+
+
 /*---------------Beneficiary Card------*/
 
 .card-img {
-
     height: auto;
     object-fit: cover;
     margin: 0;

@@ -10,9 +10,7 @@ for (let i=0; i < minutesApproved.length; i++) {
         let innernum = (parseInt(minutesApproved[i].textContent));
         minutes.push(innernum);
 }
-console.log(minutes);
 let totalminutes = minutes.reduce((acc, curr) => (acc + curr), 0);
-console.log(totalminutes);
 totalMinutesApproved.innerHTML = totalminutes;
 let calculatedhours = (totalminutes/60).toFixed(2);
 totalHoursApproved.innerHTML = calculatedhours;

@@ -83,36 +83,40 @@
             </div>
         </nav>
         <!-- Display Django Messages -->
-        <div>
-            {% for message in messages %}
-            <div class="container py-2 mx-auto">
-                <div class="alert alert-warning message {{ message.tags }} open-sans-heavy
-                    alert-dismissable" id="msg" role="alert">
-                    {{ message | safe }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                    </button>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 py-2 mx-auto">
+                    {% for message in messages %}    
+                    <div class="alert alert-warning message {{ message.tags }} open-sans-heavy
+                        alert-dismissable" id="msg" role="alert">
+                        {{ message | safe }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
             </div>
-
         </div>
     </header>
 
     <!-- Main -->
-    <main class="bg-dark">
-        {% if user.is_authenticated %}
-        <p class="text-light float-end mt-2 px-3">You are logged in as {{ user.username }}</p>
-        {% else %}
-        <p class="text-light float-end mt-2 px-3">You are not logged in.</p>
-        {% endif %}
-
+    <main>
+        <div class="row">
+            <div class="col-12">
+                {% if user.is_authenticated %}
+                <p class="text-light float-end mt-3 px-5">You are logged in as {{ user.username }}</p>
+                {% else %}
+                <p class="text-light float-end mt-3 px-5">You are not logged in.</p>
+                {% endif %}
+            </div>
+        </div>
         {% block content %}
         {% endblock content %}       
     </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container fixed-bottom mb-0.5 mt-2 text-center">
+        <div class="container fixed-bottom mb-0.5 mt-2 text-center bg-light g-0">
             <div class="row">
                 <div class="col">
                     <p class="text-align-center graduate-bold">Brought to you by West Carlsbad High School Student
