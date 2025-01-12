@@ -1,8 +1,9 @@
 body {
-    background-color:rgb(236, 220, 199);
+    background-color:#000000;
     margin: 0px;
     padding: 0px;
 }
+
 
 .heading-image {
     max-height: 200px;

@@ -82,10 +82,6 @@
                 </div>
             </div>
         </nav>
-    </header>
-
-    <!-- Main -->
-    <main>
         <!-- Display Django Messages -->
         <div>
             {% for message in messages %}
@@ -98,8 +94,20 @@
                 </div>
                 {% endfor %}
             </div>
-            {% block content %}
-            {% endblock content %}
+
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main class="bg-dark">
+        {% if user.is_authenticated %}
+        <p class="text-light float-end mt-2 px-3">You are logged in as {{ user.username }}</p>
+        {% else %}
+        <p class="text-light float-end mt-2 px-3">You are not logged in.</p>
+        {% endif %}
+
+        {% block content %}
+        {% endblock content %}       
     </main>
 
     <!-- Footer -->
