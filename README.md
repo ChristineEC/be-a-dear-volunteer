@@ -55,6 +55,13 @@ Showing total minutes of volunteer time completed and approved by the students i
 
 Please note that all fields descriptions were not available for use through the DrawSQL site (at least the free version). Image fields in the About, Profile, and Beneficiary models should indicate BLOB for type, rather than BigInt.
 
+##Validation
+
+Javascript files were run through JSHint and passed with no errors. No changes have been made to the js files after being passed through the linter.
+![Results of JSHint for `slots.js` in the be_a_dear project directory](static/images/jshint-slotsjs.png)
+
+![Results of JSHint for `dashboard.js` in the volunteer app](static/images/jshint_dashboard.png)
+
 ## Bugs
 
 The Slot Form is not posting to the database. For the time being, I am removing the date and time fields in slot sign-up, as these are not needed at this stage. The student is expected to add and edit these fields as the planned activities near or take place. One form will be used for adding the slot to a student's dashboard, where the student will then have access to a more complete form for filling in the details of the slot as their plans become more concrete or even after they have completed the activities.

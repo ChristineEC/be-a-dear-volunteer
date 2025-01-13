@@ -10,19 +10,11 @@
   <div class="container-fluid">
     <div class="row g0">
       <div id="heading" class="col text-bg-dark mx-auto text-center">
-        <h1 class="cabin-sketch-bold px-2 py-2">Find, create and share volunteer opportunities</h1>
+        <p>Be a Dear is a student-led project.</p>
+        <h1 class="open-sans">Find, create and share volunteer opportunities</h1>
         <h2 class="open-sans px-2 py-2"><small>Record and receive credit for
             volunteering as little as five minutes at a time!</small></h2>
-        <p>Explain here about the project lorem ipsum Explain here about the project lorem ipsumExplain here about the
-          project lorem ipsumExplain here about the project lorem ipsumExplain here about the project lorem ipsumExplain
-          here about the project lorem ipsumExplain here about the project lorem ipsumExplain here about the project
-          lorem ipsumExplain here about the project lorem ipsumExplain here about the project lorem ipsumExplain here
-          about the project lorem ipsumExplain here about the project lorem ipsum</p>
-      </div>
-      <div class="row g-0">
-        </div class="col mx-auto">
-          <img class="scale" src="{% static 'images/hearts2.jpg' %}" alt="Candy valentine hearts image">
-        </div>
+        <p>Listed here you will find a number of places you can volunteer. What's different about this project</p>
       </div>
     </div>
   </div>
@@ -35,9 +27,9 @@
 
           {% for beneficiary in beneficiary_list %}
           <div class="col-sm-12, col-md-6 col-lg-3 card px-3 mb-3">
-            <div class="card-body">
-              <h3 class="card-title">{{ beneficiary.beneficiary_name }}</h3>
-              <h4 class="card-subtitle mb-2 text-muted">{{ beneficiary.location }}</h4>
+            <div class="card-body mx-3 my-3">
+              <h3 class="card-title"><small>{{ beneficiary.beneficiary_name }}</small></h3>
+              <h4 class="card-subtitle mb-2 text-muted"><small>{{ beneficiary.location }}</small></h4>
               <p class="card-text">{{ beneficiary.short_description | safe }}</p>
               <p class="card-text"><small>{{ beneficiary.contact_details }}</small></p>
               <a href="{% url 'beneficiary_detail' beneficiary.slug %}" class="btn btn-primary btn-sm">Interested?</a>

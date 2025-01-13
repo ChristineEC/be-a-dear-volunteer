@@ -1,6 +1,5 @@
-/* --------  Most credit for this code goes to Code Institute --*/
-/* ----It has been adapted for my purposes --*/
-
+/* Much credit for this code goes to Code Institute */
+/* It has been adapted for my purposes */
 const editButtons = document.getElementsByClassName("btn-edit");
 const slotTask = document.getElementById("id_task");
 const slotLocation = document.getElementById("id_task_location");
@@ -8,11 +7,11 @@ const slotDates = document.getElementById("id_dates");
 const slotTimes = document.getElementById("id_times");
 const slotCompleted = document.getElementById("id_completed");
 const slotCreditMinutesRequested = document.getElementById
-    ("id_credit_minutes_requested");
+                            ("id_credit_minutes_requested");
 const slotForm = document.getElementById("slotForm");
 const submitButton = document.getElementById("submitButton");
 
-/* --------  Credit for this code goes to Code Institute --*/
+/*-- Credit for this code goes to Code Institute --*/
 const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
 const deleteButtons =  document.getElementsByClassName("btn-delete");
 const deleteConfirm = document.getElementById("deleteConfirm");
@@ -25,8 +24,8 @@ for (let button of deleteButtons) {
     });
 }
 
-/* --------  Most credit for this code goes to Code Institute --*/
-/* ----It has been adapted for my purposes --*/
+/*-- Much credit for this code goes to Code Institute --*/
+/*-- It has been adapted for my purposes --*/
 for (let button of editButtons) {
     button.addEventListener("click", (e) => {
         let slotId = e.target.getAttribute("slot_id");
