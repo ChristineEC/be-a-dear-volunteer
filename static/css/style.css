@@ -4,19 +4,16 @@ body {
     padding: 0px;
     color: whitesmoke;
 }
-.bg {
-    background: linear-gradient:(rgba(0, 0, 0, 0.5), 
-        rgba(0, 0, 0, 0.5));
-}
 
 .heading {
-    color: white;
+    color: whitesmoke;
 }
 
 .header-image {
     width: cover;
     max-height: 200px;
 }
+
 
 /*-- About page --*/
 .about-containter{

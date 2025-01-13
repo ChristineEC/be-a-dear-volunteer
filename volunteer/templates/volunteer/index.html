@@ -9,12 +9,12 @@
 <section class="heading">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-12 col-md-9 mx-auto">
+      <div class="col-sm-12 col-md-8 mx-auto mb-3">
         <div id="heading" class="col mx-auto text-center open-sans">
-          <h1>
+          <h1 class="display-3">
             Find, create and share volunteer opportunities
           </h1>
-          <h2 class="py-3">
+          <h2 class="display-6">
             Record and receive credit for volunteering as little
             as five minutes at a time!
           </h2>
@@ -26,18 +26,17 @@
         <div class="card mb-3 mx-auto">
           <img src="{% static 'images/hearts2.jpg' %}" class="card-img-top" alt="Valentine hearts image">
           <div class="card-body">
-            <h3 class="card-title">How it works:</h3>
+            <h3 class="card-title text-align-center text-uppercase">How it works</h3>
+            <hr>
             <h4 class="card-text">Browse opportunities</h4>
-            <p class="card-text">Note the special categories of "Other" and "Individual" below!</p>
-            <h4 class="card-text">Sign in to save opportunities to your personal dashboard</h4>
+            <h5 class="card-text fst-italic">Note the special categories of "Other" and "Individual" below!</h5>
+            <h4 class="card-text">Sign in to save tasks to your personal dashboard</h4>
             <h4 class="card-text">Plan, record and request credit for your volunteer activities</h4>
             <h4 class="card-text">Read what others are doing and get inspiration!</h4>
-            <h4 class="card-text">Send us messages about posting new opportunities:</h4>
-            <h5 class="card-text">Tell us about a new volunteer opportunity, such as for an
-                                  organization you're involved with or perhaps an elderly
-                                  neighbor who could use a hand.</h5>
-            <p class="card-text"><small class="text-muted">
-              <a href="{% url 'account_signup' %}" class="btn btn-primary">Sign up</a></small>
+            <h4 class="card-text">Know of a good cause? Someone who could use a hand?</h4>
+            <h5 class="card-text fst-italic">Send us a message, and we'll post it here for all to see!</h5>
+            <p class="card-text">
+              <a href="{% url 'account_signup' %}" class="btn btn-primary">Sign up</a>
             </p>
           </div>
         </div>
