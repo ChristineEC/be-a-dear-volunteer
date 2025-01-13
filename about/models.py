@@ -4,7 +4,6 @@ from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
-# Create your models here.
 
 class About(models.Model):
     """
@@ -18,9 +17,10 @@ class About(models.Model):
 
     class Meta:
         ordering = ["status", "updated_on"]
-    
+
     def __str__(self):
         return self.title
+
 
 class CollaborateRequest(models.Model):
     name = models.CharField(max_length=200, blank=False)

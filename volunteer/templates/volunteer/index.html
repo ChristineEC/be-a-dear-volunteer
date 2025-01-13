@@ -3,8 +3,6 @@
 
 {% block head_title %}Be a Dear{% endblock head_title %}
 
-<!-- Home Page content goes here -->
-
 {% block content %}
 
 <!-- Heading section-->
@@ -29,18 +27,17 @@
     </div>
   </div>
 </section>
-<!--------------Beneficiaries list section------->
+<!-- Beneficiaries list section -->
 <section class="beneficiaries-list"></section>
   <div class="container-fluid d-flex justify-content-evenly">
     <div class="row">
       <!-- Cards for each beneficiary in list -->
-      <!-- <div class="col-12">
-        <div class="row"> -->
+
           {% for beneficiary in beneficiary_list %}
           <div class="col-sm-12, col-md-6 col-lg-3 card px-3 mb-3">
             <div class="card-body">
-              <h5 class="card-title">{{ beneficiary.beneficiary_name }}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">{{ beneficiary.location }}</h6>
+              <h3 class="card-title">{{ beneficiary.beneficiary_name }}</h3>
+              <h4 class="card-subtitle mb-2 text-muted">{{ beneficiary.location }}</h4>
               <p class="card-text">{{ beneficiary.short_description | safe }}</p>
               <p class="card-text"><small>{{ beneficiary.contact_details }}</small></p>
               <a href="{% url 'beneficiary_detail' beneficiary.slug %}" class="btn btn-primary btn-sm">Interested?</a>

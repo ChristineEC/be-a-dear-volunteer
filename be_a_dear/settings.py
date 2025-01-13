@@ -12,8 +12,9 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['8000-christineec-beadearvolu-ld5kecyr888.ws.codeinstitute-ide.net',
-                '.herokuapp.com']
+ALLOWED_HOSTS = [
+    '8000-christineec-beadearvolu-ld5kecyr888.ws.codeinstitute-ide.net',
+    '.herokuapp.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -127,7 +128,7 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

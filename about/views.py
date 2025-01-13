@@ -4,7 +4,8 @@ from django.http import HttpResponseRedirect
 from .models import About
 from .forms import CollaborateForm
 
-def about_project(request):   
+
+def about_project(request):
     """
     Renders the About page
     **Context**
@@ -29,7 +30,8 @@ def about_project(request):
                 'next few days or just as soon '
                 'as we can. Have a great day!'
             )
-    about = About.objects.filter(status=1).order_by('updated_on').first()
+    about = About.objects.filter(status=1).order_by(
+            'updated_on').first()
     collaborate_form = CollaborateForm()
 
     return render(
@@ -41,10 +43,11 @@ def about_project(request):
         },
     )
 
+
 def send_message(request):
     """
     Enables a user to send a message
-    from the login page if they've 
+    from the login page if they've
     forgotten their username.
     **Context**
    'collaborate_form`
