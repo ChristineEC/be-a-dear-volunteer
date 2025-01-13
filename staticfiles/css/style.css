@@ -5,15 +5,6 @@ body {
     color: whitesmoke;
 }
 
-
-.heading-image {
-    max-height: 200px;
-}
-
-.directions {
-    text: red;
-}
-
 .heading-img {
     width: 100%;
     max-height: 200px;
@@ -39,14 +30,14 @@ body {
 
 /*---------------Beneficiary Card------*/
 
-.card-img {
-    height: auto;
-    object-fit: cover;
-    margin: 0;
+
+
+.card-small-h3{
+    font-size:24px;
 }
-
-
-
+.card-small-h4{
+    font-size:18px;
+}
 /* Fonts */
 
 .graduate-regular {
@@ -116,21 +107,23 @@ body {
     font-weight:bold;
 }
 
-#updateButton {
-    
-}
-
 .signup-button {
     font-weight: bold;
     border-style: solid 1px black;
 }
 
-/* ------------- Inline links ----*/
+/*-- Inline links --*/
 .inline-link {
     text-decoration:none;
     color: black;
 }
 
-/* -----Student Dashboard ---*/
+/*-- Student Dashboard --*/
 .stats {
     font-size: 32px;
+
+/*-- Footer --*/
+.footer {
+    background-color:black;
+    z-index:1;
+}
