@@ -53,7 +53,7 @@ Beneficiary Details
                             <span
                                 id="credit_minutes_requested{{ slot.id }}">{{ slot.credit_minutes_requested }}</span><br>
                             {% if not slot.publish_ok and slot.reserved_by == user %}
-                            <span class="logged-in-user-msg">Task is unpublished but
+                            <span class="unpublished-msg">Task is unpublished but
                                 appears on your dashboard!</span>
                             {% endif %}
                             {% if user.is_authenticated and slot.reserved_by == user %}

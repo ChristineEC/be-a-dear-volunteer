@@ -14,11 +14,12 @@ Student Dashboard
     <div class="container-fluid mt-0">
         <div class="row">
             <div class="col-3">
-                <img src="{{ user.profile.profile_pic.url }}" class="img-fluid max-width=450px">
+                {% if user.profile.profile_pic %}
+                <img src="{{ user.profile.profile_pic.url }}" class="img-fluid max-width=450px" alt="User profile picture">
             </div>
             <div class="col-6 justify-content-center">
                 <h1 class="py-2 mx-auto cabin-sketch-bold">{{ user.username }}'s Student Dashboard</h1>
-                <h2 class="mx-auto"><small>Manage your volunteer time and see your progress toward reaching the graduation requirement.</small><h3>
+                <h2 class="mx-auto"><small>Manage your volunteer time and see your progress toward reaching the graduation requirement.</small><h2>
             </div>
         </div>
     </div>
