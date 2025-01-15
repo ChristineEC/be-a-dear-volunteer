@@ -11,7 +11,7 @@ class About(models.Model):
     """
     title = models.CharField(max_length=50)
     content = models.TextField()
-    featured_image = CloudinaryField('image', default="about_default.jpg")
+    featured_image = CloudinaryField('image', default="hearts2.jpg")
     updated_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
 

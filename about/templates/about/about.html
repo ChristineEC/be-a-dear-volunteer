@@ -9,7 +9,7 @@
         <div class="col-sm-12 col-md-9 col-lg-12 mb-5">
             <div class="card mb-3">
                 {% if "default" in about.featured_image.url %}
-                    <img class="card-img-top" src="{% static 'images/about_image.jpg' %}" max-height="25vh" alt="placeholder image">
+                    <img class="card-img-top" src="{% static 'images/about_image.jpg' %}" alt="placeholder image">
                 {% else %}
                     <img class="card-img-top" src="{{ about.featured_image.url }}" alt="Featured image for the Be A Dear project">
                 {% endif %}
