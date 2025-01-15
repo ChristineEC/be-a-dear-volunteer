@@ -30,11 +30,8 @@ class ProfileAdmin(admin.ModelAdmin):
     class Meta:
         ordering = ['classroom', 'profile_type', 'alias',]
 
-    # def __str__(self):
-    #     return f"Alias {self.alias}, is in classroom number {self.classroom}"
-
-# # Taken from 
-# # https://docs.djangoproject.com/en/4.2/topics/auth/customizing/
+    def __str__(self):
+        return f"Alias {self.alias}, is in classroom number {self.classroom}"
 
 class ProfileInline(admin.StackedInline):
     """
@@ -49,11 +46,10 @@ class ProfileInline(admin.StackedInline):
     verbose_name_plural = "profile"
 
     
-# Define a new User admin
 class UserAdmin(BaseUserAdmin):
     inlines = [ProfileInline]
 
-# Register UserAdmin
+
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 admin.site.unregister(Site)

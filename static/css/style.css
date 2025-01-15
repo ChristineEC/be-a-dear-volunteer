@@ -46,6 +46,10 @@ body {
     background-color: rgb(244, 195, 218);
 }
 
+.short-line {
+    width: 30px;
+}
+
 /*-- Beneficiary Card --*/
 .b-card {
     border: none;
@@ -53,7 +57,7 @@ body {
 
 /*-- About page --*/
 .about-containter {
-    background-image: url("/static/images/neon-heart");
+    background-color: rgb(244, 195, 218);
 }
 
 .about-title {
@@ -61,6 +65,7 @@ body {
 }
 
 /* -- Messages -- */
+
 .unpublished-msg {
     color: rgb(136, 10, 10);
     font-style: italic;

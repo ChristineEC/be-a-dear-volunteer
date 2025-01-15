@@ -3,22 +3,25 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="container-fluid about-container" background="/static/css/images/neon-heart.jpg">
-    <div class="row p-5">
-        <div class="col-sm-d-none col-lg-3 mb-5 about-img-div">
-            {% if "placeholder" in about.featured_image.url %}
-            <img class="img-fluid" src="{% static 'images/about_image.jpg' %}" alt="placeholder image for the About page">
-            {% else %}
-            <img class="img-fluid" src="{{ about.featured_image.url }}" alt="Featured image for the Be A Dear project">
-            {% endif %}
+<h1 class="card-title about-header d-none">About the Be a Dear Project</h1>
+<div class="container-fluid about-container">
+    <div class="row">
+        <div class="col-sm-12 col-md-9 col-lg-12 mb-5">
+            <div class="card mb-3">
+                {% if "default" in about.featured_image.url %}
+                    <img class="card-img-top" src="{% static 'images/about_image.jpg' %}" max-height="25vh" alt="placeholder image">
+                {% else %}
+                    <img class="card-img-top" src="{{ about.featured_image.url }}" alt="Featured image for the Be A Dear project">
+                {% endif %}
+                <div class="card-body">
+                    
+                <h5 class="card-title">{{ about.title }}</h5>
+                <p class="card-text">{{ about.content | safe }}</p>
+                <p class="card-text"><small class="text-muted">Updated on: {{ about.updated_on}}</small></p>
+                </div>
+            </div>
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-6 mb-5">
-                <h1 class="about-header d-none">About the Be a Dear Project</h1>
-                <h2 class="cabin-sketch-bold about-title">{{ about.title }}</h2>
-                <p>{{ about.content | safe }}</p>
-                <p>Updated on: {{ about.updated_on}}</p>
-        </div>
-        <div class="col-sm-12 col-md-6 col-lg-3 px-3 mb-5">
+        <div class="col-sm-12 col-md-3 col-lg-12 px-3 mb-5">
             <h2>Send us a message!</h2>
             <form method="POST">
                 {{ collaborate_form | crispy }}

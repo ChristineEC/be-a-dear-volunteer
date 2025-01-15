@@ -31,7 +31,7 @@ def about_project(request):
                 'as we can. Have a great day!'
             )
     about = About.objects.filter(status=1).order_by(
-            'updated_on').first()
+            'updated_on').last()
     collaborate_form = CollaborateForm()
 
     return render(
@@ -48,7 +48,9 @@ def send_message(request):
     """
     Enables a user to send a message
     from the login page if they've
-    forgotten their username.
+    forgotten their username. 
+    Also allows user to send a message
+    from the homepage through a link.
     **Context**
    'collaborate_form`
     an instance of :form: CollaborateForm

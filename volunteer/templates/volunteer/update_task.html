@@ -8,19 +8,24 @@
 <section id="edit-task">
     {% if user.is_authenticated and slot.reserved_by == user %}
     <div class="container">
-        <h1>Update a task:</h1>
-        <form id="slotForm" class="mb-5" method="post" action="">
-            {{ form | crispy }}
-            {% csrf_token %}
-            <button id="updateButton" type="submit" class="btn btn-secondary btn-lg">
-                Update</button>
-        </form>
+        <div class="row">
+            <div class="col-sm-12 col-md-8 offset offset-md-2 col-lg-6 offset-lg-3">
+                <h1>Update a task:</h1>
+                <form id="slotForm" class="mb-5" method="post" action="">
+                    {{ form | crispy }}
+                    {% csrf_token %}
+                    <button id="updateButton" type="submit" class="btn btn-secondary btn-lg">
+                        Update</button>
+                </form>
+            </div>
+        </div>
     </div>
     {% else %}
     <div>
         <h1>You must be logged in to manage your tasks.</h1>
     </div>
     {% endif %}
+    </div>
 </section>
 
 {% endblock %}
