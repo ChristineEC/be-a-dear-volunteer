@@ -5,6 +5,12 @@ const totalMinutesApproved = document.getElementById("calculated-minutes");
 const totalHoursApproved = document.getElementById("calculated-hours");
 const remainingHours = document.getElementById("remaining-hours");
 const plusRemainingMinutes = document.getElementById("plus-remaining-minutes");
+/* delete modal has been adapted from Dode Institute's Blog walkthrough */
+const deleteModalDashboard = new bootstrap.Modal(document.getElementById("deleteModalDashboard"));
+const deleteBtns =  document.getElementsByClassName("btn-delete-task");
+const deleteConfirmDashboard = document.getElementById("deleteConfirmDashboard");
+/* end cred */
+
 
 let minutes = [];
 for (let i=0; i < minutesApproved.length; i++) {
@@ -19,3 +25,14 @@ let calculatedremaininghours = 30 - Math.floor(totalminutes/60);
 remainingHours.innerHTML = calculatedremaininghours;
 let calculatedremainingminutes = totalminutes % 60;
 plusRemainingMinutes.innerHTML = calculatedremainingminutes;
+
+
+/*-- Partial credit for this code goes to Code Institute --*/
+/*-- It has been adapted for my purposes --*/
+for (let button of deleteBtns) {
+    button.addEventListener("click", (e) => {
+        let slotId = e.target.getAttribute("slot_id");
+        deleteConfirmDashboard.href = `delete_task/${slotId}/`;
+        deleteModalDashboard.show();
+    });
+}

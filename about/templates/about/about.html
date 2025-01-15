@@ -8,8 +8,8 @@
     <div class="row">
         <div class="col-sm-12 col-md-9 col-lg-12 mb-5">
             <div class="card mb-3">
-                {% if "default" in about.featured_image.url %}
-                    <img class="card-img-top" src="{% static 'images/about_image.jpg' %}" alt="placeholder image">
+                {% if "placeholder" in about.featured_image %}
+                    <img class="card-img-top" src="{% static 'images/hearts2.jpg' %}" alt="placeholder image">
                 {% else %}
                     <img class="card-img-top" src="{{ about.featured_image.url }}" alt="Featured image for the Be A Dear project">
                 {% endif %}
@@ -21,7 +21,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 col-md-3 col-lg-12 px-3 mb-5">
+        <div class="col-sm-12 col-md-9 col-lg-6 px-3 mb-5">
             <h2>Send us a message!</h2>
             <form method="POST">
                 {{ collaborate_form | crispy }}

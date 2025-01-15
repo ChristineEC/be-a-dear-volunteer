@@ -197,7 +197,7 @@ def student_dashboard(request):
         {"slots": slots,}
     )
 
-def delete_via_dashboard(request, pk):
+def delete_via_dashboard(request, slot_id):
     """
     Deletes a selected slot via the
     student dashboard.
@@ -207,8 +207,8 @@ def delete_via_dashboard(request, pk):
     **Template**
     'volunteer/student_dashboard.html'
     """
-    slot = Slot.objects.get(id=pk)
-    if slot.reserved_by == request.user:
+    slot = get_object_or_404(Slot, pk=slot_id)
+    if slot.reserved_by == request.user:             
         slot.delete()
         messages.add_message(request, messages.SUCCESS,
         'Your task has been deleted!')

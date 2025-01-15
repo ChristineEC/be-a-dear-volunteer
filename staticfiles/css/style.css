@@ -46,10 +46,8 @@ body {
     background-color: rgb(244, 195, 218);
 }
 
-.short-lines {
-    max-width: 40px;
-    height: 2px;
-    background-color: black;
+.short-line {
+    width: 30px;
 }
 
 /*-- Beneficiary Card --*/
@@ -59,7 +57,7 @@ body {
 
 /*-- About page --*/
 .about-containter {
-    background-image: url("/static/images/neon-heart");
+    background-color: rgb(244, 195, 218);
 }
 
 .about-title {

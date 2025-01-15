@@ -63,8 +63,8 @@ Student Dashboard
                                 <td>{{ slot.completed }}</td>
                                 <td>{{ slot.credit_minutes_requested }}</td>
                                 <td class="credit_minutes_approved">{{ slot.credit_minutes_approved }}</td>
-                                <td><a href="{% url 'update_slot' slot.id %}">Update</a></td>
-                                <td><a href="{% url 'delete_via_dashboard' slot.id %}">Delete</a></td>
+                                <td><a class="button btn-primary btn-sm" href="{% url 'update_slot' slot.id %}">Update</a></td>
+                                <td><button class="btn-delete-task btn-danger btn-sm" slot_id="{{ slot.id }}">Delete</button></td>
                             </tr>
                         {% endfor %}
                         </tbody>
@@ -104,7 +104,24 @@ Student Dashboard
         <h1>You must be logged in to access this page.</h1>
     </div>
 {% endif %}
-
+<!-- delete modal-->
+<div id="deleteModalDashboard" class="modal" tabindex="-1" aria-labelledby="deleteModalDashboardLabel" aria-hidden="True">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Are you sure?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>This action cannot be undone!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <a id="deleteConfirmDashboard" href="#" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}
 
 {% block extras %}
