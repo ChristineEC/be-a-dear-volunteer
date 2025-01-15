@@ -46,7 +46,6 @@ body {
     background-color: rgb(244, 195, 218);
 }
 
-
 /*-- Beneficiary Card --*/
 .b-card {
     border: none;
@@ -70,20 +69,16 @@ body {
 .message {
     color: rgb(136, 10, 10);
 }
-/* --------------------Buttons-------- */
+
+/*-- Buttons --*/
 
 .btn-edit {
-    background-color:black;
-    color:white;
     border-width: 1px;
-    color:#000;
     font-weight:bold;
 }
 
 .btn-delete {
-    background-color:rgb(165, 19, 11);
     border-width: 1px;
-    color:rgba(32, 16, 1, 0.779);
     font-weight:bold;
 }
 

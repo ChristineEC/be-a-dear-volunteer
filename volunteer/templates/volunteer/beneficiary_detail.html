@@ -82,11 +82,11 @@ Beneficiary Details
                                 {{ slot.credit_minutes_requested }}</span><br>
                             {% if not slot.publish_ok and slot.reserved_by == user %}
                             <span class="unpublished-msg">Task is unpublished but
-                                appears on your dashboard!</span>
+                                appears on your dashboard!</span><br>
                             {% endif %}
                             {% if user.is_authenticated and slot.reserved_by == user %}
-                            <button class="btn btn-edit btn-sm" slot_id="{{ slot.id }}">Edit</button>
-                            <button class="btn btn-delete btn-sm" slot_id="{{ slot.id }}">Delete</button>
+                            <span><button class="btn btn-edit btn-secondary btn-sm" slot_id="{{ slot.id }}">Edit</button> </span>
+                            <span> <button class="btn btn-delete btn-danger btn-sm" slot_id="{{ slot.id }}">Delete</button></span>
                             {% endif %}
                         </div>
                     </div>
