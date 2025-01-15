@@ -1,14 +1,15 @@
 body {
-    background-color:#000000;
     margin: 0px;
     padding: 0px;
+}
+
+.heading {
     color: whitesmoke;
 }
 
-.heading-img {
-    width: 100%;
+.header-image {
+    width: cover;
     max-height: 200px;
-    object-fit: cover;
 }
 
 
@@ -22,24 +23,22 @@ body {
 
 }
 
-.about-img-div{
+.about-img-div {
     index:1;
 }
 
 
-
-/*---------------Beneficiary Card------*/
-
-
-
-.card-small-h3{
-    font-size:24px;
+.beneficiary-container {
+    background-color: rgb(244, 195, 218);
 }
-.card-small-h4{
-    font-size:18px;
+
+
+/*-- Beneficiary Card --*/
+.b-card {
+    border: none;
 }
+
 /* Fonts */
-
 .graduate-regular {
     font-family: "Graduate", serif;
     font-weight: 400;
@@ -82,19 +81,22 @@ body {
       "wdth" 100;
   }
 
-.logged-in-user-msg {
-    color: rgb(226, 5, 5);
+
+
+/* -- Messages -- */
+.unpublished-msg {
+    color: rgb(246, 15, 15);
     font-style: italic;
 }
 
-/* -- Message -- */
 .message {
     color: rgb(246, 15, 15);
 }
 /* --------------------Buttons-------- */
 
 .btn-edit {
-    background-color:rgb(248, 109, 10);
+    background-color:black;
+    color:antiquewhite
     border-width: 1px;
     font:rgba(32, 16, 1, 0.779);
     font-weight:bold;
@@ -120,10 +122,11 @@ body {
 
 /*-- Student Dashboard --*/
 .stats {
-    font-size: 32px;
+    font-size: 18px;
+}
 
-/*-- Footer --*/
-.footer {
-    background-color:black;
-    z-index:1;
+footer {
+    background-color: black;
+    height:fit-content
+    z-index: 2;
 }

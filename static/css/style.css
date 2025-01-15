@@ -1,43 +1,6 @@
 body {
-    background-color:#000000;
     margin: 0px;
     padding: 0px;
-    color: whitesmoke;
-}
-
-.heading {
-    color: whitesmoke;
-}
-
-.header-image {
-    width: cover;
-    max-height: 200px;
-}
-
-
-/*-- About page --*/
-.about-containter{
-    background-image: url("/static/images/neon-heart");
-}
-
-.about-title {
-    font-size: 40px;
-
-}
-
-.about-img-div{
-    index:1;
-}
-
-
-.beneficiary-container{
-    background-color: rgb(244, 195, 218);
-}
-
-
-/*-- Beneficiary Card --*/
-.b-card {
-    border: none;
 }
 
 /* Fonts */
@@ -50,7 +13,6 @@ body {
 .graduate-bold {
     font-family: "Graduate", serif;
     font-weight: 800;
-    font-style: bold;
 }
 
 .cabin-sketch-regular {
@@ -62,58 +24,72 @@ body {
 .cabin-sketch-bold {
     font-family: "Cabin Sketch", sans-serif;
     font-weight: 700;
-    font-style: bold;
 }
 
 .open-sans-heavy {
   font-family: "Open Sans", sans-serif;
-  font-optical-sizing: auto;
   font-weight: 600;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
-}
 
+}
 .open-sans {
     font-family: "Open Sans", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-variation-settings:
-      "wdth" 100;
-  }
+}
+
+.home-heading {
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+
+.beneficiary-container {
+    background-color: rgb(244, 195, 218);
+}
 
 
+/*-- Beneficiary Card --*/
+.b-card {
+    border: none;
+}
+
+/*-- About page --*/
+.about-containter {
+    background-image: url("/static/images/neon-heart");
+}
+
+.about-title {
+    font-size: 40px;
+}
 
 /* -- Messages -- */
 .unpublished-msg {
-    color: rgb(246, 15, 15);
+    color: rgb(136, 10, 10);
     font-style: italic;
 }
 
 .message {
-    color: rgb(246, 15, 15);
+    color: rgb(136, 10, 10);
 }
 /* --------------------Buttons-------- */
 
 .btn-edit {
     background-color:black;
-    color:antiquewhite
+    color:white;
     border-width: 1px;
-    font:rgba(32, 16, 1, 0.779);
+    color:#000;
     font-weight:bold;
 }
 
 .btn-delete {
-    background-color:rgb(248, 22, 10);
+    background-color:rgb(165, 19, 11);
     border-width: 1px;
-    font:rgba(32, 16, 1, 0.779);
+    color:rgba(32, 16, 1, 0.779);
     font-weight:bold;
 }
 
 .signup-button {
     font-weight: bold;
-    border-style: solid 1px black;
+    border: solid 1px black;
 }
 
 /*-- Inline links --*/
@@ -125,7 +101,7 @@ body {
 /*-- Student Dashboard --*/
 .stats {
     font-size: 18px;
-
-.foot {
-    z-index: 1;
+}
+footer {
+    color:antiquewhite;
 }

@@ -1,5 +1,4 @@
 {% load static %}
-
 {% url 'home' as home_url %}
 {% url 'about' as about_url %}
 {% url 'account_login' as login_url %}
@@ -36,7 +35,7 @@
 </head>
 
 <body>
-    <!-- Header and Navigation -->
+    <!-- Header and Nav -->
     <header>
         <nav class="navbar bg-dark navbar-expand-lg fixed-top bg-body-tertiary">
             <div class="container-fluid">
@@ -98,7 +97,6 @@
             </div>
         </div>
     </header>
-
     <!-- Main -->
     <main>
         <div class="row">
@@ -113,10 +111,9 @@
         {% block content %}
         {% endblock content %}       
     </main>
-
     <!-- Footer -->
-    <footer>
-        <div class="container-fluid foot fixed-bottom mb-0.5 mt-3 text-center">
+    <footer class="footer fixed-bottom">
+        <div class="container-fluid text-center">
             <div class="row">
                 <div class="col">
                     <p class="text-align-center graduate-bold footer-text">Brought to you by West Carlsbad High School Student

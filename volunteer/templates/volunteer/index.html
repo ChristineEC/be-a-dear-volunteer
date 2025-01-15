@@ -7,60 +7,75 @@
 
 <!-- Heading section-->
 <section class="heading">
-  <div class="container-fluid">
+  <div class="container-fluid home-heading">
     <div class="row">
-      <div class="col-sm-12 col-md-6 col-lg-9 mx-auto mb-3">
-        <div id="heading" class="col mx-auto text-center open-sans">
-          <h1 class="display-4">
-            Find, create and share volunteer opportunities
-          </h1>
-          <h2 class="display-6">
-            Record and receive credit for volunteering as little
-            as five minutes at a time!
-          </h2>
-        </div>
+      <div class="col-sm-12 col-md-6 offset-md-3 col-lg-8 offset-lg-2 mb-5">
+        <h1 class="display-4 text-center pt-5">
+          Be a Dear is a Student-Led Project
+        </h1>
+        <h2 class="display-6 pt-3 text-center">
+          designed to help us make the most of our mandatory volunteer hours
+        </h2>
+        <p class="lead pt-3 text-center pt-4">Volunteer in non-traditional and
+             more fun, convenient and meaningful ways!
+        </p>
       </div>
     </div>
+  </div>
+  <div class="container-fluid g-0">
+    <img src="{% static 'images/hearts2.jpg' %}" class="card-img-top" alt="Valentine hearts image">
+  </div>
+  <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-12 col-md-9 col-lg-10 mx-auto">
-        <div class="card mb-3 mx-auto">
-          <img src="{% static 'images/hearts2.jpg' %}" class="card-img-top" alt="Valentine hearts image">
-          <div class="card-body">
-            <h3 class="card-title text-align-center text-uppercase">How it works</h3>
-            <hr>
-            <h4 class="card-text">Browse opportunities</h4>
-            <h5 class="card-text fst-italic">Note the special categories of "Other" and "Individual" below!</h5>
-            <h4 class="card-text"><a href="{% url 'account_login' %}" class="link-dark">Sign in</a> to save tasks to your personal dashboard</h4>
-            <h4 class="card-text">Plan, record and request credit for your volunteer activities</h4>
-            <h4 class="card-text">Read what others are doing and get inspiration!</h4>
-            <h4 class="card-text">Know of a good cause? Someone who could use a hand?</h4>
-            <h5 class="card-text fst-italic">Send us a message, and we'll post it here for all to see!</h5>
-          </div>
-        </div>
+      <div class="col-12 py-5 mx-auto text-center">
+        <h3 class="display-6">How it Works</h3>
+      </div>
+    </div>
+    <div class="row mb-5">
+      <div class="col-4 text-center py-3">
+        <h4 class="display-6 mb-3">Discover Opportunities</h4>
+        <p>Below you'll find ideas and suggestions</p>
+        <p><strong>Note the ones
+          labeled "Other" and "Individual"</strong></p>
+        <p>They are what make this project special!</p>
+        <p>Click on any of the choices to read more</p>
+      </div>
+      <div class="col-4 text-center py-3">
+        <h4 class="display-6 mb-3">Your Personal Dashboard</h4>
+        <p><a href="{% url 'account_login' %}" class="link-dark inline-link">Sign in</a> to save tasks to your dashboard</p>
+        <p>From there, plan and update your activities</p>
+        <p>Request credit for hours completed</p>
+        <p>Track your progress toward meeting the graduation requirement</p>
+      </div>
+      <div class="col-4 text-center py-3">
+        <h4 class="display-6 mb-3">Inspire one another!</h4>
+        <p>See what others are signing up for</p>
+        <p>Know of a good cause? Someone who could use a hand?</p>
+        <p>Send us a <a href="{% url 'send_message' %}">message</a> and we'll post your suggestions here</p>
+        <p>Read more about the project <a href="{% url 'about' %}">here</a>!</p>
       </div>
     </div>
   </div>
 </section>
 <!-- Beneficiaries list section -->
-
 <section class="beneficiaries-list">
   <div class="container-fluid beneficiary-container d-flex justify-content-evenly mb-5">
     <div class="row mx-auto">
       <!-- Cards for each beneficiary in list -->
-        {% for beneficiary in beneficiary_list %}
-        <div class="card b-card bg-transparent mx-auto px-5 my-2 col-sm-12, col-md-6 col-lg-3 g-0">
-          <div class="card-body">
-            <h5 class="card-title card-small-h3">
-              <a href="{% url 'beneficiary_detail' beneficiary.slug %}"
-                  class="link-dark">{{ beneficiary.beneficiary_name }}
-              </a>
-            </h5>
-            <h6 class="card-subtitle mb-2 text-muted card-small-h4"><small>{{ beneficiary.location }}</small></h6>
-            <p class="card-text">{{ beneficiary.short_description | safe }}</p>
-            <p class="card-text">{{ beneficiary.contact_details }}</p>
-          </div>
+      {% for beneficiary in beneficiary_list %}
+      <div class="card b-card bg-transparent mx-auto px-5 my-2 col-sm-12, col-md-6 col-lg-3 g-0">
+        <div class="card-body">
+          <h5 class="card-title card-small-h3">
+            <a href="{% url 'beneficiary_detail' beneficiary.slug %}"
+              class="link-dark">{{ beneficiary.beneficiary_name }}
+            </a>
+          </h5>
+          <h6 class="card-subtitle mb-2 text-muted card-small-h4"><small>{{ beneficiary.location }}</small></h6>
+          <p class="card-text">{{ beneficiary.short_description | safe }}</p>
+          <p class="card-text">{{ beneficiary.contact_details }}</p>
         </div>
-        {% endfor %}
+      </div>
+      {% endfor %}
     </div>
   </div>
 </section>

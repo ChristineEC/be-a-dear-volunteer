@@ -1,3 +1,4 @@
+/* jshint esversion: 6 */
 /* For calculation of student dashboard stats */
 const minutesApproved = document.getElementsByClassName("credit_minutes_approved");
 const totalMinutesApproved = document.getElementById("calculated-minutes");
@@ -14,7 +15,7 @@ let totalminutes = minutes.reduce((acc, curr) => (acc + curr), 0);
 totalMinutesApproved.innerHTML = totalminutes;
 let calculatedhours = (totalminutes/60).toFixed(2);
 totalHoursApproved.innerHTML = calculatedhours;
-let calculatedremaininghours = Math.floor(totalminutes/60);
+let calculatedremaininghours = 30 - Math.floor(totalminutes/60);
 remainingHours.innerHTML = calculatedremaininghours;
 let calculatedremainingminutes = totalminutes % 60;
 plusRemainingMinutes.innerHTML = calculatedremainingminutes;

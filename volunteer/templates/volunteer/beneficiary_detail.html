@@ -8,73 +8,33 @@ Beneficiary Details
 
 {% block content %}
 
-<!-- -----------------------Beneficiary detail-->
- <section id="Information about the beneficiary">
+<!-- Beneficiary detail-->
+<section id="beneficiary-information">
     <div class="container beneficiary-detail">
-        <div class="row">
-            <div class="col-12 p-2">
-                <h2 id="Beneficiary detail">{{ beneficiary.beneficiary_name }}</h2>
-                <p>{{ beneficiary.description | safe }}</p>
-                <p>{{ beneficiary.location }} |
-                    <span class="bold"> {{ beneficiary.contact_details }}</span>
-                </p>
-                <p>
-                    <span>Tasks planned by WCHS students: {{ slots_created_count }} | </span>
-                    <span>Tasks completed by WCHS students: {{ slots_completed_count }}</span>
-                </p>
-            </div>
-        </div>
-    </div>
- </section>
-<!--List of published slots (and all reserved by current user) -->
-<section id="Planned tasks">
-    <div class="container-fluid slots-list">
-        <div class="row">
-            <div class="col-12 p-2">
-                <h2>Sample tasks for this beneficiary:</h2>
-                <h3>Note that tasks are listed publicly at the discretion of the site managers.</h3>
-                <div class="row">
-                    {% for slot in slots %}
-                        <div class="col-4 slot-display
-                        {% if not slot.publish_ok and slot.reserved_by == user %}muted
-                        {% elif not slot.publish_ok %}d-none
-                        {% endif %}">
-                            <span>Task: </span>
-                            <span id="task{{ slot.id }}">{{ slot.task }}</span><br>
-                            <span>Location: </span>
-                            <span id="task_location{{ slot.id }}">{{ slot.task_location }}</span></br><br>
-                            <span>Dates: </span>
-                            <span id="dates{{ slot.id }}">{{ slot.dates }}</span><br>
-                            <span>Times: </span>
-                            <span id="times{{ slot.id }}">{{ slot.times }}</span><br>
-                            <span>Completed: </span>
-                            <span id="completed{{ slot.id }}">{{ slot.completed }}</span><br>
-                            <span>Credit Minutes Requested: </span>
-                            <span
-                                id="credit_minutes_requested{{ slot.id }}">{{ slot.credit_minutes_requested }}</span><br>
-                            {% if not slot.publish_ok and slot.reserved_by == user %}
-                            <span class="unpublished-msg">Task is unpublished but
-                                appears on your dashboard!</span>
-                            {% endif %}
-                            {% if user.is_authenticated and slot.reserved_by == user %}
-                            <button class="btn btn-edit btn-sm" slot_id="{{ slot.id }}">Edit</button>
-                            <button class="btn btn-delete btn-sm" slot_id="{{ slot.id }}">Delete</button>
-                            {% endif %}
-                        </div>
-                    {% endfor %}
+        <div class="row d-flex flex-row align-items-center flex-wrap">
+            <div class="col-sm-12 col-md-6">
+                <div class="card ml-0" style="max-width: 36rem;">
+                    {% if "placeholder" in beneficiary.featured_image.url %}
+                    <img src="{{ beneficiary.featured_image.url }}" class="card-img-top" alt="placeholder image">
+                    {% else %}
+                    <img src="{{ beneficiary.featured_image.url }}" class="card-img-top"
+                        alt="{{ beneficiary.beneficiary_name }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ beneficiary.beneficiary_name }}</h5>
+                        <p class="card-text">{{ beneficiary.description | safe }}</p>
+                        <p class="card-text">{{ beneficiary.location }}</p>
+                        <p class="card-text">{{ beneficiary.contact_details }}</p>
+                        <p class="card-text">Tasks planned by WCHS students: {{ slots_created_count }}</p>
+                        <p class="card-text">Tasks completed by WCHS students: {{ slots_completed_count }}</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-<!--------------------------Reserving slots------------>
-<section id="Save task related to this beneficiary to student dashboard">
-    <div class="container">
-        <div class="row short-form-div">
-            <div class="col-12 mx-auto p-2">
-                <h3>Add a task related to {{ beneficiary.beneficiary_name }} to your dashboard.</h3>
-                <h4>You can manage the details and update your tasks on your <a href="{% url 'student_dashboard' %}" class="inline-link">dashboard</a>.</h4>
-                <h5>If you plan to volunteer on multiple dates for the same beneficiary, go ahead and add several here. You can fill in the details later on your student dashboard.</h5>
+            <!-- Reserve slots -->
+            <div class="col-sm-12 col-md-6">
+                <h3>Fill in the form to add a task related to {{ beneficiary.beneficiary_name }} to your dashboard.</h3>
+                <h4>You can manage the details and update your tasks on your <a href="{% url 'student_dashboard' %}"
+                    class="inline-link">dashboard</a>.</h4>
                 {% if user.is_authenticated %}
                 <p class="graduate-bold">Reservation for username: {{ user.username }}</p>
                 <form id="slotForm" class="mb-5" method="post">
@@ -91,11 +51,56 @@ Beneficiary Details
         </div>
     </div>
 </section>
+<!--List of published slots (and all reserved by current user) -->
+<section id="Planned tasks">
+    <div class="container-fluid slots-list">
+        <div class="row">
+            <div class="col-12 p-2 py-5 text-center">
+                <h2 class="display-4">What's been saved to students' dashboards:</h2>
+                <h3><small>Tasks are listed publicly at the discretion of school staff (so be polite!)</small></h3>
+            </div>
+            <div class="row mb-5">
+                {% for slot in slots %}
+                <div class="col-sm-12 col-md-4 col-lg-3 slot-display
+                            {% if not slot.publish_ok and slot.reserved_by == user %}muted
+                            {% elif not slot.publish_ok %}d-none
+                            {% endif %}">
+                    <div class="card">
+                        <div class="card-body">
+                            <span>Task: </span>
+                            <span id="task{{ slot.id }}">{{ slot.task }}</span><br>
+                            <span>Location: </span>
+                            <span id="task_location{{ slot.id }}">{{ slot.task_location }}</span><br>
+                            <span>Dates: </span>
+                            <span id="dates{{ slot.id }}">{{ slot.dates }}</span><br>
+                            <span>Times: </span>
+                            <span id="times{{ slot.id }}">{{ slot.times }}</span><br>
+                            <span>Completed: </span>
+                            <span id="completed{{ slot.id }}">{{ slot.completed }}</span><br>
+                            <span>Credit Minutes Requested: </span>
+                            <span id="credit_minutes_requested{{ slot.id }}">
+                                {{ slot.credit_minutes_requested }}</span><br>
+                            {% if not slot.publish_ok and slot.reserved_by == user %}
+                            <span class="unpublished-msg">Task is unpublished but
+                                appears on your dashboard!</span>
+                            {% endif %}
+                            {% if user.is_authenticated and slot.reserved_by == user %}
+                            <button class="btn btn-edit btn-sm" slot_id="{{ slot.id }}">Edit</button>
+                            <button class="btn btn-delete btn-sm" slot_id="{{ slot.id }}">Delete</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
 <!-- The delete modal -->
 <div id="deleteModal" class="modal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="True">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div  class="modal-header">
+            <div class="modal-header">
                 <h5 id="deleteModalLabel" class="modal-title">Are you sure?</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
