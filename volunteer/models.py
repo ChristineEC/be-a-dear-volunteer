@@ -34,7 +34,7 @@ class Beneficiary(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
-    featured_image = CloudinaryField('image', default='placeholderimage.jpg')
+    featured_image = CloudinaryField('image', default='placeholder')
 
     class Meta:
         ordering = ["beneficiary_name"]
