@@ -14,8 +14,8 @@ Student Dashboard
         <div class="container-fluid mt-0">
             <div class="row mx-">
                 <div class="col-3 pl-5">
-                    {% if "default" in user.profile.profile_pic.url %}
-                    <img src="{{ user.profile.profile_pic.url }}" class="img-fluid max-width=450px" alt="Placeholder image">
+                    {% if "placeholder" in user.profile.profile_pic %}
+                    <img src="{% static 'images/default-user.jpg %}" class="img-fluid max-width=450px" alt="default user icon">
                     {% else %}
                     <img src="{{ user.profile.profile_pic.url }}" class="img-fluid max-width=450px" alt="User profile picture">
                     {% endif %}

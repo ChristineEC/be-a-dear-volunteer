@@ -50,6 +50,9 @@ body {
     width: 30px;
 }
 
+.card-text {
+    font-family: open-sans, sans-serif;
+}
 /*-- Beneficiary Card --*/
 .b-card {
     border: none;
