@@ -27,7 +27,7 @@ class Beneficiary(models.Model):
 
     beneficiary_name = models.CharField(max_length=150, unique=True)
     slug = models.SlugField(max_length=150)
-    short_description = models.CharField(max_length=200, default="")
+    short_description = models.CharField(max_length=255, default="")
     description = models.TextField()
     location = models.CharField(max_length=255, default="")
     contact_details = models.CharField(max_length=200)
@@ -49,7 +49,7 @@ class Slot(models.Model):
     task = models.CharField(max_length=200, default="")
     task_location = models.CharField(max_length=200,
                                      default="use pseudonym\
-                                        for private beneficiary)")
+                                     for private beneficiary)")
     dates = models.CharField(max_length=200, default="to be determined")
     times = models.CharField(max_length=200, default="to be determined")
     created_on = models.DateTimeField(auto_now_add=True)
