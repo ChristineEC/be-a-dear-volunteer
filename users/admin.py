@@ -9,7 +9,7 @@ from allauth.socialaccount.models import SocialApp, SocialAccount, SocialToken
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     """
-    Enabes specific fields of the 
+    Enabes specific fields of the
     Profile model to show
     in the admin panel
     """
@@ -33,19 +33,20 @@ class ProfileAdmin(admin.ModelAdmin):
     def __str__(self):
         return f"Alias {self.alias}, is in classroom number {self.classroom}"
 
+
 class ProfileInline(admin.StackedInline):
     """
     To ensure that, When a user is created
-    in the admin panel, the fields for the 
+    in the admin panel, the fields for the
     Profile model also appear so that the
-    Profile fields can be updated at the 
+    Profile fields can be updated at the
     same time.
     """
     model = Profile
     can_delete = False
     verbose_name_plural = "profile"
 
-    
+
 class UserAdmin(BaseUserAdmin):
     inlines = [ProfileInline]
 

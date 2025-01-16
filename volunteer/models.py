@@ -42,14 +42,21 @@ class Beneficiary(models.Model):
 
 class Slot(models.Model):
 
-    beneficiary = models.ForeignKey(Beneficiary, on_delete=models.CASCADE, related_name="slots")
+    beneficiary = models.ForeignKey(
+                                    Beneficiary,
+                                    on_delete=models.CASCADE,
+                                    related_name="slots")
     task = models.CharField(max_length=200, default="")
-    task_location = models.CharField(max_length=200, default="use pseudonym for private beneficiary)")
+    task_location = models.CharField(max_length=200,
+                                     default="use pseudonym\
+                                        for private beneficiary)")
     dates = models.CharField(max_length=200, default="to be determined")
     times = models.CharField(max_length=200, default="to be determined")
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    reserved_by = models.ForeignKey(User, blank=True, on_delete=models.CASCADE, related_name="reservations")
+    reserved_by = models.ForeignKey(User, blank=True,
+                                    on_delete=models.CASCADE,
+                                    related_name="reservations")
     completed = models.SmallIntegerField(choices=COMPLETION, default=0)
     credit_minutes_requested = models.SmallIntegerField(default=0)
     credit_minutes_approved = models.SmallIntegerField(default=0)
@@ -57,7 +64,7 @@ class Slot(models.Model):
 
     class Meta:
         ordering = ["created_on"]
-        
+
 
 class Classroom(models.Model):
 

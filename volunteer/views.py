@@ -1,18 +1,21 @@
-from django.shortcuts import render, get_object_or_404, reverse, redirect
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from .models import Beneficiary, Slot, Classroom
+from .models import Beneficiary, Slot
 from .forms import SlotForm
 
 
 class BeneficiaryList(generic.ListView):
     """
-    
+    Generates a list of beneficiaries
+    on the home page.
+    **Template**
+    `volunteer/index.html`
     """
-    queryset = Beneficiary.objects.filter(status=1).order_by("beneficiary_name")
+    queryset = Beneficiary.objects.filter(
+                status=1).order_by("beneficiary_name")
     template_name = "volunteer/index.html"
     paginate_by: 6
 
@@ -58,7 +61,7 @@ def beneficiary_detail(request, slug):
                 "There has been an error. Please try again! "
                 "Contact us through the form on the About page "
                 "if the problem persists."
-            ) 
+            )
 
     form = SlotForm()
 
@@ -73,6 +76,7 @@ def beneficiary_detail(request, slug):
             "form": form,
         },
     )
+
 
 # Adapted from Code Institute lesson, I Think Therefore I Blog
 def slot_edit(request, slug, slot_id):
@@ -98,14 +102,16 @@ def slot_edit(request, slug, slot_id):
             slot.publish_ok = False
             slot.save()
             messages.add_message(request, messages.SUCCESS,
-                'Your task has been updated!')
+                                 'Your task has been updated!')
 
         else:
             messages.add_message(request, messages.ERROR,
-            'An error occurred updating the task')
+                                 "An error occurred "
+                                 "updating the task")
 
     return HttpResponseRedirect(
         reverse('beneficiary_detail', args=[slug]))
+
 
 # Adapted from Code Institute lesson, I Think Therefore I Blog
 def slot_delete(request, slug, slot_id):
@@ -118,16 +124,15 @@ def slot_delete(request, slug, slot_id):
     **Template**
         :template:`volunteer/beneficiary_detail.html`
     """
-    queryset = Beneficiary.objects.filter(status=1)
-    beneficiary = get_object_or_404(queryset, slug=slug)
     slot = get_object_or_404(Slot, pk=slot_id)
     if slot.reserved_by == request.user:
         slot.delete()
         messages.add_message(request, messages.SUCCESS,
-        'Your task has been deleted!')
+                             'Your task has been deleted!')
     else:
         messages.add_message(request, messages.ERROR,
-        'You can only delete your own tasks.')
+                             'You can only delete '
+                             'your own tasks.')
 
     return HttpResponseRedirect(
         reverse('beneficiary_detail', args=[slug]))
@@ -139,7 +144,7 @@ def update_slot(request, pk):
     **Context:**
     `slot`
     An instance of :model: Slot
-    `form` 
+    `form`
     An instance of :form: volunteer.SlotForm
     ""Template"
     :template: 'volunteer/update_task.html'
@@ -155,23 +160,24 @@ def update_slot(request, pk):
             slot.publish_ok = False
             slot.save()
             messages.add_message(request, messages.SUCCESS,
-        'Your task has been updated!')
+                                 'Your task has '
+                                 'been updated!')
         else:
             messages.add_message(request, messages.ERROR,
-            'You can only delete your own tasks.')
+                                 'You can only delete '
+                                 'your own tasks.')
 
-        return HttpResponseRedirect(
-            reverse('student_dashboard'))
-                
+        return HttpResponseRedirect(reverse(
+                                                'student_dashboard'
+                                            ))
 
     return render(request,
-        'volunteer/update_task.html',
-        {
-            'form': form, 
-            'user':user, 
-            'slot':slot,
-        },
-    )
+                  'volunteer/update_task.html',
+                  {
+                    'form': form,
+                    'user': user,
+                    'slot': slot,
+                  },)
 
 
 @login_required
@@ -185,17 +191,16 @@ def student_dashboard(request):
         an instance of :model: Slot
     **Template**
     'student_dashboard.html'
-    
     """
     user = request.user
-    queryset = Slot.objects.all()
     slots = Slot.objects.filter(reserved_by=user)
 
     return render(
         request,
         "volunteer/student_dashboard.html",
-        {"slots": slots,}
+        {"slots": slots, }
     )
+
 
 def delete_via_dashboard(request, slot_id):
     """
@@ -208,13 +213,15 @@ def delete_via_dashboard(request, slot_id):
     'volunteer/student_dashboard.html'
     """
     slot = get_object_or_404(Slot, pk=slot_id)
-    if slot.reserved_by == request.user:             
+    if slot.reserved_by == request.user:
         slot.delete()
         messages.add_message(request, messages.SUCCESS,
-        'Your task has been deleted!')
+                             'Your task has been deleted!')
     else:
         messages.add_message(request, messages.ERROR,
-        'You can only delete your own tasks.')
+                             'You can only delete your '
+                             'own tasks.')
 
-    return HttpResponseRedirect(
-                reverse('student_dashboard'))
+    return HttpResponseRedirect(reverse(
+                                        'student_dashboard')
+                                )

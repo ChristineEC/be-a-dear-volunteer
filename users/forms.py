@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django import forms
 
 
-
 class RegisterUser(UserCreationForm):
     first_name = forms.CharField(max_length=25)
     last_name = forms.CharField(max_length=30)

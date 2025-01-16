@@ -88,8 +88,18 @@ Please note that all fields descriptions were not available for use through the 
 Javascript files were run through JSHint and passed with no errors. No changes have been made to the js files after being passed through the linter, except to remove the coded out first line, visible in the images below, needed to run the linter for ES6.
 ![Results of JSHint for `slots.js` in the be_a_dear project directory](static/images/jshint-slotsjs.png)
 
-
 ![Results of JSHint for `dahsboard.js` in the volunteer app](static/images/jshint-dashboard.png)
+
+Python files were run through the Flake8 linter, with the results shown below. Files created by Django, such as migrations or tests.py were ignored. There are no outstanding errors from any files that I created or edited. I decided it was safe to ignore the errors thrown by tests.py files from the apps, as they involved only the unnecessary import of TestCase from the django test library, and I will need that import if I decide to do automated testing at a later date. And although I probably didn't need to, I went ahead and ran manage and env python files through the linter. I took care of the "line too long" error for env.py and re-ran it through the linter to arrive at no errors.
+
+
+![Results for the volunteer app](flake8-volunteerapp.png)
+
+![Results for the users app](flake8-users.png)
+
+![Results for the about app](flake8-about.png)
+
+![Results for be_a_dear, the project level](flake8-be-a-dear.png)
 
 ## Bugs
 

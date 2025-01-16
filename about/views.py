@@ -1,4 +1,4 @@
-from django.shortcuts import render, reverse, redirect
+from django.shortcuts import render
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import About
@@ -48,7 +48,7 @@ def send_message(request):
     """
     Enables a user to send a message
     from the login page if they've
-    forgotten their username. 
+    forgotten their username.
     Also allows user to send a message
     from the homepage through a link.
     **Context**

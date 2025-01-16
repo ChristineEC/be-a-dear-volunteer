@@ -13,7 +13,8 @@ class BeneficiaryAdmin(SummernoteModelAdmin):
     in the admin panel.
     """
 
-    list_display = ( 'beneficiary_name','id', 'location', 'contact_details', 'status')
+    list_display = ('beneficiary_name', 'id', 'location',
+                    'contact_details', 'status')
     search_fields = ['beneficiary_name',]
     list_filter = ('status',)
     prepopulated_fields = {'slug': ('beneficiary_name',)}
@@ -64,5 +65,5 @@ class ClassroomAdmin(admin.ModelAdmin):
         ordering = ['classroom_number']
 
     def _str__(self):
-        return f"Classroom number: {self.classroom_number} | Class Year: {self.class_year}"
-
+        return f"Classroom number: {self.classroom_number}\
+                 | Class Year: {self.class_year}"
