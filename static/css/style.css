@@ -3,6 +3,10 @@ body {
     padding: 0px;
 }
 
+main {
+    z-index:1;
+}
+
 /* Fonts */
 .graduate-regular {
     font-family: "Graduate", serif;
@@ -115,14 +119,17 @@ body {
 .stats {
     font-size: 18px;
 }
-footer {
-    width:100%;
-    position: fixed;
-    background-color:black;
-    color: white;
-    margin-top: 20px;
-}
 
 .no-tasks-message {
     padding-top: 20px;
 }
+
+/*--Footer--*/
+footer {
+    z-index:0;
+}
+
+.footer-div {
+    position: relative;
+}
+
