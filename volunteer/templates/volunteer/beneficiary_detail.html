@@ -14,11 +14,12 @@ Beneficiary Details
         <div class="row d-flex flex-row align-items-center flex-wrap">
             <div class="col-sm-12 col-md-6">
                 <div class="card ml-0" style="max-width: 36rem;">
-                    {% if "placeholder" in beneficiary.featured_image %}
-                    <img src="{% static 'images/default-beneficiary.jpg %}" class="card-img-top" alt="placeholder image">
+                    {% if "placeholder" in beneficiary.featured_image.url %}
+                        <img src="{% static 'images/default-beneficiary.jpg' %}"
+                            class="card-img-top" alt="placeholder image">
                     {% else %}
-                    <img src="{{ beneficiary.featured_image.url }}" class="card-img-top"
-                        alt="{{ beneficiary.beneficiary_name }}">
+                        <img src="{{ beneficiary.featured_image.url }}"
+                            class="card-img-top" alt="{{ beneficiary.beneficiary_name }}">
                     {% endif %}
                     <div class="card-body">
                         <h5 class="card-title">{{ beneficiary.beneficiary_name }}</h5>

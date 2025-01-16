@@ -59,7 +59,7 @@ body {
 }
 
 /*-- About page --*/
-.about-containter {
+.about-container {
     background-color: rgb(244, 195, 218);
 }
 
@@ -67,15 +67,19 @@ body {
     font-size: 40px;
 }
 
+.message-form1{
+    background-color:black;
+    color: white;
+}
 /* -- Messages -- */
 
 .unpublished-msg {
-    color: rgb(136, 10, 10);
+    color: rgb(199, 23, 23);
     font-style: italic;
 }
 
 .message {
-    color: rgb(136, 10, 10);
+    color:rgb(199, 23, 23);
 }
 
 /*-- Buttons --*/
@@ -102,9 +106,23 @@ body {
 }
 
 /*-- Student Dashboard --*/
+
+.dashboard {
+    background-color: black;
+    color: white;
+}
+
 .stats {
     font-size: 18px;
 }
 footer {
-    color:antiquewhite;
+    width:100%;
+    position: fixed;
+    background-color:black;
+    color: white;
+    margin-top: 20px;
+}
+
+.no-tasks-message {
+    padding-top: 20px;
 }

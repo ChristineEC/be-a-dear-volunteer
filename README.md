@@ -103,7 +103,7 @@ Javascript files were run through JSHint and passed with no errors. No changes h
 :worried: Errors occurred in the terminal after writing new javascript, but the errors pointed to the older javascript that had been working fine up until that point. On the student dashboard page, for which the new javascript was written, the code would not run through to complete the function relevant for that page. Those errors indicated a problem with the bootstrap delete Modal, which is used on a different page for editing slots. And on that other page, where the javascript was being used to prepopulate the form to edit a slot, an error was being thrown which referenced the javascript for the dashboard. I did not notice that second fact at first, so I was thinking that perhaps there had been some update with bootstrap that I would need to take into consideration, as the error pointed not only to my js file, but to the bootstrap script as well. But as I discussed the issue with Holly at Code Institute Tutor Support, I discovered the fact about the other webpage displaying a related (but reverse) error, and at Holly's suggestion, 
 **Fix:** I split the javascript into separate files, each targeting only the relevant page or pages. Problem solved! Thank you, Holly! :star2:
 
-
+Default images are not loading.
 
 
 
@@ -119,5 +119,11 @@ For the view code for the beneficiary details page, I borrowed heavily from the 
 
 The pagination code on index.html is also heavily based on the Codestar project.
 
-Favicon: The favicon was obtained from flaticon.com at <a href="https://www.flaticon.com/free-icons/volunteerism" title="volunteerism icons">Volunteerism icons created by gravisio - Flaticon</a>
 
+<a href="https://www.flaticon.com/free-icons/volunteerism" title="volunteerism icons">Volunteerism icons created by gravisio - Flaticon</a>
+
+<a href="https://www.flaticon.com/free-icons/user" title="user icons">User icons created by Freepik - Flaticon</a>
+
+![Photo by Lisa Fotios: person-digging-on-soil-using-garden-shovel](https://www.pexels.com/photo/person-digging-on-soil-using-garden-shovel-1301856/)
+
+![Photo by Inge Wallumrød:cat](https://www.pexels.com/photo/silver-tabby-cat-lying-on-brown-wooden-surface-126407/)
