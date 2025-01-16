@@ -85,7 +85,7 @@
     <!-- Main -->
     <main>
         <div class="row">
-            <div class="col-9 mx-auto text-center">
+            <div class="col-sm-12 col-md-6 col-lg-9 mx-auto text-center">
                 {% for message in messages %}    
                 <div class="alert alert-warning message {{ message.tags }} open-sans-heavy
                     alert-dismissable" id="msg" role="alert">
@@ -95,7 +95,7 @@
                 </div>
                 {% endfor %}
             </div>
-            <div class="col-3 open-sans-heavy">
+            <div class="col-sm-12 col-md-6 col-lg-3 open-sans">
                 {% if user.is_authenticated %}
                 <p class="float-end px-5">You are logged in as {{ user.username }}</p>
                 {% else %}
