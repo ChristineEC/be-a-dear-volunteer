@@ -58,6 +58,10 @@
                             <a class="nav-link {% if request.path == about_url %}active{% endif %}"
                                 href="{% url 'about' %}">About</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == about_url %}active{% endif %}"
+                                href="{% url 'send_message' %}">Contact Us</a>
+                        </li>
                         {% if user.is_authenticated %}
                         <li class="nav-item">
                             <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
@@ -113,7 +117,7 @@
                 <div class="col">
                     <p class="text-align-center graduate-bold footer-text">
                         Brought to you by West Carlsbad High School Student
-                        Coders
+                        Council
                     </p>
                 </div>
             </div>
