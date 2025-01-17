@@ -75,7 +75,7 @@ Student Dashboard
                                 <td>{{ slot.completed }}</td>
                                 <td>{{ slot.credit_minutes_requested }}</td>
                                 <td class="credit_minutes_approved">{{ slot.credit_minutes_approved }}</td>
-                                <td><a class="button btn-primary btn-sm" href="{% url 'update_slot' slot.id %}">Update</a></td>
+                                <td><a href="{% url 'update_slot' slot.id %}"><button class="btn-primary btn-sm">Update</button></a></td>
                                 <td><button class="btn-delete-task btn-danger btn-sm" slot_id="{{ slot.id }}">Delete</button></td>
                             </tr>
                         {% endfor %}

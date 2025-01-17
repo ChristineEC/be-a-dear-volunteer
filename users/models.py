@@ -13,13 +13,9 @@ PROFILE_TYPE = (
 
 class Profile(models.Model):
     """
-    A profile to be able to assign users
-    to homerooms, distinguish teachers and school admins
-    from students, and allow students to choose an alias.
-    The model is related to
-    :model: User, and, together with the
-    :model: Homeroom, will enable comparison of homeroom
-    stats regarding volunteer hours.
+    Stores a single entry of profile related to
+    :model: auth.User and
+    :model: Homeroom.
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_pic = CloudinaryField('image', default='placeholder')

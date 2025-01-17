@@ -24,7 +24,9 @@ COMPLETION = (
 # Create your models here.
 
 class Beneficiary(models.Model):
-
+    """
+    Stores a single beneficiary.
+    """
     beneficiary_name = models.CharField(max_length=150, unique=True)
     slug = models.SlugField(max_length=150)
     short_description = models.CharField(max_length=255, default="")
@@ -41,9 +43,11 @@ class Beneficiary(models.Model):
 
 
 class Slot(models.Model):
-
-    beneficiary = models.ForeignKey(
-                                    Beneficiary,
+    """
+    Stores a single slot related to :model: Beneficiary
+    and :model: auth.User
+    """
+    beneficiary = models.ForeignKey(Beneficiary,
                                     on_delete=models.CASCADE,
                                     related_name="slots")
     task = models.CharField(max_length=200, default="")
@@ -67,7 +71,9 @@ class Slot(models.Model):
 
 
 class Classroom(models.Model):
-
+    """
+    Stores a single classroom entry.
+    """
     classroom_number = models.CharField(max_length=10, primary_key=True)
     class_year = models.CharField(max_length=10, choices=CLASS_YEARS)
 

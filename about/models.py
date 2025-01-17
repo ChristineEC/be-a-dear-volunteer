@@ -7,7 +7,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 
 class About(models.Model):
     """
-    The About model
+    Stores a single entry of about
     """
     title = models.CharField(max_length=50)
     content = models.TextField()
@@ -23,6 +23,9 @@ class About(models.Model):
 
 
 class CollaborateRequest(models.Model):
+    """
+    Stores a single entry of collaboraterequest
+    """
     name = models.CharField(max_length=200, blank=False)
     email = models.EmailField(blank=False)
     message = models.TextField(blank=False)
