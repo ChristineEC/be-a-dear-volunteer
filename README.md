@@ -94,20 +94,6 @@ A teacher can:
 
 
 
-### User Profiles
-
-Users can have profiles that consist of a profile picture, classroom to which they belong (relating to a separate classroom model), profile type (student, teacher, or school admin), and alias, which defaults to "Someone". The classroom attribute is the most important attribute of the model because it allows teachers to quickly identify on the back end which students they want to validate slots for. The superuser changes any teachers' profile type from the default student to "teacher" and then manually gives the teachers various permissions on the admin panel. When a teacher later accesses the admin panel, they can sort profiles by homeroom to view the students they are interested in.
-
-At the moment, profiles are handled entirely on the back end. Thanks to being registered as inline with the user model in the admin.py file of the users app, profile creation is straightforward. When a new user is created in the admin panel, or when a previously added user is viewed, the fields for the Profile model appear as well, so the superuser can assign the correct profile attributes, such as homeroom, or a profile picture that differs from the default. See future enhancements for more about user profiles.
-
-
-
-user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_pic = CloudinaryField('image', default='default-profile-pic.jpg')
-    classroom = models.ForeignKey(Classroom, default="999", on_delete=models.SET_DEFAULT)
-    profile_type = models.PositiveSmallIntegerField(choices=PROFILE_TYPE, default=0)
-    alias = models.CharField(max_length=25, default="Someone")
-
 
 
 
@@ -124,16 +110,27 @@ On the beneficiary details page, users can read more about volunteer opportuniti
 Here students can track, edit, update, or delete their planned activities ("slots"), which appear on their own pages under the rubriques Planning, Completed, Credit Requested (in terms of minutes), and Teacher Approved (in terms of minutes credited). They also see their total minutes credited.
 Under the Teacher Approved rubrique are displayed both the minutes of credit requested by the student and the minutes of credit approved by the teacher, so that any discrepancies can be discussed by the teacher and student and then resolved, as teachers will not necessarily want to approve the same number of minutes requested by the student.
 
-### Downloadable Signature Forms --- Move to future feature
 
-Credit for volunteer work by high school students in the State of California, as a matter of fact and not merely by the design of this project, requires proof in the form of signatures and contact details of the beneficiary. (For this reason, students have traditionally been limited to volunteering for public-facing organizations or institutions.) Students will be able to download signature forms to provide a basis for teacher approval of their volunteer hours.
 
 ### Teacher approval in the admin panel
 
 Teacher ability to approve their students' activities and hours and minutes for credit toward graduation on the backend. Teachers receive the is_staff attribute on the backend by the superuser and are given the ability to log in to the admin panel, where they can sort students by homeroom to make the approval process easy.
 
-### Homeroom page counter  ---- move to future feature
-Showing total minutes of volunteer time completed and approved by the students in the class as a whole.
+
+
+### User Profiles
+
+Users can have profiles that consist of a profile picture, classroom to which they belong (relating to a separate classroom model), profile type (student, teacher, or school admin), and alias, which defaults to "Someone". The classroom attribute is the most important attribute of the model because it allows teachers to quickly identify on the back end which students they want to validate slots for. The superuser changes any teachers' profile type from the default student to "teacher" and then manually gives the teachers various permissions on the admin panel. When a teacher later accesses the admin panel, they can sort profiles by homeroom to view the students they are interested in.
+
+At the moment, profiles are handled entirely on the back end. Thanks to being registered as inline with the user model in the admin.py file of the users app, profile creation is straightforward. When a new user is created in the admin panel, or when a previously added user is viewed, the fields for the Profile model appear as well, so the superuser can assign the correct profile attributes, such as homeroom, or a profile picture that differs from the default. See future enhancements for more about user profiles.
+
+## Future enhancements
+
+- Profiles auto created through signals
+
+- Homeroom page counter showing total minutes of volunteer time completed and approved by the students in the class as a whole.
+
+- Downloadable signature Forms: Credit for volunteer work by high school students in the State of California, as a matter of fact and not merely by the design of this project, requires proof in the form of signatures and contact details of the beneficiary. (For this reason, students have traditionally been limited to volunteering for public-facing organizations or institutions.) Students will be able to download signature forms to provide a basis for teacher approval of their volunteer hours.
 
 
 
@@ -142,16 +139,17 @@ Showing total minutes of volunteer time completed and approved by the students i
 
 ### Entity Relationship Diagram
 
-![alt text](static/images/drawsql.png)
+![Entity relationship diagram made in DrawSQL](https://drawsql.app/teams/self-729/diagrams/be-a-dear)
 
 Please note that all fields descriptions were not available for use through the DrawSQL site (at least the free version). Image fields in the About, Profile, and Beneficiary models should indicate BLOB for type, rather than BigInt.
 
 ##Validation
 
 Javascript files were run through JSHint and passed with no errors. No changes have been made to the js files after being passed through the linter, except to remove the coded out first line, visible in the images below, needed to run the linter for ES6.
-![Results of JSHint for `slots.js` in the be_a_dear project directory](static/images/jshint-slotsjs.png)
 
-![Results of JSHint for `dahsboard.js` in the volunteer app](static/images/jshint-dashboard.png)
+![Results of JSHint for slots.js in the be_a_dear project directory](jshint-slotsjs-1.png)
+
+![Results of JSHint for dahsboard.js in the volunteer app](jshint-dashboard-1.png)
 
 Python files were run through the Flake8 linter, with the results shown below. Files created by Django, such as migrations or tests.py were ignored. There are no outstanding errors from any files that I created or edited. I decided it was safe to ignore the errors thrown by tests.py files from the apps, as they involved only the unnecessary import of TestCase from the django test library, and I will need that import if I decide to do automated testing at a later date. And although I probably didn't need to, I went ahead and ran manage and env python files through the linter as well. As you can see, the only errors were for line length in the env file, but my attempt to resolve those led to errors connecting to the database, so I decided to return the file to its original long-line-length form. For some reason, my editing of the slot model simply for line length during cleanup in response to an error shown by flake8 caused django to consider the model altered (which I discovered by running makemigrations --check), so I decided, before running the migration, to also make a last minute change to a char field in the beneficiary model, increasing its max-length, before running the migration. Therefore, I ran the volunteer app through flake8 again, with no errors. The newest result is shown below.
 
@@ -179,6 +177,11 @@ Errors occurred in the terminal after writing new javascript, but the errors poi
 **Fix:** I split the javascript into separate files, each targeting only the relevant page or pages. Problem solved! Thank you, Holly!
 
 Default images are not loading.
+
+The footer is transparent except for the text, which covers content when content is scrolled.
+
+After modifying lines of python code for the Slot model to make the lines shorter in compliance with PEP8 standards, the task-location field was being displayed on the form for updating the slot as two separate phrases with a large gap between them.
+**Fix:** I removed the backslash that I had used to break the line for the string comprising the default value (on lines 55 and 56) and replaced it with ordinary quotes.
 
 
 
