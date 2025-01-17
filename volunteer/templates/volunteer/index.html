@@ -52,8 +52,8 @@
         <h4 class="display-6 mb-3">Inspire one another!</h4>
         <p>See what others are signing up for</p>
         <p>Know of a good cause? Someone who could use a hand?</p>
-        <p>Send us a <a href="{% url 'send_message' %}">message</a> and we'll post your suggestions here</p>
-        <p>Read more about the project <a href="{% url 'about' %}">here</a>!</p>
+        <p>Send us a <a title="link to contact us" href="{% url 'send_message' %}">message</a> and we'll post your suggestions here</p>
+        <p>Read more about the project <a title="link to the About page" href="{% url 'about' %}">here</a>!</p>
       </div>
     </div>
   </div>
@@ -68,7 +68,7 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid beneficiary-container d-flex justify-content-evenly mb-5">
+  <div class="container-fluid beneficiary-container d-flex justify-content-evenly pb-5 mb-5">
     <div class="row mx-auto">
       <!-- Cards for each beneficiary in list -->
       {% for beneficiary in beneficiary_list %}

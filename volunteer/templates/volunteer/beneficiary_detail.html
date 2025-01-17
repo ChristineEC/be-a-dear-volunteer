@@ -37,7 +37,7 @@ Beneficiary Details
                 <h4>You can manage the details and update your tasks on your <a href="{% url 'student_dashboard' %}"
                     class="inline-link">dashboard</a>.</h4>
                 {% if user.is_authenticated %}
-                <p class="graduate-bold">Reservation for username: {{ user.username }}</p>
+                <p class="graduate-bold pt-2">Reservation for username: {{ user.username }}</p>
                 <form id="slotForm" class="mb-5" method="post">
                     {{ form | crispy }}
                     {% csrf_token %}
