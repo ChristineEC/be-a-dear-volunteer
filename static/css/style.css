@@ -83,7 +83,7 @@ main {
 }
 
 .message {
-    color:rgb(199, 23, 23);
+    text-align: center;
 }
 
 /*-- Buttons --*/
