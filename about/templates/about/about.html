@@ -15,9 +15,12 @@
                 {% endif %}
                 <div class="card-body">
                     
-                <h5 class="card-title">{{ about.title }}</h5>
-                <p class="card-text">{{ about.content | safe }}</p>
-                <p class="card-text"><small class="text-muted">Updated on: {{ about.updated_on}}</small></p>
+                <h5 class="card-title py-3 display-4 text-center">{{ about.title }}</h5>
+                <article class="card-text">
+                    {{ about.content | safe }}
+                    <p class="card-text"><small class="text-muted">Updated on: {{ about.updated_on}}</small></p>
+                </article>
+                
                 </div>
             </div>
         </div>
@@ -26,7 +29,7 @@
             <form method="POST">
                 {{ collaborate_form | crispy }}
                 {% csrf_token %}
-                <button class="btn btn-primary" type="submit">Submit</button>
+                <button class="btn btn-primary mb-2" type="submit">Submit</button>
             </form>
         </div>
     </div>

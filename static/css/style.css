@@ -50,8 +50,10 @@ main {
     font-style: normal;
 }
 
-.inline-link {
-    font-weight: bold;
+.special-category {
+    color: red;
+    font-family: "Graduate", serif;
+    font-weight: 800;
 }
 
 /* Homepage */
@@ -146,6 +148,12 @@ article > p {
     padding-top: 20px;
 }
 
+.empty-box {
+    border: 2px dashed red;
+    width: 100%;
+    height: auto;
+}
+
 /*--Footer--*/
 footer {
     z-index:0;
@@ -154,4 +162,3 @@ footer {
 .footer-div {
     position: relative;
 }
-

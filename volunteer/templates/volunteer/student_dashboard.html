@@ -34,7 +34,7 @@ Student Dashboard
                     <h3><small>We do not have a profile set up for you yet,
                         so you are not currently registered to a classroom.</small></h3>
                     <h4 class="py-3">Send us a message and we'll get that taken care of!</h4>
-                    <p>(In the meantime, you'll still enjoy full functionality!)</p>
+                    <p class="display-6">(In the meantime, you'll still enjoy full functionality!)</p>
                 {% endif %}
             </div>
         </div>
@@ -82,11 +82,22 @@ Student Dashboard
                         </tbody>
                     </table>
                 {% else %}
-                    <div class="no-tasks-message">
-                    <h4>You currently have no tasks planned.</h4>
-                    <h3>You can add tasks by clicking on one of the organizations
-                        (or "Other" or "Individual") listed on the
-                        <a href ="{% url 'home' %}" class="inline-link">homepage</a></h3>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <h3 class="display-4 no-tasks-message py-5">You currently have no tasks planned!</h4>
+                                <p class="display-5 pb-5">Visit the 
+                                    <a href ="{% url 'beneficiaries' %}" aria-label="link to volunteer page">
+                                        Volunteer</a> page to start adding tasks.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 empty-box">
+                                <h5>Your activities will appear here</h5>
+                                <p>after you've saved some</p>
+                            </div>
+                        </div>
                     </div>
                 {% endif %}
                 </div>
@@ -100,7 +111,8 @@ Student Dashboard
                 <div class="col-4 p-2">
                     <h5>Time approved to date: 
                         <span id="calculated-minutes">0</span>
-                        <span> minutes, or </span>
+                        <span> minutes, </span>
+                        <br>or 
                         <span id="calculated-hours">0</span>
                         <span>hours</span>
                     </h5>
