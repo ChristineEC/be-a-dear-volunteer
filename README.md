@@ -2,26 +2,89 @@
 A Django project utilizing python, javascript, HTML, and CSS.
 
 ## Description
-Be a Dear - Volunteer is a web-based application designed to allow high school students to plan and record their volunteer activities and to request credit for those toward their graduation requirement, which is typically 20 to 30 hours for high schools in California. 
+Be a Dear - Volunteer is a web-based application designed to allow high school students to plan and record their volunteer activities and to request credit toward their graduation requirement, which is typically 20 to 30 hours for high schools in California.
 
+The application is a fictional project by the fictional West Carlsbad High Schools student council. Whereas students are usually required to volunteer at public-facing organizations, the idea behind the project is to allow students to volunteer in non-traditional ways, such as by assisting a private individual in their community. In addition to being able to volunteer for private citizens, students are allowed to volunteer for as little as five minutes at a time as part of the fictional project.
 
-Teachers are able to approve the hours on the back end, and students can see the status of their credit requests, as well as their total hours and to allow teachers to approve hours of service toward the graduation requirement,
+Teachers are identified as such on the back end by the superuser--both by labeling them as "staff" with Django's built-in User model and by changing their default profile type to "teacher"--and, after being given the relevant privileges there, are able to view their students' requested hours and approve them, either for the full amount requested or some other amount, as they deem creditable. (After all, high school students are known to exaggerate!)
 
-The application Be a Dear as a whole contains three apps: the main app is Volunteer, which houses all of the front-end CRUD for the project. Beneficiaries and Slots are the main models, and it is with these that the user interacts to view volunteer opportunities (the various beneficiaries listed on the site), save those opportunities as "tasks" (called slots in the model and the code)
+Students can save opportunties to their personal dashboards to plan their activities, they can enter time to request credit for, and they can see the status of their credit requests, as well as their total hours approved and the number of hours and minutes still required of them in order for them to graduate. They can also see what other students are planning or have done, and they can suggest the addition (posting to the site) of particular beneficiaries so that their fellow students can be informed of them. 
+
+The Be a Dear project as a whole contains three apps. The main app is Volunteer, which houses all of the front-end CRUD for the project. Beneficiary and Slot are the main models of the volunteer app, and the only ones involved in front-end CRUD. It is with these objects that the user interact to view volunteer opportunities (the various beneficiaries listed on the site) and save those opportunities as "tasks" (called slots in the model and in the code). They are able to create, read, update and delete their tasks, both from the page where they save them to their dashboards and from the dashboard itself. A third model in the app is Classroom (which is connected to a Profile model in the users app). The purpose of Classroom and Profile is that they enable teachers to sort users by Classroom in the admin panel. The models Classroom and Profile will enable future functionality that is outside the scope of this project, but they are used to a limited extend in the present project. Students can see if they have been assigned to a classroom on their dashboards, and if they have not, they are encouraged to ask to be assigned to a classroom (which is a matter of assigning them the correct profile on the back end). Teachers can sort users by classroom in the admin panel to make it easier for them to view their own students there.
 
 ## Purpose
-Traditionally, students must volunteer for public-facing organizations in order to have their volunteer time approved for credit. The Be a Dear site lists a number of potential beneficiaries and also includes the beneficiary categories of "Other" and "Individual" so that students can track volunteer time even for beneficiaries not explicitly listed on the site, and it encourages students to volunteer for individuals in their community in small time increments.
+Traditionally, students must volunteer for public-facing organizations, such as at a soup kitchen, food bank, animal shelter, or environmental group, in order to have their volunteer time approved for credit. In reality, many students never complete their hours but instead have their parents sign off on work never done. (I know this because I have neices and nephews who've told me so!) And a quick Google search of the issue reveals that many, if not most, students consider the requirement just an additional hoop to jump through in order to graduate; they resent the requirement and gain little from their experiences, including any motivation for future volunteerism. One purpose of the project is to allow students to volunteer in more convenient ways--more locally and for smaller increments of time. The COVID-19 pandemic caused increased mental health issues among teenagers, so another purpose of the project is to improve the mental health of students. It is well-known that when people help others, even in tiny doses, it increases their own happiness and self esteem. Finally, college acceptance is extremely competitive in California, especially for the cheapest schools, the public universities, which are also the highest ranked in California. Colleges do look at the extracurricular activities of applicants, including their volunteer experiences, and they read college application essays as an important part of the screening process. It is hypothesized that students who volunteer by helping an elderly neighbor on a regular basis, for example, will have more to say about their experiences on a college application, potentially helping their changes of acceptance. One of the (actually) stated rationales behind having students volunteer is that they will gain experiences in the public sphere that can help them in future employment. While this may be the case (for a very small number of cases, I'd venture to guess, as many students work part time jobs anyway), it is my belief that experiences of real people and real problems in their communities would be of more benefit, especially when it comes to an awareness of society as a whole. Working at a soup kitchen is a wonderful thing, but the gulf between volunteers and those helped is often too wide for the experience to give real personal meaning to many teenagers. It is thought that more regular experiences with people closer to them in the community could yield more meaningful experiences due to the immediacy and social intimacy of the personal relationships formed. The hope is that students, who can be quick to reject externally imposed notions of morality, will come to enjoy their encounters and will learn an important fact about being human: that a great reason for helping others is that it makes us feel good, too.
 
-UX
+## UX
+The design of the website is simple and straightforward. Students are not expected to spend their leisure time visiting the site, so there is no point trying to make it flashy. The point of the app is much more utilitarian, and the design reflects this. Future functionality, such as the ability of students to post about their experiences, share photos, etc., would likely merit enhanced design, but for the scope of this project, simplicity is key. Students will want to quickly find what they are looking for and be able to navigate freely and intuitively from the different pages, being redirected to where they started out after completing a task in the app. For this reason, students are able to read, edit and delete their tasks from two different places on the site. From the beneficiary detail page they can quickly add tasks to their dashboards without worrying about including all of the details. They can create, read, update and delete from there, without ever having to leave the page. This means they can quickly add a number of tasks related to the different beneficiaries to their dashboards for later updating as they wish. Later, from their dashboards, they can read, update and delete their tasks, filling in the details and requesting credit as they go. Editing or deleting from the dashboard returns the student to the dashboard, and editing or deleting from the beneficiary detail page keeps users on the beneficiary detail page.
 
+Other links are also made convenient. Any visitor to the site can send a message by clicking on "Contact Us" in the navbar, by clicking on an inline link on the homepage, or by filling in the form on the About page. All users have access to the Home, About, and beneficiary details pages (accessed by clicking on a beneficiary). (Only logged in users can save tasks to a dashboard.)
 
+The navbar includes only those links that are relevant to the user. Non-logged-in users see Home, About, Contact Us, Register, and Log In. Logged in users see Home, About, Contact Us, Log Out, and My Dashboard. All visitors to the site see a message under the navigation items either telling them that they are logged in as ( their username) or that they are not logged in, as the case may be. The message is shown on all pages.
 
-##Wireframes
+Clear messages are displayed to users indicating the results of any action taken by them, such as successful creation, updating or deleting of slots, or alternatively, if they try to visit a page to which they don't have access by typing in the url. 404 messages are in place as well. Delete modals are used to warn users before they delete anything.
+
+Pagination is not used, as most students are expected to be accessing the site on their mobile phones, where infinite scroll is more convenient. If any enhancement were to be made in the future, it might be the ability to search for an organization by name or by first letter by clicking on letters of the alphabet, but this would only be useful if there were to be very many organizations, and this would not be expected to be the case. In any case, the current scope of the project does not merit this.
+
+Privacy is maintained, as usernames and information about planned tasks, etc., are never shown (at least not by name) on the pages that are not strictly personal to the logged in user. (In a future version of the app, aliases could be displayed on public pages, based on the aliases users choose for their profile.)
+
+The main font used is open-sans for easy readability and clean presentation. The exception is the use of Graduate in the navbar as a nod to the high school milieu, and the limited use of Cabin Sketch on the dashboard page, as it looks like a student's doodle on a notebook or like block letters written with chalk on a chalkboard.
+
+The color scheme is simple and clean, mostly black and white, with some light pink background in places which helps break up the page into easily recognizable sections while maintaining good contrast with the font color (universally black, except when white on a black background).
+
+The Register, Log In and Log Out pages and forms are simple and straightforward, and the user is asked to verify that they really want to log out. If a user tries to log in before creating an account, they are asked to register first. If a user forgets their password, there is a clear, convenient link and instructions to send the site owners a message from the login page.
+
+## Wireframes
+
+My earliest wireframe was created using [Balsamiq](https://balsamiq.com/), but my free trial period ended before I was ready to use it here, so I am including a downloaded image of it here:
+
+![A first, Balsamiq, wireframe](mobile-wireframe.png)
+
+More extensive wireframes were done in Miro (below). The home page differs from the design, as I was advised to include more explanatory information about the app on the homepage, so another section between the header and the list of beneficiaries was added.
 
 ![Wireframes](https://miro.com/welcomeonboard/bmxvNXFhc3NBWW42QUNBM2dZNG5id2JUNmZpVjdTd2g4YlBXNXh3T21XTkhHaEFzYUpLeDB4Zkx4dmVPbEt4aXVOQ1NlYVUzWk5XcmFKdDdXdzZBbTY0N3VUb3RLSXRBVjJybllPbGlSZDc0aC9wcER1NFl5YThpTmdCNXRjUHQhZQ==?share_link_id=329771186676)
 
 ## User Stories
-A site visitor can read about the project on the home page and on the about page, and they can send messages from either page through a contact form.
+A site visitor can 
+- read about the project on the home page and on the about page
+- and they can send messages from either page through a contact form.
+
+A site visitor can log in and create an account to:
+- read about volunteer opportunities
+- read about what other students have signed up for
+- see a count of how many students have saved and how many have completed tasks related to a specific beneficiary
+- save opportunities (i.e., create "tasks" related to a beneficiary) to their dashboard
+- create, read, update and delete tasks from the beneficiary detail page
+- manage their tasks (read, update and delete) on their student dashboard
+- request credit by updating the fields "completed" and "credit minutes requested" on the update form
+- quickly see (via color coding on the dashboard) which tasks are planned, or completed, or have credit minutes/hours requested, or have already received credit
+- compare the amount of credit received with the amount they requested (in case they want to argue their case for more minutes of credit!)
+- see how many hours and minutes of credit they have received in total
+- see how many more minutes or hours they must complete toward graduate
+- see whether they have been assigned to a classroom, and if not know what to do if they haven't
+- send messages to the site owners to suggest the posting of new volunteer opportunties, or for help with a forgotten password
+- log out
+
+The superuser can:
+- designate certain registered users as "staff" (from the is_staff attribute from Django's allauth), to allow them to access the admin panel
+- designate those users as either teachers or school admins and give them restricted privileges (as "staff", see above) in the admin panel
+- assign classrooms to the teachers (or a default "unassigned" classroom 999 in the case of school admins)
+- create a user profile for any user, inline in the admin panel, assigning classrooms to students and teachers, and uploading profile pictures for display on student dashboards
+- add new beneficiaries and new tasks, and update and delete them
+- create, read, update and delete text for the About page, including uploading images
+- mark received messages as read in order to keep track of what has been done (or answered)
+- add classrooms for the project (create, read, update and delete functionality for this)
+
+A teacher can:
+- log in as a regular user and enjoy full functionality as if they were a student
+- get access to the admin panel, once approved by the superuser
+- be given the ability to approve students' requests for credit (i.e., can update slots)
+- approve either the amount requested or a different amount, as the fields for credit requested and credit approved are distinct
+- read information about all beneficiaries, slots, homerooms, users, and profiles on the back end
+- sort profiles by classroom to see a list of all students in a classroom that are registered
+- check if a student has been assigned a homeroom
+- send a message through the admin panel
+- read messages in the admin panel
 
 ## Features
 
@@ -35,7 +98,7 @@ A site visitor can read about the project on the home page and on the about page
 
 Users can have profiles that consist of a profile picture, classroom to which they belong (relating to a separate classroom model), profile type (student, teacher, or school admin), and alias, which defaults to "Someone". The classroom attribute is the most important attribute of the model because it allows teachers to quickly identify on the back end which students they want to validate slots for. The superuser changes any teachers' profile type from the default student to "teacher" and then manually gives the teachers various permissions on the admin panel. When a teacher later accesses the admin panel, they can sort profiles by homeroom to view the students they are interested in.
 
-At the moment, profiles are handled entirely on the back end. Thanks to being registered as inline with the user model in the users app admin.py file, profile creation is straightforward. When a new user is created in the admin panel, or when a previously added user is chosen to view, the fields for the Profile model appear as well, so the superuser can assign the correct profile attributes, such as homeroom, or a profile picture that differs from the default. See future enhancements for more about user profiles.
+At the moment, profiles are handled entirely on the back end. Thanks to being registered as inline with the user model in the admin.py file of the users app, profile creation is straightforward. When a new user is created in the admin panel, or when a previously added user is viewed, the fields for the Profile model appear as well, so the superuser can assign the correct profile attributes, such as homeroom, or a profile picture that differs from the default. See future enhancements for more about user profiles.
 
 
 
@@ -61,7 +124,7 @@ On the beneficiary details page, users can read more about volunteer opportuniti
 Here students can track, edit, update, or delete their planned activities ("slots"), which appear on their own pages under the rubriques Planning, Completed, Credit Requested (in terms of minutes), and Teacher Approved (in terms of minutes credited). They also see their total minutes credited.
 Under the Teacher Approved rubrique are displayed both the minutes of credit requested by the student and the minutes of credit approved by the teacher, so that any discrepancies can be discussed by the teacher and student and then resolved, as teachers will not necessarily want to approve the same number of minutes requested by the student.
 
-### Downloadable Signature Forms
+### Downloadable Signature Forms --- Move to future feature
 
 Credit for volunteer work by high school students in the State of California, as a matter of fact and not merely by the design of this project, requires proof in the form of signatures and contact details of the beneficiary. (For this reason, students have traditionally been limited to volunteering for public-facing organizations or institutions.) Students will be able to download signature forms to provide a basis for teacher approval of their volunteer hours.
 
@@ -69,7 +132,7 @@ Credit for volunteer work by high school students in the State of California, as
 
 Teacher ability to approve their students' activities and hours and minutes for credit toward graduation on the backend. Teachers receive the is_staff attribute on the backend by the superuser and are given the ability to log in to the admin panel, where they can sort students by homeroom to make the approval process easy.
 
-### Homeroom page counter
+### Homeroom page counter  ---- move to future feature
 Showing total minutes of volunteer time completed and approved by the students in the class as a whole.
 
 
