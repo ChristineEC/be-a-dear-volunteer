@@ -1,6 +1,14 @@
 body {
     margin: 0px;
     padding: 0px;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+main {
+    flex: 1 0 auto;
 }
 
 .img {
@@ -41,18 +49,24 @@ body {
     font-weight: 400;
     font-style: normal;
 }
+
+.inline-link {
+    font-weight: bold;
+}
+
 /* Homepage */
 .home-heading {
     background-color: rgb(0, 0, 0);
     color: white;
 }
 
-.beneficiary-container {
-    background-color: rgb(244, 195, 218);
-}
-
 .short-line {
     width: 30px;
+}
+
+/*-- Volunteer page --*/
+.beneficiary-container {
+    background-color: rgb(244, 195, 218);
 }
 
 .card-text {
@@ -67,7 +81,6 @@ article > p {
     font-family: open-sans, sans-serif !important;
 }
 
-/*-- Beneficiary Card --*/
 .b-card {
     border: none;
 }
@@ -85,8 +98,8 @@ article > p {
     background-color:black;
     color: white;
 }
-/* -- Messages -- */
 
+/* -- Messages -- */
 .unpublished-msg {
     color: rgb(199, 23, 23);
     font-style: italic;
@@ -97,7 +110,6 @@ article > p {
 }
 
 /*-- Buttons --*/
-
 .btn-edit {
     border-width: 1px;
     font-weight:bold;

@@ -34,16 +34,17 @@
     <div class="row mb-5">
       <div class="col-sm-12 col-md-4 text-center py-3">
         <h4 class="display-6 mb-3">Discover Opportunities</h4>
-        <p>Below you'll find ideas and suggestions</p>
+        <p>On the <a href="{% url 'beneficiaries' %}" aria-label="link to volunteer page">
+            Volunteer</a> page you'll find ideas and suggestions</p>
+        <p>Click on any of the choices to read more and save tasks</p>
         <p><strong>Note the ones
-          labeled "Other" and "Individual"</strong></p>
+            labeled "Other" and "Individual"</strong></p>
         <p><strong>&ndash; they are what make this project truly special!</strong></p>
-        <p>Click on any of the choices to read more</p>
-        <p> and from there, save to a dashboard</p>
       </div>
       <div class="col-sm-12 col-md-4 text-center py-3">
         <h4 class="display-6 mb-3">Your Personal Dashboard</h4>
-        <p><a href="{% url 'account_login' %}" class="link-dark inline-link">Sign in</a> to save tasks to your dashboard</p>
+        <p><a href="{% url 'account_login' %}" aria-label="link to login page">Sign in
+            </a> to save tasks to your dashboard</p>
         <p>From there, plan and update your activities</p>
         <p>Request credit for hours completed</p>
         <p>Track your progress toward meeting the graduation requirement</p>
@@ -52,39 +53,11 @@
         <h4 class="display-6 mb-3">Inspire one another!</h4>
         <p>See what others are signing up for</p>
         <p>Know of a good cause? Someone who could use a hand?</p>
-        <p>Send us a <a title="link to contact us" href="{% url 'send_message' %}">message</a> and we'll post your suggestions here</p>
-        <p>Read more about the project on the <a href="{% url 'about' %}">About</a> page!</p>
+        <p>Send us a <a href="{% url 'send_message' %}" aria-label="link to contact us form">
+            message</a> and we'll post your suggestions here</p>
+        <p>Read more about the project on the <a href="{% url 'about' %}"
+            aria-label="link to the about page" class="inline-link">About</a> page!</p>
       </div>
-    </div>
-  </div>
-</section>
-<!-- Beneficiaries list section -->
-<section class="beneficiaries-list">
-  <div class="container-fluid beneficiary-container text-center pt-5">
-    <div class="row mx-auto">
-      <div class="col-12 text-center">
-        <h2>Check out these ideas and opportunties!</h2>
-      <hr class="short-line">
-      </div>
-    </div>
-  </div>
-  <div class="container-fluid beneficiary-container d-flex justify-content-evenly pb-5 mb-5">
-    <div class="row mx-auto">
-      <!-- Cards for each beneficiary in list -->
-      {% for beneficiary in beneficiary_list %}
-      <div class="card b-card bg-transparent mx-auto px-5 my-2 col-sm-12, col-md-6 col-lg-3 g-0">
-        <div class="card-body">
-          <h5 class="card-title card-small-h3">
-            <a href="{% url 'beneficiary_detail' beneficiary.slug %}"
-              class="link-dark">{{ beneficiary.beneficiary_name }}
-            </a>
-          </h5>
-          <h6 class="card-subtitle mb-2 text-muted card-small-h4"><small>{{ beneficiary.location }}</small></h6>
-          <article title="beneficiary-description" class="card-text">{{ beneficiary.short_description | safe }}</article>
-          <p class="card-text">{{ beneficiary.contact_details }}</p>
-        </div>
-      </div>
-      {% endfor %}
     </div>
   </div>
 </section>

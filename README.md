@@ -192,7 +192,8 @@ The footer is transparent except for the text, which covers content when content
 After modifying lines of python code for the Slot model to make the lines shorter in compliance with PEP8 standards, the task-location field was being displayed on the form for updating the slot as two separate phrases with a large gap between them.
 **Fix:** I removed the backslash that I had used to break the line for the string comprising the default value (on lines 55 and 56) and replaced it with ordinary quotes.
 
-
+- Horizontal scrolling
+**Fix** I decided to use a quick fix for this bug, as the horizontal scrolling was extremely minimal, by styling the body in CSS with overflow-x hidden.
 
 ## Credits
 

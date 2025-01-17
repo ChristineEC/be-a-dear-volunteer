@@ -7,17 +7,20 @@ from .models import Beneficiary, Slot
 from .forms import SlotForm
 
 
+def home(request):
+    return render(request, 'volunteer/index.html', {})
+
+
 class BeneficiaryList(generic.ListView):
     """
     Generates a list of beneficiaries
-    on the home page.
+    on the volunteer page.
     **Template**
-    `volunteer/index.html`
+    `volunteer/volunteer_opportunties.html`
     """
     queryset = Beneficiary.objects.filter(
                 status=1).order_by("beneficiary_name")
-    template_name = "volunteer/index.html"
-    paginate_by: 6
+    template_name = "volunteer/volunteer_opportunities.html"
 
 
 # Adapted from Code Institute lesson, I Think Therefore I Blog

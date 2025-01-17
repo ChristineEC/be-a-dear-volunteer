@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head_title %}Volunteer Opportunities{% endblock head_title %}
+
+{% block content %}
+<section class="beneficiaries-list">
+    <div class="container-fluid beneficiary-container text-center pt-5">
+      <div class="row mx-auto">
+        <div class="col-12 text-center">
+          <h2>Check out these ideas and opportunties!</h2>
+            <hr class="short-line">
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid beneficiary-container d-flex justify-content-evenly pb-5 mb-5">
+      <div class="row mx-auto">
+        <!-- Cards for each beneficiary in list -->
+        {% for beneficiary in beneficiary_list %}
+        <div class="card b-card bg-transparent mx-auto px-5 my-2 col-sm-12, col-md-6 col-lg-3 g-0">
+          <div class="card-body">
+            <h5 class="card-title card-small-h3">
+              <a href="{% url 'beneficiary_detail' beneficiary.slug %}"
+                class="link-dark">{{ beneficiary.beneficiary_name }}
+              </a>
+            </h5>
+            <h6 class="card-subtitle mb-2 text-muted card-small-h4"><small>{{ beneficiary.location }}</small></h6>
+            <article class="card-text" title="beneficiary-description">{{ beneficiary.short_description | safe }}</article>
+            <p class="card-text">{{ beneficiary.contact_details }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endblock%}
+
