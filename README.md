@@ -143,13 +143,22 @@ At the moment, profiles are handled entirely on the back end. Thanks to being re
 
 Please note that all fields descriptions were not available for use through the DrawSQL site (at least the free version). Image fields in the About, Profile, and Beneficiary models should indicate BLOB for type, rather than BigInt.
 
-##Validation
+## Validation
+
+### CSS
+
+### HTML
+Early attempts at validation revealed a number of issues with the HTML. In particular, because several of the project's models use Summernote fields, and these are rendered in HTML templates as paragraphs, each place I had wrapped a tag referring to those object attributes with my own paragraph in the html, this caused an error of having a paragraph wrapped in another paragraph, which is nto allowed in html. Thta is, my original html looked like this `<p><{{beneficiary.beneficiary_description | safe }}</p>`. I resolved this error by changing my own paragraph tags to article tags. Another widespread error was that bootstrap's "card-text" class was setting the font-face to Aptos, which is no longer supported. I used CSS to override that, setting the font back to my open-sans preference with an `!important` tag for any element (or child of an element) with class "card-text".
+
+### Javascript
 
 Javascript files were run through JSHint and passed with no errors. No changes have been made to the js files after being passed through the linter, except to remove the coded out first line, visible in the images below, needed to run the linter for ES6.
 
 ![Results of JSHint for slots.js in the be_a_dear project directory](jshint-slotsjs-1.png)
 
 ![Results of JSHint for dahsboard.js in the volunteer app](jshint-dashboard-1.png)
+
+### Python
 
 Python files were run through the Flake8 linter, with the results shown below. Files created by Django, such as migrations or tests.py were ignored. There are no outstanding errors from any files that I created or edited. I decided it was safe to ignore the errors thrown by tests.py files from the apps, as they involved only the unnecessary import of TestCase from the django test library, and I will need that import if I decide to do automated testing at a later date. And although I probably didn't need to, I went ahead and ran manage and env python files through the linter as well. As you can see, the only errors were for line length in the env file, but my attempt to resolve those led to errors connecting to the database, so I decided to return the file to its original long-line-length form. For some reason, my editing of the slot model simply for line length during cleanup in response to an error shown by flake8 caused django to consider the model altered (which I discovered by running makemigrations --check), so I decided, before running the migration, to also make a last minute change to a char field in the beneficiary model, increasing its max-length, before running the migration. Therefore, I ran the volunteer app through flake8 again, with no errors. The newest result is shown below.
 

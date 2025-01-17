@@ -3,10 +3,6 @@ body {
     padding: 0px;
 }
 
-main {
-    height: 100vh;
-}
-
 .img {
     max-width:100%;
     height: auto;
@@ -53,7 +49,6 @@ main {
 
 .beneficiary-container {
     background-color: rgb(244, 195, 218);
-    height: 100vh;
 }
 
 .short-line {
@@ -61,7 +56,15 @@ main {
 }
 
 .card-text {
-    font-family: open-sans, sans-serif;
+    font-family: open-sans, sans-serif !important;
+}
+
+.card-text > p {
+    font-family: open-sans, sans-serif !important;
+}
+
+article > p {
+    font-family: open-sans, sans-serif !important;
 }
 
 /*-- Beneficiary Card --*/

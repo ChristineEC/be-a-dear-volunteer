@@ -3,8 +3,9 @@ body {
     padding: 0px;
 }
 
-main {
-    height: 100%;
+.img {
+    max-width:100%;
+    height: auto;
 }
 
 /* Fonts */
@@ -40,7 +41,7 @@ main {
     font-weight: 400;
     font-style: normal;
 }
-
+/* Homepage */
 .home-heading {
     background-color: rgb(0, 0, 0);
     color: white;
@@ -55,8 +56,17 @@ main {
 }
 
 .card-text {
-    font-family: open-sans, sans-serif;
+    font-family: open-sans, sans-serif !important;
 }
+
+.card-text > p {
+    font-family: open-sans, sans-serif !important;
+}
+
+article > p {
+    font-family: open-sans, sans-serif !important;
+}
+
 /*-- Beneficiary Card --*/
 .b-card {
     border: none;
@@ -83,7 +93,7 @@ main {
 }
 
 .message {
-    color:rgb(199, 23, 23);
+    text-align: center;
 }
 
 /*-- Buttons --*/
