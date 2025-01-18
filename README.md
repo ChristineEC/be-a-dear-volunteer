@@ -73,7 +73,7 @@ More extensive wireframes were done in Miro (below). The home page differs from 
 ## User Stories
 A site visitor can 
 - read about the project on the home page and on the about page
-- and they can send messages from either page through a contact form.
+- can send messages from either page through a contact form.
 
 A site visitor can log in and create an account to:
 - read about volunteer opportunities
@@ -81,8 +81,8 @@ A site visitor can log in and create an account to:
 - see a count of how many students have saved and how many have completed tasks related to a specific beneficiary
 - save opportunities (i.e., create "tasks" related to a beneficiary) to their dashboard
 - create, read, update and delete tasks from the beneficiary detail page
-- manage their tasks (read, update and delete) on their student dashboard
-- request credit by updating the fields "completed" and "credit minutes requested" on the update form
+- manage their tasks (read, update and delete) from their student dashboard
+- request credit by updating the fields "completed" and "credit minutes requested" on the update form (or from the Volunteer page wherefrom they saved the tasks)
 - quickly see (via color coding on the dashboard) which tasks are planned, or completed, or have credit minutes/hours requested, or have already received credit
 - compare the amount of credit received with the amount they requested (in case they want to argue their case for more minutes of credit!)
 - see how many hours and minutes of credit they have received in total
@@ -93,10 +93,10 @@ A site visitor can log in and create an account to:
 
 The superuser can:
 - designate certain registered users as "staff" (from the is_staff attribute from Django's allauth), to allow them to access the admin panel
-- designate those users as either teachers or school admins and give them restricted privileges (as "staff", see above) in the admin panel
+- designate those users as either teachers or school admins and give them restricted privileges in the admin panel
 - assign classrooms to the teachers (or a default "unassigned" classroom 999 in the case of school admins)
 - create a user profile for any user, inline in the admin panel, assigning classrooms to students and teachers, and uploading profile pictures for display on student dashboards
-- add new beneficiaries and new tasks, and update and delete them
+- Create, read, update and delete beneficiaries and tasks, as well as users and profiles
 - create, read, update and delete text for the About page, including uploading images
 - mark received messages as read in order to keep track of what has been done (or answered)
 - add classrooms for the project (create, read, update and delete functionality for this)

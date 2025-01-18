@@ -1,17 +1,26 @@
 # TESTING
 ## Table of Contents
-1. Validation
+1. [Validation](#validation)
+ - [Python](#python)
+ - [JavaScript](#javascript)
+
 2. Manual Testing
 - [Global](#global-1)
     - [Navigation](#navigation)
         - [Navigation bar](#navigation-bar)
         - [Other links](#other-links)
-    - [Logged in Status](#logged-in-status)
+    - [Logged in status](#logged-in-status)
     - [Authentication](#authentication)
 - [User Stories and CRUD](#user-stories-and-crud)
+    - [General stories](#general-stories)
+    - [Full front-end CRUD](#full-front-end-crud)
 
-
-
+## Validation
+### Python
+![Flake8](https://flake8.pycqa.org/en/latest/index.html) was used to validate all Python files. Screenshots of the results follow. Errors raised 
+### JavaScript
+### HTML
+### CSS
 
 ## Global 
 ### Navigation
@@ -63,7 +72,7 @@
 
 
 ## User Stories and CRUD
-
+### General stories
 [User stories and Kanban board in GitHub](https://github.com/users/ChristineEC/projects/5)
 
 As a school member, I can create an account and sign-in so that I can participate in the project: Yes. (See [Authentication](#authentication), above).
@@ -75,12 +84,12 @@ As a site owner, I can mark as read messages received so that I can keep track o
 |---------|--------|-----------------|--------------|
 | Messages | user sends a message from the About page or the message or Contact Us links | I can mark the messages as read (or unread) in the admin panel | Pass |
 
-Display beneficiaries: As a site owner, I can post information about an organization or other beneficiary so that visitors to the website can read about volunteer opportunties.
+As a site owner, I can post information about an organization or other beneficiary so that visitors to the website can read about volunteer opportunties.
 | Feature | Action | Expected Result | Pass or Fail |
 |---------|--------|-----------------|--------------|
-| Display list of beneficiaries | User visits the Volunteer page | user sees the list of all beneficiaries marked in the admin panel as published | Pass |
+| Display list of beneficiaries | User visits the Volunteer page (volunteer_opportunities.html) | user sees the list of all beneficiaries marked in the admin panel as published | Pass |
 
-About page: As a site owner, I can post information about the project so that visitors can learn what the project is about.
+As a site owner, I can post information about the project so that visitors can learn what the project is about.
 | Feature | Action | Expected Result | Pass or Fail |
 |---------|--------|-----------------|--------------|
 | About page | user visits About page | Any user can access the About page, which is displayed in an attractive, legible manner consistent with UX principles | Pass |
@@ -96,8 +105,33 @@ As a visitor to the website, I can send a message to the site owner so that I ca
 As a teacher or school administrator, I can access the admin panel so that I can review students' tasks and approve their volunteer work
 | Feature | Action | Expected Result | Pass or Fail |
 |---------|--------|-----------------|--------------|
-| Admin access | user tries to access admin panel (when not authorized) | 
+| Admin access | user tries to access admin panel (when not authorized) | user asked for credentials, if not authorized by superuser gets no access | Pass |
+| Admin access 2 | authorized teacher tries to change an unauthorized feature in the admin panel | is unable to access fields for editing | Pass |
 
+### Full front-end CRUD
+Student creation of slots related to beneficiaries: 
+- As a student I can create specific volunteer slots (or "tasks") linked to a beneficiary so that I can reserve the slot (i.e., save to student dashboard)
+- As a student I can edit my slots so that the slots accurately reflect my volunteer work
+- As a student I can delete any slot that I have reserved so I can remove the expectation that I will fulfill it
+- 
+
+| Feature | Action | Expected Result | Pass or Fail |
+|---------|--------|-----------------|--------------|
+| Reserve a task | fill in form and click "save to dashboard" (beneficiary_detail.html template) | an object is created in the database, with the "reserved_by" attribute equal to the requesting user, and appears on that student's dashboard | Pass |
+| Edit a task where created | user clicks Edit button on the page where they saved the task (beneficiary_detail.html template) | the form is prefilled, editable, and can then be saved; it updates the object in the database and shows correctly on the user's dashboard | Pass |
+| Delete a task from where created | user clicks Delete button on the page where they saved the task (beneficiary_detail.html template) | Delete modal appears asking if they're sure, and if they click delete, the object is deleted from the database, and thus everywhere on the site | Pass |
+| Edit slot from dashboard | user clicks on edit button next to the slot on the dashboard | user is directed to prepopulated Update Slot Form and can successfully edit the slot there then be returned to the dashboard | Pass |
+Delete slot from the dashboard | user clicks on delete button next to the slot on the dashboard | a modal appears warning the user that the deletion will be permanent, with a button to proceed (or cancel); if delete is clicked there the object is successfully deleted and the user stays on the dashboard | Pass |
+
+As a student I want to be able to record my volunteer time(s) so that I can include them in requests for credit.
+| Feature | Action | Expected Result | Pass or Fail |
+|---------|--------|-----------------|--------------|
+| Request credit | student fills in number of minutes they are requesting credit for, or uses date and time (char) fields to enter additional days and times for the same task before requesting credit | slot is updated and teacher and student can see this clearly (student sees which slots they've requested credit for that have not yet been approved vs. those approved) | Pass |
+
+Student dashboard: As a student I can see all of my slots on my own page so that I can keep track of my obligations and credits
+| Feature | Action | Expected Result | Pass or Fail |
+|---------|--------|-----------------|--------------|
+| Student Dashboard | student clicks on My Dashboard (or a dashboard link--see [Other links](#other-links), above) | If the student has tasks saved, they see a table containing all slots they are signed up for, color coded by "planned", "completed", "credit requested" and "credit received". (Students with no slots see a box stating that that is where their slots will show and presenting them with a link to the volunteer page to start saving tasks.) Total time credited, total time required, and remaining time needed are summarized below the table | Pass |
 
 
 
