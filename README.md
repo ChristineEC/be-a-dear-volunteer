@@ -55,6 +55,11 @@ The color scheme is simple and clean, mostly black and white, with some light pi
 
 The Register, Log In and Log Out pages and forms are simple and straightforward, and the user is asked to verify that they really want to log out. If a user tries to log in before creating an account, they are asked to register first. If a user forgets their password, there is a clear, convenient link and instructions to send the site owners a message from the login page.
 
+## Agile Development Method
+
+
+![Link to Kanban board](https://github.com/users/ChristineEC/projects/5/)
+
 ## Wireframes
 
 My earliest wireframe was created using [Balsamiq](https://balsamiq.com/), but my free trial period ended before I was ready to use it here, so I am including a downloaded image of it here:
