@@ -14,19 +14,19 @@ Student Dashboard
         <div class="dashboard container-fluid mt-0 bg-dark">
             <div class="row">
                 {% if user.profile %}
-                    <div class="col-sm-12 col-lg-4">
+                    <div class="col-sm-12 col-lg-4 mx-auto">
                         {% if "placeholder" in user.profile.profile_pic.url %}
                         <img src="{% static 'images/default-user.jpg' %}" class="img-fluid max-width=450px" alt="default user icon">
                         {% else %}
                         <img src="{{ user.profile.profile_pic.url }}" class="img-fluid max-width=450px" alt="User profile picture">
                         {% endif %}
                     </div>
-                    <div class="col-sm-12 col-lg-8 text-center pt-5">
+                    <div class="col-sm-12 col-lg-8 text-center pt-5 mx-auto">
                         <h1 class="py-2 mx-auto cabin-sketch-bold">{{ user.username }}'s Student Dashboard</h1>
                         <h2 class="pt-3 pb-5">You are in homeroom number {{ user.profile.classroom.classroom_number }}</h2>
                     </div>
                 {% else %}
-                <div class="col-sm-9 col-lg-8">
+                <div class="col-sm-9 col-lg-8 mx-auto">
                     <img src="{% static 'images/default-user.jpg' %}" class="img-fluid max-width=450px" alt="default user icon">
                 </div>
                 <div class="col-sm-9 col-lg-8 text-center pt-5 mx-auto">
@@ -141,7 +141,7 @@ Student Dashboard
     <section id="cumulative hours">
         <div class="container mb-5">
             <div class="row mb-2 stats cabin-sketch-bold stats">
-                <div class="col-4 p-2 text-center">
+                <div class="col-4 p-2">
                     <h6>Time approved to date: 
                         <span id="calculated-minutes">0</span>
                         <span> minutes, </span>
@@ -153,7 +153,7 @@ Student Dashboard
                 <div class="col-4 p-2 text-center">
                     <h6>Hours needed for graduation: <span id="required-hours">30</span></h6>
                 </div>
-                <div class="col-4 p-2 text-center">
+                <div class="col-4 p-2">
                     <h6>Remaining time required: <span id="remaining-hours">
                         </span> hours, <span id="plus-remaining-minutes"></span> minutes</h6>
                 </div>

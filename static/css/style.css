@@ -67,6 +67,11 @@ main {
 }
 
 /*-- Volunteer page --*/
+.heading-beneficiaries {
+    background-color: black;
+    color: white;
+}
+
 .beneficiary-container {
     background-color: rgb(244, 195, 218);
 }
@@ -139,10 +144,6 @@ article > p {
 .question {
     font-weight: bold;
     font-size: small;
-}
-
-.dash-table {
-    width:100%;
 }
 
 /*--Footer--*/
