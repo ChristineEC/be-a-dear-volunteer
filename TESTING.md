@@ -6,38 +6,43 @@
     - [Navigation](#navigation)
         - [Navigation bar](#navigation-bar)
         - [Other links](#other-links)
-        - 
-- [Authentication](#authentication)
+    - [Logged in Status](#logged-in-status)
+    - [Authentication](#authentication)
 
 
 
 
 ## Global 
-
 ### Navigation
-
 #### Navigation Bar
-
 | Feature | Action | Expected Result | Pass or Fail |
 |---------|--------|-----------------|--------------------|
 | Logo (with text) | click on logo | routes user to homepage (if not already there) | Pass |
 | Home | click on "home" on navbar | routes user to homepage | Pass |
 | About | click on "about" in navbar | routes user to About page | Pass |
+| Volunteer | click on volunteer in navbar | routes user to Volunteer page (beneficiaries.html) | Pass |
 | Contact Us | click on Contact Us navbar link | user is directed to about/contact_us url, which contains a form for sending a message | Pass |
 | Login | user clicks on "login" on navbar | user brought to login page containing login form *(see also Authentication) | Pass |
 | Register | user clicks on "register" | user is directed to accounts/signup url and presented with signup form | Pass |
 | Logout | a logged in user clicks on Logout | user is brought to the logout page and the modal "are you sure" appears for confirmation | Pass |
 | signout confirmation | user clicks Sign Out on confirmation modal | user is logged out | Pass |
-
-
+| Navbar visible options | -- | Logged in user sees Logout, and logged out or unregistered user sees Login and Register; all else visible at all times | Pass |
 #### Other links
-
 | Feature | Action | Expected Result | Pass or Fail (P/F) |
 |---------|--------|-----------------|--------------------|
 | Homepage: Inline link to About page | click on link |sends the user to the About page | Pass |
 | Homepage: Inline link to "message" | click on link | sends user to the Contact Us form | Pass |
 | Homepage: Inline link to Volunteer page | click on link | sends user to the Volunteer page | Pass |
 | Homepage: Back button from the above links | click on back button | redirected to Home page | Pass |
+| Dashboard (for user with no tasks saved): message link | user clicks link | redirected to contact form | Pass |
+| Dashboard (for user with no tasks saved): Volunteer link | user clicks on link | directed to volunteer page | Pass |
+
+### Logged in Status
+| Feature | Action | Expected Result | Pass or Fail (P/F) |
+|---------|--------|-----------------|--------------------|
+| Login Status | -- | a logged in user sees the message that they are logged in as <username>, and a logged out or unregistered user sees a message that they are not logged in | Pass |
+
+
 ### Authentication
 
 | Feature | Action | Expected Result | Pass or Fail |
