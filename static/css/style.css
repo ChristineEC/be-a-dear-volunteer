@@ -16,6 +16,10 @@ main {
     height: auto;
 }
 
+.light-message {
+    color: rgb(244, 195, 218);
+}
+
 /* Fonts */
 .graduate-regular {
     font-family: "Graduate", serif;
