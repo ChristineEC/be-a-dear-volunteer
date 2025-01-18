@@ -12,24 +12,24 @@ Student Dashboard
 {% if user.is_authenticated %}
     <section id="dashboard-heading">
         <div class="dashboard container-fluid mt-0 bg-dark">
-            <div class="row mx-">
+            <div class="row">
                 {% if user.profile %}
-                    <div class="col-sm-12 col-md-3 col-lg-4 mx-auto">
+                    <div class="col-sm-12 col-lg-4">
                         {% if "placeholder" in user.profile.profile_pic.url %}
                         <img src="{% static 'images/default-user.jpg' %}" class="img-fluid max-width=450px" alt="default user icon">
                         {% else %}
                         <img src="{{ user.profile.profile_pic.url }}" class="img-fluid max-width=450px" alt="User profile picture">
                         {% endif %}
                     </div>
-                    <div class="col-sm-12 col-md-9 col-lg-8 text-center pt-5 mx-auto">
+                    <div class="col-sm-12 col-lg-8 text-center pt-5">
                         <h1 class="py-2 mx-auto cabin-sketch-bold">{{ user.username }}'s Student Dashboard</h1>
-                        <h2 class="pt-3">You are in homeroom number {{ user.profile.classroom.classroom_number }}</h2>
+                        <h2 class="pt-3 pb-5">You are in homeroom number {{ user.profile.classroom.classroom_number }}</h2>
                     </div>
                 {% else %}
-                <div class="col-sm-12 col-md-3 col-lg-4 mx-auto">
+                <div class="col-sm-9 col-lg-8">
                     <img src="{% static 'images/default-user.jpg' %}" class="img-fluid max-width=450px" alt="default user icon">
                 </div>
-                <div class="col-sm-12 col-md-9 col-lg-8 text-center pt-5 mx-auto">
+                <div class="col-sm-9 col-lg-8 text-center pt-5 mx-auto">
                     <h1 class="py-2 mx-auto cabin-sketch-bold">{{ user.username }}'s Student Dashboard</h1>
                     <h3><small>We do not have a profile set up for you yet,
                         so you are not currently registered to a classroom.</small></h3>
@@ -43,32 +43,40 @@ Student Dashboard
     <section id="manage-tasks">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-12 col-md-3 mx-auto justify-content-center legend">
-                    <h6>Color Legend:</h6>
+                <div class="col-sm-12 col-md-6 mx-auto justify-content-center legend">
                     <table class="table">
                         <tr>
-                            <th>Task Status</th>
+                            <th class="pt-5">Task Status</th>
                         </tr>
                         <tr class="table-primary">
                             <td>BLUE: </td>
                             <td>Planning Stage</td>
                         </tr>
                         <tr class="table-info">
+                            <td>AQUA: </td>
+                            <td>Completed - Time to request credit!</td>
+                        </tr>
+                        <tr class="table-warning">
                             <td>YELLOW: </td>
                             <td>Credit Requested</td>
                         </tr>
                         <tr class="table-success">
                             <td>GREEN: </td>
-                            <td>Credit Approved</td>
+                            <td>Credit Approved!</td>
                         </tr>
                         <tr class="table-danger">
                             <td>RED: </td>
-                            <td>Hmm, something odd here... <span class="question">(did you forget to mark complete before requesting credit?)</span></td>
+                            <td>Hmm, something odd here... <span class="question">(Did you forget to mark Complete before requesting credit?)</span></td>
                         </tr>
                     </table>
                 </div>
-                <div class="col-sm-12 col-md-9 col-lg-9 justify-content-center">
-                {% if slots %}
+            </div>
+        </div>
+        <div class="container-fluid flex">
+            {% if slots %}
+            <!-- List of slots reserved by the current user -->
+            <div class="row">
+                <div class="col-sm-12 col-lg-8 offset-lg-2 dash-table">
                     <table class="table">
                         <thead>
                             <tr>
@@ -84,10 +92,10 @@ Student Dashboard
                                 <th scope="col">Delete</th>
                             </tr>
                         </thead>
-                        <!-- List of slots reserved by the current user -->
                         <tbody>
                         {% for slot in slots %}
-                            <tr class="{% if not slot.completed %}table-primary
+                            <tr
+                                class="{% if not slot.completed %}table-primary
                                     {% elif slot.completed and not slot.credit_minutes_requested %}table-info
                                     {% elif slot.credit_minutes_requested and not slot.credit_minutes_approved %}table-warning
                                     {% elif slot.credit_minutes_approved %}table-success{% else %}table-danger{% endif %}">
@@ -100,55 +108,54 @@ Student Dashboard
                                 <td>{{ slot.credit_minutes_requested }}</td>
                                 <td class="credit_minutes_approved">{{ slot.credit_minutes_approved }}</td>
                                 <td><a href="{% url 'update_slot' slot.id %}" aria-label="update this task"
-                                    class="btn btn-secondary btn-sm">Update</a></td>
-                                <td><button class="btn btn-danger btn-sm" data-slot_id="{{ slot.id }}" 
-                                    aria-label="update this task">Delete</button></td>
+                                        class="btn btn-secondary btn-sm">Update</a></td>
+                                <td><button class="btn btn-danger btn-sm" data-slot_id="{{ slot.id }}"
+                                        aria-label="update this task">Delete</button></td>
                             </tr>
-                        {% endfor %}
+                            {% endfor %}
                         </tbody>
                     </table>
-                {% else %}
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 text-center">
-                                <h3 class="display-4 no-tasks-message py-5">You currently have no tasks planned!</h4>
-                                <p class="display-5 pb-5">Visit the 
-                                    <a href ="{% url 'beneficiaries' %}" aria-label="link to volunteer page">
-                                        Volunteer</a> page to start adding tasks.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 empty-box">
-                                <h5>Your activities will appear here</h5>
-                                <p>after you've saved some</p>
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
                 </div>
             </div>
+            {% else %}
+            <!--Message to user with no slots saved yet-->
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h3 class="display-4 no-tasks-message py-5">You currently have no tasks planned!</h4>
+                        <p class="display-5 pb-5">Visit the
+                            <a href="{% url 'beneficiaries' %}" aria-label="link to volunteer page">
+                                Volunteer</a> page to start adding tasks.
+                        </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 empty-box">
+                    <h5 class="display-5">Your activities will appear here</h5>
+                    <p class="display-6">after you've saved some</p>
+                </div>
+            </div>
+            {% endif %}
         </div>
     </section>
     <!-- Student stats -->
     <section id="cumulative hours">
         <div class="container mb-5">
             <div class="row mb-2 stats cabin-sketch-bold stats">
-                <div class="col-4 p-2">
-                    <h5>Time approved to date: 
+                <div class="col-4 p-2 text-center">
+                    <h6>Time approved to date: 
                         <span id="calculated-minutes">0</span>
                         <span> minutes, </span>
                         <br>or 
                         <span id="calculated-hours">0</span>
                         <span>hours</span>
-                    </h5>
+                    </h6>
                 </div>
                 <div class="col-4 p-2 text-center">
-                    <h5>Hours needed for graduation: <span id="required-hours">30</span></h5>
+                    <h6>Hours needed for graduation: <span id="required-hours">30</span></h6>
                 </div>
-                <div class="col-4 p-2">
-                    <h5>Remaining time required: <span id="remaining-hours">
-                        </span> hours, <span id="plus-remaining-minutes"></span> minutes</h5>
+                <div class="col-4 p-2 text-center">
+                    <h6>Remaining time required: <span id="remaining-hours">
+                        </span> hours, <span id="plus-remaining-minutes"></span> minutes</h6>
                 </div>
             </div>
         </div>

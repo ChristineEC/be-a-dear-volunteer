@@ -133,12 +133,16 @@ article > p {
 }
 
 .legend {
-    line-height: 2rem;
+    font-size: small;
 }
 
 .question {
     font-weight: bold;
     font-size: small;
+}
+
+.dash-table {
+    width:100%;
 }
 
 /*--Footer--*/

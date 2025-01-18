@@ -133,7 +133,7 @@ article > p {
 }
 
 .legend {
-    line-height: 2rem;
+    font-size: small;
 }
 
 .question {
