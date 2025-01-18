@@ -237,4 +237,11 @@ For the view code for the beneficiary details page, I borrowed heavily from the 
 
 ![Photo by Inge Wallumrød:cat](https://www.pexels.com/photo/silver-tabby-cat-lying-on-brown-wooden-surface-126407/)
 
-hearts image
+
+
+
+Linked in icon from FontAwesome: <a href="https://linkedin.com/in/christineecarter" target="_blank" aria-lable="link to author's LinkedIn"> 
+
+GitHub icon from FontAwesome<a href="https://github.com/ChristineEC" target="_blank" aria-lable="link to author's GitHub">
+                                <i class="fa-brands fa-github"></i></a>
+
