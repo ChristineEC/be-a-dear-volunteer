@@ -31,7 +31,7 @@ plusRemainingMinutes.innerHTML = calculatedremainingminutes;
 /*-- It has been adapted for my purposes --*/
 for (let button of deleteBtns) {
     button.addEventListener("click", (e) => {
-        let slotId = e.target.getAttribute("slot_id");
+        let slotId = e.target.getAttribute("data-slot_id");
         deleteConfirmDashboard.href = `delete_task/${slotId}/`;
         deleteModalDashboard.show();
     });

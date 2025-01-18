@@ -111,30 +111,8 @@ article > p {
     text-align: center;
 }
 
-/*-- Buttons --*/
-.btn-edit {
-    border-width: 1px;
-    font-weight:bold;
-}
-
-.btn-delete {
-    border-width: 1px;
-    font-weight:bold;
-}
-
-.signup-button {
-    font-weight: bold;
-    border: solid 1px black;
-}
-
-/*-- Inline links --*/
-.inline-link {
-    text-decoration:none;
-    color: black;
-}
 
 /*-- Student Dashboard --*/
-
 .dashboard {
     background-color: black;
     color: white;
@@ -154,10 +132,16 @@ article > p {
     height: auto;
 }
 
-/*--Footer--*/
-footer {
-    z-index:0;
+.legend {
+    line-height: 2rem;
 }
+
+.question {
+    font-weight: bold;
+    font-size: small;
+}
+
+/*--Footer--*/
 
 .footer-div {
     position: relative;

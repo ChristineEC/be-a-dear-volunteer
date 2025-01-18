@@ -19,7 +19,6 @@
         {% for beneficiary in beneficiary_list %}
         <div class="card b-card bg-transparent mx-auto px-5 my-2 col-sm-12, col-md-6 col-lg-3 g-0">
           <div class="card-body">
-            
             <h5 class="card-title card-small-h3 {% if beneficiary.beneficiary_name == 'Other' or beneficiary.beneficiary_name == 'Individual' %}special-category{% endif %}">
               <a href="{% url 'beneficiary_detail' beneficiary.slug %}" 
                  aria-label="link to the beneficiary">{{ beneficiary.beneficiary_name }}

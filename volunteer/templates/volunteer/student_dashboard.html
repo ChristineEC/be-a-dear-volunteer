@@ -41,9 +41,33 @@ Student Dashboard
     </section>
     <!-- Looping over the students slots -->
     <section id="manage-tasks">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-12 justify-content-center">
+                <div class="col-sm-12 col-md-3 mx-auto justify-content-center legend">
+                    <h6>Color Legend:</h6>
+                    <table class="table">
+                        <tr>
+                            <th>Task Status</th>
+                        </tr>
+                        <tr class="table-primary">
+                            <td>BLUE: </td>
+                            <td>Planning Stage</td>
+                        </tr>
+                        <tr class="table-info">
+                            <td>YELLOW: </td>
+                            <td>Credit Requested</td>
+                        </tr>
+                        <tr class="table-success">
+                            <td>GREEN: </td>
+                            <td>Credit Approved</td>
+                        </tr>
+                        <tr class="table-danger">
+                            <td>RED: </td>
+                            <td>Hmm, something odd here... <span class="question">(did you forget to mark complete before requesting credit?)</span></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-sm-12 col-md-9 col-lg-9 justify-content-center">
                 {% if slots %}
                     <table class="table">
                         <thead>
@@ -75,8 +99,10 @@ Student Dashboard
                                 <td>{{ slot.completed }}</td>
                                 <td>{{ slot.credit_minutes_requested }}</td>
                                 <td class="credit_minutes_approved">{{ slot.credit_minutes_approved }}</td>
-                                <td><a href="{% url 'update_slot' slot.id %}"><button class="btn-primary btn-sm">Update</button></a></td>
-                                <td><button class="btn-delete-task btn-danger btn-sm" slot_id="{{ slot.id }}">Delete</button></td>
+                                <td><a href="{% url 'update_slot' slot.id %}" aria-label="update this task"
+                                    class="btn btn-secondary btn-sm">Update</a></td>
+                                <td><button class="btn btn-danger btn-sm" data-slot_id="{{ slot.id }}" 
+                                    aria-label="update this task">Delete</button></td>
                             </tr>
                         {% endfor %}
                         </tbody>
