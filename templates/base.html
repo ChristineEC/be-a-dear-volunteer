@@ -53,19 +53,19 @@
                     <ul class="navbar-nav ms-auto mb-2 px-3 mb-lg-0 fw-bold">
                         <li class="nav-item">
                             <a class="nav-link {% if request.path == home_url %}active" aria-current="page{% endif %}"
-                                aria-lable="link to home page" href="{% url 'home' %}">Home</a>
+                                aria-label="link to home page" href="{% url 'home' %}">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {% if request.path == about_url %}active" aria-current="page{% endif %}"
-                                aria-lable="link to the about page" href="{% url 'about' %}">About</a>
+                                aria-label="link to the about page" href="{% url 'about' %}">About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {% if request.path == beneficiaries_url %}active" aria-current="page{% endif %}"
-                                aria-lable="link to the volunteer page"href="{% url 'beneficiaries' %}">Volunteer</a>
+                                aria-label="link to the volunteer page"href="{% url 'beneficiaries' %}">Volunteer</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {% if request.path == contact_us_url %}active" aria-current="page{% endif %}"
-                                aria-lable="link to contact form" href="{% url 'send_message' %}">Contact Us</a>
+                                aria-label="link to contact form" href="{% url 'send_message' %}">Contact Us</a>
                         </li>
                         {% if user.is_authenticated %}
                         <li class="nav-item">
@@ -74,17 +74,17 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {% if request.path == student_dashboard_url %}active"
-                                aria-lable="link to dashboard" aria-current="page{% endif %}" 
+                                aria-label="link to dashboard" aria-current="page{% endif %}" 
                                 href="{% url 'student_dashboard' %}">My Dashboard</a>
                         </li>
                         {% else %}
                         <li class="nav-item">
                             <a class="nav-link {% if request.path == signup_url %}active" aria-current="page{% endif %}"
-                                aria-lable="link to register" href="{% url 'account_signup' %}">Register</a>
+                                aria-label="link to register" href="{% url 'account_signup' %}">Register</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {% if request.path == login_url %}active" aria-current="page{% endif %}"
-                                aria-lable="link to login" href="{% url 'account_login' %}">Login</a>
+                                aria-label="link to login" href="{% url 'account_login' %}">Login</a>
                         </li>
                         {% endif %}
                     </ul>
