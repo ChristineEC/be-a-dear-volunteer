@@ -8,6 +8,7 @@
         - [Other links](#other-links)
     - [Logged in Status](#logged-in-status)
     - [Authentication](#authentication)
+- [User Stories and CRUD](#user-stories-and-crud)
 
 
 
@@ -40,7 +41,9 @@
 ### Logged in Status
 | Feature | Action | Expected Result | Pass or Fail (P/F) |
 |---------|--------|-----------------|--------------------|
-| Login Status | -- | a logged in user sees the message that they are logged in as <username>, and a logged out or unregistered user sees a message that they are not logged in | Pass |
+| Logged in Status | Visit site | A logged out or unregistered user sees a message that they are not logged in | Pass |
+| Logged in Status 2 | Log in | A logged in user sees a message at the top of every page that they are logged in as <username> | Pass |
+
 
 
 ### Authentication
@@ -51,15 +54,11 @@
 | User logout | logged in user clicks navlink to log out | user brought to logout page and asked if they are sure, then logged out if they click sign out button | Pass |
 | User account | visitor clicks on Registration in the navbar | user is directed to the sign up page and can sign up | Pass |
 | No log in by unregistered user | A user without an account clicks on login | Sign in fails and user is directed to Register first | Pass |
-| Registration - part 2 | user clicks on the inline Register link at login page | user brought to accounts/signup url and presented with form where they can register | Pass |
-| Prevent non logged in user from accessing the form where they can reserve a slot | user clicks on a beneficiary from the volunteer page | user is directed as usual to the beneficiary detail page but receives the message that they must be logged in to save a task to their dashboard and a link to do so | Pass |
-| Student Dashboard access prevention for non-logged-in user | user types in the student_dashboard url | user is directed to the sign-in page | Pass |
+| Registration - part 2 | user clicks on the inline Register link at login page | user brought to accounts/signup url and presented with form where they are able to register | Pass |
+| Prevent non logged in user from accessing the form where they can reserve a slot | user clicks on a beneficiary from the Volunteer page | user is directed as usual to the beneficiary detail page but receives the message that they must be logged in to save a task to their dashboard, and a link to do so. The form to save a slot does not appear. | Pass |
+| Student Dashboard access prevention for non-logged-in user | user types in the student_dashboard url | user is redirected to the sign-in page  | Pass |
 | Privacy | -- | There is no way to access another person's dashboard, as all user-specific content is coded in templates and javascript, not via separate urls | Pass |
-| Wrong password or username | A user types in the wrong password and username combination | A message appears stating that the username and/or password specified are incorrect | Pass |
+| Wrong password or username | A user types in the wrong password and username combination | A message appears stating that the username and/or password specified are incorrect, and the user can still try again | Pass |
 | Forgotten password | User clicks on the forgotten password link | user directed to message form to send message for help, then redirected to home page | Pass |
 
-
-
-
-
-## CRUD
+## User Stories and CRUD
