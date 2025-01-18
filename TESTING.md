@@ -44,10 +44,7 @@
 | Logged in Status | Visit site | A logged out or unregistered user sees a message that they are not logged in | Pass |
 | Logged in Status 2 | Log in | A logged in user sees a message at the top of every page that they are logged in as <username> | Pass |
 
-
-
 ### Authentication
-
 | Feature | Action | Expected Result | Pass or Fail |
 |---------|--------|-----------------|--------------|
 | User login | site visitor clicks on login on navbar | user is redirected to sign-in form at accounts/login url and is able to log in | Pass |
@@ -60,5 +57,47 @@
 | Privacy | -- | There is no way to access another person's dashboard, as all user-specific content is coded in templates and javascript, not via separate urls | Pass |
 | Wrong password or username | A user types in the wrong password and username combination | A message appears stating that the username and/or password specified are incorrect, and the user can still try again | Pass |
 | Forgotten password | User clicks on the forgotten password link | user directed to message form to send message for help, then redirected to home page | Pass |
+| Admin panel access | user types in admin url | User asked to authenticate with username and password, denied access unless previously granted by superuser | Pass |
+| Admin panel access 2 | user types in admin url | Users gains access, but only for those tasks / priviledges previously granted by superuser | Pass |
+| Admin panel 2b | authorized teacher visits admin panel and attempts to change something not authorized | No fields that they should not be able to edit appear as editable | Pass |
+
 
 ## User Stories and CRUD
+
+[User stories and Kanban board in GitHub](https://github.com/users/ChristineEC/projects/5)
+
+As a school member, I can create an account and sign-in so that I can participate in the project: Yes. (See [Authentication](#authentication), above).
+
+As a registered user, I can log in and log out with ease. Yes. (See [Authentication](#authentication), above).
+
+As a site owner, I can mark as read messages received so that I can keep track of what needs to be done or messages that need responding to.
+| Feature | Action | Expected Result | Pass or Fail |
+|---------|--------|-----------------|--------------|
+| Messages | user sends a message from the About page or the message or Contact Us links | I can mark the messages as read (or unread) in the admin panel | Pass |
+
+Display beneficiaries: As a site owner, I can post information about an organization or other beneficiary so that visitors to the website can read about volunteer opportunties.
+| Feature | Action | Expected Result | Pass or Fail |
+|---------|--------|-----------------|--------------|
+| Display list of beneficiaries | User visits the Volunteer page | user sees the list of all beneficiaries marked in the admin panel as published | Pass |
+
+About page: As a site owner, I can post information about the project so that visitors can learn what the project is about.
+| Feature | Action | Expected Result | Pass or Fail |
+|---------|--------|-----------------|--------------|
+| About page | user visits About page | Any user can access the About page, which is displayed in an attractive, legible manner consistent with UX principles | Pass |
+| About page admin | superuser drafts content | Most recent published content appears on the about page | Pass |
+
+As a visitor to the website, I can send a message to the site owner so that I can ask them to post a specific volunteer opportunity.
+| Feature | Action | Expected Result | Pass or Fail |
+|---------|--------|-----------------|--------------|
+| Contact form on the about page | user enters a message and clicks on send | Message is received in the admin panel, and user stays on the About page | Pass |
+| Contact Us navlink | user clicks | user directed to a Contact Form, then redirected back to homepage; message is received | Pass |
+| Message links (see also [Other Links](#other-links)) | user clicks from various places on the website | directed to Contact Form then back to page they came from; message is received | Pass |
+
+As a teacher or school administrator, I can access the admin panel so that I can review students' tasks and approve their volunteer work
+| Feature | Action | Expected Result | Pass or Fail |
+|---------|--------|-----------------|--------------|
+| Admin access | user tries to access admin panel (when not authorized) | 
+
+
+
+

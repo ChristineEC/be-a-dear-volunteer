@@ -1,5 +1,5 @@
 # Be a Dear - Volunteer
-A Django project utilizing python, javascript, HTML, and CSS. 
+A Django project utilizing Python, JavaScript, HTML, CSS, and PostgreSQL relational database. 
 # REMEMBER TO INCLDUE LINKS TO HEROKU AND GITHUB HERE!!!!
 
 ## Description
