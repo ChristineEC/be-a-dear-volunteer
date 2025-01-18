@@ -33,7 +33,7 @@ Student Dashboard
                     <h1 class="py-2 mx-auto cabin-sketch-bold">{{ user.username }}'s Student Dashboard</h1>
                     <h3><small>We do not have a profile set up for you yet,
                         so you are not currently registered to a classroom.</small></h3>
-                    <h4 class="py-3">Send us a message and we'll get that taken care of!</h4>
+                    <h4 class="py-3">Send us a <a href="{% url 'send_message' %}" aria-label="link to contact form">message</a> and we'll get that taken care of!</h4>
                     <p class="display-6">(In the meantime, you'll still enjoy full functionality!)</p>
                 {% endif %}
             </div>
