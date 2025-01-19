@@ -7,6 +7,7 @@
  - [CSS](#css)
  - [HTML](#html)
  - [Lighthouse](#lighthouse)
+ - [Console Message](console-message)
 
 [MANUAL TESTING](#manual-testing)
 - [Global](#global-1)
@@ -19,6 +20,10 @@
 - [User Stories and CRUD](#user-stories-and-crud)
     - [General stories](#general-stories)
     - [Full front-end CRUD](#full-front-end-crud)
+
+
+
+
 
 ## Validation
 ### Python
@@ -52,10 +57,33 @@ The project has one CSS file, located in the static folder of the be_a_dear proj
 ### HTML
 
 ### Lighthouse
+Lighthouse scores were good, with accessibility and SEO scoring 100 each and performance scoring 90. 
+The homepage header image was highlighted by lighthouse as not having dimensions set in the html, which can slow load times, so I resized it and gave it explicit dimensions in the html, leaving the CSS style of 100% width and auto height in place. This tipped the performance score from 89 to 90, although I understand that scores can vary slightly due to changes in underlying conditions. 
+Other factors affecting performance are down to things that my project relies upon, such as render-blocking resources comprising the various CDNs I employ, such as Google Fonts, FontAwesome, JSDeliver/Bootstrap, and Heroku itself.
 
+![alt text](documentation/lighthouse-chrome.png)
+
+### Console Message
+A frequent console message in all browsers was the following:
+
+![alt text](documentation/mixed-content-console-message.png)
+
+This is caused by Cloudinary serving the image files over http instead of https. As I understand it, there is a way to force Cloudinary delivery of messages over https, but I have not done so here. Future enhancement of the project will address this. Although less than ideal, I felt it was safe to ignore this.  According to ![MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content), there are two types of mixed content: "upgradable content" and "blockable content", and browsers should upgrade the upgradable content before rending a page. This is indeed what the above message shows is being done, as my mixed messages are of the first type, which is more benign than the second. When I ran the Heroku deployed app through ![Crawl Center's mixed content checker](https://www.crawlcenter.com/mixed-content-checker), as suggested by MDN Web Docs, I received the evaluation that no mixed content was found.
+
+![Mixed Content Checker](documentation/mixed-content-checker.png)
 
 ## Manual Testing
+
 ## Global 
+
+### Browsers
+The deployed app was tested in the following browsers, with no errors or infelicities occurring. It was not possible to check IOS (iPhone) due to a known problem serving Heroku apps there.
+
+- Chrome:
+- Safari
+- Microsoft Edge
+- Android (Samsung Z-Flip 4)
+
 ### Navigation
 #### Navigation Bar
 | Feature | Action | Expected Result | Pass or Fail |
@@ -93,6 +121,11 @@ All forms function as expected. The actions and results listed below are also in
 
 
 
+
+
+
+
+
 ### Logged in Status
 | Feature | Action | Expected Result | Pass or Fail (P/F) |
 |---------|--------|-----------------|--------------------|
@@ -118,7 +151,9 @@ All forms function as expected. The actions and results listed below are also in
 
 
 ## User Stories and CRUD
+
 ### General stories
+
 [User stories and Kanban board in GitHub](https://github.com/users/ChristineEC/projects/5)
 
 As a school member, I can create an account and sign-in so that I can participate in the project: Yes. (See [Authentication](#authentication), above).
