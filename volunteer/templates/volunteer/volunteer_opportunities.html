@@ -5,56 +5,57 @@
 
 {% block content %}
 <section class="beneficiaries-list">
-    <div class="container-fluid text-center">
-      <div class="row">
-        <div class="col-12 text-center heading-beneficiaries">
-          <h2 class="display-4 my-3">Here are the opportunities that we know of so far.</h2>
-          <p class="display-6 mb-5">We trust you'll be sending in your ideas for more as the project progresses!</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12 col-md-6 offset-md-3 mx-auto text-center how-it-works">
-          <h3 class="display-6 my-3">
-            How it Works:
-          </h3>
-          <h4 class="mt-2 mb-2">
-            Click on any of the items below to read more. From there, 
-            if you're interested, you'll be able to save tasks related 
-            to that beneficiary to your dashboard.
-          </h4>
-          <h3 class="my-3">
-            Note especially the categories of "Other" and "Individual" below
-          </h3>
-          <h4 class="mb-5">
-            These will allow you plan volunteer activities (and request credit!) 
-            for people or organizations not already listed here.
-          </h4>
-        </div>
+  <h1 class="d-none">Volunteer Opportunities</h1>
+  <div class="container-fluid text-center">
+    <div class="row">
+      <div class="col-12 text-center heading-beneficiaries">
+        <h2 class="display-4 my-3">Here are the opportunities that we know of so far.</h2>
+        <p class="display-6 mb-5">We trust you'll be sending in your ideas for more as the project progresses!</p>
       </div>
     </div>
-    <div class="container-fluid beneficiary-container d-flex justify-content-evenly pb-5 mb-5">
-      <div class="row mx-auto">
-        <!-- Cards for each beneficiary in list -->
-        {% for beneficiary in beneficiary_list %}
-        <div class="card b-card bg-transparent mx-auto px-5 my-2 col-sm-12, col-md-6 col-lg-3 g-0">
-          <div class="card-body">
-            <h5 class="card-title card-small-h3">
-              <a href="{% url 'beneficiary_detail' beneficiary.slug %}" 
-                 aria-label="link to the beneficiary">{{ beneficiary.beneficiary_name }}
-              </a>
-            </h5>
-            <h6 class="card-subtitle mb-2 text-muted card-small-h4">
-              <small>{{ beneficiary.location }}</small>
-            </h6>
-            <article class="card-text" title="beneficiary-description">
-              {{ beneficiary.short_description | safe }}
-              <p class="card-text">{{ beneficiary.contact_details }}</p>
-            </article>
-          </div>
-        </div>
-        {% endfor %}
+    <div class="row">
+      <div class="col-sm-12 col-md-6 offset-md-3 mx-auto text-center how-it-works">
+        <h3 class="display-6 my-3">
+          How it Works:
+        </h3>
+        <h4 class="mt-2 mb-2">
+          Click on any of the items below to read more. From there,
+          if you're interested, you'll be able to save tasks related
+          to that beneficiary to your dashboard.
+        </h4>
+        <h3 class="my-3">
+          Note especially the categories of "Other" and "Individual" below
+        </h3>
+        <h4 class="mb-5">
+          These will allow you plan volunteer activities (and request credit!)
+          for people or organizations not already listed here.
+        </h4>
       </div>
     </div>
-  </section>
-  {% endblock%}
+  </div>
+  <div class="container-fluid beneficiary-container d-flex justify-content-evenly pb-5 mb-5">
+    <div class="row mx-auto">
+      <!-- Cards for each beneficiary in list -->
+      {% for beneficiary in beneficiary_list %}
+      <div class="card b-card bg-transparent mx-auto px-5 my-2 col-sm-12, col-md-6 col-lg-3 g-0">
+        <div class="card-body">
+          <h5 class="card-title card-small-h3">
+            <a href="{% url 'beneficiary_detail' beneficiary.slug %}" 
+                aria-label="link to the beneficiary">{{ beneficiary.beneficiary_name }}
+            </a>
+          </h5>
+          <h6 class="card-subtitle mb-2 text-muted card-small-h4">
+            <small>{{ beneficiary.location }}</small>
+          </h6>
+          <article class="card-text" title="beneficiary-description">
+            {{ beneficiary.short_description | safe }}
+            <p class="card-text">{{ beneficiary.contact_details }}</p>
+          </article>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock%}
 

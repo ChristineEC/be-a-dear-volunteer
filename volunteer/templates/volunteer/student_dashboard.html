@@ -11,6 +11,7 @@ Student Dashboard
 <!-- Student Dashboard Heading Section -->
 {% if user.is_authenticated %}
     <section id="dashboard-heading">
+        <h1 class="d-none">Student Dashboard</h1>
         <div class="dashboard container-fluid mt-0 bg-dark">
             <div class="row">
                 {% if user.profile %}
@@ -62,6 +63,7 @@ Student Dashboard
     </section>
     <!-- Looping over the students slots -->
     <section id="manage-tasks">
+        <h1 class="d-none">Manage Tasks</h1>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12 col-md-6 mx-auto 
@@ -167,6 +169,7 @@ Student Dashboard
     </section>
     <!-- Student stats -->
     <section id="cumulative-hours">
+        <h1 class="d-none">Tracking Time Volunteered</h1>
         <div class="container-fluid mb-5">
             <div class="row mb-2 stats cabin-sketch-bold stats">
                 <div class="col-4 p-2">

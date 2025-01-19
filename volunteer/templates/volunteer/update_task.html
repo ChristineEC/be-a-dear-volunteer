@@ -6,6 +6,7 @@
 {% block content %}
 
 <section id="edit-task">
+    <h1 class="d-none">Updating a Task</h1>
     {% if user.is_authenticated and slot.reserved_by == user %}
     <div class="container">
         <div class="row">
