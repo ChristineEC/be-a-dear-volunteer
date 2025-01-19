@@ -1,6 +1,8 @@
 # Be a Dear - Volunteer
-A Django project utilizing Python, JavaScript, HTML, CSS, and PostgreSQL. 
-# REMEMBER TO INCLDUE LINKS TO HEROKU AND GITHUB HERE!!!!
+A Django project utilizing Python, JavaScript, HTML, CSS, and PostgreSQL.
+Links to the deployed app and the GitHub repository
+[The live app deployed on Heroku](https://be-a-dear-volunteer-10d02942fbed.herokuapp.com/)
+[Be a Dear GitHub repository](https://github.com/ChristineEC/be-a-dear-volunteer)
 
 ## Table of Contents
 - [Description](#description)
@@ -116,6 +118,64 @@ A user is told that they are logged in as `<username>` or that they are not logg
 #### Sending messages
 
 #### User Messages
+Prominent messages are displayed to the user when they interact with the website:
+
+Sign in success
+
+![Sign in success](documentation/sign-in-success.png)
+
+Sign out Are You Sure?
+
+![Are you sure you want to sign out?](documentation/sure-sign-out.png)
+
+Sign out success:
+
+![Sign out success](documentation/sign-out-success.png)
+
+Sent message (from all relevant links and pages):
+
+![Thanks for your message!](documentation/message-thanks.png)
+
+Wrong username and password or 
+Not registered yet but trying to sign in
+
+![Wrong or no credentials to sign in](documentation/wrong-creds.png)
+
+Creation of a task from the Volunteer page
+
+![Task created](documentation/slot-created.png)
+
+![But not yet published](documentation/slot-not-published.png)
+
+- and after publication:
+
+![After publication](documentation/after-publication.png)
+
+Task Updated!
+
+![Update success](documentation/task-updated.png)
+
+Deleting a task
+
+- first the delete modal
+
+![Delete modal](documentation/delete-modal.png)
+
+- then delete success message
+
+![Task deleted](documentation/task-deleted.png)
+
+
+
+
+
+
+ - saving, updating or deleting a task (a.k.a. slot); or sending a message.
+
+
+
+
+
 
 #### Footer
 

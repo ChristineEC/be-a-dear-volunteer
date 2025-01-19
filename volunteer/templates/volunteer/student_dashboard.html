@@ -109,7 +109,7 @@ Student Dashboard
                                 <td class="credit_minutes_approved">{{ slot.credit_minutes_approved }}</td>
                                 <td><a href="{% url 'update_slot' slot.id %}" aria-label="update this task"
                                         class="btn btn-secondary btn-sm">Update</a></td>
-                                <td><button class="btn btn-danger btn-sm" data-slot_id="{{ slot.id }}"
+                                <td><button class="btn btn-delete-task btn-danger btn-sm" data-slot_id="{{ slot.id }}"
                                         aria-label="update this task">Delete</button></td>
                             </tr>
                             {% endfor %}
@@ -170,7 +170,7 @@ Student Dashboard
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Are you sure?</h5>
+                <h5 id="deleteModalDashboardLabel" class="modal-title">Are you sure?</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
