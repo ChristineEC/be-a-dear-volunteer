@@ -22,8 +22,7 @@ The Be a Dear project as a whole contains three apps:
         - student_dashboard.html (RUD) "My Dashboard"
         - update_task.html (RUD) - Edit buttons on dashboard
     - Forms:
-        - SlotForm (full CRUD)
-        - UpdateSlot (RU)
+        - SlotForm (full CRUD in one template, RU in another)
 2. The About app
     - Model: About
     - Form: CollaborateForm (embedded in about.html and freestanding in contact_form.html)
@@ -36,10 +35,51 @@ The Be a Dear project as a whole contains three apps:
     - Function: Teachers can sort by classroom in the admin panel; students can read what Classroom they are assigned to.
         - Although the Profile model provides only limited (back-end) functionality at the current stage of this project, it does allow for rapid development of future enhancements.
 
-#### The home page
-The home page acts as a landing page, introducing students and the public to the purpose and general functionality of the website. It lives in the volunteer app.
+#### Home page
+The home page acts as a landing page, introducing students and the public to the purpose and general functionality of the website.
 
 ![Homepage - index.html](documentation/homepage.png)
+
+#### Header and Navigation Bar
+The header consists of a simple logo and the name of the project, clickable to return the user to the homepage from any page.
+
+![Header](header-and-nav.png)
+
+The nav bar is fully responsive, appearing as text on wider screens and as a navbar "hamburger" icon on smaller screens
+
+![navbar-medium](documentation/navbar-medium.png)
+
+![navbar-mobile](documentation/navbar-mobile.png)
+
+The content of the navbar changes depending on whether a user is logged in or out.
+
+![nav-logged-in](documentation/nav-logged-in.png)
+
+![nav-logged out](documentation/nav-logged-out.png)
+
+Current page shows as bolded in the navbar
+
+![nav-bolded](documentation/nav-bolded.png)
+
+#### Logged In As and Not Logged In messages
+A user is told that they are logged in as `<username>` or that they are not logged in at the top of every page, just under the navbar.
+
+![You are logged in as message](documentation/logged-in-as.png)
+
+![You are not logged in message](documentation/not-logged-in-msg.png)
+
+#### Viewing volunteer opportunities on the Volunteer page
+Header:
+
+
+ 
+
+#### Student dashboard
+
+#### Messages
+
+#### Footer
+
 
 
   -  The extra contact form template allows users to send messages from all the main pages of the website and be returned to the page they messaged from.
