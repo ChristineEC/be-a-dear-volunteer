@@ -216,3 +216,31 @@ Student dashboard: As a student I can see all of my slots on my own page so that
 
 
 
+## Bugs!
+
+The default images were not being loaded for the About, Profile or Beneficiary objects.
+**Fix:** Change default to "placeholder", rather than "default.jpg" or "placeholderimage.jpg", then load the relevant placeholder images conditionally in the templates.
+
+:worried: The Slot Form (from the beneficiary detail page) was not posting correctly to the database when a user tried to edit. Although it would populate with the two first fields, it would then create a new Slot object. The reason for the bug is that I wasn't (originally) displaying all of the attributes in the rendered html template, so the javascript could not pick up all of the relevant attributes to edit. This threw errors and did not allow the javascript to run to the end of the function (where it should then change the button from "Save to Dashboard" to "Update").
+**Fix:** I decided to render all of the objects attributes in the template so that they could be picked up by the javascript for editing, allowing the js function to complete, and thus allowing successful editing of the object. I considered making some of the attributes "hidden" using CSS classes, but further research revealed that javascript would not pick up any such hidden attributes. On further consideration, I thought that showing all of the attributes actually improved user experience and furthered one purpose of the project, which was to have students be able to read about what others were doing. That is, there was no harm, but to the contrary, some benefit, in rendering all of the objects attributes in the templates. As an afterthought, if I had truly wanted to hide the objects' attributes in the rendered templates, I could have simply made them display in the same font color as the background. However, I seem to recall learning that that is not good practice. So my solution in that case would be to use a different method of enabling the editing of objects, such as by using an update form, as is done from the student dashboard page. In any case, at first my solution did not work, and I discovered that I had a number of typographical errors in my javascript (in `slots.js`). Many thanks to Code Institute Tutor support for helping me identify that typo!
+
+
+Errors occurred in the terminal after writing new javascript, but the errors pointed to the older javascript that had been working fine up until that point. On the student dashboard page, for which the new javascript was written, the code would not run through to complete the function relevant for that page. Those errors indicated a problem with the bootstrap delete Modal, which is used on a different page for editing slots. And on that other page, where the javascript was being used to prepopulate the form to edit a slot, an error was being thrown which referenced the javascript for the dashboard. I did not notice that second fact at first, so I was thinking that perhaps there had been some update with bootstrap that I would need to take into consideration, as the error pointed not only to my js file, but to the bootstrap script as well. But as I discussed the issue with Holly at Code Institute Tutor Support, I discovered the fact about the other webpage displaying a related (but reverse) error, and at Holly's suggestion, 
+**Fix:** I split the javascript into separate files, each targeting only the relevant page or pages. Problem solved! Thank you, Holly!
+
+Default images are not loading.
+
+The footer is transparent except for the text, which covers content when content is scrolled.
+
+After modifying lines of python code for the Slot model to make the lines shorter in compliance with PEP8 standards, the task-location field was being displayed on the form for updating the slot as two separate phrases with a large gap between them.
+**Fix:** I removed the backslash that I had used to break the line for the string comprising the default value (on lines 55 and 56) and replaced it with ordinary quotes.
+
+- Horizontal scrolling
+**Fix** I decided to use a quick fix for this bug, as the horizontal scrolling was extremely minimal, by styling the body in CSS with overflow-x hidden.
+
+- Last minute horror!
+On what I considered the final deployed project, the delete button was not functioning on the student dashboard. I found after comparing the javascript with the html that I had accidentally deleted a class necessary for the JavaScript (written for the delete modal) to identify the button when I was restyling it for better UI. Although not a bug, at the same time I found a mislabeled aria-label ("update this task" where it should have been "delete this task" - obviously the result of a too-hurried copy and paste the failure to edit during development).
+**Fix** Reinsert the necessary class for the delete button ("btn-delete-task").
+
+Full transparency: The js file was unchanged, but I did retest, with the same passing result. I had not run the html tests yet at the time of the change.
+

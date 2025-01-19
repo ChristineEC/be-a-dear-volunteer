@@ -46,7 +46,8 @@ Student Dashboard
                 <div class="col-sm-12 col-md-6 mx-auto justify-content-center legend">
                     <table class="table">
                         <tr>
-                            <th class="pt-5">Task Status</th>
+                            <th class="pt-5">Color</th>
+                            <th>Task Status</th>
                         </tr>
                         <tr class="table-primary">
                             <td>BLUE: </td>
@@ -121,7 +122,7 @@ Student Dashboard
             <!--Message to user with no slots saved yet-->
             <div class="row">
                 <div class="col-12 text-center">
-                    <h3 class="display-4 no-tasks-message py-5">You currently have no tasks planned!</h4>
+                    <h3 class="display-4 no-tasks-message py-5">You currently have no tasks planned!</h3>
                         <p class="display-5 pb-5">Visit the
                             <a href="{% url 'beneficiaries' %}" aria-label="link to volunteer page">
                                 Volunteer</a> page to start adding tasks.
@@ -138,8 +139,8 @@ Student Dashboard
         </div>
     </section>
     <!-- Student stats -->
-    <section id="cumulative hours">
-        <div class="container mb-5">
+    <section id="cumulative-hours">
+        <div class="container-fluid mb-5">
             <div class="row mb-2 stats cabin-sketch-bold stats">
                 <div class="col-4 p-2">
                     <h6>Time approved to date: 
