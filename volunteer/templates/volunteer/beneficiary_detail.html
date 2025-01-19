@@ -19,34 +19,43 @@ Beneficiary Details
                             class="card-img-top" alt="placeholder image">
                     {% else %}
                         <img src="{{ beneficiary.featured_image.url }}"
-                            class="card-img-top" alt="{{ beneficiary.beneficiary_name }}">
+                            class="card-img-top" 
+                            alt="{{ beneficiary.beneficiary_name }}">
                     {% endif %}
                     <div class="card-body">
                         <h5 class="card-title">{{ beneficiary.beneficiary_name }}</h5>
-                        <p class="card-text">{{ beneficiary.description | safe }}</p>
+                        <article class="card-text">{{ beneficiary.description | safe }}</article>
                         <p class="card-text">{{ beneficiary.location }}</p>
                         <p class="card-text">{{ beneficiary.contact_details }}</p>
-                        <p class="card-text">Tasks planned by WCHS students: {{ slots_created_count }}</p>
-                        <p class="card-text">Tasks completed by WCHS students: {{ slots_completed_count }}</p>
+                        <p class="card-text">Tasks planned by WCHS students: 
+                            {{ slots_created_count }}</p>
+                        <p class="card-text">Tasks completed by WCHS students: 
+                            {{ slots_completed_count }}</p>
                     </div>
                 </div>
             </div>
             <!-- Reserve slots -->
             <div class="col-sm-12 col-md-6">
                 {% if user.is_authenticated %}
-                <h3 class="display-4 py-3">Fill in the form to add a task related to {{ beneficiary.beneficiary_name }} to your dashboard.</h3>
-                <h4 class="display-6 py-2">You can manage the details and update your tasks on your 
-                    <a href="{% url 'student_dashboard' %}" aria-label="link to dashboard">dashboard</a>.</h4>
-                <p class="graduate-bold pt-2">Reservation for username: {{ user.username }}</p>
+                <h3 class="display-4 py-3">Fill in the form to add a task related to 
+                    {{ beneficiary.beneficiary_name }} to your dashboard.</h3>
+                <h4 class="display-6 py-2">You can manage the details and update your 
+                    tasks on your <a href="{% url 'student_dashboard' %}" 
+                    aria-label="link to dashboard">dashboard</a>.</h4>
+                <p class="graduate-bold pt-2">Reservation for username: 
+                    {{ user.username }}</p>
                 <form id="slotForm" class="mb-5" method="post">
                     {{ form | crispy }}
                     {% csrf_token %}
-                    <button id="submitButton" type="submit" class="btn btn-secondary btn-lg">Save to Dashboard</button>
+                    <button id="submitButton" type="submit" 
+                        class="btn btn-secondary btn-lg">Save to Dashboard</button>
                 </form>
                 {% else %}
-                <h3 class="display-2">You must be logged in to save a task to your dashboard.
+                <h3 class="display-2">You must be logged in to save a task 
+                    to your dashboard.
                     <a href="{{ login_url }}" value="login"
-                        aria-label="link to log in" class="btn btn-primary btn-lg">Log In</a>
+                        aria-label="link to log in" 
+                        class="btn btn-primary btn-lg">Log In</a>
                 </h3>
                 {% endif %}
             </div>
@@ -54,12 +63,14 @@ Beneficiary Details
     </div>
 </section>
 <!--List of published slots (and all reserved by current user) -->
-<section id="Planned tasks">
+<section id="schoolwide-planned-tasks">
     <div class="container-fluid slots-list">
         <div class="row">
             <div class="col-12 p-2 py-5 text-center">
                 <h2 class="display-4">What's been saved to students' dashboards:</h2>
-                <h3><small>Tasks are listed publicly at the discretion of school staff (so be polite!)</small></h3>
+                <h3><small>Tasks are listed publicly at the discretion of 
+                        school staff (so be polite!)</small>
+                </h3>
             </div>
             <div class="row mb-5">
                 {% for slot in slots %}
@@ -72,7 +83,8 @@ Beneficiary Details
                             <span>Task: </span>
                             <span id="task{{ slot.id }}">{{ slot.task }}</span><br>
                             <span>Location: </span>
-                            <span id="task_location{{ slot.id }}">{{ slot.task_location }}</span><br>
+                            <span id="task_location{{ slot.id }}">
+                                {{ slot.task_location }}</span><br>
                             <span>Dates: </span>
                             <span id="dates{{ slot.id }}">{{ slot.dates }}</span><br>
                             <span>Times: </span>
@@ -87,8 +99,10 @@ Beneficiary Details
                                 appears on your dashboard!</span><br>
                             {% endif %}
                             {% if user.is_authenticated and slot.reserved_by == user %}
-                            <span><button class="btn btn-edit btn-secondary btn-sm" slot_id="{{ slot.id }}">Edit</button> </span>
-                            <span> <button class="btn btn-delete btn-danger btn-sm" slot_id="{{ slot.id }}">Delete</button></span>
+                            <span><button class="btn btn-edit btn-secondary btn-sm" 
+                                data-slot_id="{{ slot.id }}">Edit</button> </span>
+                            <span> <button class="btn btn-delete btn-danger btn-sm" 
+                                data-slot_id="{{ slot.id }}">Delete</button></span>
                             {% endif %}
                         </div>
                     </div>
@@ -99,19 +113,26 @@ Beneficiary Details
     </div>
 </section>
 <!-- The delete modal -->
-<div id="deleteModal" class="modal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="True">
+<div id="deleteModal" class="modal" tabindex="-1" 
+        aria-labelledby="deleteModalLabel" aria-hidden="True">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 id="deleteModalLabel" class="modal-title">Are you sure?</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 id="deleteModalLabel" class="modal-title">
+                    Are you sure?
+                </h5>
+                <button type="button" class="btn-close" 
+                    data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p>This action cannot be undone!
-                    </br>You can always manage your tasks from your student dashboard.</p>
+                    <br>You can always manage your tasks from your 
+                        student dashboard.
+                    </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-secondary" 
+                    data-bs-dismiss="modal">Cancel</button>
                 <a id="deleteConfirm" href="#" class="btn btn-danger">Delete</a>
             </div>
         </div>

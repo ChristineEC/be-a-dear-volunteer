@@ -45,7 +45,7 @@ I decided that the F401 errors were unimportant, as they involved only the impor
 ### JavaScript
 The two JavaScript files I created for Be a Dear are slots.js (in the static folder of the be_a_dear project) and dashboard.js (in the static folder of the volunteer app). I ran these through JSHint and there are no errors. One comment occurs on each, however, regarding bootstrap--that it is an undefined variable. I believe that this is down to the fact that the linter cannot see what is in the rest of my project, such as the bootstrap script being loaded at the bottom of my templates. I decided that this comment was safe to ignore. The results are shown below.
 
-![JSHint validation result for slots.js](documentation/jshint-slotsjs.png)
+![JSHint validation for slots.js](documentation/jshint-slotsjs.png)
 
 ![JSHint validation result for dashboard.js](documentation/jshint-dashboard.png)
 

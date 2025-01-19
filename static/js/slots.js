@@ -18,7 +18,7 @@ const deleteConfirm = document.getElementById("deleteConfirm");
 
 for (let button of deleteButtons) {
     button.addEventListener("click", (e) => {
-        let slotId = e.target.getAttribute("slot_id");
+        let slotId = e.target.getAttribute("data-slot_id");
         deleteConfirm.href = `delete_slot/${slotId}/`;
         deleteModal.show();
     });
@@ -28,7 +28,7 @@ for (let button of deleteButtons) {
 /*-- It has been adapted for my purposes --*/
 for (let button of editButtons) {
     button.addEventListener("click", (e) => {
-        let slotId = e.target.getAttribute("slot_id");
+        let slotId = e.target.getAttribute("data-slot_id");
         let slotTaskContent = document.getElementById
             (`task${slotId}`).innerText;
         slotTask.value = slotTaskContent;

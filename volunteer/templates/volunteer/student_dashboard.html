@@ -14,29 +14,49 @@ Student Dashboard
         <div class="dashboard container-fluid mt-0 bg-dark">
             <div class="row">
                 {% if user.profile %}
-                    <div class="col-sm-12 col-lg-4 mx-auto">
+                <div class="col-sm-12 col-lg-4 mx-auto">
                         {% if "placeholder" in user.profile.profile_pic.url %}
-                        <img src="{% static 'images/default-user.jpg' %}" class="img-fluid max-width=450px" alt="default user icon">
+                        <img src="{% static 'images/default-user.jpg' %}" 
+                            class="img-fluid max-width=450px" 
+                            alt="default user icon">
                         {% else %}
-                        <img src="{{ user.profile.profile_pic.url }}" class="img-fluid max-width=450px" alt="User profile picture">
+                        <img src="{{ user.profile.profile_pic.url }}" 
+                            class="img-fluid max-width=450px" 
+                            alt="User profile picture">
                         {% endif %}
-                    </div>
-                    <div class="col-sm-12 col-lg-8 text-center pt-5 mx-auto">
-                        <h1 class="py-2 mx-auto cabin-sketch-bold">{{ user.username }}'s Student Dashboard</h1>
-                        <h2 class="pt-3 pb-5">You are in homeroom number {{ user.profile.classroom.classroom_number }}</h2>
-                    </div>
+                </div>
+                <div class="col-sm-12 col-lg-8 text-center pt-5 mx-auto">
+                        <h1 class="py-2 mx-auto cabin-sketch-bold">
+                            {{ user.username }}'s Student Dashboard
+                        </h1>
+                        <h2 class="pt-3 pb-5">You are in homeroom number 
+                            {{ user.profile.classroom.classroom_number }}
+                        </h2>
+                </div>
                 {% else %}
                 <div class="col-sm-9 col-lg-8 mx-auto">
-                    <img src="{% static 'images/default-user.jpg' %}" class="img-fluid max-width=450px" alt="default user icon">
+                    <img src="{% static 'images/default-user.jpg' %}" 
+                        class="img-fluid max-width=450px" alt="default user icon">
                 </div>
                 <div class="col-sm-9 col-lg-8 text-center pt-5 mx-auto">
-                    <h1 class="py-2 mx-auto cabin-sketch-bold">{{ user.username }}'s Student Dashboard</h1>
-                    <h3><small>We do not have a profile set up for you yet,
-                        so you are not currently registered to a classroom.</small></h3>
-                    <h4 class="py-3">Send us a <a href="{% url 'send_message' %}" aria-label="link to contact form" class="light-message">message</a> and we'll get that taken care of!</h4>
-                    <p class="display-6">(In the meantime, you'll still enjoy full functionality!)</p>
-                {% endif %}
+                    <h1 class="py-2 mx-auto cabin-sketch-bold">
+                        {{ user.username }}'s Student Dashboard
+                    </h1>
+                    <h3>
+                        <small>We do not have a profile set up for you yet,
+                        so you are not currently registered to a classroom.</small>
+                    </h3>
+                    <h4 class="py-3">Send us a 
+                        <a href="{% url 'send_message' %}" 
+                            aria-label="link to contact form" class="light-message">
+                            message
+                        </a> and we'll get that taken care of!
+                    </h4>
+                    <p class="display-6">(In the meantime, you'll still 
+                        enjoy full functionality!)
+                    </p>
                 </div>
+                {% endif %}
             </div>
         </div>
     </section>
@@ -44,7 +64,8 @@ Student Dashboard
     <section id="manage-tasks">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-12 col-md-6 mx-auto justify-content-center legend">
+                <div class="col-sm-12 col-md-6 mx-auto 
+                    justify-content-center legend">
                     <table class="table">
                         <tr>
                             <th class="pt-5">Color</th>
@@ -68,13 +89,16 @@ Student Dashboard
                         </tr>
                         <tr class="table-danger">
                             <td>RED: </td>
-                            <td>Hmm, something odd here... <span class="question">(Did you forget to mark Complete before requesting credit?)</span></td>
+                            <td>Hmm, something odd here... <span class="question">
+                                (Did you forget to mark Complete before requesting 
+                                credit?)</span>
+                            </td>
                         </tr>
                     </table>
                 </div>
             </div>
         </div>
-        <div class="container-fluid flex">
+        <div class="container-fluid">
             {% if slots %}
             <!-- List of slots reserved by the current user -->
             <div class="row">
@@ -123,11 +147,13 @@ Student Dashboard
             <!--Message to user with no slots saved yet-->
             <div class="row">
                 <div class="col-12 text-center">
-                    <h3 class="display-4 no-tasks-message py-5">You currently have no tasks planned!</h3>
-                        <p class="display-5 pb-5">Visit the
-                            <a href="{% url 'beneficiaries' %}" aria-label="link to volunteer page">
-                                Volunteer</a> page to start adding tasks.
-                        </p>
+                    <h3 class="display-4 no-tasks-message py-5">
+                        You currently have no tasks planned!
+                    </h3>
+                    <p class="display-5 pb-5">Visit the
+                        <a href="{% url 'beneficiaries' %}" aria-label="link to volunteer page">
+                            Volunteer</a> page to start adding tasks.
+                    </p>
                 </div>
             </div>
             <div class="row">
@@ -153,11 +179,14 @@ Student Dashboard
                     </h6>
                 </div>
                 <div class="col-4 p-2 text-center">
-                    <h6>Hours needed for graduation: <span id="required-hours">30</span></h6>
+                    <h6>Hours needed for graduation: 
+                        <span id="required-hours">30</span>
+                    </h6>
                 </div>
                 <div class="col-4 p-2">
                     <h6>Remaining time required: <span id="remaining-hours">
-                        </span> hours, <span id="plus-remaining-minutes"></span> minutes</h6>
+                        </span> hours, <span id="plus-remaining-minutes"></span> minutes
+                    </h6>
                 </div>
             </div>
         </div>
@@ -168,19 +197,28 @@ Student Dashboard
     </div>
 {% endif %}
 <!-- delete modal-->
-<div id="deleteModalDashboard" class="modal" tabindex="-1" aria-labelledby="deleteModalDashboardLabel" aria-hidden="True">
+<div id="deleteModalDashboard" class="modal" tabindex="-1" 
+        aria-labelledby="deleteModalDashboardLabel" aria-hidden="True">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 id="deleteModalDashboardLabel" class="modal-title">Are you sure?</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 id="deleteModalDashboardLabel" class="modal-title">
+                    Are you sure?
+                </h5>
+                <button type="button" class="btn-close" 
+                    data-bs-dismiss="modal" aria-label="Close">
+                </button>
             </div>
             <div class="modal-body">
                 <p>This action cannot be undone!
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <a id="deleteConfirmDashboard" href="#" class="btn btn-danger">Delete</a>
+                <button type="button" class="btn btn-secondary" 
+                    data-bs-dismiss="modal">Cancel
+                </button>
+                <a id="deleteConfirmDashboard" href="#" 
+                    class="btn btn-danger">Delete
+                </a>
             </div>
         </div>
     </div>
