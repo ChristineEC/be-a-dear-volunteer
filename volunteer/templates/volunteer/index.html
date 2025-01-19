@@ -20,7 +20,8 @@
     </div>
   </div>
   <div class="container-fluid g-0">
-    <img src="{% static 'images/hearts2.jpg' %}" class="card-img-top" alt="Valentine hearts image">
+    <img src="{% static 'images/homepage-header-image.jpg' %}" 
+        class="card-img-top homepage-header-image" alt="Valentine hearts image">
   </div>
   <div class="container-fluid">
     <div class="row">
@@ -31,7 +32,7 @@
     </div>
     <div class="row mb-5">
       <div class="col-sm-12 col-md-4 text-center py-3">
-        <h4 class="display-6 mb-3">Discover Opportunities</h4>
+        <h2 class="display-6 mb-3">Discover Opportunities</h2>
         <p>On the <a href="{% url 'beneficiaries' %}" aria-label="link to volunteer page">
             Volunteer</a> page you'll find ideas and suggestions.</p>
         <p>Click on any of the choices to read more and start planning your activities.</p>
@@ -39,7 +40,7 @@
         <p>They are what make this project truly special!</p>
       </div>
       <div class="col-sm-12 col-md-4 text-center py-3">
-        <h4 class="display-6 mb-3">Your Personal Dashboard</h4>
+        <h2 class="display-6 mb-3">Your Personal Dashboard</h2>
         <p><a href="{% url 'account_login' %}" aria-label="link to login page">Sign in
             </a> to be able to save activities to your dashboard</p>
         <p>From there, you can plan and update your activities</p>
@@ -47,7 +48,7 @@
         <p>Track your progress toward meeting the graduation requirement</p>
       </div>
       <div class="col-sm-12 col-md-4 text-center py-3">
-        <h4 class="display-6 mb-3">Inspire one another!</h4>
+        <h2 class="display-6 mb-3">Inspire one another!</h2>
         <p>See what others are signing up for</p>
         <p>Know of a good cause? Someone who could use a hand?</p>
         <p>Send us a <a href="{% url 'send_message' %}" aria-label="link to contact us form">

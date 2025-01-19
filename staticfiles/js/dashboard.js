@@ -1,4 +1,3 @@
-/* jshint esversion: 6 */
 /* For calculation of student dashboard stats */
 const minutesApproved = document.getElementsByClassName("credit_minutes_approved");
 const totalMinutesApproved = document.getElementById("calculated-minutes");

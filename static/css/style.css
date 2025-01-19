@@ -66,8 +66,9 @@ main {
     color: white;
 }
 
-.short-line {
-    width: 30px;
+.homepage-header-image {
+    width: 100%;
+    height: auto;
 }
 
 /*-- Volunteer page --*/
