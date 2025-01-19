@@ -47,7 +47,7 @@ The two JavaScript files I created for Be a Dear are slots.js (in the static fol
 
 ![JSHint validation for slots.js](documentation/jshint-slotsjs.png)
 
-![JSHint validation result for dashboard.js](documentation/jshint-dashboard.png)
+![JSHint validation for dashboard.js](documentation/jshint-dashboardjs.png)
 
 ### CSS
 The project has one CSS file, located in the static folder of the be_a_dear project. It passed the ![W3C CSS Validator](https://jigsaw.w3.org/css-validator/) with no errors.
