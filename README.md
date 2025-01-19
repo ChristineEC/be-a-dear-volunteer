@@ -1,31 +1,51 @@
 # Be a Dear - Volunteer
-A Django project utilizing Python, JavaScript, HTML, CSS, and PostgreSQL relational database. 
+A Django project utilizing Python, JavaScript, HTML, CSS, and PostgreSQL. 
 # REMEMBER TO INCLDUE LINKS TO HEROKU AND GITHUB HERE!!!!
 
 ## Description
 Be a Dear - Volunteer is a web-based application designed to allow high school students to plan and record their volunteer activities and to request credit toward their graduation requirement, which is typically 20 to 30 hours for high schools in California.
 
-The application is a fictional project by the fictional West Carlsbad High Schools student council. Students are usually required to volunteer at public-facing organizations. The idea behind the project is to allow students to volunteer in non-traditional ways, such as by assisting a private individual in their community. In addition to being able to volunteer for private citizens, students are allowed to volunteer for as little as five minutes at a time as part of the fictional project.
+The application is designed to be managed by a student, administrator or teacher of a school, with teachers able to approve credit on the backend. Students are usually required to volunteer at public-facing organizations. The idea behind the project is to allow students to volunteer in non-traditional ways, such as by assisting a private individual in their community. In addition to being able to volunteer for private citizens, students are allowed to volunteer for as little as five minutes at a time as part of the fictional project.
 
+### Features
+
+#### General overview
 The Be a Dear project as a whole contains three apps:
-1. The Volunteer app, which houses all of the front-end CRUD for the project. 
-    -   Beneficiary and Slot are the main models of this app, and the only ones involved in front-end CRUD.
-        -   It is with these objects that the user interacts to view volunteer opportunities (the various beneficiaries listed on the site) and save those opportunities as "tasks" (called     slots in the model and in the code). They are able to create, read, update and delete their tasks, both from the page where they save them to their dashboards and from the dashboard itself.
-    -    A third model in the app is Classroom (which is connected to a Profile model in the Users app). 
-        -   The current purpose of Classroom is that it enables teachers to sort user profiles (see below) by Classroom in the admin panel.
-        -   On the front end, students see whether or not they have a profile set up, and in that case, which classroom they are assigned to.
-        -   The model will enable future functionality, such as a competition between classrooms, teacher pages with front-end ability to approve student credit, classroom pages, etc. 
-    - Volunteer app templates include:
-        -   the homepage, 
-        -   beneficiary page ("shown to the user as "volunteer"), where users browse opportunties and can access the beneficiary detail page through links
-        -   beneficiary detail page (save tasks to their dashboard and/or edit and delete tasks), 
-        -   the student dashboard, where students manage their tasks.
-        -   the update task form, where users editing tasks from the dashboard (only) are sent
-2. The About app, which houses the About model and a contact form.
-    -  The extra contact form template allows users to send messages from all the main pages of the website and be returned to the page they messaged from.
+1. The Volunteer app: houses all front-end CRUD. 
+    - Models: Beneficiary, Slot, Classroom 
+        - Beneficiary and Slot: together with allauth.User provide full front-end CRUD
+        - Classroom: enables teachers to sort user profiles (see below) by Classroom in the admin panel.
+    - Templates:
+        - index.html "Home"
+        - volunteer_opportunties.html "Volunteer"
+        - beneficiary_detail.html (full CRUD) - slug
+        - student_dashboard.html (RUD) "My Dashboard"
+        - update_task.html (RUD) - Edit buttons on dashboard
+    - Forms:
+        - SlotForm (full CRUD)
+        - UpdateSlot (RU)
+2. The About app
+    - Model: About
+    - Form: CollaborateForm (embedded in about.html and freestanding in contact_form.html)
+    - Templates:
+        - about.html
+        - contact_form.html
 3. The Users app
-    - Contains a single model, Profile, which is linked to Django allauth Users model and to the Classroom model in the volunteer app.
-        - The Profile model provides limited functionality at the current stage of this project, but it does allow for rapid development of future enhancements.
+    - Model: Profile
+        - Linked to Django allauth Users model (OneToOne) and to Classroom model in the volunteer app.
+    - Function: Teachers can sort by classroom in the admin panel; students can read what Classroom they are assigned to.
+        - Although the Profile model provides only limited (back-end) functionality at the current stage of this project, it does allow for rapid development of future enhancements.
+
+#### The home page
+The home page acts as a landing page, introducing students and the public to the purpose and general functionality of the website. It lives in the volunteer app.
+
+![Homepage - index.html](documentation/homepage.png)
+
+
+  -  The extra contact form template allows users to send messages from all the main pages of the website and be returned to the page they messaged from.
+
+On the front end, students see whether or not they have a profile set up, and in that case, which classroom they are assigned to.
+        -   The model will enable future functionality, such as a competition between classrooms, teacher pages with front-end ability to approve student credit, classroom pages, etc. 
 
 
 
