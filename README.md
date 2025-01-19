@@ -2,14 +2,41 @@
 A Django project utilizing Python, JavaScript, HTML, CSS, and PostgreSQL. 
 # REMEMBER TO INCLDUE LINKS TO HEROKU AND GITHUB HERE!!!!
 
+## Table of Contents
+- [Description](#description)
+- [Purpose](#purpose)
+- [Features](#features)
+    - [General Overview](#general-overview)
+    - [Features in line with user stories](#features-in-line-with-user-stories)
+        - [Home Page](#home-page)
+        - [Header and Navigation Bar](#header-and-navigation-bar)
+        - [Logged In Status](#logged-in-status)
+        - [Viewing opportunties on the Volunteer page](#viewing-volunteer-opportunities-on-the-volunteer-page)
+        - [Saving tasks to register and plan volunteer activities](#saving-tasks-to-register-and-plan-volunteer-activities)
+        - [Full CRUD: Creating, reading, updating and deleting tasks](#full-crud-creating-reading-updating-and-deleting-tasks)
+        - [Managing tasks from the dashboard (RUD)](#managing-tasks-from-the-dashboard-rud)
+        - [Checking student progress](#checking-student-progress)
+        - [Profiles](#profiles)
+        - [Read about the project](#read-about-the-project)
+        - [Sending messages](#sending-messages)
+        - [User messages](#user-messages)
+        - [Footer](#footer)
+
+
+
+
 ## Description
 Be a Dear - Volunteer is a web-based application designed to allow high school students to plan and record their volunteer activities and to request credit toward their graduation requirement, which is typically 20 to 30 hours for high schools in California.
 
-The application is designed to be managed by a student, administrator or teacher of a school, with teachers able to approve credit on the backend. Students are usually required to volunteer at public-facing organizations. The idea behind the project is to allow students to volunteer in non-traditional ways, such as by assisting a private individual in their community. In addition to being able to volunteer for private citizens, students are allowed to volunteer for as little as five minutes at a time as part of the fictional project.
+The application is designed to be managed by a student, administrator or teacher of a school, with teachers able to approve credit on the backend. Students are usually required to volunteer at public-facing organizations. The idea behind the project is to allow students to volunteer in non-traditional ways, such as by assisting a private individual in their community, such as an elderly, disabled, or injured neighbor. In addition to being able to volunteer for private citizens, students are allowed to volunteer for as little as five minutes at a time as part of the fictional project.
 
-### Features
+## Purpose
 
-#### General overview
+The purpose of the project is laid out on the About page.
+
+## Features
+
+### General overview
 The Be a Dear project as a whole contains three apps:
 1. The Volunteer app: houses all front-end CRUD. 
     - Models: Beneficiary, Slot, Classroom 
@@ -34,6 +61,8 @@ The Be a Dear project as a whole contains three apps:
         - Linked to Django allauth Users model (OneToOne) and to Classroom model in the volunteer app.
     - Function: Teachers can sort by classroom in the admin panel; students can read what Classroom they are assigned to.
         - Although the Profile model provides only limited (back-end) functionality at the current stage of this project, it does allow for rapid development of future enhancements.
+
+### Features in line with user stories
 
 #### Home page
 The home page acts as a landing page, introducing students and the public to the purpose and general functionality of the website.
@@ -61,7 +90,7 @@ Current page shows as bolded in the navbar
 
 ![nav-bolded](documentation/nav-bolded.png)
 
-#### Logged In As and Not Logged In messages
+#### Logged In Status
 A user is told that they are logged in as `<username>` or that they are not logged in at the top of every page, just under the navbar.
 
 ![You are logged in as message](documentation/logged-in-as.png)
@@ -69,14 +98,24 @@ A user is told that they are logged in as `<username>` or that they are not logg
 ![You are not logged in message](documentation/not-logged-in-msg.png)
 
 #### Viewing volunteer opportunities on the Volunteer page
-Header:
 
 
- 
 
-#### Student dashboard
+#### Saving tasks to register and plan volunteer activities
 
-#### Messages
+#### Full CRUD: Creating, reading, updating and deleting tasks
+
+#### Managing tasks from the dashboard (RUD)
+
+#### Checking student progress
+
+#### Profiles
+
+#### Read about the project
+
+#### Sending messages
+
+#### User Messages
 
 #### Footer
 
