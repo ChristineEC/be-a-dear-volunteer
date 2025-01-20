@@ -1,7 +1,10 @@
 # Be a Dear - Volunteer
 A Django project utilizing Python, JavaScript, HTML, CSS, and PostgreSQL.
-Links to the deployed app and the GitHub repository
-[The live app deployed on Heroku](https://be-a-dear-volunteer-10d02942fbed.herokuapp.com/)
+
+Links to the deployed app and the GitHub repository:
+
+[Be a Dear app deployed on Heroku](https://be-a-dear-volunteer-10d02942fbed.herokuapp.com/)
+
 [Be a Dear GitHub repository](https://github.com/ChristineEC/be-a-dear-volunteer)
 
 ## Table of Contents
@@ -23,9 +26,6 @@ Links to the deployed app and the GitHub repository
         - [Sending messages](#sending-messages)
         - [User messages](#user-messages)
         - [Footer](#footer)
-
-
-
 
 ## Description
 Be a Dear - Volunteer is a web-based application designed to allow high school students to plan and record their volunteer activities and to request credit toward their graduation requirement, which is typically 20 to 30 hours for high schools in California.

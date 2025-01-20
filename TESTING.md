@@ -2,14 +2,15 @@
 ## Table of Contents
 
 [VALIDATION](#validation)
+
  - [Python](#python)
  - [JavaScript](#javascript)
  - [CSS](#css)
  - [HTML](#html)
  - [Lighthouse](#lighthouse)
- - [Console Message](console-message)
 
 [MANUAL TESTING](#manual-testing)
+
 - [Global](#global-1)
     - [Navigation](#navigation)
         - [Navigation bar](#navigation-bar)
@@ -20,7 +21,7 @@
 - [User Stories and CRUD](#user-stories-and-crud)
     - [General stories](#general-stories)
     - [Full front-end CRUD](#full-front-end-crud)
-[Bugs](#bugs)
+[Squashed Bugs](#bugs)
 
 ## Validation
 ### Python
@@ -78,13 +79,9 @@ All of the webpages were tested with W3C's Markup Validator through direct input
 
 ![No html errors or warnings](<documentation/HTML success.png>)
 
+- Beneficiary detail pages (slugs, all with the same results), both for logged in and not logged in users: Benign error and warning, as discussed above.
 
-
-
-
-
-
-
+![Dashboard error and warning showing](documentation/warning-and-error-html.png)
 
 ### Lighthouse
 Lighthouse scores were good, with accessibility and SEO scoring 100 each and performance scoring 90. 
@@ -251,7 +248,7 @@ The default images were not being loaded for the About, Profile or Beneficiary o
 **Fix:** Change default to "placeholder", rather than "default.jpg" or "placeholderimage.jpg", then load the relevant placeholder images conditionally in the templates.
 
 The Slot Form (from the beneficiary detail page) was not posting correctly to the database when a user tried to edit. Although it would populate with the two first fields, it would then create a new Slot object. The reason for the bug is that I wasn't (originally) displaying all of the attributes in the rendered html template, so the javascript could not pick up all of the relevant attributes to edit and prepopulate the form with them. This threw errors and did not allow the javascript to run to the end of the function (where it should then change the button from "Save to Dashboard" to "Update").
-**Fix:** Dispay all of the relevant attributes of the object in the HTML. This was, I realized, necessary for good UI as well. I decided to render all of the objects attributes in the template so that they could be picked up by the javascript for editing, allowing the js function to complete, and thus allowing successful editing of the object. I considered making some of the attributes "hidden" using CSS classes, but further research revealed that javascript would not pick up any such hidden attributes. On further consideration, I thought that showing all of the attributes actually improved user experience and furthered one purpose of the project, which was to have students be able to read about what others were doing. That is, there was no harm, but to the contrary, some benefit, in rendering all of the objects attributes in the templates. As an afterthought, if I had truly wanted to hide the objects' attributes in the rendered templates, I could have simply made them display in the same font color as the background. However, I seem to recall learning that that is not good practice. So my solution in that case would be to use a different method of enabling the editing of objects, such as by using an update form, as is done from the student dashboard page. In any case, at first my solution did not work, and I discovered that I had a number of typographical errors in my javascript (in `slots.js`). Many thanks to Code Institute Tutor support for helping me identify that typo!
+**Fix:** Dispay all of the relevant attributes of the object in the HTML. This was, I realized, necessary for good UI as well. I decided to render all of the objects attributes in the template so that they could be picked up by the javascript for editing, allowing the js function to complete, and thus allowing successful editing of the object. I considered making some of the attributes "hidden" using CSS classes, but further research revealed that javascript would not pick up any such hidden attributes. On further consideration, I thought that showing all of the attributes actually improved user experience and furthered one purpose of the project, which was to have students be able to read about what others were doing. That is, there was no harm, but to the contrary, some benefit, in rendering all of the objects attributes in the templates. As an afterthought, if I had truly wanted to hide the objects' attributes in the rendered templates, I could have simply made them display in the same font color as the background. However, I seem to recall that is not considered good practice. In any case, at first my solution did not work, and I discovered that I had a number of typographical errors in my javascript (in `slots.js`). Many thanks to Code Institute Tutor Support for helping me identify that typo!
 
 Errors occurred in the terminal after writing new javascript, but the errors pointed to the older javascript that had been working fine up until that point. On the student dashboard page, for which the new javascript was written, the code would not run through to complete the function relevant for that page. Those errors indicated a problem with the bootstrap delete Modal, which is used on a different page for editing slots. And on that other page, where the javascript was being used to prepopulate the form to edit a slot, an error was being thrown which referenced the javascript for the dashboard. I did not notice that second fact at first, so I was thinking that perhaps there had been some update with bootstrap that I would need to take into consideration, as the error pointed not only to my js file, but to the bootstrap script as well. But as I discussed the issue with Holly at Code Institute Tutor Support, I discovered the fact about the other webpage displaying a related (but reverse) error, and at Holly's suggestion, 
 **Fix:** I split the javascript into separate files, each targeting only the relevant page or pages. Problem solved! Thank you, Holly!
@@ -273,3 +270,6 @@ Console Message: A frequent console message was the following warning:
 This is not a true error or bug. Rather, it is caused by Cloudinary serving the image files over http instead of https. As I understand it, there is a way to force Cloudinary delivery of messages over https, but I have not done so here. Future enhancement of the project will address this. Although less than ideal, I felt it was safe to ignore this.  According to ![MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content), there are two types of mixed content: "upgradable content" and "blockable content", and browsers should upgrade the upgradable content before rending a page. This is indeed what the above message above shows is being done by the browser. When I ran the Heroku deployed app through ![Crawl Center's mixed content checker](https://www.crawlcenter.com/mixed-content-checker), as suggested by MDN Web Docs, I received the evaluation that no mixed content was found.
 
 ![Mixed Content Checker](documentation/mixed-content-checker.png)
+
+While attempting to deal with the Summernote issue of paragraph tags from Summernote being placed inside my own paragraph tags, I discovered that the usual fix was not working on all of the elements but only for some. It turns out that this was due to the fact that I had copied and pasted some text from Microsoft Word into the Summernote fields from the admin panel. When I did it, I had saved the Word file to a text file but didn't realize I was nevertheless still copying from the Word version! I discovered hours later what I had done and hoped for the best - lol. In any case, I remembered this when I was trying to solve the issue, so I went back in the admin panel and discovered I could see the actual code in the Summernote fields by a simple click of an icon there. The html I found there was an absolute mess! 
+**Fix:**I removed everything except the paragraph tags from the objects in the database and was then able to sort out the Summernote issue in the usual way (ensuring my template variables were not inside of tags that would cause a problem when summernote fields were rendered in the browser.)
