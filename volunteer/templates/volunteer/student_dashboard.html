@@ -122,15 +122,14 @@ Student Dashboard
             </div>
             {% else %}
             <!--Message to user with no slots saved yet-->
-                <div class="col-12 text-center">
-                    <h3 class="display-4 no-tasks-message py-5">
-                        You currently have no tasks planned!
-                    </h3>
-                    <p class="display-5 pb-5">Visit the
-                        <a href="{% url 'beneficiaries' %}" aria-label="link to volunteer page">
-                            Volunteer</a> page to start adding tasks.
-                    </p>
-                </div>
+            <div class="col-12 text-center">
+                <h3 class="display-4 no-tasks-message py-5">
+                    You currently have no tasks planned!
+                </h3>
+                <p class="display-5 pb-5">Visit the
+                    <a href="{% url 'beneficiaries' %}" aria-label="link to volunteer page">
+                        Volunteer</a> page to start adding tasks.
+                </p>
             </div>
             <div class="row">
                 <div class="col-12 px-5 text-center empty-box">

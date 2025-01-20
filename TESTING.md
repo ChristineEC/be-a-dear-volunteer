@@ -20,10 +20,7 @@
 - [User Stories and CRUD](#user-stories-and-crud)
     - [General stories](#general-stories)
     - [Full front-end CRUD](#full-front-end-crud)
-
-
-
-
+[Bugs](#bugs)
 
 ## Validation
 ### Python
@@ -52,7 +49,7 @@ The two JavaScript files I created for Be a Dear are slots.js (in the static fol
 ### CSS
 The project has one CSS file, located in the static folder of the be_a_dear project. It passed the ![W3C CSS Validator](https://jigsaw.w3.org/css-validator/) with no errors.
 
-![W3C CSS validation](documentation/CSS-validation.png)
+![WC3 CSS validation](documentation/newCSSvalidation.png)
 
 ### HTML
 
@@ -63,25 +60,15 @@ Other factors affecting performance are down to things that my project relies up
 
 ![alt text](documentation/lighthouse-chrome.png)
 
-### Console Message
-A frequent console message in all browsers was the following:
-
-![alt text](documentation/mixed-content-console-message.png)
-
-This is caused by Cloudinary serving the image files over http instead of https. As I understand it, there is a way to force Cloudinary delivery of messages over https, but I have not done so here. Future enhancement of the project will address this. Although less than ideal, I felt it was safe to ignore this.  According to ![MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content), there are two types of mixed content: "upgradable content" and "blockable content", and browsers should upgrade the upgradable content before rending a page. This is indeed what the above message shows is being done, as my mixed messages are of the first type, which is more benign than the second. When I ran the Heroku deployed app through ![Crawl Center's mixed content checker](https://www.crawlcenter.com/mixed-content-checker), as suggested by MDN Web Docs, I received the evaluation that no mixed content was found.
-
-![Mixed Content Checker](documentation/mixed-content-checker.png)
-
 ## Manual Testing
-
 ## Global 
-
 ### Browsers
 The deployed app was tested in the following browsers, with no errors or infelicities occurring. It was not possible to check IOS (iPhone) due to a known problem serving Heroku apps there.
 
-- Chrome:
+- Chrome
 - Safari
 - Microsoft Edge
+- Mozilla
 - Android (Samsung Z-Flip 4)
 
 ### Navigation
@@ -105,39 +92,31 @@ The deployed app was tested in the following browsers, with no errors or infelic
 | Homepage: Inline link to "message" | click on link | sends user to the Contact Us form | Pass |
 | Homepage: Inline link to Volunteer page | click on link | sends user to the Volunteer page | Pass |
 | Homepage: Back button from the above links | click on back button | redirected to Home page | Pass |
-| Dashboard (for user with no tasks saved): message link | user clicks link | redirected to contact form | Pass |
+| Volunteer page: Links to view beneficiary details | user clicks on any link for a beneficiary | user brought to the beneficiary detail page | Pass |
+| Dashboard (for user with no profile): Message link | user clicks link | redirected to contact form | Pass |
 | Dashboard (for user with no tasks saved): Volunteer link | user clicks on link | directed to volunteer page | Pass |
-
+| Login page: link to register | click on link | brought to Sign Up page | Pass |
 #### Forms
 All forms function as expected. The actions and results listed below are also included in the relevant places under Navigation, Authentication, and User Stories and CRUD.
 | Feature | Action | Expected Result | Pass or Fail (P/F) |
 |---------|--------|-----------------|--------------------|
 | Login Form ( be_a_dear templates 'account/login.html') | A registered clicks the navbar or other login link on the site  | The form accepts a username and password; if incorrect, it informs user. Links to register and send an email for forgotten password work; user can successfully log in | Pass |
 | Logout |  |  | Pass |
-| Register |  |  | Pass |
-| Slot Form | user fills in the form for creating or updating a slot | If and only if a new slot, new object created in database, if an update, changes are reflected in the database | Pass |
-| Update Slot Form
+| Sign Up | user fills in form and clicks on sign up button | user is saved in the database and receives success message | Pass |
+| Slot Form | user fills in the form for creating or updating a slot | If and only if a new slot, then a new object is created in database; if an update, changes are reflected in the database | Pass |
+| Update Slot Form | user fills in the form and clicks on the Update button | slot is updated in the database and user receives success message | Pass |
 | Collaborate Form | user fills in form and clicks Send | Form sends message and user is notified of success | Pass |
-
-
-
-
-
-
-
-
 ### Logged in Status
 | Feature | Action | Expected Result | Pass or Fail (P/F) |
 |---------|--------|-----------------|--------------------|
 | Logged in Status | Visit site | A logged out or unregistered user sees a message that they are not logged in | Pass |
 | Logged in Status 2 | Log in | A logged in user sees a message at the top of every page that they are logged in as <username> | Pass |
-
 ### Authentication
 | Feature | Action | Expected Result | Pass or Fail |
 |---------|--------|-----------------|--------------|
 | User login | site visitor clicks on login on navbar | user is redirected to sign-in form at accounts/login url and is able to log in | Pass |
 | User logout | logged in user clicks navlink to log out | user brought to logout page and asked if they are sure, then logged out if they click sign out button | Pass |
-| User account | visitor clicks on Registration in the navbar | user is directed to the sign up page and can sign up | Pass |
+| Registration | visitor clicks on Registration in the navbar | user is directed to the sign up page and can sign up | Pass |
 | No log in by unregistered user | A user without an account clicks on login | Sign in fails and user is directed to Register first | Pass |
 | Registration - part 2 | user clicks on the inline Register link at login page | user brought to accounts/signup url and presented with form where they are able to register | Pass |
 | Prevent non logged in user from accessing the form where they can reserve a slot | user clicks on a beneficiary from the Volunteer page | user is directed as usual to the beneficiary detail page but receives the message that they must be logged in to save a task to their dashboard, and a link to do so. The form to save a slot does not appear. | Pass |
@@ -149,71 +128,88 @@ All forms function as expected. The actions and results listed below are also in
 | Admin panel access 2 | user types in admin url | Users gains access, but only for those tasks / priviledges previously granted by superuser | Pass |
 | Admin panel 2b | authorized teacher visits admin panel and attempts to change something not authorized | No fields that they should not be able to edit appear as editable | Pass |
 
-
 ## User Stories and CRUD
-
 ### General stories
-
 [User stories and Kanban board in GitHub](https://github.com/users/ChristineEC/projects/5)
 
-As a school member, I can create an account and sign-in so that I can participate in the project: Yes. (See [Authentication](#authentication), above).
+As a school member, I can create an account and sign-in so that I can participate in the project: 
+- Yes. (See [Authentication](#authentication), above).
 
-As a registered user, I can log in and log out with ease. Yes. (See [Authentication](#authentication), above).
+As a registered user, I can log in and log out with ease. 
+- Yes. (See [Authentication](#authentication), above.)
 
 As a site owner, I can mark as read messages received so that I can keep track of what needs to be done or messages that need responding to.
+
 | Feature | Action | Expected Result | Pass or Fail |
 |---------|--------|-----------------|--------------|
 | Messages | user sends a message from the About page or the message or Contact Us links | I can mark the messages as read (or unread) in the admin panel | Pass |
 
 As a site owner, I can post information about an organization or other beneficiary so that visitors to the website can read about volunteer opportunties.
+
 | Feature | Action | Expected Result | Pass or Fail |
 |---------|--------|-----------------|--------------|
 | Display list of beneficiaries | User visits the Volunteer page (volunteer_opportunities.html) | user sees the list of all beneficiaries marked in the admin panel as published | Pass |
 
 As a site owner, I can post information about the project so that visitors can learn what the project is about.
+
 | Feature | Action | Expected Result | Pass or Fail |
 |---------|--------|-----------------|--------------|
 | About page | user visits About page | Any user can access the About page, which is displayed in an attractive, legible manner consistent with UX principles | Pass |
-| About page admin | superuser drafts content | Most recent published content appears on the about page | Pass |
+| About page admin | superuser drafts content | Most recent published content appears on the About page | Pass |
 
 As a visitor to the website, I can send a message to the site owner so that I can ask them to post a specific volunteer opportunity.
+
 | Feature | Action | Expected Result | Pass or Fail |
 |---------|--------|-----------------|--------------|
-| Contact form on the about page | user enters a message and clicks on send | Message is received in the admin panel, and user stays on the About page | Pass |
+| Contact form on the About page | user enters a message and clicks on send | Message is received in the admin panel, and user stays on the About page | Pass |
 | Contact Us navlink | user clicks | user directed to a Contact Form, then redirected back to homepage; message is received | Pass |
-| Message links (see also [Other Links](#other-links)) | user clicks from various places on the website | directed to Contact Form then back to page they came from; message is received | Pass |
+| Message links (see also [Other Links](#other-links)) | user clicks from various places on the website | directed to Contact Form; message is received | Pass |
 
-As a teacher or school administrator, I can access the admin panel so that I can review students' tasks and approve their volunteer work
+As a teacher or school administrator, I can access the admin panel so that I can review students' tasks and approve their volunteer work. This feature comes built in with Django, once the superuser does the necessary on the back end.
+
 | Feature | Action | Expected Result | Pass or Fail |
 |---------|--------|-----------------|--------------|
 | Admin access | user tries to access admin panel (when not authorized) | user asked for credentials, if not authorized by superuser gets no access | Pass |
 | Admin access 2 | authorized teacher tries to change an unauthorized feature in the admin panel | is unable to access fields for editing | Pass |
 
 ### Full front-end CRUD
-Student creation of slots related to beneficiaries: 
-- As a student I can create specific volunteer slots (or "tasks") linked to a beneficiary so that I can reserve the slot (i.e., save to student dashboard)
-- As a student I can edit my slots so that the slots accurately reflect my volunteer work
-- As a student I can delete any slot that I have reserved so I can remove the expectation that I will fulfill it
-- 
+- As a student I can create specific volunteer slots (or "tasks") linked to a beneficiary so that I can reserve the slot (i.e., save to student dashboard).
+- As a student I can edit my slots so that the slots accurately reflect my volunteer work.
+- As a student I can delete any slot that I have reserved so I can remove the expectation that I will fulfill it.
 
 | Feature | Action | Expected Result | Pass or Fail |
 |---------|--------|-----------------|--------------|
-| Reserve a task | fill in form and click "save to dashboard" (beneficiary_detail.html template) | an object is created in the database, with the "reserved_by" attribute equal to the requesting user, and appears on that student's dashboard | Pass |
-| Edit a task where created | user clicks Edit button on the page where they saved the task (beneficiary_detail.html template) | the form is prefilled, editable, and can then be saved; it updates the object in the database and shows correctly on the user's dashboard | Pass |
-| Delete a task from where created | user clicks Delete button on the page where they saved the task (beneficiary_detail.html template) | Delete modal appears asking if they're sure, and if they click delete, the object is deleted from the database, and thus everywhere on the site | Pass |
-| Edit slot from dashboard | user clicks on edit button next to the slot on the dashboard | user is directed to prepopulated Update Slot Form and can successfully edit the slot there then be returned to the dashboard | Pass |
+| Reserve a task | fill in form and click "save to dashboard" (beneficiary_detail.html template) | an object is created in the database, with the "reserved_by" attribute equal to the requesting user; user receives success message, and the slot appears on that student's dashboard | Pass |
+| Edit a task where created | user clicks Edit button on the page where they saved the task (beneficiary_detail.html template) | the form is prefilled, editable, and can then be saved; it updates the object in the database, displays for the user a success message and shows correctly on the user's dashboard | Pass |
+| Delete a task from where created | user clicks Delete button on the page where they saved the task (beneficiary_detail.html template) | Delete modal appears asking if they're sure, and if they click delete, the object is deleted from the database, and thus everywhere on the site, and the user receives a success message | Pass |
+| Edit slot from dashboard | user clicks on edit button next to the slot on the dashboard | user is directed to prepopulated form and can successfully edit the slot there then be returned to the dashboard. User gets success message | Pass |
 Delete slot from the dashboard | user clicks on delete button next to the slot on the dashboard | a modal appears warning the user that the deletion will be permanent, with a button to proceed (or cancel); if delete is clicked there the object is successfully deleted and the user stays on the dashboard | Pass |
 
 As a student I want to be able to record my volunteer time(s) so that I can include them in requests for credit.
+
 | Feature | Action | Expected Result | Pass or Fail |
 |---------|--------|-----------------|--------------|
 | Request credit | student fills in number of minutes they are requesting credit for, or uses date and time (char) fields to enter additional days and times for the same task before requesting credit | slot is updated and teacher and student can see this clearly (student sees which slots they've requested credit for that have not yet been approved vs. those approved) | Pass |
 
-Student dashboard: As a student I can see all of my slots on my own page so that I can keep track of my obligations and credits
+Student dashboard: As a student I can see all of my slots on my own page so that I can keep track of my obligations and credits.
+
 | Feature | Action | Expected Result | Pass or Fail |
 |---------|--------|-----------------|--------------|
 | Student Dashboard | student clicks on My Dashboard (or a dashboard link--see [Other links](#other-links), above) | If the student has tasks saved, they see a table containing all slots they are signed up for, color coded by "planned", "completed", "credit requested" and "credit received". (Students with no slots see a box stating that that is where their slots will show and presenting them with a link to the volunteer page to start saving tasks.) Total time credited, total time required, and remaining time needed are summarized below the table | Pass |
 
+As a teacher, I want to be able to approve credit for my students' volunteer hours. (Built in Django functionality on the back end, enhanced by the Profile model allowing profiles to be sorted by clasroom.)
+
+| Feature | Action | Expected Result | Pass or Fail |
+|---------|--------|-----------------|--------------|
+| Admin panel | Teacher updates a slot | slot updated and result shows on student's dashboard | Pass |
+| Teacher can quickly identify their students in the admin panel | teacher clicks on "sort by classroom" in the admin panel | a list of their students shows | Pass |
+
+As a site owner, I can display reserved slots on the specific beneficiary pages, without revealing the name of the person who reserved the slot.
+As a site owner, I can display slots that are not "published" to the user on their dashboard and on the relevant beneficiary detail page.
+| Feature | Action | Expected Result | Pass or Fail |
+|---------|--------|-----------------|--------------|
+| Logged in users can read what others have saved (if published) | In the admin panel, superuser edits slot to "published" | Slot appears on the beneficiary details page | Pass |
+| Logged in users can see their unpublished slots on the beneficiary detail page | student saves (creates) a slot | slot is immediately displayed to the user on the same page with a message informing them that it is not published (for all to see) but can still be seen on their dashboard | Pass |
 
 
 ## Bugs!
@@ -221,26 +217,26 @@ Student dashboard: As a student I can see all of my slots on my own page so that
 The default images were not being loaded for the About, Profile or Beneficiary objects.
 **Fix:** Change default to "placeholder", rather than "default.jpg" or "placeholderimage.jpg", then load the relevant placeholder images conditionally in the templates.
 
-:worried: The Slot Form (from the beneficiary detail page) was not posting correctly to the database when a user tried to edit. Although it would populate with the two first fields, it would then create a new Slot object. The reason for the bug is that I wasn't (originally) displaying all of the attributes in the rendered html template, so the javascript could not pick up all of the relevant attributes to edit. This threw errors and did not allow the javascript to run to the end of the function (where it should then change the button from "Save to Dashboard" to "Update").
-**Fix:** I decided to render all of the objects attributes in the template so that they could be picked up by the javascript for editing, allowing the js function to complete, and thus allowing successful editing of the object. I considered making some of the attributes "hidden" using CSS classes, but further research revealed that javascript would not pick up any such hidden attributes. On further consideration, I thought that showing all of the attributes actually improved user experience and furthered one purpose of the project, which was to have students be able to read about what others were doing. That is, there was no harm, but to the contrary, some benefit, in rendering all of the objects attributes in the templates. As an afterthought, if I had truly wanted to hide the objects' attributes in the rendered templates, I could have simply made them display in the same font color as the background. However, I seem to recall learning that that is not good practice. So my solution in that case would be to use a different method of enabling the editing of objects, such as by using an update form, as is done from the student dashboard page. In any case, at first my solution did not work, and I discovered that I had a number of typographical errors in my javascript (in `slots.js`). Many thanks to Code Institute Tutor support for helping me identify that typo!
-
+The Slot Form (from the beneficiary detail page) was not posting correctly to the database when a user tried to edit. Although it would populate with the two first fields, it would then create a new Slot object. The reason for the bug is that I wasn't (originally) displaying all of the attributes in the rendered html template, so the javascript could not pick up all of the relevant attributes to edit and prepopulate the form with them. This threw errors and did not allow the javascript to run to the end of the function (where it should then change the button from "Save to Dashboard" to "Update").
+**Fix:** Dispay all of the relevant attributes of the object in the HTML. This was, I realized, necessary for good UI as well. I decided to render all of the objects attributes in the template so that they could be picked up by the javascript for editing, allowing the js function to complete, and thus allowing successful editing of the object. I considered making some of the attributes "hidden" using CSS classes, but further research revealed that javascript would not pick up any such hidden attributes. On further consideration, I thought that showing all of the attributes actually improved user experience and furthered one purpose of the project, which was to have students be able to read about what others were doing. That is, there was no harm, but to the contrary, some benefit, in rendering all of the objects attributes in the templates. As an afterthought, if I had truly wanted to hide the objects' attributes in the rendered templates, I could have simply made them display in the same font color as the background. However, I seem to recall learning that that is not good practice. So my solution in that case would be to use a different method of enabling the editing of objects, such as by using an update form, as is done from the student dashboard page. In any case, at first my solution did not work, and I discovered that I had a number of typographical errors in my javascript (in `slots.js`). Many thanks to Code Institute Tutor support for helping me identify that typo!
 
 Errors occurred in the terminal after writing new javascript, but the errors pointed to the older javascript that had been working fine up until that point. On the student dashboard page, for which the new javascript was written, the code would not run through to complete the function relevant for that page. Those errors indicated a problem with the bootstrap delete Modal, which is used on a different page for editing slots. And on that other page, where the javascript was being used to prepopulate the form to edit a slot, an error was being thrown which referenced the javascript for the dashboard. I did not notice that second fact at first, so I was thinking that perhaps there had been some update with bootstrap that I would need to take into consideration, as the error pointed not only to my js file, but to the bootstrap script as well. But as I discussed the issue with Holly at Code Institute Tutor Support, I discovered the fact about the other webpage displaying a related (but reverse) error, and at Holly's suggestion, 
 **Fix:** I split the javascript into separate files, each targeting only the relevant page or pages. Problem solved! Thank you, Holly!
 
-Default images are not loading.
-
-The footer is transparent except for the text, which covers content when content is scrolled.
-
 After modifying lines of python code for the Slot model to make the lines shorter in compliance with PEP8 standards, the task-location field was being displayed on the form for updating the slot as two separate phrases with a large gap between them.
 **Fix:** I removed the backslash that I had used to break the line for the string comprising the default value (on lines 55 and 56) and replaced it with ordinary quotes.
 
-- Horizontal scrolling
-**Fix** I decided to use a quick fix for this bug, as the horizontal scrolling was extremely minimal, by styling the body in CSS with overflow-x hidden.
+Horizontal scrolling
+**Fix** I decided to use a quick fix for this bug, as the horizontal scrolling was extremely minimal, by styling the body in CSS with overflow-x hidden. This was done at the suggestion of my mentor.
 
-- Last minute horror!
-On what I considered the final deployed project, the delete button was not functioning on the student dashboard. I found after comparing the javascript with the html that I had accidentally deleted a class necessary for the JavaScript (written for the delete modal) to identify the button when I was restyling it for better UI. Although not a bug, at the same time I found a mislabeled aria-label ("update this task" where it should have been "delete this task" - obviously the result of a too-hurried copy and paste the failure to edit during development).
+Last minute horror!
+On what I considered the final deployed project, the delete button was not functioning on the student dashboard. I found after comparing the javascript with the HTML that I had accidentally deleted a class necessary for the JavaScript (written for the delete modal) to identify the button when I was restyling it for better UI. Although not a bug, at the same time I found a mislabeled aria-label ("update this task" where it should have been "delete this task" - obviously the result of a too-hurried copy and paste the failure to edit during development).
 **Fix** Reinsert the necessary class for the delete button ("btn-delete-task").
 
-Full transparency: The js file was unchanged, but I did retest, with the same passing result. I had not run the html tests yet at the time of the change.
+Console Message: A frequent console message was the following warning:
 
+![alt text](documentation/mixed-content-console-message.png)
+
+This is not a true error or bug. Rather, it is caused by Cloudinary serving the image files over http instead of https. As I understand it, there is a way to force Cloudinary delivery of messages over https, but I have not done so here. Future enhancement of the project will address this. Although less than ideal, I felt it was safe to ignore this.  According to ![MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content), there are two types of mixed content: "upgradable content" and "blockable content", and browsers should upgrade the upgradable content before rending a page. This is indeed what the above message above shows is being done by the browser. When I ran the Heroku deployed app through ![Crawl Center's mixed content checker](https://www.crawlcenter.com/mixed-content-checker), as suggested by MDN Web Docs, I received the evaluation that no mixed content was found.
+
+![Mixed Content Checker](documentation/mixed-content-checker.png)
