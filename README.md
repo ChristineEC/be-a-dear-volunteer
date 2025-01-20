@@ -145,49 +145,68 @@ The Be a Dear project as a whole contains three apps:
 ### Home page
 The home page acts as a landing page, providing a brief but clear and comprehensive introduction to the purpose and general functionality of the website.
 
+
 ![Homepage - index.html](documentation/homepage.png)
+
 
 ### Header and Navigation Bar
 The header consists of a simple logo and the name of the project, clickable to return the user to the homepage from any page.
 
 ![Header](header-and-nav.png)
 
+
 The nav bar is fully responsive, appearing as text on wider screens and as a navbar "hamburger" icon on smaller screens
+
 
 ![navbar-medium](documentation/navbar-medium.png)
 
+
 ![navbar-mobile](documentation/navbar-mobile.png)
+
 
 The content of the navbar changes depending on whether a user is logged in or out.
 
+
 ![nav-logged-in](documentation/nav-logged-in.png)
+
 
 ![nav-logged out](documentation/nav-logged-out.png)
 
+
 Current page shows as bolded in the navbar
 
+
 ![nav-bolded](documentation/nav-bolded.png)
+
 
 ### Logged In Status
 A user is told that they are logged in as `<username>` or that they are not logged in at the top of every page, just under the navbar.
 
+
 ![You are logged in as message](documentation/logged-in-as.png)
 
+
 ![You are not logged in message](documentation/not-logged-in-msg.png)
+
 
 ### Viewing volunteer opportunities on the Volunteer page
 The Volunteer page consists of three sections
 - A header that shows what the page is about and simultaneously promotes (or at least encourages!) student engagement with the project.
 
+
 ![Volunteer header](<documentation/volunteer header.png>)
+
 
 - How it Works section
 Explains what students can do and how they can do it, displaying prominent links to giving further visual overview of the site.
 
+
 ![How it works](documentation/how-it-works.png)
+
 
 - List of beneficiaries
 With obvious links begging to be clicked.
+
 
 ![Beneficiaries](documentation/beneficiaries.png)
 
@@ -195,91 +214,132 @@ With obvious links begging to be clicked.
 ### Saving tasks to register and plan volunteer activities
 When the user clicks on a beneficiary on the volunteer page, they are directed to that beneficiary's detail page, which also contains a prominent form for saving a task related to that beneficiary to their dashboard.
 
+
 ![Animal shelter detail](documentation/animal-shelter.png)
 
+
+
+
 ![More animal shelter detail](documentation/animal-shelter-2.png)
+
 
 ### See what others are doing
 On each beneficiary's detail page, students can see how many students have saved or completed tasks for that beneficiary, and what those tasks look like (if they are published!).
 
+
 ![What and how many](documentation/what-and-how-many.png)
+
 
 ### Student privacy
 In the image above, note that users names are not displayed. A future feature would allow aliases to be displayed. The Profile model is already set up to do this. Students would be made aware that if they wished their activities to remain private, they could leave their alias as the default "Someone". Otherwise, their chosen alias would be displayed, and it would be up to them who they revealed their alias to. Teachers would be able to see on the back end, of course, as they would have access to all users and profiles.
 
+
 ### Full CRUD: Creating, reading, updating and deleting tasks
 The form on each beneficiary's page allows users to create and update "tasks", known as slots on the back end.
 
+
 ![alt text](documentation/create-and-update.png)
+
 
 On the same page, users see their own slots, with edit and delete buttons.
 
+
 ![edit and delete](documentation/edit-and-delete.png)
+
 
 Clicking on edit prepopulates the form, and when the user clicks on Update, the object is saved in the database and immediately appears as edited on the same page (and in the dashboard, of course).
 
+
 ![prepopulate to update](documentation/prepopulate-and-update.png)
+
 
 Clicking the update button results in the slot being updated and a success message showing.
 
+
 ![update success message](documentation/task-updated.png)
+
 
 ![update displayed](documentation/update-displayed.png)
 
+
 Clicking on delete brings up a delete modal.
+
 
 ![Delete modal](documentation/delete-modal.png)
 
+
 Successful deletion displays a message.
 
+
 ![Delete success](documentation/delete-success.png)
+
 
 ### Site admin control of what is displayed
 When a user updates a task that has been published, the task reverts to unpublished.
 
+
 ![Before edit](documentation/before.png)
 
+
 ![After edit](documentation/after-edit.png)
+
 
 ### Managing tasks from the dashboard (RUD)
 Part of the student dashboard is shown here. Students can read, update and delete tasks and be returned to the dashboard.
 The tasks are color coded by status (planned, completed, credit requested, or credit granted). In case a student doesn't mark an assignment as complete but still asks for credit, that task will appear in a red row. (It doesn't have any material bearing on the time calculation anyway, so it's not something they actually need to fix. This was created as a catch all in case a task is not caught by the if/else statements used to create the differentiation by color. This could be the only logical case.) Future enhancements should eliminate this possibility.
 
+
 ![Tasks on the dashboard](documentation/dashboard-tasks.png)
+
 
 Clicking on edit for a task brings the user to the update_task.html page. It was important that users be able to update tasks here and be redirected right back to the dashboard, rather than being directed to the page where they created the task. The user receives a success message (as shown above) after clicking the update button.
 
+
 ![Update task page](update-task-page.png)
 
+
 Clicking on delete brings up the same modal as above and the user is provided with the same success message as for deleting from the beneficiary page.
+
 
 ### Students can keep track of their progress
 Total minutes and hours volunteered, total required, and total remaining appear at the bottom of the students' dashboards.
 
+
 ![Total hours](documentation/stats.png)
+
 
 ### Profiles and Classrooms
 User profiles are created on the back end, in a OneToOne relation to Django's allauth Users model. On the front end, anyone with a profile can see what classroom they've been assigned to. If they don't have a profile, they are informed that a profile has not been created yet but that they still enjoy full functionality on the site and they can message (with a link) to ask for one to be created. This was a good example of agile development. I made sure to make the crucial functionality independent of the profile model. Users enjoy full functionality regardless of whether they have a profile or not, and teachers can still update their credit approvals on the back end.
 
+
 ![profile front end](documentation/class-assignment.png)
+
 
 On the back end, teachers can sort profiles by classroom to quickly get an overview of their students who have registered and have profiles. Classroom numbers were made the primary key of the classroom model for this purpose. Even if the project were expanded to multiple schools, the 10 character limit (Char field) on the attribute is sufficient to allow for distinguishing between schools and adding many, in case a district decided to implement, for example.
 
+
 ![profile back end](documentation/back-end-profile.png)
+
 
 Profiles are incredibly easy to create for users because they appear inline with the User model on the back end, whether creating, viewing, or updating a user profile.
 
+
 ![User top half screen](documentation/user-first-half.png)
+
 
 ![User bottom half screen](documentation/user-second-half.png)
 
+
 - **Future functionality:** Together, these two models could provide some interesting functionality, such as competitions between classes and between class years, and even between schools in a district.Teacher pages with the ability to grant credit on the front end would be possible, as well as the ability of users to upload profile pictures. In future development, profiles should be created automatically through signals when users register. As soon as a user creates an account, they would be directed to a form or a pop up asking for their profile information. At the very least, profiles should be created in the database through signals with the available default fields saved, and then users could edit their profiles quite easily via a form.
+
 
 ### Read about the project
 
 On the home page and the about page, all site visitors can become acquainted with the project. Through the About model, the site admin can update the About page at will, saving drafts in the admin panel and publishing when desired. The most recently "published" About object is the one shown on the page.
 
+
 ![About](documentation/about.png)
+
 
 ### Sending messages
 There is a form on the About page for sending messages to the site admin(s). Filling it in sends a message, which the site owner can mark as read to keep track of things, and the user is returned to the About page.
@@ -290,48 +350,69 @@ Prominent messages are displayed to the user when they interact with the website
 
 Sign in success
 
+
 ![Sign in success](documentation/sign-in-success.png)
+
 
 Sign out Are You Sure?
 
+
 ![Are you sure you want to sign out?](documentation/sure-sign-out.png)
+
 
 Sign out success:
 
+
 ![Sign out success](documentation/sign-out-success.png)
+
 
 Sent message (from all relevant links and pages):
 
+
 ![Thanks for your message!](documentation/message-thanks.png)
+
 
 Wrong username and password or 
 Not registered yet but trying to sign in
 
+
 ![Wrong or no credentials to sign in](documentation/wrong-creds.png)
+
 
 Creation of a task from the Volunteer page
 
+
 ![Task created](documentation/slot-created.png)
+
 
 ![But not yet published](documentation/slot-not-published.png)
 
+
 - and after publication:
+
 
 ![After publication](documentation/after-publication.png)
 
+
 Task Updated!
 
+
 ![Update success](documentation/task-updated.png)
+
 
 Deleting a task
 
 - first the delete modal
 
+
 ![Delete modal](documentation/delete-modal.png)
+
 
 - then delete success message
 
+
 ![Task deleted](documentation/task-deleted.png)
+
 
 ### Teachers' approval of credit for students
 Teachers are identified as such on the back end by the superuser--both by labeling them as "staff" with Django's built-in User model and by changing their default profile type to "teacher". After being given the relevant privileges there, teachers are able to view their students' requested hours and approve them, either for the full amount requested or some other amount, as they deem creditable. (After all, high school students are known to exaggerate!)
@@ -339,14 +420,12 @@ Teachers are identified as such on the back end by the superuser--both by labeli
 ### Footer
 The footer is designed to be changed out by the particular school using the app. I have included two external links for good form, but schools will want to keep everything in-house, and would probably include links to the school's home page and such.
 
+
 ![Footer](documentation/footer.png)
+
 
 ### Favicon
 The favicon, a simple heart, was obtained from ![Flaticon](https://www.flaticon.com/free-icons/free). A future improvement would be to use one with better contrast for people using dark mode.
-
-
-
-
 
 ## User Stories Summarized
 A site visitor can 
@@ -397,7 +476,9 @@ The data models were described briefly above. Here is the ERD, created in DrawSQ
 
 **Entity Relationship Diagram**
 
+
 ![Entity relationship diagram made in DrawSQL](https://drawsql.app/teams/self-729/diagrams/be-a-dear)
+
 
 
 ## Future enhancements
@@ -423,7 +504,7 @@ To deploy the project, one has to first ensure that all dependences are in requi
 ### Thanks
 A million thanks to Kay at Code Institute for her encouragement and guidance during our weekly standups! It made the whole experience of developing this app a whole lot less daunting--and more fun! And just because this thanks is short, I really mean it when I say that her smiling face each week and her sharing of knowledge have really made this a positive experience, and I've learned a lot from her. Thanks, Kay!
 
-And a million more thanks as well to my mentor, Juliia, who quickly pointed out, during our mid-project session, that a feature I was bent on including in my project would simply have to be put on the back burner until after the project submission and that I'd better focus on the must-haves to make the deadline. I was reluctant to take that advice at first, but she was absolutely right. There were a lot of details to take care of, and I would not have been able to finish in time if I'd not taken her advice. (She also gets credit for my contact form not allowing an empty name or message field. A small detail that I'd overlooked when creating the model, and which she said I could skip and mention here as a future improvement, but it was an easy fix, so it's done.) Finally, thanks for pushing me to improve the UX of the project. I am so glad I decided to add the extra page. Thank you!
+And a million more thanks to my mentor, Juliia, who quickly pointed out, during our mid-project session, that a feature I was bent on including in my project would simply have to be put on the back burner until after the project submission and that I'd better focus on the must-haves to make the deadline. I was reluctant to take that advice at first, but she was absolutely right. There were a lot of details to take care of, and I would not have been able to finish in time if I'd not taken her advice. (She also gets credit for my contact form not allowing an empty name or message field. A small detail that I'd overlooked when creating the model, and which she said I could skip and mention here as a future improvement, but it was an easy fix, so it's done.) Finally, thanks for pushing me to improve the UX of the project. I am so glad I decided to add the extra page. Thank you!
 
 And of course, many thanks to Code Institute's Tutor Support. I wish I'd made more use of them, especially in the early to middle stages, because whenever I did they saved me a lot of time! After staring at my javascript for what seems like forever, it took someone from tutor support just a minute to see where I'd accidentally left out a "let" before a variable. I swear I read over that code a million times and just couldn't for the life of me find that one error. I've learned there's a fine line between using descriptive variables and making variables so long that it's hard to see mistakes in the code. What a difference a second pair of eyes makes.
 
