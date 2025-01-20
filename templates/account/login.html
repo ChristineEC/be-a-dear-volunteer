@@ -1,14 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 
-
 {% block head_title %}
 Sign In
 {% endblock head_title %}
 
 {% block content %}
-
-<!------------------------This is still a work in progress! -->
 <div class="container">
   <div class="row">
     <div class="col-md-6 mx-auto">
@@ -27,9 +24,9 @@ Sign In
         {% if redirect_field_value %}
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
         {% endif %}
-        <button class="btn btn-primary btn-lg" type="submit">Sign In</button></form></br>
+        <button class="btn btn-primary btn-lg" type="submit">Sign In</button></form>
+        <br>
         <a class="button secondaryAction" href="{% url 'send_message' %}">Forgot Password? Send us a message, and we'll help you reset it!</a>
-      </form>
     </div>
   </div>
 </div>

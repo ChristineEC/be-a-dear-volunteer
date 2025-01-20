@@ -52,6 +52,34 @@ The project has one CSS file, located in the static folder of the be_a_dear proj
 ![WC3 CSS validation](documentation/newCSSvalidation.png)
 
 ### HTML
+All of the webpages were tested with W3C's Markup Validator through direct input of the html copied from Dev Tools' "view page source".
+- Home page: No errors or warnings.
+- About page: No errors or warnings. (Both showed as follows:)
+
+![No html errors or warnings](<documentation/HTML success.png>)
+
+- Volunteer page: Passed with a safely disregarded warning, as below. Originally, an error was caused due to the use of Summernote in the admin panel for styling the text. Because Summernote includes paragraph tags, this results in the rendered paragraph being the child of whichever element contains the Django variable being rendered. The solution I chose in this case was to change the paragraph tags to article tags. I felt it was perfectly safe to ignore this warning, as I did this intentionally, knowing there would be no heading within.
+
+![Article tag warning](documentation/article-tag-warning.png)
+
+- Contact page: No errors or warnings.
+- Logout page (Sign Out form): No errors or warnings.
+- Dashboard page:
+    - When a user has a profile: One "error". This is due to the modal, which has aria-hidden set to True for accessibility purposes. The aria-hidden property does not affect html rendering; therefore, I felt it was safe to ignore.
+
+![Dashboard error showing](documentation/aria-hidden-error.png)
+
+    - When a user has not been assigned a profile: One warning and one error. Both can be safely ignored. The section lacks a heading because it is a section containing a legend and a table, where no header would be appropriate. I used sections for recommended semantic HTML, and they do not affect html rendering. The "error" shown below is the same as above and can be safely ignored.
+
+ ![Dashboard error and warning showing](documentation/warning-and-error-html.png)
+
+
+
+
+
+
+
+
 
 ### Lighthouse
 Lighthouse scores were good, with accessibility and SEO scoring 100 each and performance scoring 90. 
