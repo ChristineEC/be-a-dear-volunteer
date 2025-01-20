@@ -498,7 +498,8 @@ The data models were described briefly above. Here is the ERD, created in DrawSQ
 
 ## Validation, Testing, and Bugs
 
-For validation results, please see [Validation](/workspace/be-a-dear-volunteer/TESTING.md) in TESTING.md.
+For validation results, and an extensive discussion of the manual testing undertaken in connection with user stories, please see [Validation](https://github.com/ChristineEC/be-a-dear-volunteer/blob/main/TESTING.md), which forms an integral part of this report. It has been saved in a separate file due to its length.
+
 
 ## Deployment
 
