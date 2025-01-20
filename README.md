@@ -36,7 +36,9 @@ Links to the deployed app and the GitHub repository:
 - [User Stories Summarized](#user-stories-summarized)
 - [Data Models](#data-models)
 - [Future enhancements](#future-enhancements)
+- [Validation, Testing, and Bugs](#validation-testing-and-bugs)
 - [Deployment](#deployment)
+- [Credits](#credits)
 
 
 ## Description
@@ -476,9 +478,9 @@ The data models were described briefly above. Here is the ERD, created in DrawSQ
 
 **Entity Relationship Diagram**
 
+![Entity relationship diagram made in DrawSQL](documentation/ERD.png)
 
-![Entity relationship diagram made in DrawSQL](https://drawsql.app/teams/self-729/diagrams/be-a-dear)
-
+![Entity relationship diagram made in DrawSQL](https://drawsql.app/)
 
 
 ## Future enhancements
@@ -494,7 +496,9 @@ The data models were described briefly above. Here is the ERD, created in DrawSQ
 - Better handling (or preparation for handling) of images.
 
 
-For validation results, please see [VALIDATION](#validation) in TESTING.md.
+## Validation, Testing, and Bugs
+
+For validation results, please see [Validation](/workspace/be-a-dear-volunteer/TESTING.md) in TESTING.md.
 
 ## Deployment
 
@@ -513,22 +517,26 @@ For the view code for the beneficiary details page, I borrowed heavily from the 
 
 For images and icons:
 
-The heart favicon from ![Flaticon](https://www.flaticon.com/free-icons/free)
+The heart favicon from [Flaticon](https://www.flaticon.com/free-icons/free)
 
-![Photo by Lisa Fotios: person-digging-on-soil-using-garden-shovel](https://www.pexels.com/photo/person-digging-on-soil-using-garden-shovel-1301856/)
+[Photo by Lisa Fotios: person-digging-on-soil-using-garden-shovel](https://www.pexels.com/photo/person-digging-on-soil-using-garden-shovel-1301856/) from Pexels.
 
-![Photo by Inge Wallumrød:cat](https://www.pexels.com/photo/silver-tabby-cat-lying-on-brown-wooden-surface-126407/)
+[Photo by Inge Wallumrød:cat](https://www.pexels.com/photo/silver-tabby-cat-lying-on-brown-wooden-surface-126407/) from Pexels.
 
-![LinkedIn icon from FontAwesome](https://fontawesome.com)
+[LinkedIn icon from FontAwesome](https://fontawesome.com)
 
-![GitHub icon from FontAwesome](https://fontawesome.com)
+[GitHub icon from FontAwesome](https://fontawesome.com)
 
-![Balsamiq](https://balsamiq.com/) for my mobile wireframe.
+[Balsamiq](https://balsamiq.com/) for my mobile wireframe.
 
-![Miro](https://miro.com/) for the more extensive wireframes.
+[Miro](https://miro.com/) for the more extensive wireframes.
 
-![Pixabay](https://pixabay.com/) for the hearts image in the homepage header.
+[Pixabay](https://pixabay.com/) for the hearts image in the homepage header.
 
-![MadelineEmery through Pexels](https://www.pexels.com/) for the soup kitchen image.
+[MadelineEmery through Pexels](https://www.pexels.com/) for the soup kitchen image.
 
-![Matheus Bertelli through Pexels](https://www.pexels.com/) for the adopt-me(dog) image.
+[Matheus Bertelli through Pexels](https://www.pexels.com/) for the adopt-me(dog) image.
+
+[Entity relationship diagram made in DrawSQL](https://drawsql.app/)
+
+
