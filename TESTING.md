@@ -73,6 +73,11 @@ All of the webpages were tested with W3C's Markup Validator through direct input
 
  ![Dashboard error and warning showing](documentation/warning-and-error-html.png)
 
+ - Login page: passes with no errors or warnings.
+ - Register page: no errors or warnings.
+
+![No html errors or warnings](<documentation/HTML success.png>)
+
 
 
 
