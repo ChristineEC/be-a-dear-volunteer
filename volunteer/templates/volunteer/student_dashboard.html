@@ -11,28 +11,28 @@ Student Dashboard
 <!-- Student Dashboard Heading Section -->
 {% if user.is_authenticated %}
 <section class="heading">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 text-center dashboard bg-dark">
+    <div class="container-fluid p-0">
+        <div class="row px-0 m-0">
+            <div class="col-12 text-center dashboard bg-dark g-0 px-0">
                 <h1 class="pt-4"><i class="fa-regular fa-heart"></i></h1>
-                <h1 class="card-title cabin-sketch-bold py-3">
+                <h1 class="cabin-sketch-bold py-3">
                     {{ user.username }}'s Student Dashboard
                 </h1>
                 {% if user.profile%}
-                    <h2 class="card-text pb-4">You are registered to classroom
+                    <h2 class="pb-4">You are registered to classroom
                         {{ user.profile.classroom.classroom_number }}
                     </h2>
                 {% else %}
-                    <h3 class="card-text py-3"><small>We do not have a profile
+                    <h3 class="py-3"><small>We do not have a profile
                             set up for you yet, so you are not currently registered
                             to a classroom.</small>
                     </h3>
-                    <h3 class="card-text py-2">Send us a
+                    <h3 class="py-2">Send us a
                         <a href="{% url 'send_message' %}" aria-label="link to contact form" class="light-message">
                             message
                         </a> and we'll get that taken care of!
                     </h3>
-                    <p class=" card-text display-6 py-2">(In the meantime, you'll still
+                    <p class="display-6 py-2">(In the meantime, you'll still
                         enjoy full functionality!)
                     </p>
                 {% endif %}
@@ -44,7 +44,7 @@ Student Dashboard
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-md-6 mx-auto legend">
-                <table class="table">
+                <table class="table-sm">
                     <tr class="pt-5">
                         <th>Color</th>
                         <th>Task Status</th>
@@ -100,9 +100,9 @@ Student Dashboard
                         {% for slot in slots %}
                         <tr
                             class="{% if not slot.completed %}table-primary
-                                    {% elif slot.completed and not slot.credit_minutes_requested %}table-info
-                                    {% elif slot.credit_minutes_requested and not slot.credit_minutes_approved %}table-warning
-                                    {% elif slot.credit_minutes_approved %}table-success{% else %}table-danger{% endif %}">
+                                {% elif slot.completed and not slot.credit_minutes_requested %}table-info
+                                {% elif slot.credit_minutes_requested and not slot.credit_minutes_approved %}table-warning
+                                {% elif slot.credit_minutes_approved %}table-success{% else %}table-danger{% endif %}">
                             <td>{{ slot.beneficiary.beneficiary_name}}</td>
                             <td>{{ slot.task }}</td>
                             <td>{{ slot.task_location }}</td>
