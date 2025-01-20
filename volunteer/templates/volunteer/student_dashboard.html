@@ -10,144 +10,118 @@ Student Dashboard
 {% block content %}
 <!-- Student Dashboard Heading Section -->
 {% if user.is_authenticated %}
-    <section id="dashboard-heading">
-        <h1 class="d-none">Student Dashboard</h1>
-        <div class="dashboard container-fluid mt-0 bg-dark">
-            <div class="row">
-                {% if user.profile %}
-                <div class="col-sm-12 col-lg-4 mx-auto">
-                        {% if "placeholder" in user.profile.profile_pic.url %}
-                        <img src="{% static 'images/default-user.jpg' %}" 
-                            class="img-fluid max-width=450px" 
-                            alt="default user icon">
-                        {% else %}
-                        <img src="{{ user.profile.profile_pic.url }}" 
-                            class="img-fluid max-width=450px" 
-                            alt="User profile picture">
-                        {% endif %}
-                </div>
-                <div class="col-sm-12 col-lg-8 text-center pt-5 mx-auto">
-                        <h1 class="py-2 mx-auto cabin-sketch-bold">
-                            {{ user.username }}'s Student Dashboard
-                        </h1>
-                        <h2 class="pt-3 pb-5">You are in homeroom number 
-                            {{ user.profile.classroom.classroom_number }}
-                        </h2>
-                </div>
+<section class="heading">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center dashboard bg-dark">
+                <h1 class="pt-4"><i class="fa-regular fa-heart"></i></h1>
+                <h1 class="card-title cabin-sketch-bold py-3">
+                    {{ user.username }}'s Student Dashboard
+                </h1>
+                {% if user.profile%}
+                    <h2 class="card-text pb-4">You are registered to classroom
+                        {{ user.profile.classroom.classroom_number }}
+                    </h2>
                 {% else %}
-                <div class="col-sm-9 col-lg-8 mx-auto">
-                    <img src="{% static 'images/default-user.jpg' %}" 
-                        class="img-fluid max-width=450px" alt="default user icon">
-                </div>
-                <div class="col-sm-9 col-lg-8 text-center pt-5 mx-auto">
-                    <h1 class="py-2 mx-auto cabin-sketch-bold">
-                        {{ user.username }}'s Student Dashboard
-                    </h1>
-                    <h3>
-                        <small>We do not have a profile set up for you yet,
-                        so you are not currently registered to a classroom.</small>
+                    <h3 class="card-text py-3"><small>We do not have a profile
+                            set up for you yet, so you are not currently registered
+                            to a classroom.</small>
                     </h3>
-                    <h4 class="py-3">Send us a 
-                        <a href="{% url 'send_message' %}" 
-                            aria-label="link to contact form" class="light-message">
+                    <h3 class="card-text py-2">Send us a
+                        <a href="{% url 'send_message' %}" aria-label="link to contact form" class="light-message">
                             message
                         </a> and we'll get that taken care of!
-                    </h4>
-                    <p class="display-6">(In the meantime, you'll still 
+                    </h3>
+                    <p class=" card-text display-6 py-2">(In the meantime, you'll still
                         enjoy full functionality!)
                     </p>
-                </div>
                 {% endif %}
             </div>
         </div>
-    </section>
-    <!-- Looping over the students slots -->
-    <section id="manage-tasks">
-        <h1 class="d-none">Manage Tasks</h1>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-12 col-md-6 mx-auto 
-                    justify-content-center legend">
-                    <table class="table">
-                        <tr>
-                            <th class="pt-5">Color</th>
-                            <th>Task Status</th>
-                        </tr>
-                        <tr class="table-primary">
-                            <td>BLUE: </td>
-                            <td>Planning Stage</td>
-                        </tr>
-                        <tr class="table-info">
-                            <td>AQUA: </td>
-                            <td>Completed - Time to request credit!</td>
-                        </tr>
-                        <tr class="table-warning">
-                            <td>YELLOW: </td>
-                            <td>Credit Requested</td>
-                        </tr>
-                        <tr class="table-success">
-                            <td>GREEN: </td>
-                            <td>Credit Approved!</td>
-                        </tr>
-                        <tr class="table-danger">
-                            <td>RED: </td>
-                            <td>Hmm, something odd here... <span class="question">
-                                (Did you forget to mark Complete before requesting 
+    </div>
+</section>
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 mx-auto legend">
+                <table class="table">
+                    <tr class="pt-5">
+                        <th>Color</th>
+                        <th>Task Status</th>
+                    </tr>
+                    <tr class="table-primary">
+                        <td>BLUE: </td>
+                        <td>Planning Stage</td>
+                    </tr>
+                    <tr class="table-info">
+                        <td>AQUA: </td>
+                        <td>Completed - Time to request credit!</td>
+                    </tr>
+                    <tr class="table-warning">
+                        <td>YELLOW: </td>
+                        <td>Credit Requested</td>
+                    </tr>
+                    <tr class="table-success">
+                        <td>GREEN: </td>
+                        <td>Credit Approved!</td>
+                    </tr>
+                    <tr class="table-danger">
+                        <td>RED: </td>
+                        <td>Hmm, something odd here... <span class="question">
+                                (Did you forget to mark Complete before requesting
                                 credit?)</span>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
-        <div class="container-fluid">
-            {% if slots %}
-            <!-- List of slots reserved by the current user -->
-            <div class="row">
-                <div class="col-sm-12 col-lg-8 offset-lg-2 dash-table">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Beneficiary</th>
-                                <th scope="col">Task</th>
-                                <th scope="col">Task Location</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">Time</th>
-                                <th scope="col">Completed</th>
-                                <th scope="col">Minutes Requested</th>
-                                <th scope="col">Minutes Approved</th>
-                                <th scope="col">Edit</th>
-                                <th scope="col">Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+    </div>
+    <div class="container-fluid">
+        <!-- List of slots reserved by the current user -->
+        <div class="row">
+           {% if slots %} 
+            <div class="col-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Beneficiary</th>
+                            <th scope="col">Task</th>
+                            <th scope="col">Task Location</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Completed</th>
+                            <th scope="col">Minutes Requested</th>
+                            <th scope="col">Minutes Approved</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                         {% for slot in slots %}
-                            <tr
-                                class="{% if not slot.completed %}table-primary
+                        <tr
+                            class="{% if not slot.completed %}table-primary
                                     {% elif slot.completed and not slot.credit_minutes_requested %}table-info
                                     {% elif slot.credit_minutes_requested and not slot.credit_minutes_approved %}table-warning
                                     {% elif slot.credit_minutes_approved %}table-success{% else %}table-danger{% endif %}">
-                                <td>{{ slot.beneficiary.beneficiary_name}}</td>
-                                <td>{{ slot.task }}</td>
-                                <td>{{ slot.task_location }}</td>
-                                <td>{{ slot.dates }}</td>
-                                <td>{{ slot.times }}</td>
-                                <td>{{ slot.completed }}</td>
-                                <td>{{ slot.credit_minutes_requested }}</td>
-                                <td class="credit_minutes_approved">{{ slot.credit_minutes_approved }}</td>
-                                <td><a href="{% url 'update_slot' slot.id %}" aria-label="update this task"
-                                        class="btn btn-secondary btn-sm">Update</a></td>
-                                <td><button class="btn btn-delete-task btn-danger btn-sm" data-slot_id="{{ slot.id }}"
-                                        aria-label="delete this task">Delete</button></td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+                            <td>{{ slot.beneficiary.beneficiary_name}}</td>
+                            <td>{{ slot.task }}</td>
+                            <td>{{ slot.task_location }}</td>
+                            <td>{{ slot.dates }}</td>
+                            <td>{{ slot.times }}</td>
+                            <td>{{ slot.completed }}</td>
+                            <td>{{ slot.credit_minutes_requested }}</td>
+                            <td class="credit_minutes_approved">{{ slot.credit_minutes_approved }}</td>
+                            <td><a href="{% url 'update_slot' slot.id %}" aria-label="update this task"
+                                    class="btn btn-secondary btn-sm">Update</a></td>
+                            <td><button class="btn btn-delete-task btn-danger btn-sm" data-slot_id="{{ slot.id }}"
+                                    aria-label="delete this task">Delete</button></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
             {% else %}
             <!--Message to user with no slots saved yet-->
-            <div class="row">
                 <div class="col-12 text-center">
                     <h3 class="display-4 no-tasks-message py-5">
                         You currently have no tasks planned!
@@ -166,61 +140,59 @@ Student Dashboard
             </div>
             {% endif %}
         </div>
-    </section>
-    <!-- Student stats -->
-    <section id="cumulative-hours">
-        <h1 class="d-none">Tracking Time Volunteered</h1>
-        <div class="container-fluid mb-5">
-            <div class="row mb-2 stats cabin-sketch-bold stats">
-                <div class="col-4 p-2">
-                    <h6>Time approved to date: 
-                        <span id="calculated-minutes">0</span>
-                        <span> minutes, </span>
-                        <br>or 
-                        <span id="calculated-hours">0</span>
-                        <span>hours</span>
-                    </h6>
-                </div>
-                <div class="col-4 p-2 text-center">
-                    <h6>Hours needed for graduation: 
-                        <span id="required-hours">30</span>
-                    </h6>
-                </div>
-                <div class="col-4 p-2">
-                    <h6>Remaining time required: <span id="remaining-hours">
-                        </span> hours, <span id="plus-remaining-minutes"></span> minutes
-                    </h6>
-                </div>
+    </div>
+</section>
+<!-- Student stats -->
+<section id="cumulative-hours">
+    <h1 class="d-none">Tracking Time Volunteered</h1>
+    <div class="container-fluid mb-5">
+        <div class="row mb-2 stats cabin-sketch-bold stats">
+            <div class="col-4 pl-3 text-center">
+                <h4>Time approved to date:
+                    <span id="calculated-minutes">0</span>
+                    <span> minutes, </span>
+                    <br>or
+                    <span id="calculated-hours">0</span>
+                    <span>hours</span>
+                </h4>
+            </div>
+            <div class="col-4 text-center">
+                <h4>Hours needed for graduation:
+                    <span id="required-hours">30</span>
+                </h4>
+            </div>
+            <div class="col-4 pr-2 text-center">
+                <h4>Remaining time required: <span id="remaining-hours">
+                    </span> hours, <span id="plus-remaining-minutes"></span> minutes
+                </h4>
             </div>
         </div>
-    </section>
-{% else %}
-    <div class="container mx-auto">
-        <h1>You must be logged in to access this page.</h1>
     </div>
+</section>
+{% else %}
+<div class="container mx-auto">
+    <h1>You must be logged in to access this page.</h1>
+</div>
 {% endif %}
 <!-- delete modal-->
-<div id="deleteModalDashboard" class="modal" tabindex="-1" 
-        aria-labelledby="deleteModalDashboardLabel" aria-hidden="True">
+<div id="deleteModalDashboard" class="modal" tabindex="-1" aria-labelledby="deleteModalDashboardLabel"
+    aria-hidden="True">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 id="deleteModalDashboardLabel" class="modal-title">
                     Are you sure?
                 </h5>
-                <button type="button" class="btn-close" 
-                    data-bs-dismiss="modal" aria-label="Close">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                 </button>
             </div>
             <div class="modal-body">
                 <p>This action cannot be undone!
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" 
-                    data-bs-dismiss="modal">Cancel
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel
                 </button>
-                <a id="deleteConfirmDashboard" href="#" 
-                    class="btn btn-danger">Delete
+                <a id="deleteConfirmDashboard" href="#" class="btn btn-danger">Delete
                 </a>
             </div>
         </div>

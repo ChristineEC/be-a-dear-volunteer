@@ -11,6 +11,10 @@ main {
     flex: 1 0 auto;
 }
 
+.container-fluid {
+    padding: 0;
+}
+
 .img {
     max-width:100%;
     height: auto;
@@ -54,11 +58,11 @@ main {
     font-style: normal;
 }
 
-.special-category {
+/* .special-category {
     color: red;
     font-family: "Graduate", serif;
     font-weight: 800;
-}
+} */
 
 /* Homepage */
 .home-heading {
@@ -156,3 +160,5 @@ article > p {
 .footer-div {
     position: relative;
 }
+
+
