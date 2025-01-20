@@ -14,11 +14,11 @@ Student Dashboard
     <div class="container-fluid p-0">
         <div class="row px-0 m-0">
             <div class="col-12 text-center dashboard bg-dark g-0 px-0">
-                <h1 class="pt-4"><i class="fa-regular fa-heart"></i></h1>
+                <i class="fa-regular fa-heart pt-5 pb-3"></i>
                 <h1 class="cabin-sketch-bold py-3">
                     {{ user.username }}'s Student Dashboard
                 </h1>
-                {% if user.profile%}
+                {% if user.profile %}
                     <h2 class="pb-4">You are registered to classroom
                         {{ user.profile.classroom.classroom_number }}
                     </h2>
@@ -44,7 +44,7 @@ Student Dashboard
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-md-6 mx-auto legend">
-                <table class="table-sm">
+                <table class="table">
                     <tr class="pt-5">
                         <th>Color</th>
                         <th>Task Status</th>
