@@ -295,7 +295,7 @@ The tasks are color coded by status (planned, completed, credit requested, or cr
 Clicking on edit for a task brings the user to the update_task.html page. It was important that users be able to update tasks here and be redirected right back to the dashboard, rather than being directed to the page where they created the task. The user receives a success message (as shown above) after clicking the update button.
 
 
-![Update task page](update-task-page.png)
+![Update task page](documentation/update-task-page.png)
 
 
 Clicking on delete brings up the same modal as above and the user is provided with the same success message as for deleting from the beneficiary page.
