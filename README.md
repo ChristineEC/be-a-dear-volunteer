@@ -10,6 +10,7 @@ Links to the deployed app and the GitHub repository:
 ## Table of Contents
 - [Description](#description)
 - [Purpose](#purpose)
+- [Agile Methods](agile-methods)
 - [Features](#features)
     - [General Overview](#general-overview)
     - [Features in line with user stories](#features-in-line-with-user-stories)
@@ -33,10 +34,27 @@ Be a Dear - Volunteer is a web-based application designed to allow high school s
 The application is designed to be managed by a student, administrator or teacher of a school, with teachers able to approve credit on the backend. Students are usually required to volunteer at public-facing organizations. The idea behind the project is to allow students to volunteer in non-traditional ways, such as by assisting a private individual in their community, such as an elderly, disabled, or injured neighbor. In addition to being able to volunteer for private citizens, students are allowed to volunteer for as little as five minutes at a time as part of the fictional project.
 
 ## Purpose
-## Purpose
-Traditionally, students must volunteer for public-facing organizations, such as at a soup kitchen, food bank, animal shelter, or environmental group, in order to have their volunteer time approved for credit. In reality, many students never complete their hours but instead have their parents sign off on work never done. (I know this because I have neices and nephews who've told me so!) And a quick Google search of the issue reveals that many, if not most, students consider the requirement just an additional hoop to jump through in order to graduate; they resent the requirement and gain little from their experiences, including any motivation for future volunteerism. One purpose of the project is to allow students to volunteer in more convenient ways--more locally and for smaller increments of time. The COVID-19 pandemic caused increased mental health issues among teenagers, so another purpose of the project is to improve the mental health of students. It is well-known that when people help others, even in tiny doses, it increases their own happiness and self esteem. Finally, college acceptance is extremely competitive in California, especially for the cheapest schools, the public universities, which are also the highest ranked in California. Colleges do look at the extracurricular activities of applicants, including their volunteer experiences, and they read college application essays as an important part of the screening process. It is hypothesized that students who volunteer by helping an elderly neighbor on a regular basis, for example, will have more to say about their experiences on a college application, potentially helping their changes of acceptance. One of the (actually) stated rationales behind having students volunteer is that they will gain experiences in the public sphere that can help them in future employment. While this may be the case (for a very small number of cases, I'd venture to guess, as many students work part time jobs anyway), it is my belief that experiences of real people and real problems in their communities would be of more benefit, especially when it comes to an awareness of society as a whole. Working at a soup kitchen is a wonderful thing, but the gulf between volunteers and those helped is often too wide for the experience to give real personal meaning to many teenagers. It is thought that more regular experiences with people closer to them in the community could yield more meaningful experiences due to the immediacy and social intimacy of the personal relationships formed. The hope is that students, who can be quick to reject externally imposed notions of morality, will come to enjoy their encounters and will learn an important fact about being human: that a great reason for helping others is that it makes us feel good, too.
+The purpose of the project is to allow high school students, who must volunteer 20 to 30 hours to meet graduation requirements in California, to volunteer in 
+- non-traditional,
+- more fun, 
+- convenient, and
+- personally meaningful ways;
+- more locally and 
+- for smaller increments of time.
 
-The purpose of the project is laid out on the About page.
+Traditionally, students must volunteer for public-facing organizations, such as at a soup kitchen, food bank, animal shelter, or environmental group, in order to have their volunteer time approved for credit. In reality, many students never complete their hours but instead have their parents sign off on work never done. A quick Google search of the issue reveals that many, if not most, students consider the requirement just an additional hoop to jump through in order to graduate; many resent the requirement and gain little from their experiences, much less any motivation for future volunteerism. 
+
+Secondly, the COVID-19 pandemic caused increased mental health issues among teenagers, so another purpose of the project is to 
+- improve the mental health of students. 
+
+It is well-known that when people help others, even in tiny doses, it increases their own happiness and self esteem.
+
+Finally, college acceptance is extremely competitive in California, especially for the cheapest schools, the public universities, which are also the highest ranked in California. Colleges do look at the extracurricular activities of applicants, including their volunteer experiences, and they read college application essays as an important part of the screening process. 
+
+It is hypothesized that students who volunteer by helping an elderly neighbor on a regular basis, for example, will have more to say about their experiences on a college application, potentially helping their chances of acceptance. One of the (actually) stated rationales behind having students volunteer is that they will gain experiences in the public sphere that can help them in future employment. While this may be the case (for a very small number of cases, I'd venture to guess, as many students work part time jobs anyway), it is my belief that experiences of real people and real problems in their communities would be of more benefit, especially when it comes to an awareness of society as a whole. While traditional volunteer experiences have much to offer, I think that the gulf between teenage volunteers and those helped is often too wide for the experience to give real personal meaning, especially to someone carrying out the work begrudgingly. Teenagers may simply have difficulty identifying with their beneficiaries when they are so far removed from them socially, and when they receive little personal feedback. It is thought that more regular experiences with people closer to them in the community, on a regular basis, could yield more meaningful experiences due to the immediacy and social intimacy of the personal relationships formed. The hope is that students, who can be quick to reject externally imposed notions of morality, will come to enjoy their encounters and will learn an important fact about being human: that a great reason for helping others is that it makes us feel good, too.
+
+## Agile Methods
+The project was developed using agile methods. User stories were used to define the requirements, and these were tracked as issues on a Kanban board as a project in GitHub connected to the Be a Dear project repository. Labels were used to distinguish the different user stories as, for example, "must have", "should have", and "won't do". In addition to columns for To Do, In Progress, Done, and Won't Do, I used a column for Styling in Progress, which I found extremely helpful, at the suggestion of my mentor.
 
 ## Features
 
@@ -44,13 +62,13 @@ The purpose of the project is laid out on the About page.
 The Be a Dear project as a whole contains three apps:
 1. The Volunteer app: houses all front-end CRUD. 
     - Models: Beneficiary, Slot, Classroom 
-        - Beneficiary and Slot: together with allauth.User provide full front-end CRUD
-        - Classroom: enables teachers to sort user profiles (see below) by Classroom in the admin panel.
+        - Beneficiary and Slot, together with Django's allauth User model, provide full front-end CRUD
+        - Classroom enables teachers to sort user profiles (see below) by Classroom in the admin panel.
     - Templates:
         - index.html "Home"
         - volunteer_opportunties.html "Volunteer"
-        - beneficiary_detail.html (full CRUD) - slug
-        - student_dashboard.html (RUD) "My Dashboard"
+        - beneficiary_detail.html **(full CRUD)** - slug
+        - student_dashboard.html **(RUD)** "My Dashboard"
         - update_task.html (RUD) - Edit buttons on dashboard
     - Forms:
         - SlotForm (full CRUD in one template, RU in another)
@@ -66,10 +84,10 @@ The Be a Dear project as a whole contains three apps:
     - Function: Teachers can sort by classroom in the admin panel; students can read what Classroom they are assigned to.
         - Although the Profile model provides only limited (back-end) functionality at the current stage of this project, it does allow for rapid development of future enhancements.
 
-### Features in line with user stories
+### Features
 
 #### Home page
-The home page acts as a landing page, introducing students and the public to the purpose and general functionality of the website.
+The home page acts as a landing page, providing a brief but clear and comprehensive introduction to the purpose and general functionality of the website.
 
 ![Homepage - index.html](documentation/homepage.png)
 
@@ -102,22 +120,114 @@ A user is told that they are logged in as `<username>` or that they are not logg
 ![You are not logged in message](documentation/not-logged-in-msg.png)
 
 #### Viewing volunteer opportunities on the Volunteer page
+The Volunteer page consists of three sections
+- A header that shows what the page is about and simultaneously promotes (or at least encourages!) student engagement with the project.
 
+![Volunteer header](<documentation/volunteer header.png>)
+
+- How it Works section
+Explains what students can do and how they can do it, displaying prominent links to giving further visual overview of the site.
+
+![How it works](documentation/how-it-works.png)
+
+- List of beneficiaries
+With obvious links begging to be clicked.
+
+![Beneficiaries](documentation/beneficiaries.png)
 
 
 #### Saving tasks to register and plan volunteer activities
+When the user clicks on a beneficiary on the volunteer page, they are directed to that beneficiary's detail page, which also contains a prominent form for saving a task related to that beneficiary to their dashboard.
+
+![Animal shelter detail](documentation/animal-shelter.png)
+
+![More animal shelter detail](documentation/animal-shelter-2.png)
+
+#### See what others are doing
+On each beneficiary's detail page, students can see how many students have saved or completed tasks for that beneficiary, and what those tasks look like (if they are published!).
+
+![What and how many](documentation/what-and-how-many.png)
+
+#### Student privacy
+In the image above, note that users names are not displayed. A future feature would allow aliases to be displayed. The Profile model is already set up to do this. Students would be made aware that if they wished their activities to remain private, they could leave their alias as the default "Someone". Otherwise, their chosen alias would be displayed, and it would be up to them who they revealed their alias to. Teachers would be able to see on the back end, of course, as they would have access to all users and profiles.
 
 #### Full CRUD: Creating, reading, updating and deleting tasks
+The form on each beneficiary's page allows users to create and update "tasks", known as slots on the back end.
+
+![alt text](documentation/create-and-update.png)
+
+On the same page, users see their own slots, with edit and delete buttons.
+
+![edit and delete](documentation/edit-and-delete.png)
+
+Clicking on edit prepopulates the form, and when the user clicks on Update, the object is saved in the database and immediately appears as edited on the same page (and in the dashboard, of course).
+
+![prepopulate to update](documentation/prepopulate-and-update.png)
+
+Clicking the update button results in the slot being updated and a success message showing.
+
+![update success message](documentation/task-updated.png)
+
+![update displayed](documentation/update-displayed.png)
+
+Clicking on delete brings up a delete modal.
+
+![Delete modal](documentation/delete-modal.png)
+
+Successful deletion displays a message.
+
+![Delete success](documentation/delete-success.png)
+
+#### Site admin control of what is displayed
+When a user updates a task that has been published, the task reverts to unpublished.
+
+![Before edit](documentation/before.png)
+
+![After edit](documentation/after-edit.png)
 
 #### Managing tasks from the dashboard (RUD)
+Part of the student dashboard is shown here. Students can read, update and delete tasks and be returned to the dashboard.
+The tasks are color coded by status (planned, completed, credit requested, or credit granted). In case a student doesn't mark an assignment as complete but still asks for credit, that task will appear in a red row. (It doesn't have any material bearing on the time calculation anyway, so it's not something they actually need to fix. This was created as a catch all in case a task is not caught by the if/else statements used to create the differentiation by color. This could be the only logical case.) Future enhancements should eliminate this possibility.
 
-#### Checking student progress
+![Tasks on the dashboard](documentation/dashboard-tasks.png)
 
-#### Profiles
+Clicking on edit for a task brings the user to the update_task.html page. It was important that users be able to update tasks here and be redirected right back to the dashboard, rather than being directed to the page where they created the task. The user receives a success message (as shown above) after clicking the update button.
+
+![Update task page](update-task-page.png)
+
+Clicking on delete brings up the same modal as above and the user is provided with the same success message as for deleting from the beneficiary page.
+
+#### Students can keep track of their progress
+Total minutes and hours volunteered, total required, and total remaining appear at the bottom of the students' dashboards.
+
+![Total hours](documentation/stats.png)
+
+#### Profiles and Classrooms
+User profiles are created on the back end, in a OneToOne relation to Django's allauth Users model. On the front end, anyone with a profile can see what classroom they've been assigned to. If they don't have a profile, they are informed that a profile has not been created yet but that they still enjoy full functionality on the site and they can message (with a link) to ask for one to be created. This was a good example of agile development. I made sure to make the crucial functionality independent of the profile model. Users enjoy full functionality regardless of whether they have a profile or not, and teachers can still update their credit approvals on the back end.
+
+![profile front end](documentation/class-assignment.png)
+
+On the back end, teachers can sort profiles by classroom to quickly get an overview of their students who have registered and have profiles. Classroom numbers were made the primary key of the classroom model for this purpose. Even if the project were expanded to multiple schools, the 10 character limit (Char field) on the attribute is sufficient to allow for distinguishing between schools and adding many, in case a district decided to implement, for example.
+
+![profile back end](documentation/back-end-profile.png)
+
+Profiles are incredibly easy to create for users because they appear inline with the User model on the back end, whether creating, viewing, or updating a user profile.
+
+![User top half screen](documentation/user-first-half.png)
+
+![User bottom half screen](documentation/user-second-half.png)
+
+- **Future functionality:** Together, these two models could provide some interesting functionality, such as competitions between classes and between class years, and even between schools in a district.Teacher pages with the ability to grant credit on the front end would be possible, as well as the ability of users to upload profile pictures. In future development, profiles should be created automatically through signals when users register. As soon as a user creates an account, they would be directed to a form or a pop up asking for their profile information. At the very least, profiles should be created in the database through signals with the available default fields saved, and then users could edit their profiles quite easily via a form.
 
 #### Read about the project
 
+On the home page and the about page, all site visitors can become acquainted with the project. Through the About model, the site admin can update the About page at will, saving drafts in the admin panel and publishing when desired. The most recently "published" About object is the one shown on the page.
+
+![About](documentation/about.png)
+
 #### Sending messages
+There is a form on the About page for sending messages to the site admin(s). Filling it in sends a message, which the site owner can mark as read to keep track of things, and the user is returned to the About page.
+Links throughout the site bring users to contact_form.html page, where they can also send messages from. Filling out this form sends users to the homepage afterward, which is not ideal. Future enhancement would send them back to the page they came from.
 
 #### User Messages
 Prominent messages are displayed to the user when they interact with the website:
@@ -167,53 +277,45 @@ Deleting a task
 
 ![Task deleted](documentation/task-deleted.png)
 
-
-
-
-
-
- - saving, updating or deleting a task (a.k.a. slot); or sending a message.
-
-
-
-
-
+#### Teachers' approval of credit for students
+Teachers are identified as such on the back end by the superuser--both by labeling them as "staff" with Django's built-in User model and by changing their default profile type to "teacher". After being given the relevant privileges there, teachers are able to view their students' requested hours and approve them, either for the full amount requested or some other amount, as they deem creditable. (After all, high school students are known to exaggerate!)
 
 #### Footer
+The footer is designed to be changed out by the particular school using the app. I have included two external links for good form, but schools will want to keep everything in-house, and would probably include links to the school's home page and such.
 
+![Footer](documentation/footer.png)
 
-
-  -  The extra contact form template allows users to send messages from all the main pages of the website and be returned to the page they messaged from.
-
-On the front end, students see whether or not they have a profile set up, and in that case, which classroom they are assigned to.
-        -   The model will enable future functionality, such as a competition between classrooms, teacher pages with front-end ability to approve student credit, classroom pages, etc. 
-
-
-
-MOVE THIS TO USER STORIES SECTION
-Teachers are identified as such on the back end by the superuser--both by labeling them as "staff" with Django's built-in User model and by changing their default profile type to "teacher"--and, after being given the relevant privileges there, are able to view their students' requested hours and approve them, either for the full amount requested or some other amount, as they deem creditable. (After all, high school students are known to exaggerate!)
-
-Students can save opportunties to their personal dashboards to plan their activities, they can enter time to request credit for, and they can see the status of their credit requests, as well as their total hours approved and the number of hours and minutes still required of them in order for them to graduate. They can also see what other students are planning or have done, and they can suggest the addition (posting to the site) of particular beneficiaries so that their fellow students can be informed of them. 
-
+#### Favicon
+The favicon, a simple heart, was obtained from ![Flaticon](https://www.flaticon.com/free-icons/free). A future improvement would be to use one with better contrast for people using dark mode.
 
 ## UX
-The design of the website is simple and straightforward. Students are not expected to spend their leisure time visiting the site, so there is no point trying to make it flashy. The point of the app is much more utilitarian, and the design reflects this. Future functionality, such as the ability of students to post about their experiences, share photos, etc., would likely merit enhanced design, but for the scope of this project, simplicity is key. Students will want to quickly find what they are looking for and be able to navigate freely and intuitively from the different pages, being redirected to where they started out after completing a task in the app. For this reason, students are able to read, edit and delete their tasks from two different places on the site. From the beneficiary detail page they can quickly add tasks to their dashboards without worrying about including all of the details. They can create, read, update and delete from there, without ever having to leave the page. This means they can quickly add a number of tasks related to the different beneficiaries to their dashboards for later updating as they wish. Later, from their dashboards, they can read, update and delete their tasks, filling in the details and requesting credit as they go. Editing or deleting from the dashboard returns the student to the dashboard, and editing or deleting from the beneficiary detail page keeps users on the beneficiary detail page.
 
-Other links are also made convenient. Any visitor to the site can send a message by clicking on "Contact Us" in the navbar, by clicking on an inline link on the homepage, or by filling in the form on the About page. All users have access to the Home, About, and beneficiary details pages (accessed by clicking on a beneficiary). (Only logged in users can save tasks to a dashboard.)
+The design of the website is simple and straightforward. Future functionality, such as the ability of students to post about their experiences, share photos, etc., would likely merit enhanced design, but for the scope of this project, simplicity is key.
 
-The navbar includes only those links that are relevant to the user. Non-logged-in users see Home, About, Contact Us, Register, and Log In. Logged in users see Home, About, Contact Us, Log Out, and My Dashboard. All visitors to the site see a message under the navigation items either telling them that they are logged in as ( their username) or that they are not logged in, as the case may be. The message is shown on all pages.
+- Colors: The color scheme is simple and clean: black and white, with some light pink background in places which helps break up the page into easily recognizable sections while maintaining good contrast with the font color (universally black, except when white on a black background). The pink coordinates with the valentine candy heart image on the home page, all in line with the intentional corniness of the title. (One mustn't be too earnest with teenagers!)
 
-Clear messages are displayed to users indicating the results of any action taken by them, such as successful creation, updating or deleting of slots, or alternatively, if they try to visit a page to which they don't have access by typing in the url. 404 messages are in place as well. Delete modals are used to warn users before they delete anything.
+- Fonts: The main font used is open-sans for easy readability and clean presentation. The exception is the use of Graduate in the navbar as a nod to the high school milieu, and the limited use of Cabin Sketch on the dashboard page, as it looks like a student's doodle on a notebook or like block letters written with chalk on a chalkboard. I also used Bootstrap's "display-1" through "display-6" classes, as I found them, with their narrow line width and increased size, to be a more effective means of communicating messages quickly and at a glance--that is, succinctly and without shouting, as with bold font.
 
-Pagination is not used, as most students are expected to be accessing the site on their mobile phones, where infinite scroll is more convenient. If any enhancement were to be made in the future, it might be the ability to search for an organization by name or by first letter by clicking on letters of the alphabet, but this would only be useful if there were to be very many organizations, and this would not be expected to be the case. In any case, the current scope of the project does not merit this.
+- Quick, intuitive navigation: Students will want to quickly find what they are looking for and be able to navigate freely and intuitively from the different pages, being redirected to where they started out after completing a task in the app. For this reason, the site was developed so that students are able to read, edit and delete their tasks from two different places on the site. 
+    - From the beneficiary detail page they can quickly add tasks to their dashboards without worrying about including all of the details. They can create, read, update and delete from there, without ever having to leave the page. 
+    - This means they can quickly add a number of tasks related to the different beneficiaries to their dashboards for later updating as they wish. 
+    - Later, from their dashboards, they can read, update and delete their tasks, filling in the details and requesting credit as they go. Editing or deleting from the dashboard returns the student to the dashboard, and editing or deleting from the beneficiary detail page keeps users on the beneficiary detail page.
 
-Privacy is maintained, as usernames and information about planned tasks, etc., are never shown (at least not by name) on the pages that are not strictly personal to the logged in user. (In a future version of the app, aliases could be displayed on public pages, based on the aliases users choose for their profile.)
+- Easily visible, convenient links: Other links are also made convenient. Any visitor to the site can send a message by clicking on "Contact Us" in the navbar, by clicking on an inline link on the homepage, or by filling in the form on the About page. All users have access to the Home, About, and beneficiary details pages (accessed by clicking on a beneficiary). (Only logged in users can save tasks to a dashboard.)
 
-The main font used is open-sans for easy readability and clean presentation. The exception is the use of Graduate in the navbar as a nod to the high school milieu, and the limited use of Cabin Sketch on the dashboard page, as it looks like a student's doodle on a notebook or like block letters written with chalk on a chalkboard.
+- The navbar includes only those links that are relevant to the user. Non-logged-in users see Home, About, Contact Us, Register, and Log In. Logged in users see Home, About, Contact Us, Log Out, and My Dashboard. All visitors to the site see a message under the navigation items either telling them that they are logged in as ( their username) or that they are not logged in, as the case may be. The message is shown on all pages.
 
-The color scheme is simple and clean, mostly black and white, with some light pink background in places which helps break up the page into easily recognizable sections while maintaining good contrast with the font color (universally black, except when white on a black background).
+- Clear messages are displayed to users indicating the results of any action taken by them, such as successful creation, updating or deleting of slots, or alternatively, if they try to visit a page to which they don't have access by typing in the url. 404 messages are in place as well. Delete modals are used to warn users before they delete anything.
 
-The Register, Log In and Log Out pages and forms are simple and straightforward, and the user is asked to verify that they really want to log out. If a user tries to log in before creating an account, they are asked to register first. If a user forgets their password, there is a clear, convenient link and instructions to send the site owners a message from the login page.
+- Pagination is not used, as most students are expected to be accessing the site on their mobile phones, where infinite scroll is more convenient. If any enhancement were to be made in the future, it might be the ability to search for an organization by name or by first letter by clicking on letters of the alphabet, but this would only be useful if there were to be very many organizations, and this would not be expected to be the case. In any case, the current scope of the project does not merit this.
+
+- Privacy: Privacy is maintained, as usernames and information about planned tasks, etc., are never shown (at least not by name) on the pages that are not strictly personal to the logged in user. (In a future version of the app, aliases could be displayed on public pages, based on the aliases users choose for their profile.)
+
+- Crispy forms were used to style all forms, including the login, register, logout, contact, and CRUD operations.
+
+- **An important change:** One very important change that I made at a late stage in development, one that I think resulted in vast improvement in UX/UI, was that I moved the list of beneficiaries from the homepage to its own page, called Volunteer. Before that change, visitors to the home page had no clear idea of what the website was for, and the navbar, lacking the now prominent "Volunteer" didn't provide a lot of clues. Splitting the two pages up had occurred to me earlier in development, but cognizant of time, I thought I could manage okay without the change. How wrong I was! At the urging of my mentor, just days before submission of this project, I made the change and am so glad I did.
+
+I recognize that there is vast room for improvement in the visual design of the site. I hope the ease of navigation and clear messaging make up for some of it!
 
 ## Agile Development Method
 
@@ -223,6 +325,8 @@ The Register, Log In and Log Out pages and forms are simple and straightforward,
 ## Wireframes
 
 My earliest wireframe was created using [Balsamiq](https://balsamiq.com/), but my free trial period ended before I was ready to use it here, so I am including a downloaded image of it here:
+
+
 
 ![A first, Balsamiq, wireframe](mobile-wireframe.png)
 

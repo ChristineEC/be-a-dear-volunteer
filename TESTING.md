@@ -21,7 +21,8 @@
 - [User Stories and CRUD](#user-stories-and-crud)
     - [General stories](#general-stories)
     - [Full front-end CRUD](#full-front-end-crud)
-[Squashed Bugs](#bugs)
+    
+[Squashed Bugs](#squashed-bugs)
 
 ## Validation
 ### Python
@@ -242,7 +243,7 @@ As a site owner, I can display slots that are not "published" to the user on the
 | Logged in users can see their unpublished slots on the beneficiary detail page | student saves (creates) a slot | slot is immediately displayed to the user on the same page with a message informing them that it is not published (for all to see) but can still be seen on their dashboard | Pass |
 
 
-## Bugs!
+## Squashed Bugs
 
 The default images were not being loaded for the About, Profile or Beneficiary objects.
 **Fix:** Change default to "placeholder", rather than "default.jpg" or "placeholderimage.jpg", then load the relevant placeholder images conditionally in the templates.
@@ -273,3 +274,5 @@ This is not a true error or bug. Rather, it is caused by Cloudinary serving the 
 
 While attempting to deal with the Summernote issue of paragraph tags from Summernote being placed inside my own paragraph tags, I discovered that the usual fix was not working on all of the elements but only for some. It turns out that this was due to the fact that I had copied and pasted some text from Microsoft Word into the Summernote fields from the admin panel. When I did it, I had saved the Word file to a text file but didn't realize I was nevertheless still copying from the Word version! I discovered hours later what I had done and hoped for the best - lol. In any case, I remembered this when I was trying to solve the issue, so I went back in the admin panel and discovered I could see the actual code in the Summernote fields by a simple click of an icon there. The html I found there was an absolute mess! 
 **Fix:**I removed everything except the paragraph tags from the objects in the database and was then able to sort out the Summernote issue in the usual way (ensuring my template variables were not inside of tags that would cause a problem when summernote fields were rendered in the browser.)
+
+No bugs remain, to my knowledge.
